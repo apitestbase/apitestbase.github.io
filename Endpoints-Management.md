@@ -4,7 +4,7 @@ To reuse endpoints across test steps or test cases, you can create managed endpo
  
 Under the Basic Info tab, enter name and (optional) description. Click Endpoints tab.
 
-[[https://github.com/zheng-wang/irontest/blob/master/screenshots/env-mgmt/environment.png|alt=environment]]
+[![Environment](https://github.com/zheng-wang/irontest/blob/master/screenshots/env-mgmt/environment.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/env-mgmt/environment.png)
 
 There are two ways to create a managed endpoint.
 
