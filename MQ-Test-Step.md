@@ -38,3 +38,10 @@ You can also include an **MQRFH2 header**, with one or more MQRFH2 folders, in t
 Message in the file can contain MQMD header which will be recognized by Iron Test. If there is no MQMD header, Iron Test will generate one.
 
 Again, click the Do button to PUT the message to the queue.
+
+## Dequeue Action
+Dequeue action is used to GET a message from a queue. You can assert the returned message content (currently only XML message is supported).
+
+Click Do button to get the message, and click Verify button to verify the assertion.
+
+[![Dequeue MQ Message](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/dequeue-message.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/dequeue-message.png)
