@@ -11,7 +11,7 @@ Install MQ and IIB libraries to your local Maven repository
 	mvn install:install-file -Dfile="<IIB_Home>/classes/ConfigManagerProxy.jar" -DgroupId=com.ibm -DartifactId=ConfigManagerProxy -Dversion=<IIB_Version> -Dpackaging=jar
     mvn install:install-file -Dfile="<IIB_Home>/jre17/lib/ibmjsseprovider2.jar" -DgroupId=com.ibm -DartifactId=ibmjsseprovider2 -Dversion=<IIB_Version> -Dpackaging=jar
 
-Check MQ/IIB versions in `irontest/irontest-mqiib/pom.xml`. If your MQ or IIB version falls outside the range, modify the POM. I haven't tested that version, but Iron Test might work with it. Refer to [this doc](http://maven.apache.org/enforcer/enforcer-rules/versionRanges.html) for more info about Maven version ranges.
+Check MQ/IIB versions in `irontest-mqiib/pom.xml`. If your MQ or IIB version falls outside the range, modify the POM. I haven't tested that version, but Iron Test might work with it. Refer to [this doc](http://maven.apache.org/enforcer/enforcer-rules/versionRanges.html) for more info about Maven version ranges.
 
     <mq.version>...</mq.version>
     <iib.version>...</iib.version>
