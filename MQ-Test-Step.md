@@ -11,7 +11,7 @@ To operate on an MQ queue, some parameters are needed for Iron Test to connect t
 Enqueue action is used to PUT a message into a queue. You can provide the message in two ways.
 
 ### Provide message by entering text
-[![Enqueue Message From Text](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/enqueue-message-from-text.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/enqueue-message-from-text.png)
+[![Enqueue MQ Message From Text](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/enqueue-message-from-text.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/enqueue-message-from-text.png)
 
 Click the Do button to PUT the message to the queue.
 
@@ -29,5 +29,12 @@ You can also include an **MQRFH2 header**, with one or more MQRFH2 folders, in t
         <field2>value2</field2>
     </customFolder1>
 
-[![Enqueue Message From Text with MQRFH2 Header](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/enqueue-message-from-text-with-rfh2-header.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/enqueue-message-from-text-with-rfh2-header.png)
+[![Enqueue MQ Message From Text with MQRFH2 Header](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/enqueue-message-from-text-with-rfh2-header.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/enqueue-message-from-text-with-rfh2-header.png)
 
+### Provide message by uploading a file
+
+[![Enqueue MQ Message From File](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/enqueue-message-from-file.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/enqueue-message-from-file.png)
+
+Message in the file can contain MQMD header which will be recognized by Iron Test. If there is no MQMD header, Iron Test will generate one.
+
+Again, click the Do button to PUT the message to the queue.
