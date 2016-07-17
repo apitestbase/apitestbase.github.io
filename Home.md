@@ -1,1 +1,1 @@
-Iron Test wiki home page.
+Please navigate the right side panel for more information.
