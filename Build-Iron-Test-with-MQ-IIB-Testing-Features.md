@@ -16,6 +16,6 @@ Check MQ/IIB versions in `irontest/irontest-mqiib/pom.xml`. If your MQ or IIB ve
  
 Run below Maven command
 
-    mvn clean package --projects irontest-mqiib --also-make -P prod
+    mvn clean package -pl irontest-mqiib -am -P prod
 
 Seed files for deployment can be found in the `irontest/irontest-mqiib/dist` folder.
