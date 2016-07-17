@@ -43,5 +43,5 @@ Again, click the Do button to PUT the message to the queue.
 Dequeue action is used to GET a message from a queue. You can assert the returned message content (currently only XML message is supported).
 
 Click Do button to get the message, and click Verify button to verify the assertion.
-
+  
 [![Dequeue MQ Message](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/dequeue-message.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/dequeue-message.png)
