@@ -1,4 +1,4 @@
-Download the latest Iron Test release from here to your local machine. Extract it, and cd to the project directory (in which there is README.md).
+Download the latest Iron Test release from [here](https://github.com/zheng-wang/irontest/releases) to your local machine. Extract it, and cd to the project directory (in which there is README.md).
 
 Install MQ and IIB libraries to your local Maven repository
 
