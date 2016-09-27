@@ -4,9 +4,9 @@ Here is a sample test case for (in-server) unit testing an IIB message flow. The
 
 There is a downstream message flow (Flow2) listening to the queue, so to isolate the testing of Flow1, we need some setup steps.
 
-    Setup: stop downstream message flow
-    Setup: clear output queue
-    Setup: start the message flow under test
+    Setup - stop downstream message flow
+    Setup - clear output queue
+    Setup - start the message flow under test
     
 Then we add below test steps to the same test case
 
