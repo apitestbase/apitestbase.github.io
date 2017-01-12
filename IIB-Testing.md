@@ -15,7 +15,7 @@ Then we add below test steps to the same test case
     Check output queue depth equals 1
     Dequeue message from the output queue and assert expected message body    
 
-The step 'Wait for message processing completion' is to ensure that Flow1 finishes all the work processing the input message, including outputting the message to the MQ queue. Notice that the web service returning SOAP response does not necessarily mean Flow1 finishes the processing.
+The step 'Wait for message processing completion' is to ensure that Flow1 finishes all the work processing the input message, including outputting the message to the MQ queue. The web service returning SOAP response does not necessarily mean Flow1 finishes the processing.
 
 Hopefully you are able to DIY now. The result test case looks like below
 
