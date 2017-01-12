@@ -6,7 +6,7 @@ Oracle JDBC driver comes with Oracle installation. For example, C:\oraclexe\app\
 SQL Server JDBC driver can be downloaded from Microsoft [web site](https://msdn.microsoft.com/en-us/library/mt484311(v=sql.110).aspx). Copy sqljdbc41.jar to `<IronTest_Home>/lib/jdbc/sqlserver` folder.
 
 ## JDBC URLs
-Below are some sample JDBC URLs for use in Database endpoint. Any valid JDBC URL can be used in Database endpoint.
+Any valid JDBC URL can be used in Database endpoint. Below are some examples. 
 
 For connecting to an Oracle SID
 
