@@ -20,4 +20,4 @@ Run below Maven command
 
     mvn clean package -pl irontest-mqiib -am -P prod
 
-A `irontest-mqiib/dist` folder is created containing the files and folders for [deployment](https://github.com/zheng-wang/irontest#deploy).
+An `irontest-mqiib/dist` folder is created containing the files and folders for [deployment](https://github.com/zheng-wang/irontest#deploy).
