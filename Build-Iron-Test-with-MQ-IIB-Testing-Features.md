@@ -20,4 +20,4 @@ Run below Maven command
 
     mvn clean package -pl irontest-mqiib -am -P prod
 
-Seed files for deployment can be found in the `irontest-mqiib/dist` folder.
+A `irontest-mqiib/dist` folder is created containing the files and folders for deployment.
