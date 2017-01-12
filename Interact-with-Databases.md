@@ -16,6 +16,6 @@ For connecting to an Oracle service
 
     jdbc:oracle:thin:@myhost:1521/myServiceName
 
-For connecting to an SQL Server database
+For connecting to a SQL Server database
 
     jdbc:sqlserver://myhost:1433;database=myDatabase;
