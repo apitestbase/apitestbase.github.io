@@ -1,6 +1,6 @@
 Download the latest Iron Test release from [here](https://github.com/zheng-wang/irontest/releases) to your local machine. Extract it, and cd to the project directory (in which there is README.md).
 
-Install MQ and IIB libraries to your local Maven repository (you may need to replace / in the commands with \ on a Windows machine)
+Run below Maven commands to install MQ and IIB libraries to your local Maven repository (you may need to replace / in the commands with \ on a Windows machine)
 
     mvn install:install-file -Dfile="<MQ_Home>/java/lib/com.ibm.mq.jar" -DgroupId=com.ibm -DartifactId=com.ibm.mq -Dversion=<MQ_Version> -Dpackaging=jar
     mvn install:install-file -Dfile="<MQ_Home>/java/lib/com.ibm.mq.jmqi.jar" -DgroupId=com.ibm -DartifactId=com.ibm.mq.jmqi -Dversion=<MQ_Version> -Dpackaging=jar
