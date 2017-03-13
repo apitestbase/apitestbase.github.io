@@ -15,7 +15,7 @@ Enqueue action is used to PUT a message into a queue. You can provide the messag
 
 Click the Do button to PUT the message into the queue.
 
-You can also include an **MQRFH2 header**, with one or more MQRFH2 folders, in the message. For example, you can add RFH2 folders like below.
+You can also include an **MQRFH2 header**, with one or more MQRFH2 folders, in the message, like below. Notice that each RFH2 folder must be a valid XML document.
 
     <mcd>                                //  an MQ defined/reserved RFH2 folder
         <Set></Set>
@@ -37,7 +37,7 @@ You can also include an **MQRFH2 header**, with one or more MQRFH2 folders, in t
 
 Message in the file can contain MQMD header which will be recognized by Iron Test. If there is no MQMD header, Iron Test will generate one.
 
-Again, click the Do button to PUT the message to the queue.
+Again, click the Do button to PUT the message into the queue.
 
 ## Dequeue Action
 Dequeue action is used to GET a message from a queue. You can assert the returned message content (currently only XML message is supported).
