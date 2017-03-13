@@ -35,7 +35,7 @@ You can also include an **MQRFH2 header**, with one or more MQRFH2 folders, in t
 
 [![Enqueue MQ Message From File](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/enqueue-message-from-file.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/enqueue-message-from-file.png)
 
-Message in the file can contain MQMD header which will be recognized by Iron Test. If there is no MQMD header, Iron Test will generate one.
+Message in the file can contain MQMD header which will be recognized. If there is no MQMD header, one will be generated.
 
 Again, click the Do button to PUT the message into the queue.
 
