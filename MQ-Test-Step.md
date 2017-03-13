@@ -13,7 +13,7 @@ Enqueue action is used to PUT a message into a queue. You can provide the messag
 ### Provide message by entering text
 [![Enqueue MQ Message From Text](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/enqueue-message-from-text.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/enqueue-message-from-text.png)
 
-Click the Do button to PUT the message to the queue.
+Click the Do button to PUT the message into the queue.
 
 You can also include an **MQRFH2 header**, with one or more MQRFH2 folders, in the message. For example, you can add RFH2 folders like below.
 
