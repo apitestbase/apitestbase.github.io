@@ -1,4 +1,4 @@
-Notice: Only IIB 9.0.0.x is supported by Iron Test now.
+Notice: currently only IIB 9.0.0.x is supported.
 
 Download the latest Iron Test release from [here](https://github.com/zheng-wang/irontest/releases) to your local machine. Extract it, and cd to the project directory (in which there is README.md).
 
