@@ -1,3 +1,5 @@
+Notice: Only IIB 9.0.0.x is supported by Iron Test now.
+
 Download the latest Iron Test release from [here](https://github.com/zheng-wang/irontest/releases) to your local machine. Extract it, and cd to the project directory (in which there is README.md).
 
 Run below Maven commands to install MQ and IIB libraries to your local Maven repository 
