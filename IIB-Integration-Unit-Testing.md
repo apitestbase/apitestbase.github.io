@@ -22,3 +22,5 @@ The step 'Wait for message processing completion' is to ensure that Flow1 finish
 Hopefully you are able to DIY now. The result test case looks like below
 
 [![Web Service to Queue](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/ws-to-queue.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/ws-to-queue.png)
+
+Notice that the isolation is only needed in integration unit testing environment. Other environment such as SIT (System Integration Testing) environment may not need it as the testing strategy is different. On the other hand, configuring a message flow or queue differently in different environments is quite common in IIB project.
