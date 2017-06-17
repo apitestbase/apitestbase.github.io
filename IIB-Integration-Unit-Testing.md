@@ -2,9 +2,15 @@ If you have been familiar with the SOAP Web Service Testing and Endpoints Manage
 
 Here is a sample scenario. The message flow under test (Flow1) has a SOAP Input node to receive SOAP request, and an MQ Output node to output the message to an MQ queue. There is a downstream message flow (Flow2) listening to the queue, like shown below.
 
-A critical thing to do for IIB integration unit testing is to isolate the message flow under test (Flow1).
+A critical thing to do for IIB integration unit testing is to `isolate the message flow under test`. In our scenario, we need to isolate Flow1. There are several methods to do so.
+1. Redesign the output queue of Flow1 to be an alias queue (and make this a standard in the team). Before testing Flow1, (manually or automatically) modify the alias queue to point to a stub local queue for Flow1.
+2. During Flow1 deployment, use baroverride to modify the queue name property on the MQ Output node in Flow1 to be a stub local queue.
+3. Stop the downstream message flow (Flow2), so that no one is getting messages from the 'joint' queue.
+
+Method 1 is my favorite as it is simple.
    
-One test case for Flow1 would have these steps.
+A positive test case for Flow1 would have these steps.
+
     Setup - clear stub output queue
     Invoke web service with a valid SOAP request and assert successful SOAP response
     Wait for message processing completion
