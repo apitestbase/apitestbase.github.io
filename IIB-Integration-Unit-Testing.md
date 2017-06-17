@@ -4,6 +4,8 @@ Here is a sample scenario.
 
 The message flow under test (Flow1) has a SOAP Input node to receive SOAP request, and an MQ Output node to output the message to an MQ local queue. 
 
+[![Flow1 Code](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/flow1-code-diagram.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/flow1-code-diagram.png)
+
 The queue is a 'joint' queue as there is a downstream message flow (Flow2) listening to it, like shown below.
 
 The primary way to integration unit test Flow1 is to provide input to it and examine its output. Now there is a problem. Before we get a chance, the output message produced by Flow1 is immediately picked up by Flow1, i.e. we won't be able to examine Flow1's output message here.
