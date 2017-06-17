@@ -9,7 +9,7 @@ A critical thing to do for IIB integration unit testing is to `isolate the messa
 
 Method 1 is my favorite as it is simple.
    
-A positive test case for Flow1 would have these steps.
+Based on the isolation, a positive test case for Flow1 would have these steps.
 
     Setup - clear stub output queue
     Invoke web service with a valid SOAP request and assert successful SOAP response
