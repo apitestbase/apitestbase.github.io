@@ -8,6 +8,8 @@ The message flow under test (Flow1) has a SOAP Input node to receive SOAP reques
 
 The queue is a 'joint' queue as there is a downstream message flow (Flow2) listening to it, like shown below.
 
+[![Original Design](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/original-design.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/original-design.png)
+
 The primary way to integration unit test Flow1 is to provide input to it and examine its output. Now there is a problem. Before we get a chance, the output message produced by Flow1 is immediately picked up by Flow1, i.e. we won't be able to examine Flow1's output message here.
 
 A critical thing to do for IIB integration unit testing is to `isolate the message flow under test`. In our scenario, we need to isolate Flow1. There are several methods to do so.
