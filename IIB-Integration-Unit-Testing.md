@@ -19,6 +19,8 @@ A critical thing to do for IIB integration unit testing is to `isolate the messa
 4. Other?
 
 Method 1 is my favorite as it is simple.
+
+[![New Design](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/new-design.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/new-design.png)
    
 Based on the isolation, a positive test case for Flow1 would have these steps.
 
