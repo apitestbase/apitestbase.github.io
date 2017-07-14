@@ -34,5 +34,6 @@ To use IIB Test Step to interact with IIB as part of a test case, first copy Web
 
     ibmjsseprovider2.jar
     ConfigManagerProxy.jar
+These jars can be found at `<IIB_Install_Dir>/classes` and `<IIB_Install_Dir>/jre17/lib`.
 
 Notice: **currently only IIB 9.0.0.x is supported**.
