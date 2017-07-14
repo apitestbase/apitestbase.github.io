@@ -27,3 +27,12 @@ To use MQ Test Step to interact with WebSphere MQ as part of a test case, copy b
     com.ibm.mq.pcf.jar
     com.ibm.mq.headers.jar
     connector.jar
+These jars can be found at `<MQ_Install_Dir>/java/lib`.
+
+## IIB
+To use IIB Test Step to interact with IIB as part of a test case, first copy WebSphere MQ jars as described above, then copy below jars to `<IronTest_Home>/lib/iib`.
+
+    ibmjsseprovider2.jar
+    ConfigManagerProxy.jar
+
+Notice: **currently only IIB 9.0.0.x is supported**.
