@@ -18,19 +18,27 @@ Sample JDBC URL:
 
     jdbc:sqlserver://myhost:1433;database=myDatabase;
 
-## WebSphere MQ
-To use MQ Test Step to interact with WebSphere MQ as part of a test case, copy below jars to `<IronTest_Home>/lib/mq`.
+## IBM MQ
+To use MQ Test Step to interact with IBM MQ as part of a test case, copy below jars to `<IronTest_Home>/lib/mq`.
 
+    //  For MQ 8.0.0.x
+    com.ibm.mq.headers.jar
     com.ibm.mq.jar
     com.ibm.mq.jmqi.jar
-    com.ibm.mq.commonservices.jar
     com.ibm.mq.pcf.jar
+
+    //  For MQ 7.5.0.x
+    com.ibm.mq.commonservices.jar
     com.ibm.mq.headers.jar
+    com.ibm.mq.jar
+    com.ibm.mq.jmqi.jar
+    com.ibm.mq.pcf.jar
     connector.jar
+    
 These jars can be found at `<MQ_Install_Dir>/java/lib`.
 
 ## IIB
-To use IIB Test Step to interact with IIB as part of a test case, first copy WebSphere MQ jars as described above, then copy below jars to `<IronTest_Home>/lib/iib`.
+To use IIB Test Step to interact with IIB as part of a test case, first copy IBM MQ jars as described above, then copy below jars to `<IronTest_Home>/lib/iib`.
 
     ibmjsseprovider2.jar
     ConfigManagerProxy.jar
