@@ -1,6 +1,6 @@
 If you have been familiar with the SOAP Web Service Testing and Endpoints Management, it will be intuitive for you to do IIB integration unit testing using Iron Test.
 
-Though Iron Test is good at enabling `test driven development (TDD) for IIB message flows`, this wiki page is about basic method which assumes the message flow code has already been written.
+Though Iron Test is good at enabling `test driven development (TDD) for IIB message flows`, this wiki page is about basic method which assumes the message flow code has already been written before we test it.
 
 Here is the sample scenario. 
 
