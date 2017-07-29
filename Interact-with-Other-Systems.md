@@ -37,6 +37,8 @@ To use MQ Test Step to interact with IBM MQ as part of a test case, copy below j
     
 These jars can be found at `<MQ_Install_Dir>/java/lib`.
 
+You can use Iron Test to interact with MQ 7.5 AND MQ 8.0 at the same time, through MQ 7.5 OR MQ 8.0 jars listed above.
+
 ## IIB
 To use IIB Test Step to interact with IIB as part of a test case, first copy IBM MQ jars as described above, then copy below jars to `<IronTest_Home>/lib/iib`.
 
