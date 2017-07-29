@@ -38,4 +38,4 @@ Hopefully you are able to DIY now. The result test case looks like below
 
 Notice that the isolation is only needed in integration unit testing environment. Other environment such as ST (System Testing) or SIT (System Integration Testing) environment may not need it as the testing strategy is different. On the other hand, configuring a message flow or queue differently in different environments is quite common in IIB project.
 
-By the way, Iron Test can also be used to perform `test driven development for IIB message flows`.
+By the way, Iron Test can also be used to perform `test driven development (TDD) for IIB message flows`.
