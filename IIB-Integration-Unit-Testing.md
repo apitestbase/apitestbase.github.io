@@ -12,7 +12,7 @@ The queue is a 'joint' queue as there is a downstream message flow (Flow2) liste
 
 [![Original Design](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/original-design.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/original-design.png)
 
-The primary way to integration unit test Flow1 is to provide input to it and examine its output. Now there is a problem. Before we get a chance, the output message produced by Flow1 is immediately picked up by Flow1, i.e. we won't be able to examine Flow1's output message here.
+The primary way to integration unit test Flow1 is to provide input to it and examine its output. Now there is a problem. Before we get a chance, the output message produced by Flow1 is immediately picked up by Flow2, i.e. we won't be able to examine Flow1's output message here.
 
 A critical thing to do for IIB integration unit testing is to `isolate the message flow under test`. In our scenario, we need to isolate Flow1. There are several methods to do so.
 1. Redesign Flow1 to use an alias queue as its output queue which points to the 'joint' queue (make this a standard in the team so that the next time we won't need to redesign another message flow to test). Before testing Flow1, (manually or automatically) modify the alias queue to point to a stub local queue for Flow1.
