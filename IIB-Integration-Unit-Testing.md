@@ -1,6 +1,8 @@
 If you have been familiar with the SOAP Web Service Testing and Endpoints Management, it will be intuitive for you to do IIB integration unit testing using Iron Test.
 
-Here is a sample scenario. 
+Though Iron Test is good at enabling `test driven development (TDD) for IIB message flows`, this wiki page is about basic method which assumes the message flow code has already been written.
+
+Here is the sample scenario. 
 
 The message flow under test (Flow1) has a SOAP Input node to receive SOAP request, and an MQ Output node to output the message to an MQ local queue. 
 
@@ -37,5 +39,3 @@ Hopefully you are able to DIY now. The result test case looks like below
 [![Web Service to Queue](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/ws-to-queue.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/ws-to-queue.png)
 
 Notice that the isolation is only needed in integration unit testing environment. Other environment such as ST (System Testing) or SIT (System Integration Testing) environment may not need it as the testing strategy is different. On the other hand, configuring a message flow or queue differently in different environments is quite common in IIB project.
-
-By the way, Iron Test can also be used to perform `test driven development (TDD) for IIB message flows`.
