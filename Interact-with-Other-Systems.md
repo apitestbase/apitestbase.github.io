@@ -40,10 +40,24 @@ These jars can be found at `<MQ_Install_Dir>/java/lib`.
 You can use Iron Test to interact with MQ 7.5 AND MQ 8.0 at the same time, through MQ 7.5 OR MQ 8.0 jars listed above.
 
 ## IIB
-To use IIB Test Step to interact with IIB as part of a test case, first copy IBM MQ jars as described above, then copy below jars to `<IronTest_Home>/lib/iib`.
+To use IIB Test Step to interact with IIB as part of a test case, copy IBM jars to corresponding folders.
+
+For IIB 10, copy below jars to `<IronTest_Home>/lib/iib/v100`.
+
+    IntegrationAPI.jar
+    jetty-io.jar
+    jetty-util.jar
+    websocket-api.jar
+    websocket-client.jar
+    websocket-common.jar
+
+IIB 10 jars can be found at `<IIB_Install_Dir>/common/classes` and `<IIB_Install_Dir>/common/jetty/lib`.
+
+For IIB 9, first copy IBM MQ (either 7.5 or 8.0) jars as described above, then copy below jars to `<IronTest_Home>/lib/iib/v90`.
 
     ibmjsseprovider2.jar
     ConfigManagerProxy.jar
-These jars can be found at `<IIB_Install_Dir>/classes` and `<IIB_Install_Dir>/jre17/lib`.
 
-Notice: **currently only IIB 9.0.0.x is supported**.
+IIB 9 jars can be found at `<IIB_Install_Dir>/classes` and `<IIB_Install_Dir>/jre17/lib`.
+
+Normally you only want to interact with IIB 10.0 OR 9.0. In case you want to interact with BOTH at the same time, copy all related jars as described above.
