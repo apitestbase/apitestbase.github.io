@@ -8,7 +8,7 @@ A straightforward usage is that a property can be defined on the test case once 
 Another usage is `pattern based test case creation`. If already familiar with a test pattern, you can define a test case as template to capture the test steps. You can then define properties on the template test case and reference them in the test steps. To create a test case, copy corresponding test case template, tailor the test steps as appropriate (such as removing unnecessary steps), enter the property values and the test case is ready to run. There is no need for you to dive into any test step to locate and enter those values. This treats the test case somewhat like a black box and properties like the arguments to the black box, hence increasing the speed of test case creation.
 
 ## Implicit Properties
-These are properties dynamically created by Iron Test when running a test step or test case. Below are the current implicit properties.
+These are properties dynamically created by Iron Test when running a test step or test case.
 
 #### Test_Case_Start_Time
 The timestamp when the test case starts running. Format is yyyy-mm-dd hh:mm:ss.fff, e.g. 1997-01-31 09:26:50.124.
