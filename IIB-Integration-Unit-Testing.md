@@ -1,4 +1,4 @@
-Though Iron Test is good at enabling `test driven development (TDD) for IIB message flows`, this wiki page is about basic method which assumes the message flow code has already been written before we test it. It is recommended to get a quick understanding of [basic Iron Test usage](https://github.com/zheng-wang/irontest#use) before proceeding with below content. 
+Though Iron Test is good at enabling `test driven development (TDD) for IIB message flows`, this wiki page is about basic method which assumes the message flow code has already been written before we test it.
 
 Here is the sample scenario. 
 
