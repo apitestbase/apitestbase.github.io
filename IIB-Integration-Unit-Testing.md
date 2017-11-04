@@ -30,7 +30,7 @@ Based on the isolation, a positive test case for Flow1 would have these steps.
     Check stub output queue depth equals 1
     Dequeue message from stub output queue and assert message body    
 
-The step 'Wait for message processing completion' is to ensure that Flow1 finishes all the work processing the input message, including putting the message to the output queue. Without it, the test case will fail, as the 'Inject message into input queue' step finishes immediately and there is no message in the output queue when the 'Check stub output queue depth equals 1' step runs.
+The step 'Wait for message processing completion' is to ensure that Flow1 finishes all the work processing the input message, including putting the message to the output queue. Without it, the test case will fail, as the 'Inject message into input queue' step finishes immediately and there is no message in the stub output queue when the 'Check stub output queue depth equals 1' step runs.
 
 The result test case looks like below
 
