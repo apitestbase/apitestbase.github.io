@@ -2,11 +2,11 @@ Though Iron Test is good at enabling `test driven development (TDD) for IIB mess
 
 Here is the sample scenario. 
 
-The message flow under test (Flow1) has a SOAP Input node to receive SOAP request, and an MQ Output node to output the message to an MQ local queue. 
+The message flow under test (Flow1) has an MQ Input node to receive input message, a Compute node to process the message, and an MQ Output node to output the message to an MQ local queue. 
 
 [![Flow1 Code](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/flow1-code-diagram.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/flow1-code-diagram.png)
 
-The queue is a 'joint' queue as there is a downstream message flow (Flow2) listening to it, like shown below.
+The output queue is a 'joint' queue as there is a downstream message flow (Flow2) listening to it, like shown below.
 
 [![Original Design](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/original-design.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/original-design.png)
 
@@ -25,15 +25,15 @@ Approach 1 is my favorite as it is simple.
 Based on the isolation, a positive test case for Flow1 would have these steps.
 
     Setup - clear stub output queue
-    Invoke web service with a valid SOAP request and assert successful SOAP response
+    Inject message into input queue
     Wait for message processing completion
     Check stub output queue depth equals 1
-    Dequeue message from stub output queue and assert expected message body    
+    Dequeue message from stub output queue and assert message body    
 
-The step 'Wait for message processing completion' is to ensure that Flow1 finishes all the work processing the input message, including outputting the message to the MQ queue. The web service returning SOAP response does not necessarily mean Flow1 finishes the processing.
+The step 'Wait for message processing completion' is to ensure that Flow1 finishes all the work processing the input message, including putting the message to the output queue. Without it, the test case will fail, as the 'Inject message into input queue' step finishes immediately and there is no message in the output queue when the 'Check stub output queue depth equals 1' step runs.
 
-Hopefully you are able to DIY now. The result test case looks like below
+The result test case looks like below
 
-[![Web Service to Queue](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/ws-to-queue.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/ws-to-queue.png)
+[![Web Service to Queue](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/ws-to-queue.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/queue-to-queue.png)
 
-Notice that the isolation is only needed in integration unit testing environment. Other environment such as ST (System Testing) or SIT (System Integration Testing) environment may not need it as the testing strategy is different. On the other hand, configuring a message flow or queue differently in different environments is quite common in IIB project.
+Notice that the isolation is only needed in integration unit testing environment. Other environment such as ST (System Testing) or SIT (System Integration Testing) environment may not need it as the testing scope or strategy is different. On the other hand, configuring a message flow or queue differently in different environments is quite common in IIB project.
