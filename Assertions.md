@@ -1,6 +1,6 @@
 Assertions are used in test step to verify that the API invocation response is as expected. 
 
-There are currently Contains, XPath, XMLEqual, IntegerEqual, JSONPath, and JSONPathXMLEqual assertions that can be used in Iron Test. Most of them are common and easy to understand. Below are some special points to notice.
+There are currently Contains, XPath, XMLEqual, JSONEqual, etc. assertions that can be used in Iron Test. Most of them are common and easy to understand. Below are some special points to notice.
 
 ## XMLEqual Assertion
 Used to verify that the actual (API response) XML is equal to the expected XML. 
