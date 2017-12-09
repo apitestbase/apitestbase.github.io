@@ -13,6 +13,8 @@ Enqueue action is used to PUT a message into a queue. You can provide the messag
 ### Provide message by entering text
 [![Enqueue MQ Message From Text](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/enqueue-message-from-text.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/enqueue-message-from-text.png)
 
+Text can be XML, JSON, or any other text format.
+
 Click Do button to PUT the message into the queue.
 
 You can also include an **MQRFH2 header**, with one or more MQRFH2 folders, in the message, like below. Notice that each RFH2 folder must be a valid XML document.
@@ -35,6 +37,8 @@ You can also include an **MQRFH2 header**, with one or more MQRFH2 folders, in t
 
 [![Enqueue MQ Message From File](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/enqueue-message-from-file.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/enqueue-message-from-file.png)
 
+This enables you to PUT a message with any format, no matter binary or text.
+
 Message in the file can contain MQMD header which will be recognized. If there is no MQMD header, one will be generated.
 
 Again, click Do button to PUT the message into the queue.
@@ -45,6 +49,8 @@ Dequeue action is used to GET a message from a queue. You can assert the returne
 Click Do button to get the message. Click the Assertions button to open assertions panel and add/edit/verify assertions.
   
 [![Dequeue MQ Message](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/dequeue-message.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/dequeue-message.png)
+
+Currently the dequeued message body is assumed to be text, and only XML and JSON are supported in Assertions.
 
 ## Publish Action
 Publish action is used to publish a message onto a topic (specified by topic string). Same as Enqueue action, you can provide the message in two ways.
