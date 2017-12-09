@@ -51,4 +51,4 @@ Publish action is used to publish a message onto a topic (specified by topic str
 
 Click Do button to publish the message onto the topic.
   
-[![Publish MQ Message onto Topic](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/publish-message-from-text.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/publish-message-from-text.png)
+[![Publish MQ Message From Text](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/publish-message-from-text.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/publish-message-from-text.png)
