@@ -37,7 +37,7 @@ To use MQ Test Step to interact with IBM MQ as part of a test case, copy below j
     
 These jars can be found at `<MQ_Install_Dir>/java/lib`.
 
-To interact with multiple versions of MQ at the same time, use the jars of the highest MQ version.
+To interact with multiple versions of MQ at the same time, use the jars of the highest version.
 
 ## IIB
 To use IIB Test Step to interact with IIB as part of a test case, copy IBM jars to corresponding folders.
