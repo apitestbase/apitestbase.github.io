@@ -1,7 +1,7 @@
 A property in Iron Test is a named string. A property can be used in a test step or assertion with reference `${<Property_Name>}`, e.g. ${Output_Queue_Name}. When running the test step or test case, the properties are resolved to the associated values.
 
 ## User Defined Properties
-You can define properties on a test case through the Properties tab, then use them in the test steps and assertions of the test case. If the property value contains line breaks, you can double click the property value cell in the grid to pop out a textarea to edit the value.
+You can define properties on a test case through the Properties tab, then use them in the test steps and assertions of the test case. If the property value contains line breaks, you can double click the property value cell (after entering edit mode) in the grid to pop out a textarea to edit the value.
 
 A straightforward usage is that a property can be defined on the test case once and used multiple times in the test steps or assertions.
 
