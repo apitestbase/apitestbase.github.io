@@ -1,0 +1,9 @@
+Test case is run once driven by UDPs, and is run one or more times driven by data pool.
+
+The common thing here is that after test steps development is finished, user no longer needs to care about them. User's focus is able to be simplified to be the test data, relieving his/her brain.
+
+In a test case's long active lifecycle, user normally seldom needs to change its test steps, but needs to change test data more often.
+
+This is effectively treating test case as a blackbox, and test data as its interface/parameters.
+
+Automation in other spaces, like build automation, has same characteristic. Once the automation development is finished, user is relieved from its implementation (detailed steps). User is able to treat the automation implementation as a blackbox, and focus mainly on its interface/parameters.
