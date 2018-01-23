@@ -3,7 +3,9 @@ A property in Iron Test is a named string. A property can be used in a test step
 ## User Defined Properties
 You can define properties on a test case through the Properties tab, then use them in the test steps and assertions of the test case. If the property value contains line breaks, you can double click the property value cell (after entering edit mode) in the grid to pop out a textarea to edit the value.
 
-A straightforward usage is that a property can be defined on the test case once and used multiple times in the test steps or assertions.
+Nested property, i.e. property inside property value, is supported. For example: define Prop1="Hello" and Prop2="${Prop1} World!", and Prop2's value will be "Hello World!" when running the test case.
+
+A straightforward usage of property is that a property can be defined on the test case once and used multiple times in the test steps or assertions.
 
 Another usage is `pattern based test case creation`. If already familiar with a test pattern, you can define a test case as template to capture the test steps. You can then define properties on the template test case and reference them in the test steps. To create a test case, copy corresponding test case template, tailor the test steps as appropriate (such as removing unnecessary steps), enter the property values and the test case is ready to run. There is no need for you to dive into any test step to locate and enter those values. This treats the test case somewhat like a black box and properties like the arguments to the black box, hence increasing the speed of test case creation.
 
