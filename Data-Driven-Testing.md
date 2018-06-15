@@ -11,7 +11,7 @@ Each row in the table contains a set of properties to feed each test case indivi
     
 You can define two types of columns (properties) in the table: `String column, DB endpoint column`.
 
-String property can be referenced in any test step, in the same way as [Properties](https://github.com/zheng-wang/irontest/wiki/Properties). DB endpoint property can only be referenced in DB test step, using syntax <Property_Name> (not enclosed by ${}).
+String property can be referenced in any test step or assertion, and DB endpoint property can only be referenced in DB test step. Refer to [Properties](https://github.com/zheng-wang/irontest/wiki/Properties) for more details.
 
 A `Caption` column is by default defined in data table. It enables you to mark/label each row in the table, so that the purpose of the row is clear. Caption column will not be used as property when running test case, but it makes test case run report easier to read.
 
