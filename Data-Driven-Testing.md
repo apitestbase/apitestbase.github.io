@@ -9,7 +9,7 @@ Data table in Iron Test can be defined on a test case under the Data Table tab o
 
 Each row in the table contains a set of properties to feed each test case individual run. Property name is column name, and property value is cell value.
     
-You can define two types of columns (properties) in the table: `String column, DB endpoint column`.
+You can define two types of columns in the table: `String column, DB endpoint column`.
 
 String property can be referenced in any test step or assertion, and DB endpoint property can only be referenced in DB test step. Refer to [Properties](https://github.com/zheng-wang/irontest/wiki/Properties) for more details.
 
