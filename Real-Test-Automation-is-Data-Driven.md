@@ -1,4 +1,4 @@
-Test case is run once driven by UDPs, and is run one or more times driven by data pool.
+Test case is run once driven by UDPs, and is run one or more times driven by data table.
 
 The common thing here is that after test steps development is finished, user no longer needs to care about them. User's focus is able to be simplified to be the test data, relieving his/her brain.
 
