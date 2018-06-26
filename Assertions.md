@@ -5,11 +5,11 @@ There are currently Contains, XPath, XMLEqual, JSONEqual, etc. assertions that c
 ## XMLEqual Assertion
 Used to verify that the actual (API response) XML is equal to the expected XML. 
 
-You can use placeholders in the expected XML. A **placeholder** is used to specify that a text node in the expected XML is going to be compared to the text node in the actual XML not for equality but by a special rule. A placeholder is denoted by `#{...}`.
-### Ignore
+The underlying diff engine is XMLUnit, and you can use xmlunit placeholders (currently only xmlunit.ignore which only supports text node) in the expected XML. An XMLUnit **placeholder** is used to specify that a node in the expected XML is going to be compared to the node in the actual XML not for equality but by a special rule. The only notice here is that the placeholder must be denoted by `#{...}`, because `${...}` has been reserved for Iron Test [Properties](https://github.com/zheng-wang/irontest/wiki/Properties) usage.
+
 Given
 
-    expected XML: <elem1><elem11>#{irontest.ignore}</elem11></elem1>
+    expected XML: <elem1><elem11>#{xmlunit.ignore}</elem11></elem1>
 
     actual XML: <elem1><elem11>abc</elem11></elem1>
 
@@ -18,7 +18,7 @@ XMLEqual assertion will pass.
 ## JSONEqual Assertion
 Used to verify that the actual (API response) JSON is equal to the expected JSON. 
 
-The underlying diff engine is JsonUnit, and you can use json-unit placeholders in the expected JSON, as described in [JsonUnit Readme](https://github.com/lukas-krecan/JsonUnit). The only difference here is that the placeholder must be denoted by `#{...}`, because `${...}` has been reserved for Iron Test [Properties](https://github.com/zheng-wang/irontest/wiki/Properties) usage.
+The underlying diff engine is JsonUnit, and you can use json-unit placeholders in the expected JSON, as described in [JsonUnit Readme](https://github.com/lukas-krecan/JsonUnit). The only notice here is that the placeholder must be denoted by `#{...}`, because `${...}` has been reserved for Iron Test [Properties](https://github.com/zheng-wang/irontest/wiki/Properties) usage.
 
 Given
 
