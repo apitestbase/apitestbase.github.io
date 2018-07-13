@@ -1,6 +1,6 @@
 Data driven testing is a popular technique in API testing. It enables you to run the same test case with various test data.
 
-Suppose you have an API test case that invokes the API with input data and examines the API's output data. If you want to invoke the same API with different input data and examine corresponding output data, data driven testing can help. Define a data table on the test case, and each row in the table will trigger one individual run of the test case, feeding the run with properties in the row.
+Suppose you have a test case that invokes an API with input data and examines the API's output data. If you want to invoke the same API with different input data and examine corresponding output data, data driven testing can help. Define a data table on the test case, and each row in the table will trigger one individual run of the test case, feeding the run with properties in the row.
 
 This technique saves you the need to create multiple test cases that use different test data but have the same test steps. It greatly reduces the cost of test case creation, run and maintenance when various test data is involved.
 
@@ -16,43 +16,63 @@ String property can be referenced in any test step or assertion, and DB endpoint
 A `Caption` column is by default defined in data table. It enables you to mark/label each row in the table, so that the purpose of the row is clear. Caption column will not be used as property when running test case, but it makes test case run report easier to read.
 
 ## Sample Scenario
-Take the test case from [basic use](https://github.com/zheng-wang/irontest#integrated-soap-web-service-testing) as a starting point. We will refactor it to enable testing two operations of the Article web service in one test case.
+Take the test case from [basic use](https://github.com/zheng-wang/irontest#integrated-json-http-api-testing) as a starting point. We will refactor it to enable testing Article update with two sets of data in one test case. One is for testing successful article update, and the other is for testing an error case when the article title is too long (over 50 chars) to be persisted into the database.
 
 ### Refactor the test case to be data driven
-What we get from the [basic use](https://github.com/zheng-wang/irontest#integrated-soap-web-service-testing) is a test case like below
+What we got from the [basic use](https://github.com/zheng-wang/irontest#integrated-json-http-api-testing) was a test case like below
 
-[![Basic Test Case](https://github.com/zheng-wang/irontest/blob/master/screenshots/integrated-soap-testing/test-case-outline.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/integrated-soap-testing/test-case-outline.png)
+[![Basic Test Case](https://github.com/zheng-wang/irontest/blob/master/screenshots/basic-use/test-case-outline.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/basic-use/test-case-outline.png)
 
-Firstly, we rename test steps to be operation agnostic.
+Firstly, we rename the test case to `Update Article - Data Driven` by right clicking the test case in the tree pane and select Rename.
 
-[![Test Case with New Step Names](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/test-case-with-new-step-names.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/test-case-with-new-step-names.png)
+Then we refactor test steps to use property references for variable test data, and then add data table rows to define the properties.
 
-Then we go to the Data Table tab and add a row by clicking the Add Row button. Click the Caption cell in the new row and set its value as `updateArticleByTitle`.
+#### Refactor step 2
+On Test Steps tab, open step 2 `Invoke the API to update article`. 
 
-[![Initial Data Table Row](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/initial-data-table-row.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/initial-data-table-row.png)
+On the Invocation tab, replace the "title" field value in the request body with a property reference ${Input_Article_Title}.
 
-Go back to Test Steps tab and open the `Call the web service operation` step. Cut the content under request body (save it somewhere else temporarily), and fill in with a property reference ${Request_Body_Content}. The property Input_Body_Content does not exist. We'll create it in data table shortly.
+Click the Assertions button to open the assertions area. Replace the Status Code value of the StatusCodeEqual assertion with a property reference ${Expected_API_Response_Status_Code}.
 
-[![New Request Message](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/new-request-message.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/new-request-message.png)
+For more thorough testing than only checking API response status code, we add a JSONEqual assertion to check the API response body. Set the Expected JSON with a property reference ${Expected_API_Response_JSON}.
 
-Go to the Data Table tab of the test case, click the Add Column > String Column button to add a new column, and set its name Request_Body_Content. This is the property that'll be used by the `Call the web service operation` step. Double click the property cell to bring up a modal, and paste the content we just cut.
+[![Refactored Step 2](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/refactored-step-2.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/refactored-step-2.png)
 
-[![Request Body Content for Article Update](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/request-body-content-for-article-update.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/request-body-content-for-article-update.png)
+Notice that the properties Input_Article_Title, Expected_API_Response_Status_Code and Expected_API_Response_JSON do not exist yet. We'll create them in data table later.
 
-Similarly, we refactor the assertion of the `Check database data` step, cutting the original Expected JSON (save it somewhere else temporarily), and filling in with property reference ${Expected_Result_Records}.
+#### Refactor step 3
+Go back to test case edit view, and on Test Steps tab open step 3 `Check database data`.
 
-[![New Assertion](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/new-assertion.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/new-assertion.png)
+Replace the Expected JSON of the JSONEqual assertion with a property reference ${Expected_Result_Database_Data}.
 
-Go to the Data Table tab of the test case, add a new String column Expected_Result_Records, double click the property cell to bring up a modal, and paste the content we just cut.
+[![Refactored Step 3](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/refactored-step-3.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/refactored-step-3.png)
+
+#### Add data table columns
+We have used property references in our test steps. Now we create the properties in data table.
+
+Go back to the test case edit view, and on the Data Table tab click the Add Column > String Column button to add a new column. Set its name Input_Article_Title. Similarly, add more columns for the other properties.
+
+[![Data Table with Columns Only](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/data-table-with-columns-only.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/data-table-with-columns-only.png)
+
+#### Add data table rows
+On the Data Table tab, use the Add Row button to add two rows, and fill the rows with below data
+
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Caption&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Input_Article_Title | Expected_API_Response_Status_Code | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expected_API_Response_JSON&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Expected_Result_Database_Data |
+| --- | --- | --- | --- | --- |
+| Positive | article2 | 200 | {<br>&nbsp;&nbsp;&nbsp;"id": 2,<br>&nbsp;&nbsp;&nbsp;"title": "article2",<br>&nbsp;&nbsp;&nbsp;"content": "Once upon a time ..."<br>} | [{"id":1,"title":"article1","content":"content1"},{"id":2,"title":"article2","content":"Once upon a time ..."}] |
+| Negative - article title too long | looooooooooooooo ooooooooooooo oooooooooooong title | 500 | {<br>&nbsp;&nbsp;&nbsp;"code": 500,<br>&nbsp;&nbsp;&nbsp;"message": "#{json-unit.ignore}",<br>&nbsp;&nbsp;&nbsp;"details": "#{json-unit.regex}.\*Value too long for column \\"TITLE[\\\\s\\\\S]\*"<br>} | [{"id":1,"title":"article1","content":"content1"},{"id":2,"title":"article2","content":"content2"}] |
+
+If you don't understand what #{json-unit.ignore} or #{json-unit.regex} means, refer to [JSONEqual Assertion](https://github.com/zheng-wang/irontest/wiki/Assertions#jsonequal-assertion).
+
+In the data table, click a cell to fill short (typically one line) data, or double click a cell to bring up a modal for filling long (typically multi-line) value like below.
+
+[![Filling Multi-line Value](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/filling-multi-line-value.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/filling-multi-line-value.png)
+
+The complete data table looks like below.
+
+[![Complete Data Table](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/complete-data-table.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/complete-data-table.png)
 
 Now we have finished refactoring the test case. The testing logic is not changed. The only thing changed is that the test case is now data driven.
-
-[![Finished Data Table Row for Article Update](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/finished-data-table-row-for-article-update.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/finished-data-table-row-for-article-update.png)
-
-### Add new test data
-We can drive the test case with more test data. Here we add a data table row for the `deleteArticleById` operation of the Article web service, so that we can test the operation with the same test case. This time, there is no need to revisit any test step.
-
-[![Finished Data Table Rows](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/finished-data-table-rows.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/finished-data-table-rows.png)
 
 ### Run the test case
 Finally, it's time to run the test case. Click the Run button on the test case edit view, and you'll see the result for the whole test case beside the Run button, and in the bottom pane an outline of result for all individual runs. Click an individual run to expand it and view the result of its step runs.
@@ -60,6 +80,3 @@ Finally, it's time to run the test case. Click the Run button on the test case e
 [![Data Driven Test Case Run](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/data-driven-test-case-run.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/data-driven-test-case-run.png)
 
 Click a step run link to view its report, or click the result link beside the Run button to see the whole test case run report.
-
-### Summary
-With data driven testing, all operations of the Article web service can be tested by one test case. Similarly, testing of one operation with various (typically edge) parameters can also be included in the test case.
