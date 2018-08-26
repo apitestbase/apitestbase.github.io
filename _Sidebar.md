@@ -8,6 +8,6 @@
   * [Real Test Automation is Data Driven](Real-Test-Automation-is-Data-Driven)
   * [Data Driven Testing](Data-Driven-Testing)
   * [IIB Integration Unit Testing](IIB-Integration-Unit-Testing)
-  * [Automation Rate](Automation-Rate)
 * Other
+  * [Automation Rate](Automation-Rate)
   * [For Developers](For-Developers)
