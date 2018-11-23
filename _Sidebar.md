@@ -10,5 +10,5 @@
   * [IIB Integration Unit Testing](IIB-Integration-Unit-Testing)
 * Other
   * [Automation Rate](Automation-Rate)
-  * [For Developers](For-Developers)
   * [For Users](For-Users)
+  * [For Developers](For-Developers)
