@@ -2,6 +2,7 @@
   * [Assertions](Assertions)
   * [Properties](Properties)
   * [Endpoints Management](Endpoints-Management)
+  * [HTTP Stubs](HTTP-Stubs)
   * [Interact with Other Systems](Interact-with-Other-Systems)
   * [MQ Test Step](MQ-Test-Step)
 * Testing Practices
