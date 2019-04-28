@@ -5,6 +5,7 @@
   * [HTTP Stubs](HTTP-Stubs)
   * [Interact with Other Systems](Interact-with-Other-Systems)
   * [MQ Test Step](MQ-Test-Step)
+  * [AMQP Test Step](AMQP-Test-Step)
 * Testing Practices
   * [Real Test Automation is Data Driven](Real-Test-Automation-is-Data-Driven)
   * [Data Driven Testing](Data-Driven-Testing)
