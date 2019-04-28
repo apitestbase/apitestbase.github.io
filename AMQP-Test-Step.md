@@ -4,7 +4,7 @@ AMQP test step only supports AMQP 1.0. It was tested against IBM MQ 8 and 9, as 
 
 Actions available in the AMQP test step: **Send**.
 
-Sample AMQP service URI: `amqp://localhost:5672`.
+Example AMQP service URI: `amqp://localhost:5672`.
 
 ### IBM MQ as AMQP service provider
 When sending messages to IBM MQ, the target address is a topic string. 
