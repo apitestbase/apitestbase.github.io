@@ -1,1 +1,1 @@
-AMQP Test Step
+AMQP test step is used to interact with AMQP services.
