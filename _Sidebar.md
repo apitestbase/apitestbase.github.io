@@ -9,6 +9,7 @@
 * Testing Practices
   * [Real Test Automation is Data Driven](Real-Test-Automation-is-Data-Driven)
   * [Data Driven Testing](Data-Driven-Testing)
+  * [Avoid Test Duplication](Avoid-Test-Duplication)
   * [IIB Integration Unit Testing](IIB-Integration-Unit-Testing)
 * Other
   * [Automation Rate](Automation-Rate)
