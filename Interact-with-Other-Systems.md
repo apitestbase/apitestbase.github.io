@@ -12,11 +12,15 @@ Sample JDBC URLs:
     jdbc:oracle:thin:@myhost:1521/myServiceName
 
 ### SQL Server    
-SQL Server JDBC driver can be downloaded from Microsoft [web site](https://msdn.microsoft.com/en-us/library/mt484311(v=sql.110).aspx). Copy `sqljdbc41.jar` to `<IronTest_Home>/lib/jdbc/sqlserver` folder.
+SQL Server JDBC driver can be downloaded from Microsoft [web site](https://msdn.microsoft.com/en-us/library/mt484311(v=sql.110).aspx). After unzipping it, copy `sqljdbc41.jar` and `sqljdbc_auth.dll` to `<IronTest_Home>/lib/jdbc/sqlserver` folder. Notice that there are two `sqljdbc_auth.dll` files in the unzipped folder. Use the one from folder x64 or x86 for 64 or 32 bit Windows OS where Iron Test is running.
 
-Sample JDBC URL:
+Sample JDBC URLs:
 
+    //  When using SQL Server authentication
     jdbc:sqlserver://myhost:1433;database=myDatabase;
+
+    //  When using Windows authentication
+    jdbc:sqlserver://myhost:1433;database=myDatabase;integratedSecurity=true
 
 ## IBM MQ
 To use MQ Test Step to interact with IBM MQ as part of a test case, copy below jars to `<IronTest_Home>/lib/mq`.
