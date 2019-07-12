@@ -25,3 +25,12 @@ The timestamp when the test case individual run (like in data driven test case r
 
 ## Data Table
 Properties can also come from a data table. Refer to [Data Driven Testing](https://github.com/zheng-wang/irontest/wiki/Data-Driven-Testing).
+
+## Extracted Properties
+Extract properties from API response in one test step, and use them in later test steps during test case run. This enables passing dynamic data between test steps.
+
+Extracted property value is always a string.
+
+Currently only HTTP test step has property extraction capability, and only JSONPath extractor is supported. An example is shown below.
+
+[![Extract Property](https://github.com/zheng-wang/irontest/blob/master/screenshots/properties/extract-property.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/properties/extract-property.png)
