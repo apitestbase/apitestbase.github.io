@@ -12,7 +12,11 @@ Sample JDBC URLs:
     jdbc:oracle:thin:@myhost:1521/myServiceName
 
 ### SQL Server    
-SQL Server JDBC driver can be downloaded from Microsoft [web site](https://msdn.microsoft.com/en-us/library/mt484311(v=sql.110).aspx). After unzipping it, copy `sqljdbc41.jar` and `sqljdbc_auth.dll` to `<IronTest_Home>/lib/jdbc/sqlserver` folder. Notice that there are two `sqljdbc_auth.dll` files in the unzipped folder. Use the one from folder x64 or x86 for 64 or 32 bit Windows OS where Iron Test is running.
+SQL Server JDBC driver can be downloaded from Microsoft [web site](https://msdn.microsoft.com/en-us/library/mt484311(v=sql.110).aspx). After unzipping it, copy `sqljdbc41.jar` to `<IronTest_Home>/lib/jdbc/sqlserver` folder.
+
+To enable Iron Test to use Windows authentication to connect to SQL Server, also copy `sqljdbc_auth.dll` from the unzipped folder to `<IronTest_Home>/lib/jdbc/sqlserver`, and add `<IronTest_Home>/lib/jdbc/sqlserver` to the `PATH` environment variable of the Windows OS where Iron Test is running.
+
+Notice that there are two `sqljdbc_auth.dll` files in the unzipped folder. Use the one from folder x64 or x86 for 64 or 32 bit Windows OS.
 
 Sample JDBC URLs:
 
