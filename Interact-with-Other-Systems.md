@@ -53,6 +53,7 @@ To use IIB Test Step to interact with IIB as part of a test case, copy IBM jars 
 For IIB 10, copy below jars to `<IronTest_Home>/lib/iib/v100`.
 
     IntegrationAPI.jar
+    jetty-client.jar
     jetty-io.jar
     jetty-util.jar
     websocket-api.jar
