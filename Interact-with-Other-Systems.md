@@ -4,7 +4,7 @@ Iron Test interacts with other systems through related Java libraries. When the 
 To use Database Test Step to interact with a database, such as Oracle or SQL Server, as part of a test case, copy related JDBC drivers like below. At Iron Test runtime, JDBC URL is used in database endpoint for connecting to the database.
 
 ### Oracle
-Oracle JDBC driver comes with Oracle installation. For example, C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib. Copy `ojdbc6.jar` to `<IronTest_Home>/lib/jdbc/oracle` folder.
+Oracle JDBC driver comes with Oracle installation. For example, C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib. Copy `ojdbc8.jar` or `ojdbc6.jar` to `<IronTest_Home>/lib/jdbc/oracle` folder.
 
 Sample JDBC URLs:
  
