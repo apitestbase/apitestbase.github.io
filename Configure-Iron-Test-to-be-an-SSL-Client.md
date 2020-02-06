@@ -5,7 +5,7 @@ If you don't already have a truststore, or you have a truststore but don't have 
 `<Java_Home>/bin/keytool -importcert -file abc.cer -alias <certificate_alias> -keystore truststore.jks -storepass <truststore_password> -noprompt`
 
 Here
-* abc.cer is the SSL certificate file (like that extracted from the IIB integration node web console.
+* abc.cer is the SSL certificate file (like that extracted from browser after opening the IIB integration node web console).
 * truststore.jks is the filename of the truststore. It will be created if not already existing.
 
 Copy the truststore file (here truststore.jks) to <IronTest_Home>. The config.yml contains corresponding settings (sslTrustStorePath, sslTrustStorePassword) for using the truststore. Adjust their values accordingly.
