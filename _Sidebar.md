@@ -6,6 +6,7 @@
   * [Interact with Other Systems](Interact-with-Other-Systems)
   * [MQ Test Step](MQ-Test-Step)
   * [AMQP Test Step](AMQP-Test-Step)
+  * [Configure Iron Test to be an SSL Client](Configure-Iron-Test-to-be-an-SSL-Client)
 * Testing Practices
   * [Real Test Automation is Data Driven](Real-Test-Automation-is-Data-Driven)
   * [Data Driven Testing](Data-Driven-Testing)
