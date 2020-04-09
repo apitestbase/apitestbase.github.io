@@ -50,7 +50,7 @@ Click Do button to get the message. Click the Assertions button to open assertio
   
 [![Dequeue MQ Message](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/dequeue-message.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/mq/dequeue-message.png)
 
-Currently the dequeued message body is assumed to be text, and only XML and JSON are supported in Assertions.
+Currently the dequeued message body is assumed to be text.
 
 ## Publish Action
 Publish action is used to publish a message onto a topic (specified by topic string). Same as Enqueue action, you can provide the message in two ways.
