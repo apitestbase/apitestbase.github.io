@@ -44,3 +44,8 @@ Used to verify that the specified JSONPath evaluates to an XML document against 
 A common usage scenario of this assertion is in Database test step, when a SQL query reads a table column which is either XML type (like in SQL Server) or VARCHAR/CLOB type with XML document as value.
 
 Placeholders can be used in the expected XML, as described in the [XMLEqual Assertion](https://github.com/zheng-wang/irontest/wiki/Assertions#xmlequal-assertion).
+
+## Plain Text Assertions
+Used to verify the actual (API response) text is as expected.
+
+There are Contains, TextEqual, Substring and RegexMatch assertions in this category.
