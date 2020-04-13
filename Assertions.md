@@ -15,6 +15,11 @@ Given
 
 XMLEqual assertion will pass.
 
+## XMLValidAgainstXSD Assertion
+Used to verify that the actual (API response) XML conforms to specified XML Schema.
+
+The assertion supports validating against a single XSD, or a zip containing multiple XSDs with folder structures and import/include relationship.
+
 ## JSONEqual Assertion
 Used to verify that the actual (API response) JSON is equal to the expected JSON. 
 
