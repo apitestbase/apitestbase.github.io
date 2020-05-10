@@ -4,6 +4,7 @@
   * [Endpoints Management](Endpoints-Management)
   * [HTTP Stubs](HTTP-Stubs)
   * [Interact with Other Systems](Interact-with-Other-Systems)
+  * [FTP Test Step](FTP-Test-Step)
   * [MQ Test Step](MQ-Test-Step)
   * [AMQP Test Step](AMQP-Test-Step)
   * [Configure Iron Test to be an SSL Client](Configure-Iron-Test-to-be-an-SSL-Client)
