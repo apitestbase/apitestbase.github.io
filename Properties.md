@@ -31,6 +31,6 @@ Extract properties from API response in one test step, and use them in later tes
 
 Extracted property value is always a string.
 
-Currently only HTTP test step has property extraction capability, and only JSONPath extractor is supported. An example is shown below.
+Currently only HTTP test step has property extractors.
 
 [![Extract Property](https://github.com/zheng-wang/irontest/blob/master/screenshots/properties/extract-property.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/properties/extract-property.png)
