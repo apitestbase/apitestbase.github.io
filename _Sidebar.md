@@ -2,7 +2,6 @@
   * [Endpoints Management](Endpoints-Management)
   * [Assertions](Assertions)
   * [Properties](Properties)
-  * [Property Extractors](Property-Extractors)
   * [HTTP Stubs](HTTP-Stubs)
   * [FTP Test Step](FTP-Test-Step)
   * [Interact with Other Systems](Interact-with-Other-Systems)
