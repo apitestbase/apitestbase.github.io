@@ -1,10 +1,11 @@
 * Iron Test Usages
+  * [Endpoints Management](Endpoints-Management)
   * [Assertions](Assertions)
   * [Properties](Properties)
-  * [Endpoints Management](Endpoints-Management)
+  * [Property Extractors](Property-Extractors)
   * [HTTP Stubs](HTTP-Stubs)
-  * [Interact with Other Systems](Interact-with-Other-Systems)
   * [FTP Test Step](FTP-Test-Step)
+  * [Interact with Other Systems](Interact-with-Other-Systems)
   * [MQ Test Step](MQ-Test-Step)
   * [AMQP Test Step](AMQP-Test-Step)
   * [Configure Iron Test to be an SSL Client](Configure-Iron-Test-to-be-an-SSL-Client)
