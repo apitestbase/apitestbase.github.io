@@ -3,4 +3,7 @@ Property extractors are used in test step to extract data from API invocation re
 Currently property extractors are only available in HTTP test step.
 
 ## JSONPath Property Extractor
-Used to extract property from HTTP response body via JSON path. 
+Used to extract property from HTTP response body via JSON path.
+
+## Cookie Property Extractor
+Used to extract property from HTTP response Set-Cookie header by cookie name. 
