@@ -1,4 +1,6 @@
-Assertions are used in test step to verify that the API invocation response is as expected. 
+Assertions are used in test step to verify that the API invocation response is as expected.
+
+Assertions can also be used as ad hoc utilities. For example: if you want to validate an XML against an XSD, create a dummy HTTP step in a dummy test case, and use the XMLValidAgainstXSD assertion directly. There is no need to run the test step or test case if all you want is just to validate an XML manually.
 
 There are currently Contains, XPath, XMLEqual, JSONEqual, etc. assertions that can be used in Iron Test. Most of them are common and easy to understand. Below are some special points to notice.
 
