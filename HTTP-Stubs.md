@@ -45,6 +45,9 @@ It is easy. Create stubs in your test case like above, but no need to load them 
 
 ## Other supported features
 - Setting a delay for response
-- [Response templating](http://wiremock.org/docs/response-templating/)
-- [Regex matching on path and query](http://wiremock.org/docs/request-matching/#regex-matching-on-path-and-query)
-- [Stateful Behaviour](http://wiremock.org/docs/stateful-behaviour/)
+- [Response templating](http://wiremock.org/docs/response-templating/)  
+    Use attributes of the request in the response.
+- [Regex matching on path and query](http://wiremock.org/docs/request-matching/#regex-matching-on-path-and-query)  
+    Use this when your client request URL contains dynamic parts.
+- [Stateful Behaviour](http://wiremock.org/docs/stateful-behaviour/)  
+    This is useful when you want to ensure the stubs are hit in specified order.
