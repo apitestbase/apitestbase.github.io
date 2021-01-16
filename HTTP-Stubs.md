@@ -42,3 +42,9 @@ It is easy. Create stubs in your test case like above, but no need to load them 
     - All stubs in the test case have been hit.
     - If the 'Check Hit Order' option is selected under the HTTP Stubs tab on the test case edit view, the stubs have been hit in ascending order by stub number.
     - All stub requests received by the mock server have been matched (i.e. each request has hit a stub in the test case).
+
+## Other supported features
+- Setting a delay for response
+- [Response templating](http://wiremock.org/docs/response-templating/)
+- [Regex matching on path and query](http://wiremock.org/docs/request-matching/#regex-matching-on-path-and-query)
+- [Stateful Behaviour](http://wiremock.org/docs/stateful-behaviour/)
