@@ -10,6 +10,4 @@ If you work with irontest-mq module or irontest-iib module, first use `mvn insta
     //  with MQ 8.0 but no IIB testing capabilities
     mvn pre-integration-test -pl irontest-assembly -am -P dev -Dmq.version=8.0.0.7 -Dmq.version.is80
     //  with IIB 10.0 but no MQ testing capabilities
-    mvn pre-integration-test -pl irontest-assembly -am -P dev -Diib.version=10.0.0.9 -Diib.version.is100        
-    //  with MQ 7.5 and IIB 9.0 testing capabilities
-    mvn pre-integration-test -pl irontest-assembly -am -P dev -Dmq.version=7.5.0.6 -Dmq.version.is75 -Diib.version=9.0.0.5 -Diib.version.is90
+    mvn pre-integration-test -pl irontest-assembly -am -P dev -Diib.version=10.0.0.9 -Diib.version.is100
