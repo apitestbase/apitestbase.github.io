@@ -34,15 +34,7 @@ To use MQ Test Step to interact with IBM MQ as part of a test case, copy below j
     com.ibm.mq.jar
     com.ibm.mq.jmqi.jar
     com.ibm.mq.pcf.jar
-
-    //  For MQ 7.5.0.x
-    com.ibm.mq.commonservices.jar
-    com.ibm.mq.headers.jar
-    com.ibm.mq.jar
-    com.ibm.mq.jmqi.jar
-    com.ibm.mq.pcf.jar
-    connector.jar
-    
+   
 These jars can be found at `<MQ_Install_Dir>/java/lib`.
 
 To interact with multiple versions of MQ at the same time, use the jars of the highest version.
