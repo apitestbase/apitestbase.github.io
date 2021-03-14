@@ -27,3 +27,9 @@ Under Endpoint Details tab of a test step with unmanaged endpoint, click Share E
 [![Share Unmanaged Endpoint](https://github.com/zheng-wang/irontest/blob/master/screenshots/env-mgmt/share-unmanaged-endpoint.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/env-mgmt/share-unmanaged-endpoint.png)
 
 Notice that while unmanaged endpoint can be edited in test step edit view, managed endpoint can only be edited in the Environments area.
+
+## Changing from managed endpoint to unmanaged for a test step
+Clicking the Unmanage button will allow you to change the already chosen managed endpoint to unmanaged (keeping the managed one untouched).
+
+[![Unmanage a Managed Endpoint for a Test Step](https://github.com/zheng-wang/irontest/blob/master/screenshots/env-mgmt/unmanage-endpoint.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/env-mgmt/unmanage-endpoint.png)
+ 
