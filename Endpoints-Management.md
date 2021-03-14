@@ -30,6 +30,4 @@ Notice that while unmanaged endpoint can be edited in test step edit view, manag
 
 ## Changing from managed endpoint to unmanaged for a test step
 Clicking the Unmanage Endpoint button will allow you to change the already chosen managed endpoint to unmanaged (keeping the managed one untouched).
-
-[![Unmanage a Managed Endpoint for a Test Step](https://github.com/zheng-wang/irontest/blob/master/screenshots/env-mgmt/unmanage-endpoint.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/env-mgmt/unmanage-endpoint.png)
  
