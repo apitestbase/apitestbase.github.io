@@ -29,5 +29,5 @@ Under Endpoint Details tab of a test step with unmanaged endpoint, click Share E
 Notice that while unmanaged endpoint can be edited in test step edit view, managed endpoint can only be edited in the Environments area.
 
 ## Changing from managed endpoint to unmanaged for a test step
-Clicking the Unmanage Endpoint button will allow you to change the already chosen managed endpoint to unmanaged (keeping the managed one untouched).
+Clicking the Unmanage Endpoint button under the Endpoint Details tab of a test step will allow you to change the already chosen managed endpoint to unmanaged (keeping the managed one untouched).
  
