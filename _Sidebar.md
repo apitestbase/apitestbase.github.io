@@ -14,6 +14,7 @@
   * [Avoid Test Duplication](Avoid-Test-Duplication)
   * [IIB Integration Unit Testing](IIB-Integration-Unit-Testing)
 * Other
-  * [Automation Rate](Automation-Rate)
+  * [Build Iron Test by Yourself](Build-Iron-Test-by-Yourself)
   * [For Users](For-Users)
   * [For Developers](For-Developers)
+  * [Automation Rate](Automation-Rate)
