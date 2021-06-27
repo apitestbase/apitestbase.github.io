@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "page"
 title: "Getting Started"
 ---
 Table of Contents:
@@ -16,7 +16,6 @@ Table of Contents:
         - [Run the Test Case](#run-the-test-case)
     - [More Usages and Testing Practices](#more-usages-and-testing-practices)
 - [Maintain](#maintain)
-- [License](#license)
 
 ## Download
 Download the [latest API Test Base release](https://github.com/apitestbase/apitestbase/releases/latest/download/apitestbase-dist.zip) and unpack it. The created folder will be referred to as `<APITestBase_Home>` hereafter.
