@@ -1,7 +1,7 @@
 ---
 layout: home
 ---
-API Test Base is an open source tool for integration testing a variety of APIs. It is suitable for Integration, ESB, Microservices and SOA testing.
+API Test Base is an open source tool for integration testing a variety of APIs. It is 100% free and suitable for Integration, ESB, Microservices and SOA testing.
 
 Supported API types
 * HTTP
