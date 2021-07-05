@@ -1,0 +1,17 @@
+header:
+  - title:      Docs
+    url:        /
+  - title:      GitHub
+    url:        https://github.com/apitestbase/apitestbase
+
+docs-en:
+  - title:      API Test Base Usages
+    children:
+      - title: Getting Started
+        url: /docs/en/getting-started
+      - title:  Endpoints Management
+        url: /docs/en/endpoints-management
+  - title:      Testing Practices
+    children:
+      - title: Real Test Automation is Data Driven
+        url: /docs/en/real-test-automation-is-data-driven
