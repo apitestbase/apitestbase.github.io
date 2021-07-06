@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: home
 permalink: /
 key: introduction
 sidebar:
@@ -9,15 +9,15 @@ pageview: true
 API Test Base is an open source tool for integration testing a variety of APIs. It is 100% free and suitable for Integration, ESB, Microservices and SOA testing.
 
 Supported API types
-- HTTP
-- SOAP
-- Relational databases (Oracle, SQL Server, H2)
-- JMS (Solace)
-- FTP(S)
-- AMQP
-- MQTT
-- IBM MQ
-- IBM Integration Bus (IIB)
+* HTTP
+* SOAP
+* Relational databases (Oracle, SQL Server, H2)
+* JMS (Solace)
+* FTP(S)
+* AMQP
+* MQTT
+* IBM MQ
+* IBM Integration Bus (IIB)
 
 The tool
 * has GUI, saving user programming skills. Developers also have better experience using GUIed tool, as writing, reading and maintaining code are more brain power draining.
