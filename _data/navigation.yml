@@ -5,10 +5,12 @@ header:
 docs-en:
   - title:      Start
     children:
-      - title: Getting Started
-        url: /docs/en/getting-started
+      - title: Quick Start
+        url: /docs/en/quick-start
       - title: Creating Automated Test Case
         url: /docs/en/creating-automated-test-case
+      - title: Maintain
+        url: /docs/en/maintain
   - title:      API Test Base Usages
     children:
       - title:  Endpoints Management
