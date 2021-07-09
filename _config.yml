@@ -43,7 +43,6 @@ defaults:
       path: "_docs/en"
     values:
       layout: article
-      ##nav_key: docs
       sidebar:
         nav: docs-en
       aside:

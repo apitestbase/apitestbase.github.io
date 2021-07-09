@@ -1,14 +1,16 @@
 header:
-  - title:      Docs
-    url:        /
   - title:      GitHub
     url:        https://github.com/apitestbase/apitestbase
 
 docs-en:
-  - title:      API Test Base Usages
+  - title:      Start
     children:
       - title: Getting Started
         url: /docs/en/getting-started
+      - title: Creating Automated Test Case
+        url: /docs/en/creating-automated-test-case
+  - title:      API Test Base Usages
+    children:
       - title:  Endpoints Management
         url: /docs/en/endpoints-management
   - title:      Testing Practices
