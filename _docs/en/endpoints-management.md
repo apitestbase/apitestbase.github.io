@@ -1,3 +1,8 @@
+---
+title: Endpoints Management
+permalink: /docs/en/endpoints-management
+key: docs-endpoints-management
+---
 When a new test step is created, and it needs an endpoint, an 'unmanaged' endpoint with empty values will be created and associated with it. Unmanaged endpoint is specific to a test step, and is invisible to other test steps (in the same test case, or in other test cases).
 
 To reuse endpoints across test steps or test cases, you can create `managed endpoints`.
