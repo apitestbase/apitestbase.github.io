@@ -13,6 +13,16 @@ Install JRE (Java SE Runtime Environment) or JDK 1.8+ if it is not already on yo
 
 For example, if you want to install OpenJDK 12 on Windows, here is a [quick tutorial](https://java.tutorials24x7.com/blog/how-to-install-openjdk-12-on-windows).
 
+To verify Java is on your machine, just open a command line window and run
+
+`java -version`
+
+You should see something like
+
+    openjdk version "12.0.2" 2019-07-16
+    OpenJDK Runtime Environment (build 12.0.2+10)
+    OpenJDK 64-Bit Server VM (build 12.0.2+10, mixed mode, sharing)
+
 ## Launch
 Open a command line window, cd to `<APITestBase_Home>` and run below command
 

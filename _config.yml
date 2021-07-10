@@ -31,7 +31,10 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 #github_username:
 
 # Build settings
-theme: jekyll-text-theme
+#theme: jekyll-text-theme
+remote_theme: kitian616/jekyll-TeXt-theme
+plugins:
+  - jekyll-remote-theme
 
 collections:
   docs:
