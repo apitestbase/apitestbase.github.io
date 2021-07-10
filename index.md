@@ -16,6 +16,6 @@ The tool
 * has GUI, saving user programming skills. Developers also have better experience using GUIed tool, as writing, reading and maintaining code are more brain power draining.
 * intends to provide a platform enabling integrating testing capabilities for all types of APIs.
 * provides advanced features like unlimited level folder structure for test case management, centralized and environment based endpoints management, data driven testing, HTTP stubs (mock services), etc.
-* produces test cases easily readable by technical and non-technical people, and intends to share test cases across the entire organization.
+* produces test cases easily readable by technical and non-technical people, and intends to enable sharing test cases across the entire organization.
 
 ![UI Glance](../../screenshots/ui-glance.png)
