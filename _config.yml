@@ -69,5 +69,5 @@ defaults:
 #   - vendor/gems/
 #   - vendor/ruby/
 
-text_skin: default
+text_skin: ocean
 highlight_theme: default

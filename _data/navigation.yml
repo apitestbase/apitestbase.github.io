@@ -1,4 +1,6 @@
 header:
+  - title:      Docs
+    url: /docs/en/quick-start
   - title:      GitHub
     url:        https://github.com/apitestbase/apitestbase
 
@@ -11,7 +13,7 @@ docs-en:
         url: /docs/en/creating-automated-test-case
       - title: Maintain
         url: /docs/en/maintain
-  - title:      API Test Base Usages
+  - title:      Usages
     children:
       - title:  Endpoints Management
         url: /docs/en/endpoints-management

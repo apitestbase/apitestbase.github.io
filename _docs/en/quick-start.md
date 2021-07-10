@@ -8,9 +8,12 @@ Download the [latest API Test Base release](https://github.com/apitestbase/apite
 
 Alternatively, you can also [build API Test Base by yourself](https://github.com/apitestbase/apitestbase/wiki/Build-API-Test-Base-by-Yourself).
 
-## Launch
-Prerequisites: JRE (Java SE Runtime Environment) or JDK 8+.
+## Prerequisite: Java 1.8+
+Install JRE (Java SE Runtime Environment) or JDK 1.8+ if it is not already on your machine.
 
+For example, if you want to install OpenJDK 12 on Windows, here is a [quick tutorial](https://java.tutorials24x7.com/blog/how-to-install-openjdk-12-on-windows).
+
+## Launch
 Open a command line window, cd to `<APITestBase_Home>` and run below command
 
 `java -Djava.net.useSystemProxies=true -jar apitestbase-<version>.jar server config.yml`
