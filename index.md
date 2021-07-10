@@ -18,4 +18,4 @@ The tool
 * provides advanced features like unlimited level folder structure for test case management, centralized and environment based endpoints management, data driven testing, HTTP stubs (mock services), etc.
 * produces test cases easily readable by technical and non-technical people, and intends to share test cases across the entire organization.
 
-![Overview](../../screenshots/basic-use/test-case-outline.png)
+![UI Glance](../../screenshots/ui-glance.png)
