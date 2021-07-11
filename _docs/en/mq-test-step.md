@@ -1,3 +1,8 @@
+---
+title: MQ Test Step
+permalink: /docs/en/mq-test-step
+key: docs-mq-test-step
+---
 MQ test step is normally used in combination with other test steps to create automated test cases. However, you can also use it to manually operate on an MQ queue or topic. (Actually, most types of test steps in Iron Test can be used to individually/manually invoke target API)
 
 Actions available in the MQ test step: **Clear Queue, Check Queue Depth, Enqueue, Dequeue, Publish**.

@@ -1,3 +1,8 @@
+---
+title: FTP Test Step
+permalink: /docs/en/ftp-test-step
+key: docs-ftp-test-step
+---
 FTP test step is normally used in combination with other test steps to create automated test cases. However, you can also use it to manually do FTP operations like uploading a file. (Actually, most types of test steps in Iron Test can be used to individually/manually invoke target API)
 
 Actions available in the FTP test step: **Put**.

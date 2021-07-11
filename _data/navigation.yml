@@ -11,8 +11,8 @@ docs-en:
         url: /docs/en/quick-start
       - title: Creating Automated Test Case
         url: /docs/en/creating-automated-test-case
-      - title: Maintain
-        url: /docs/en/maintain
+      - title: Maintenance
+        url: /docs/en/maintenance
   - title:      Usages
     children:
       - title:  Endpoints Management

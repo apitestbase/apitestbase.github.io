@@ -1,3 +1,8 @@
+---
+title: Interact With Other Systems
+permalink: /docs/en/interact-with-other-systems
+key: docs-interact-with-other-systems
+---
 Iron Test interacts with other systems through related Java libraries. When the libraries are not open source, they need to be copied to corresponding folders under `<IronTest_Home>/lib`.
 
 ## Databases

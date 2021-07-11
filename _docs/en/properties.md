@@ -1,3 +1,8 @@
+---
+title: Properties
+permalink: /docs/en/properties
+key: docs-properties
+---
 A property in Iron Test is a named String or Endpoint (currently only DB endpoint is supported). A String property can be used in any test step, assertion or HTTP stub with reference `${<Property_Name>}`, e.g. ${Output_Queue_Name}. A (DB) Endpoint property can only be used in a DB test step with reference `<Property_Name>` (not enclosed with ${}).
 
 When running the test step or test case, the properties are resolved to the associated String values or Endpoint objects.

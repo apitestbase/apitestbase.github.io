@@ -1,7 +1,7 @@
 ---
-title: Maintain
-permalink: /docs/en/maintain
-key: docs-maintain
+title: Maintenance
+permalink: /docs/en/maintenance
+key: docs-maintenance
 ---
 The first time you launch the application, two new folders are created automatically under `<APITestBase_Home>`.
 

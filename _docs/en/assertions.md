@@ -1,3 +1,8 @@
+---
+title: Assertions
+permalink: /docs/en/assertions
+key: docs-assertions
+---
 Assertions are used in test step to verify that the API invocation response is as expected.
 
 Assertions can also be used as ad hoc utilities. For example: if you want to validate a JSON against a JSON Schema, create an HTTP step in an ad hoc test case, and use the JSONValidAgainstJSONSchema assertion directly. There is no need to run the test step or test case if all you want is just to validate a JSON manually. Frequent ad hoc usages:

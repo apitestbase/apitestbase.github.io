@@ -1,3 +1,8 @@
+---
+title: Configure API Test Base To Be An SSL Client
+permalink: /docs/en/configure-api-test-base-to-be-an-ssl-client
+key: docs-configure-api-test-base-to-be-an-ssl-client
+---
 Sometimes Iron Test needs to connect to a service through SSL protected transport. For example, IIB test step connects to an IIB v10 integration node via IIB endpoint that uses SSL. In this case, we need to prepare a truststore for Iron Test and import the certificate from the integration node web console into the truststore.
 
 If you don't already have a truststore, or you have a truststore but don't have the certificate in it, run command like below to prepare the truststore.

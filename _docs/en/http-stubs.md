@@ -1,3 +1,8 @@
+---
+title: HTTP Stubs
+permalink: /docs/en/http-stubs
+key: docs-http-stubs
+---
 When your API under test has a dependency on an external HTTP API, and you want to test your API in isolation, HTTP stub can help. Repoint the dependency to an HTTP stub, and test your API with it.
 
 There might be reasons for testing your API in isolation

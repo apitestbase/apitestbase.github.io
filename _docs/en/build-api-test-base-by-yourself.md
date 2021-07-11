@@ -1,3 +1,8 @@
+---
+title: Build API Test Base By Yourself
+permalink: /docs/en/build-api-test-base-by-yourself
+key: docs-build-api-test-base-by-yourself
+---
 Prerequisites: JDK (Java SE Development Kit) 8+, Apache Maven 3.3+.
 
 Download the latest Iron Test source code release from [here](https://github.com/zheng-wang/irontest/releases) to your local machine. Extract it, cd to the root directory (in which there is README.md), and run below Maven command

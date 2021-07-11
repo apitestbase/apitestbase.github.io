@@ -1,3 +1,8 @@
+---
+title: AMQP Test Step
+permalink: /docs/en/amqp-test-step
+key: docs-amqp-test-step
+---
 AMQP test step is used to interact with AMQP services. It can be used in combination with other test steps to create automated test cases. It can also be used to manually operate on an AMQP node (like queue).
 
 AMQP test step only supports AMQP 1.0. It was tested against IBM MQ 8 and 9, as well as RabbitMQ 3.7.14 (with AMQP 1.0 plugin enabled), with no security.
