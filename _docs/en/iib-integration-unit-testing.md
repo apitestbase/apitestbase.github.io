@@ -3,9 +3,9 @@ title: IIB Integration Unit Testing
 permalink: /docs/en/iib-integration-unit-testing
 key: docs-iib-integration-unit-testing
 ---
-Though Iron Test enables `test driven development (TDD) for IIB message flows`, this wiki page is about basic method which assumes the message flow code has already been written before we test it.
+Though API Test Base enables `test driven development (TDD) for IIB message flows`, this page is about basic method which assumes the message flow code has already been written before we test it.
 
-Here is the sample scenario. 
+Here is the sample scenario.
 
 The message flow under test (Flow1) has an MQ Input node to receive input message, a Compute node to process the message, and an MQ Output node to output the message to an MQ local queue. 
 

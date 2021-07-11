@@ -29,7 +29,7 @@ The timestamp when the test step run starts. Format is same as Test_Case_Start_T
 The timestamp when the test case individual run (like in data driven test case run) starts. Format is same as Test_Case_Start_Time.
 
 ## Data Table
-Properties can also come from a data table. Refer to [Data Driven Testing](https://github.com/zheng-wang/irontest/wiki/Data-Driven-Testing).
+Properties can also come from a data table. Refer to [Data Driven Testing](/docs/en/data-driven-testing).
 
 ## Extracted Properties
 Extract properties from API response in one test step, and use them in later test steps during test case run. This enables passing dynamic data between test steps.

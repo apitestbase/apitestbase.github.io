@@ -69,14 +69,14 @@ Click the Assertions button to open the assertions pane. In the assertions pane,
 
 ![HTTP Invocation and Assertion](../../screenshots/basic-use/http-invocation-and-assertion.png)
 
-More information about assertions can be found on this [wiki page](https://github.com/apitestbase/apitestbase/wiki/Assertions).
+More information about assertions can be found on this [page](/docs/en/assertions).
 
 Click the Back link to return to the test case edit view.
 
 ## Populate Step 3
 Click the name of step 3 to open its edit view.
 
-Under the Endpoint Details tab, enter exactly the same information as in step 1 because we are interacting with the same database. The information duplication can be avoided by using `managed endpoints`. Refer to this [wiki page](https://github.com/apitestbase/apitestbase/wiki/Endpoints-Management) for more details.
+Under the Endpoint Details tab, enter exactly the same information as in step 1 because we are interacting with the same database. The information duplication can be avoided by using `managed endpoints`. Refer to this [page](/docs/en/endpoints-management) for more details.
 
 Under the Invocation tab, enter SQL query `select id, title, content from article;`.
 

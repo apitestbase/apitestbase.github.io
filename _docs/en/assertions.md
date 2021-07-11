@@ -16,7 +16,7 @@ There are currently Contains, XPath, XMLEqual, JSONEqual, etc. assertions that c
 ## XMLEqual Assertion
 Used to verify that the actual (API response) XML is equal to the expected XML. 
 
-The underlying diff engine is XMLUnit, and you can use xmlunit placeholders (currently only xmlunit.ignore which only supports text node) in the expected XML. An XMLUnit **placeholder** is used to specify that a node in the expected XML is going to be compared to the node in the actual XML not for equality but by a special rule. The only notice here is that the placeholder must be denoted by `#{...}`, because `${...}` has been reserved for Iron Test [Properties](https://github.com/zheng-wang/irontest/wiki/Properties) usage.
+The underlying diff engine is XMLUnit, and you can use xmlunit placeholders (currently only xmlunit.ignore which only supports text node) in the expected XML. An XMLUnit **placeholder** is used to specify that a node in the expected XML is going to be compared to the node in the actual XML not for equality but by a special rule. The only notice here is that the placeholder must be denoted by `#{...}`, because `${...}` has been reserved for API Test Base [Properties](/docs/en/properties) usage.
 
 Given
 
@@ -34,7 +34,7 @@ The assertion supports validating against a single XSD, or a zip containing mult
 ## JSONEqual Assertion
 Used to verify that the actual (API response) JSON is equal to the expected JSON. 
 
-The underlying diff engine is JsonUnit, and you can use json-unit placeholders in the expected JSON, as described in [JsonUnit Readme](https://github.com/lukas-krecan/JsonUnit). The only notice here is that the placeholder must be denoted by `#{...}`, because `${...}` has been reserved for Iron Test [Properties](https://github.com/zheng-wang/irontest/wiki/Properties) usage.
+The underlying diff engine is JsonUnit, and you can use json-unit placeholders in the expected JSON, as described in [JsonUnit Readme](https://github.com/lukas-krecan/JsonUnit). The only notice here is that the placeholder must be denoted by `#{...}`, because `${...}` has been reserved for API Test Base [Properties](/docs/en/properties) usage.
 
 Given
 
@@ -54,7 +54,7 @@ Used to verify that the specified JSONPath evaluates to an XML document against 
 
 A common usage scenario of this assertion is in Database test step, when a SQL query reads a table column which is either XML type (like in SQL Server) or VARCHAR/CLOB type with XML document as value.
 
-Placeholders can be used in the expected XML, as described in the [XMLEqual Assertion](https://github.com/zheng-wang/irontest/wiki/Assertions#xmlequal-assertion).
+Placeholders can be used in the expected XML, as described in the [XMLEqual Assertion](#xmlequal-assertion).
 
 ## Plain Text Assertions
 Used to verify the actual (API response) text is as expected.

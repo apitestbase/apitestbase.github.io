@@ -16,7 +16,7 @@ Each row in the table contains a set of properties to feed each test case indivi
     
 You can define two types of columns in the table: `String column, DB endpoint column`.
 
-String property can be referenced in any test step or assertion, and DB endpoint property can only be referenced in DB test step. Refer to [Properties](https://github.com/zheng-wang/irontest/wiki/Properties) for more details.
+String property can be referenced in any test step or assertion, and DB endpoint property can only be referenced in DB test step. Refer to [Properties](/docs/en/properties) for more details.
 
 A `Caption` column is by default defined in data table. It enables you to mark/label each row in the table, so that the purpose of the row is clear. Caption column will not be used as property when running test case, but it makes test case run report easier to read.
 
@@ -67,7 +67,7 @@ On the Data Table tab, use the Add Row button to add two rows, and fill the rows
 | Positive | article2 | 200 | {<br>&nbsp;&nbsp;"id": 2,<br>&nbsp;&nbsp;"title": "article2",<br>&nbsp;&nbsp;"content": "Once upon a time ..."<br>} | [{"id":1,"title":"article1","content":"content1"},{"id":2,"title":"article2","content":"Once upon a time ..."}] |
 | Negative - article title too long | looooooooooooooo ooooooooooooo oooooooooooong title | 500 | {<br>&nbsp;&nbsp;"code": 500,<br>&nbsp;&nbsp;"message": "#{json-unit.ignore}",<br>&nbsp;&nbsp;"details": "#{json-unit.regex}.\*Value too long for column \\"TITLE[\\\\s\\\\S]\*"<br>} | [{"id":1,"title":"article1","content":"content1"},{"id":2,"title":"article2","content":"content2"}] |
 
-If you don't understand what #{json-unit.ignore} or #{json-unit.regex} means, refer to [JSONEqual Assertion](https://github.com/zheng-wang/irontest/wiki/Assertions#jsonequal-assertion).
+If you don't understand what #{json-unit.ignore} or #{json-unit.regex} means, refer to [JSONEqual Assertion](/docs/en/assertions#jsonequal-assertion).
 
 In the data table, click a cell to fill short (typically one line) data, or double click a cell to bring up a modal for filling long (typically multi-line) value like below.
 
