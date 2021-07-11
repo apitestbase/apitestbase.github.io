@@ -17,7 +17,7 @@ Under the Basic Info tab, enter name and (optional) description. Click Endpoints
 There are two ways to create a managed endpoint. Here we use SOAP endpoint as an example.
 
 ## Create Managed Endpoint in the Environments area
-In the 'Local' environment we just created, click Create dropdown button and select SOAP Endpoint to create a managed SOAP endpoint. SOAP endpoint edit view displays. Enter details and Iron Test saves them automatically.
+In the 'Local' environment we just created, click Create dropdown button and select SOAP Endpoint to create a managed SOAP endpoint. SOAP endpoint edit view displays. Enter details which will be automatically saved.
 
 ![Managed SOAP Endpoint](../../screenshots/env-mgmt/managed-soap-endpoint.png)
 

@@ -11,17 +11,17 @@ There might be reasons for testing your API in isolation
 
 The same technique is also called mock service or service virtualization in the testing space.
 
-The HTTP Stubs feature in Iron Test is powered by [WireMock](http://wiremock.org/).
+The HTTP Stubs feature in API Test Base is powered by [WireMock](http://wiremock.org/).
 
 ## A quick play
-Let's play with an HTTP stub in Iron Test quickly.
+Let's play with an HTTP stub quickly.
 
 ### Create a stub and load it
 Create a temp test case. Go to its HTTP Stubs tab and click Create. On the stub edit view, select `POST` method, enter URL `/some/thing`, select request body pattern 'Equal to JSON', enter request body `{ "a": "b" }`, and enter response body `Hello!`.
 
 ![Quick Play Stub Details](../../screenshots/http-stubs/quick-play-stub-details.png)
 
-The meaning of the stub is that when an HTTP POST request is sent to the mock server with URL `http://<MockServerHost>:<MockServerPort>/some/thing` (here http://localhost:8083/some/thing) and request body `{ "a": "b" }`, the mock server will return an HTTP response with status code 200 and response body `Hello!`. The mock server is embedded in the Iron Test instance and it is started when Iron Test starts. The mock server has a default port number 8083 which can be changed in the config.yml.
+The meaning of the stub is that when an HTTP POST request is sent to the mock server with URL `http://<MockServerHost>:<MockServerPort>/some/thing` (here http://localhost:8083/some/thing) and request body `{ "a": "b" }`, the mock server will return an HTTP response with status code 200 and response body `Hello!`. The mock server is embedded in the API Test Base instance and it is started when API Test Base starts. The mock server has a default port number 8083 which can be changed in the config.yml.
 
 Click the Back link to return to the test case details view.
 

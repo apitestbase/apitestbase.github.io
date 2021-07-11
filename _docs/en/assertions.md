@@ -11,7 +11,7 @@ Assertions can also be used as ad hoc utilities. For example: if you want to val
 * Compare two XML/JSON for equality
 * Evaluate XPath/JSONPath against XML/JSON
 
-There are currently Contains, XPath, XMLEqual, JSONEqual, etc. assertions that can be used in Iron Test. Most of them are common and easy to understand. Below are some special points to notice.
+There are currently Contains, XPath, XMLEqual, JSONEqual, etc. assertions that can be used in API Test Base. Most of them are common and easy to understand. Below are some special points to notice.
 
 ## XMLEqual Assertion
 Used to verify that the actual (API response) XML is equal to the expected XML. 

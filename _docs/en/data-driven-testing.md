@@ -10,7 +10,7 @@ Suppose you have a test case that invokes an API with input data and examines th
 This technique saves you the need to create multiple test cases that use different test data but have the same test steps. It greatly reduces the cost of test case creation, run and maintenance when various test data is involved.
 
 ## Data Table
-Data table in Iron Test can be defined on a test case under the Data Table tab of test case edit view. A sample is shown below.
+Data table can be defined on a test case under the Data Table tab of test case edit view. A sample is shown below.
 
 Each row in the table contains a set of properties to feed each test case individual run. Property name is column name, and property value is cell value.
     
@@ -21,10 +21,10 @@ String property can be referenced in any test step or assertion, and DB endpoint
 A `Caption` column is by default defined in data table. It enables you to mark/label each row in the table, so that the purpose of the row is clear. Caption column will not be used as property when running test case, but it makes test case run report easier to read.
 
 ## Sample Scenario
-Take the test case from [basic use](https://github.com/zheng-wang/irontest#integrated-json-http-api-testing) as a starting point. We will refactor it to enable testing Article update with two sets of data in one test case. One is for testing successful article update, and the other is for testing an error case when the article title is too long (over 50 chars) to be persisted into the database.
+Take the test case from [Creating Automated Test Case](/docs/en/creating-automated-test-case) as a starting point. We will refactor it to enable testing Article update with two sets of data in one test case. One is for testing successful article update, and the other is for testing an error case when the article title is too long (over 50 chars) to be persisted into the database.
 
 ### Refactor the test case to be data driven
-What we got from the [basic use](https://github.com/zheng-wang/irontest#integrated-json-http-api-testing) was a test case like below
+What we got from [Creating Automated Test Case](/docs/en/creating-automated-test-case) was a test case like below
 
 ![Basic Test Case](../../screenshots/basic-use/test-case-outline.png)
 
@@ -33,7 +33,7 @@ Firstly, we rename the test case to `Update Article - Data Driven` by right clic
 Then we refactor test steps to use property references for variable test data, and then add data table rows to define the properties.
 
 #### Refactor step 2
-On Test Steps tab, open step 2 `Invoke the API to update article`. 
+On Test Steps tab, open step 2 `Invoke the API to update article`.
 
 On the Invocation tab, replace the "title" field value in the request body with a property reference ${Input_Article_Title}.
 
