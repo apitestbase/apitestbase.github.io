@@ -26,7 +26,7 @@ Take the test case from [basic use](https://github.com/zheng-wang/irontest#integ
 ### Refactor the test case to be data driven
 What we got from the [basic use](https://github.com/zheng-wang/irontest#integrated-json-http-api-testing) was a test case like below
 
-[![Basic Test Case](https://github.com/zheng-wang/irontest/blob/master/screenshots/basic-use/test-case-outline.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/basic-use/test-case-outline.png)
+![Basic Test Case](../../screenshots/basic-use/test-case-outline.png)
 
 Firstly, we rename the test case to `Update Article - Data Driven` by right clicking the test case in the tree pane and select Rename.
 
@@ -41,7 +41,7 @@ Click the Assertions button to open the assertions area. Replace the Status Code
 
 For more thorough testing than only checking API response status code, we add a JSONEqual assertion to check the API response body. Set the Expected JSON with a property reference ${Expected_API_Response_JSON}.
 
-[![Refactored Step 2](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/refactored-step-2.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/refactored-step-2.png)
+![Refactored Step 2](../../screenshots/data-driven-testing/refactored-step-2.png)
 
 Notice that the properties Input_Article_Title, Expected_API_Response_Status_Code and Expected_API_Response_JSON do not exist yet. We'll create them in data table later.
 
@@ -50,14 +50,14 @@ Go back to test case edit view, and on Test Steps tab open step 3 `Check databas
 
 Replace the Expected JSON of the JSONEqual assertion with a property reference ${Expected_Result_Database_Data}.
 
-[![Refactored Step 3](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/refactored-step-3.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/refactored-step-3.png)
+![Refactored Step 3](../../screenshots/data-driven-testing/refactored-step-3.png)
 
 #### Add data table columns
 We have used property references in our test steps. Now we create the properties in data table.
 
 Go back to the test case edit view, and on the Data Table tab click the Add Column > String Column button to add a new column. Set its name Input_Article_Title. Similarly, add more columns for the other properties.
 
-[![Data Table with Columns Only](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/data-table-with-columns-only.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/data-table-with-columns-only.png)
+![Data Table with Columns Only](../../screenshots/data-driven-testing/data-table-with-columns-only.png)
 
 #### Add data table rows
 On the Data Table tab, use the Add Row button to add two rows, and fill the rows with below data
@@ -71,17 +71,17 @@ If you don't understand what #{json-unit.ignore} or #{json-unit.regex} means, re
 
 In the data table, click a cell to fill short (typically one line) data, or double click a cell to bring up a modal for filling long (typically multi-line) value like below.
 
-[![Filling Multi-line Value](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/filling-multi-line-value.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/filling-multi-line-value.png)
+![Filling Multi-line Value](../../screenshots/data-driven-testing/filling-multi-line-value.png)
 
 The complete data table looks like below.
 
-[![Complete Data Table](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/complete-data-table.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/complete-data-table.png)
+![Complete Data Table](../../screenshots/data-driven-testing/complete-data-table.png)
 
 Now we have finished refactoring the test case. The testing logic is not changed. The only thing changed is that the test case is now data driven.
 
 ### Run the test case
 Finally, it's time to run the test case. Click the Run button on the test case edit view, and you'll see the result for the whole test case beside the Run button, and in the bottom pane an outline of result for all individual runs. Click an individual run to expand it and view the result of its step runs.
 
-[![Data Driven Test Case Run](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/data-driven-test-case-run.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/data-driven-testing/data-driven-test-case-run.png)
+![Data Driven Test Case Run](../../screenshots/data-driven-testing/data-driven-test-case-run.png)
 
 Click a step run link to view its report, or click the result link beside the Run button to see the whole test case run report.

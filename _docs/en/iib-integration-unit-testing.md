@@ -9,11 +9,11 @@ Here is the sample scenario.
 
 The message flow under test (Flow1) has an MQ Input node to receive input message, a Compute node to process the message, and an MQ Output node to output the message to an MQ local queue. 
 
-[![Flow1 Code](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/flow1-code-diagram.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/flow1-code-diagram.png)
+![Flow1 Code](../../screenshots/iib/flow1-code-diagram.png)
 
 The output queue is a 'joint' queue as there is a downstream message flow (Flow2) listening to it, like shown below.
 
-[![Original Design](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/original-design.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/original-design.png)
+![Original Design](../../screenshots/iib/original-design.png)
 
 The primary way to integration unit test Flow1 is to provide input to it and examine its output. Now there is a problem. Before we get a chance, the output message produced by Flow1 is immediately picked up by Flow2, i.e. we won't be able to examine Flow1's output message here.
 
@@ -25,7 +25,7 @@ A critical thing to do for IIB integration unit testing is to `isolate the messa
 
 Approach 1 is my favorite as it is simple.
 
-[![New Design](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/new-design.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/new-design.png)
+![New Design](../../screenshots/iib/new-design.png)
    
 Based on the isolation, a positive test case for Flow1 would have these steps.
 
@@ -41,6 +41,6 @@ Step 3 is backed by IIB test step 'Wait For Processing Completion' action which 
 
 The result test case looks like below
 
-[![Queue to Queue](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/queue-to-queue.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/iib/queue-to-queue.png)
+![Queue to Queue](../../screenshots/iib/queue-to-queue.png)
 
 Notice that the isolation is only needed in integration unit testing environment. Other environment such as ST (System Testing) or SIT (System Integration Testing) environment may not need it as the testing scope or strategy is different. On the other hand, configuring a message flow or queue differently in different environments is quite common in IIB project.

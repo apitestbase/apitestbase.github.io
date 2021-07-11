@@ -41,9 +41,9 @@ Currently only HTTP test step has property extractors.
 ### JSONPath Property Extractor
 Used to extract property from HTTP response body via JSON path.
 
-[![JSONPath Property Extractor](https://github.com/zheng-wang/irontest/blob/master/screenshots/properties/jsonpath-property-extractor.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/properties/jsonpath-property-extractor.png)
+![JSONPath Property Extractor](../../screenshots/properties/jsonpath-property-extractor.png)
 
 ### Cookie Property Extractor
 Used to extract property from HTTP response Set-Cookie header by cookie name. 
 
-[![Cookie Property Extractor](https://github.com/zheng-wang/irontest/blob/master/screenshots/properties/cookie-property-extractor.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/properties/cookie-property-extractor.png)
+![Cookie Property Extractor](../../screenshots/properties/cookie-property-extractor.png)

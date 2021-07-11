@@ -12,18 +12,18 @@ Managed endpoint resides in environment. If you haven't created an environment, 
  
 Under the Basic Info tab, enter name and (optional) description. Click Endpoints tab.
 
-[![Environment](https://github.com/zheng-wang/irontest/blob/master/screenshots/env-mgmt/environment.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/env-mgmt/environment.png)
+![Environment](../../screenshots/env-mgmt/environment.png)
 
 There are two ways to create a managed endpoint. Here we use SOAP endpoint as an example.
 
 ## Create Managed Endpoint in the Environments area
 In the 'Local' environment we just created, click Create dropdown button and select SOAP Endpoint to create a managed SOAP endpoint. SOAP endpoint edit view displays. Enter details and Iron Test saves them automatically.
 
-[![Managed SOAP Endpoint](https://github.com/zheng-wang/irontest/blob/master/screenshots/env-mgmt/managed-soap-endpoint.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/env-mgmt/managed-soap-endpoint.png)
+![Managed SOAP Endpoint](../../screenshots/env-mgmt/managed-soap-endpoint.png)
 
 To use the newly created managed endpoint, go to the SOAP test step by clicking its link in the test case edit view, and click the Endpoint Details tab. Click Select Managed Endpoint button to see a SOAP endpoint list popup. 
 
-[![Select Managed Endpoint](https://github.com/zheng-wang/irontest/blob/master/screenshots/env-mgmt/select-managed-endpoint.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/env-mgmt/select-managed-endpoint.png)
+![Select Managed Endpoint](../../screenshots/env-mgmt/select-managed-endpoint.png)
 
 Click the endpoint name to select it for use in the SOAP test step.
 
@@ -32,7 +32,7 @@ This is a convenient function for you to capture endpoint during test step edit.
 
 Under Endpoint Details tab of a test step with unmanaged endpoint, click Share Endpoint button. Enter details and click OK button. The unmanaged endpoint will be turned into managed.
 
-[![Share Unmanaged Endpoint](https://github.com/zheng-wang/irontest/blob/master/screenshots/env-mgmt/share-unmanaged-endpoint.png)](https://github.com/zheng-wang/irontest/blob/master/screenshots/env-mgmt/share-unmanaged-endpoint.png)
+![Share Unmanaged Endpoint](../../screenshots/env-mgmt/share-unmanaged-endpoint.png)
 
 Notice that while unmanaged endpoint can be edited in test step edit view, managed endpoint can only be edited in the Environments area.
 

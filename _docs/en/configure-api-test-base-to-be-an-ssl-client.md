@@ -1,5 +1,5 @@
 ---
-title: Configure API Test Base To Be An SSL Client
+title: Configure API Test Base to be an SSL Client
 permalink: /docs/en/configure-api-test-base-to-be-an-ssl-client
 key: docs-configure-api-test-base-to-be-an-ssl-client
 ---

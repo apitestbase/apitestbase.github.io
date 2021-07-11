@@ -1,5 +1,5 @@
 ---
-title: Interact With Other Systems
+title: Interact with Other Systems
 permalink: /docs/en/interact-with-other-systems
 key: docs-interact-with-other-systems
 ---

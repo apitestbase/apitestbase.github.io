@@ -1,5 +1,5 @@
 ---
-title: Build API Test Base By Yourself
+title: Build API Test Base by Yourself
 permalink: /docs/en/build-api-test-base-by-yourself
 key: docs-build-api-test-base-by-yourself
 ---
