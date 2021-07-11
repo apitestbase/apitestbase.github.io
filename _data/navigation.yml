@@ -1,11 +1,13 @@
 header:
-  - title:      Docs
+  - title: Docs
     url: /docs/en/quick-start
-  - title:      GitHub
-    url:        https://github.com/apitestbase/apitestbase
+  - title: Contact
+    url: /contact
+  - title: GitHub
+    url: https://github.com/apitestbase/apitestbase
 
 docs-en:
-  - title:      Start
+  - title: Start
     children:
       - title: Quick Start
         url: /docs/en/quick-start
@@ -13,9 +15,9 @@ docs-en:
         url: /docs/en/creating-automated-test-case
       - title: Maintenance
         url: /docs/en/maintenance
-  - title:      Usages
+  - title: Usages
     children:
-      - title:  Endpoints Management
+      - title: Endpoints Management
         url: /docs/en/endpoints-management
       - title: Assertions
         url: /docs/en/assertions
@@ -33,7 +35,7 @@ docs-en:
         url: /docs/en/amqp-test-step
       - title: Configure API Test Base to be an SSL Client
         url: /docs/en/configure-api-test-base-to-be-an-ssl-client
-  - title:      Testing Practices
+  - title: Testing Practices
     children:
       - title: Real Test Automation is Data Driven
         url: /docs/en/real-test-automation-is-data-driven
@@ -43,9 +45,11 @@ docs-en:
         url: /docs/en/avoid-test-duplication
       - title: IIB Integration Unit Testing
         url: /docs/en/iib-integration-unit-testing
-  - title:      Other
+  - title: Other
     children:
       - title: Build API Test Base by Yourself
         url: /docs/en/build-api-test-base-by-yourself
+      - title: Upgrade from Old Version
+        url: /docs/en/upgrade-from-old-version
       - title: For Users
         url: /docs/en/for-users
