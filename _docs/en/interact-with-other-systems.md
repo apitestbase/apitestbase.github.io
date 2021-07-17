@@ -45,25 +45,15 @@ These jars can be found at `<MQ_Install_Dir>/java/lib`.
 To interact with multiple versions of MQ at the same time, use the jars of the highest version.
 
 ## IIB
-To use IIB Test Step to interact with IIB as part of a test case, copy IBM jars to corresponding folders.
+To use IIB Test Step to interact with IIB (only v10 is supported) as part of a test case, copy IBM jars to corresponding folders.
 
-For IIB 10, copy below jars to `<APITestBase_Home>/lib/iib/v100`.
+Copy below jars to `<APITestBase_Home>/lib/iib/v100`.
 
     IntegrationAPI.jar
-    jetty-client.jar
     jetty-io.jar
     jetty-util.jar
     websocket-api.jar
     websocket-client.jar
     websocket-common.jar
 
-IIB 10 jars can be found at `<IIB_Install_Dir>/common/classes` and `<IIB_Install_Dir>/common/jetty/lib`.
-
-For IIB 9, first copy IBM MQ (either 7.5 or 8.0) jars as described above, then copy below jars to `<APITestBase_Home>/lib/iib/v90`.
-
-    ibmjsseprovider2.jar
-    ConfigManagerProxy.jar
-
-IIB 9 jars can be found at `<IIB_Install_Dir>/classes` and `<IIB_Install_Dir>/jre17/lib`.
-
-Normally you only want to interact with IIB 10.0 OR 9.0. In case you want to interact with BOTH at the same time, copy all related jars as described above.
+IIB jars can be found at `<IIB_Install_Dir>/common/classes` and `<IIB_Install_Dir>/common/jetty/lib`.
