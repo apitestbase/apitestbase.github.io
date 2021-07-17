@@ -56,4 +56,4 @@ Copy below jars to `<APITestBase_Home>/lib/iib/v100`.
     websocket-client.jar
     websocket-common.jar
 
-IIB jars can be found at `<IIB_Install_Dir>/common/classes` and `<IIB_Install_Dir>/common/jetty/lib`.
+These jars can be found at `<IIB_Install_Dir>/common/classes` and `<IIB_Install_Dir>/common/jetty/lib`.
