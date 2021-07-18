@@ -1,3 +1,5 @@
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" style="width: 2.5rem; height: 2.5rem">
-    <image href="/apitestbase-logo.jpg" width="2.5rem" height="2.5rem"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="150 190 400 180">
+    <text transform="matrix(9.12762 0 0 9.39839 -2313.55 -3286.96)" stroke="#000" font-style="italic" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="sans-serif" font-size="24" id="svg_5" y="391.9064" x="270.44603" stroke-width="0" fill="#0052ff">A</text>
+    <text transform="matrix(10.1452 0 0 9.3745 -2676.92 -3251.82)" stroke="#000" font-weight="bold" font-style="normal" xml:space="preserve" text-anchor="start" font-family="sans-serif" font-size="24" id="svg_8" y="389" x="291" stroke-width="0" fill="#0052ff">T</text>
+    <text transform="matrix(9.21656 0 0 9.54658 -2451.83 -3304.91)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="sans-serif" font-size="24" id="svg_10" y="387.80667" x="310.15586" stroke-width="0" fill="#0052ff">B</text>
 </svg>
