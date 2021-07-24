@@ -5,6 +5,25 @@ permalink: /
 key: home
 pageview: true
 show_title: false
+tags:     # Not sure why. Unlike other article pages, here can't use 'tags: tag1 tag2, ...', because it will cause 'tags[0]' in _includes/article-info.html not working, hence not rendering the 'keywords' metadata.
+  - home
+  - integration-unit-testing
+  - integration-testing
+  - test-automation 
+  - api-testing
+  - database-testing
+  - http-stub
+  - http-testing
+  - soap-testing
+  - mq-testing
+  - iib-testing
+  - mock-service
+  - data-driven-testing
+  - amqp-testing
+  - ftp-testing
+  - solace-testing
+  - mqtt-testing
+  - jms-testing
 ---
 <br/>
 API Test Base is an open source tool for integration testing a variety of APIs. It is 100% free and suitable for Integration, ESB, Microservices and SOA testing.
