@@ -1,4 +1,5 @@
 ---
+title: Home
 layout: article
 permalink: /
 key: home
