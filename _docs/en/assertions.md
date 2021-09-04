@@ -16,7 +16,11 @@ There are currently Contains, XPath, XMLEqual, JSONEqual, etc. assertions that c
 ## XMLEqual Assertion
 Used to verify that the actual (API response) XML is equal to the expected XML. 
 
-The underlying diff engine is XMLUnit, and you can use xmlunit placeholders (currently only xmlunit.ignore which only supports text node) in the expected XML. An XMLUnit **placeholder** is used to specify that a node in the expected XML is going to be compared to the node in the actual XML not for equality but by a special rule. The only notice here is that the placeholder must be denoted by `#{...}`, because `${...}` has been reserved for API Test Base [Properties](/docs/en/properties) usage.
+The underlying diff engine is XMLUnit, and you can use xmlunit placeholders in the expected XML. An XMLUnit **placeholder** is used to specify that a text node (element content or attribute value) in the expected XML is going to be compared to the text node in the actual XML not for equality but by a special rule. The only notice here is that the placeholders must be denoted by `#{...}`, because `${...}` has been reserved for API Test Base [Properties](/docs/en/properties) usage.
+
+Currently supported placeholders: #{xmlunit.ignore}, #{xmlunit.isNumber}, #{xmlunit.isDateTime}, #{xmlunit.matchesRegex(regex)}.
+
+Example:
 
 Given
 
