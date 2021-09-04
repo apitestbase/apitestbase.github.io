@@ -38,7 +38,7 @@ The assertion supports validating against a single XSD, or a zip containing mult
 ## JSONEqual Assertion
 Used to verify that the actual (API response) JSON is equal to the expected JSON. 
 
-The underlying diff engine is JsonUnit, and you can use json-unit placeholders in the expected JSON, like `#{json-unit.ignore}`, `#{json-unit.any-number}`, `#{json-unit.regex}`, etc. More details can be found at [JsonUnit Readme](https://github.com/lukas-krecan/JsonUnit). The only notice here is that the placeholder must be denoted by `#{...}`, because `${...}` has been reserved for API Test Base [Properties](/docs/en/properties) usage.
+The underlying diff engine is JsonUnit, and you can use json-unit placeholders in the expected JSON, like `#{json-unit.ignore}`, `#{json-unit.any-number}`, `#{json-unit.any-string}`, `#{json-unit.any-boolean}`, `#{json-unit.regex}[A-Z]+`. More details can be found at [JsonUnit Readme](https://github.com/lukas-krecan/JsonUnit). The only notice here is that the placeholder must be denoted by `#{...}`, because `${...}` has been reserved for API Test Base [Properties](/docs/en/properties) usage.
 
 Given
 
