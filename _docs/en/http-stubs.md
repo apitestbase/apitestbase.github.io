@@ -21,7 +21,13 @@ Create a temp test case. Go to its HTTP Stubs tab and click Create. On the stub 
 
 ![Quick Play Stub Details](../../screenshots/http-stubs/quick-play-stub-details.png)
 
-The meaning of the stub is that when an HTTP POST request is sent to the mock server with URL `http://<MockServerHost>:<MockServerPort>/some/thing` (here http://localhost:8083/some/thing) and request body `{ "a": "b" }`, the mock server will return an HTTP response with status code 200 and response body `Hello!`. The mock server is embedded in the API Test Base instance and it is started when API Test Base starts. The mock server has a default port number 8083 which can be changed in the config.yml.
+The meaning of the stub is that when an HTTP POST request is sent to the mock server with URL `http://<APITestBaseHost>:<MockServerHTTPPort>/some/thing` (like http://localhost:8092/some/thing) and request body `{ "a": "b" }`, the mock server will return an HTTP response with status code 200 and response body `Hello!`.
+
+The mock server is embedded in the API Test Base instance and is started when API Test Base starts.
+
+To use HTTPS with the mock server, you can just use URL `https://<APITestBaseHost>:<MockServerHTTPSPort>/some/thing`.
+
+The mock server has a default HTTP port number 8092 and a default HTTPS port number 8093. Both can be changed in the `<APITestBase_Home>/config.yml`, under the `wireMock` section.
 
 Click the Back link to return to the test case details view.
 
