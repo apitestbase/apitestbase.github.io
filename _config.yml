@@ -74,3 +74,9 @@ defaults:
 
 text_skin: ocean
 highlight_theme: default
+
+analytics:
+  provider: google
+  google:
+    tracking_id: "G-728SGPGWQ6"
+    anonymize_ip: false
