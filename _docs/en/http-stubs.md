@@ -33,7 +33,7 @@ Click the Back link to return to the test case details view.
 
 ![Quick Play Stub List](../../screenshots/http-stubs/quick-play-stub-list.png)
 
-Click the Load All button to load the stub into the mock server.
+Click the `Load All` button to load the stub into the mock server.
 
 ### Test the stub
 Go to the Test Steps tab, and create an HTTP test step with method `POST`, URL `http://localhost:8083/some/thing` and request body `{ "a": "b" }`. Click the Invoke button to invoke the stub, and you'll see a response body `Hello!`.
