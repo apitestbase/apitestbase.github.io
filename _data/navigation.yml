@@ -37,14 +37,18 @@ docs-en:
         url: /docs/en/configure-api-test-base-to-be-an-ssl-client
   - title: Testing Practices
     children:
+      - title: HTTP-HTTP Integration Unit Testing
+        url: /docs/en/http-http-integration-unit-testing
+      - title: HTTP-JMS Integration Unit Testing
+        url: /docs/en/http-jms-integration-unit-testing
+      - title: IIB Integration Unit Testing
+        url: /docs/en/iib-integration-unit-testing
       - title: Real Test Automation is Data Driven
         url: /docs/en/real-test-automation-is-data-driven
       - title: Data Driven Testing
         url: /docs/en/data-driven-testing
       - title: Avoid Test Duplication
         url: /docs/en/avoid-test-duplication
-      - title: IIB Integration Unit Testing
-        url: /docs/en/iib-integration-unit-testing
   - title: Other
     children:
       - title: Build API Test Base by Yourself
