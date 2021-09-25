@@ -39,6 +39,8 @@ docs-en:
     children:
       - title: HTTP-HTTP Integration Unit Testing
         url: /docs/en/http-http-integration-unit-testing
+      - title: HTTP-Database Integration Unit Testing
+        url: /docs/en/http-database-integration-unit-testing
       - title: HTTP-JMS Integration Unit Testing
         url: /docs/en/http-jms-integration-unit-testing
       - title: IIB Integration Unit Testing
