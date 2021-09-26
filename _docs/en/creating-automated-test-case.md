@@ -3,7 +3,7 @@ title: Creating Automated Test Case
 permalink: /docs/en/creating-automated-test-case
 key: docs-creating-automated-test-case
 ---
-We are going to demo how to test a REST API that updates an article in database.
+We are going to demo how to test a REST API that updates an article in database. Check section [Sample Test Case](#sample-test-case) if you are eager to see what the test case looks like.
 
 The API is the sample Article API that is bundled with API Test Base. It does CRUD operations against the Article table in a sample H2 database. The sample database is automatically created under `<APITestBase_Home>/database` when API Test Base is launched for the first time.
 
