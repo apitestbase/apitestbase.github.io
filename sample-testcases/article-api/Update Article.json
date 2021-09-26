@@ -1,0 +1,83 @@
+{
+  "name" : "Update Article",
+  "teststeps" : [ {
+    "name" : "Set up database data",
+    "type" : "DB",
+    "endpoint" : {
+      "name" : "Unmanaged Endpoint",
+      "type" : "DB",
+      "url" : "jdbc:h2:./database/sample;AUTO_SERVER=TRUE",
+      "username" : "user",
+      "otherProperties" : {
+        "@type" : "EndpointProperties"
+      }
+    },
+    "apiRequest" : {
+      "minClassName" : ".DBRequest",
+      "sqlScript" : "-- Clear the table\ndelete from article;\n\n-- Create two article records\ninsert into article (id, title, content) values (1, 'article1', 'content1');\ninsert into article (id, title, content) values (2, 'article2', 'content2');"
+    },
+    "otherProperties" : { }
+  }, {
+    "name" : "Invoke the API to update article",
+    "type" : "HTTP",
+    "endpoint" : {
+      "name" : "Unmanaged Endpoint",
+      "type" : "HTTP",
+      "url" : "http://localhost:8090/api/articles/2",
+      "otherProperties" : {
+        "@type" : "EndpointProperties"
+      }
+    },
+    "apiRequest" : {
+      "minClassName" : ".HTTPRequest",
+      "headers" : [ {
+        "name" : "Content-Type",
+        "value" : "application/json"
+      } ],
+      "body" : "{\n  \"id\": 2,\n  \"title\": \"article2\",\n  \"content\": \"Once upon a time ...\"\n}",
+      "method" : "PUT"
+    },
+    "assertions" : [ {
+      "name" : "StatusCodeEqual",
+      "type" : "StatusCodeEqual",
+      "otherProperties" : {
+        "statusCode" : "200"
+      }
+    } ],
+    "otherProperties" : {
+      "timeout" : "20"
+    }
+  }, {
+    "name" : "Check database data",
+    "type" : "DB",
+    "endpoint" : {
+      "name" : "Unmanaged Endpoint",
+      "type" : "DB",
+      "url" : "jdbc:h2:./database/sample;AUTO_SERVER=TRUE",
+      "username" : "user",
+      "otherProperties" : {
+        "@type" : "EndpointProperties"
+      }
+    },
+    "apiRequest" : {
+      "minClassName" : ".DBRequest",
+      "sqlScript" : "select id, title, content from article;"
+    },
+    "assertions" : [ {
+      "name" : "JSONEqual",
+      "type" : "JSONEqual",
+      "otherProperties" : {
+        "expectedJSON" : "[{\"ID\":1,\"TITLE\":\"article1\",\"CONTENT\":\"content1\"},{\"ID\":2,\"TITLE\":\"article2\",\"CONTENT\":\"Once upon a time ...\"}]"
+      }
+    } ],
+    "otherProperties" : { }
+  } ],
+  "dataTable" : {
+    "columns" : [ {
+      "name" : "Caption",
+      "type" : "String"
+    } ],
+    "rows" : [ ]
+  },
+  "checkHTTPStubsHitOrder" : false
+}
