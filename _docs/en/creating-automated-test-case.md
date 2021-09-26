@@ -104,4 +104,4 @@ Click the link for a test step in the bottom pane to open a modal and see the st
 Click the result link beside the Run button to see the whole test case run report. This report can be saved as HTML file and used as test evidence in other places such as HP ALM.
 
 ## Sample Test Case
-The test case created above is available for download at [sample test case](../../sample-testcases/article-api/Update Article.json). After download, right click any folder on ATB UI and import it.
+The test case created above is available for download at <a href="../../sample-testcases/article-api/Update Article.json" download>sample test case</a>. After download, right click any folder on ATB UI and import it.
