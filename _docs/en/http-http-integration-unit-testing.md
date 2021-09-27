@@ -23,8 +23,10 @@ Here the urls are the HTTP stubs' addresses. We use HTTP stubs, instead of any r
 ![Open Account API Test Isolation](../../screenshots/http-http/open-account-api-test-isolation.png)
 
 ## Test Cases Creation
+It is recommended that you have a look at [Quick Start](/docs/en/quick-start) if ATB is new to you. 
+
 ### Positive Test
-Create a test case `Positive` under the folder for Open Account API test cases. Add an HTTP test step `Invoke the API and Assert Response`. This test step invokes the Open Account API and assert that the API returns status code 200.
+Create a test case `Positive` under a folder for Open Account API test cases. Create an HTTP test step `Invoke the API and Assert Response` in the test case. This test step invokes the Open Account API and asserts that the API returns status code 200.
 
 ![Positive - Test Step](../../screenshots/http-http/positive-test-step.png)
 
