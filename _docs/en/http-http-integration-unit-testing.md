@@ -8,8 +8,6 @@ Suppose you have an Open (Bank) Account API that exposes an HTTP endpoint. When 
 
 ![Open Account API](../../screenshots/http-http/open-account-api.png)
 
-Check section [Sample Test Cases](#sample-test-cases) if you are eager to see what the test case looks like.
-
 ## Test Isolation
 To integration unit test the Open Account API, design the API to point to different dependencies in different environments. This is normally achieved by setting different dependency endpoint addresses in different property files. Each property file contains all properties for the API for a specific environment like Dev/Test/QA/Prod. When deploying and running the API, dynamically load the property file for that specific environment.
 
@@ -23,7 +21,9 @@ Here the urls are the HTTP stubs' addresses. We use HTTP stubs, instead of any r
 ![Open Account API Test Isolation](../../screenshots/http-http/open-account-api-test-isolation.png)
 
 ## Test Cases Creation
-It is recommended that you have a look at [Quick Start](/docs/en/quick-start) if ATB is new to you. 
+It is recommended that you have a look at [Quick Start](/docs/en/quick-start) if ATB is new to you.
+
+Check section [Sample Test Cases](#sample-test-cases) if you are eager to see what the test cases look like.
 
 ### Positive Test
 Create a test case `Positive` under a folder for Open Account API test cases. Create an HTTP test step `Invoke the API and Assert Response` in the test case. This test step invokes the Open Account API and asserts that the API returns status code 200.
