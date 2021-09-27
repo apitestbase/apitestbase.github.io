@@ -11,7 +11,7 @@ Suppose you have an Open (Bank) Account API that exposes an HTTP endpoint. When 
 ## Test Isolation
 To integration unit test the Open Account API, design the API to point to different dependencies in different environments. This is normally achieved by setting different dependency endpoint addresses in different property files. Each property file contains all properties for the API for a specific environment like Dev/Test/QA/Prod. When deploying and running the API, dynamically load the property file for that specific environment.
 
-In an integration unit testing environment like the Dev environment (which is typically a developer's local machine), a property file like open-account-api-dev.properties is used for the Open Account API. The property file contains something like below
+In an integration unit testing environment like the Dev environment (which is typically a developer's local machine), a property file like `open-account-api-dev.properties` is used for the Open Account API. The property file contains something like below
 ~~~
     fraud.check.api.url=http://localhost:8090/fraudcheck
     account.api.url=http://localhost:8090/account
