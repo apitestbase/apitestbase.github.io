@@ -66,7 +66,7 @@ We have created the stub table, but it is empty. Each test case will need to pop
 * If the statements can be provided by the database administrator, then tailor them to suit your testing purpose.
 * Else if there are already some rows in a shared database, like the one in SIT environment, use Squirrel SQL Client to export the rows as `INSERT` statements. To achieve this, just run a `SELECT` query in Squirrel SQL Client to show some rows, manually select the rows from the result set table, right click the rows and choose `Select entire row(s)`, right click the rows again and choose `Copy as SQL INSERT-VALUES statement`, and then paste the `INSERT` statements to a text editor.
 
-![Get INSERT Statements from Rows](../../screenshots/http-db/get-insert-statements-from-rows.png)
+    ![Get INSERT Statements from Rows](../../screenshots/http-db/get-insert-statements-from-rows.png)
 * Else if sample data is only available in a design document, manually create the `INSERT` statements based on the document content.
 
 ### Create And Run Test Case
