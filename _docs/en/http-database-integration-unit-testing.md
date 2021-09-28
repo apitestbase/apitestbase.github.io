@@ -4,7 +4,7 @@ permalink: /docs/en/http-database-integration-unit-testing
 key: docs-http-database-integration-unit-testing
 ---
 ## Introduction To The API Under Test
-Suppose you have an Article API that exposes an HTTP endpoint. When a client invokes it with details via HTTP PUT, it updates an article record in a SQL Server database table using a SQL statement like `update dbo.article set title = :title, content = :content, updated = CURRENT_TIMESTAMP where id = :id`.
+Suppose you have an Article API that exposes an HTTP endpoint. When a client invokes it with details via HTTP PUT, it updates an article record in a SQL Server database table using a SQL statement like `update dbo.article set title = :title, content = :content where id = :id`.
 
 ![Article API](../../screenshots/http-db/article-api.png)
 
