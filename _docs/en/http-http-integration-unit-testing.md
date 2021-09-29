@@ -26,7 +26,7 @@ It is recommended that you have a look at [Quick Start](/docs/en/quick-start) if
 Check section [Sample Test Cases](#sample-test-cases) if you are eager to see what the test cases look like.
 
 ### Positive Test
-Create a test case `Positive` under a folder for Open Account API test cases. Create an HTTP test step `Invoke the API and Assert Response` in the test case. This test step invokes the Open Account API and asserts that the API returns status code 200.
+Create a test case `Positive` under a folder for the Open Account API. Create an HTTP test step `Invoke the API and Assert Response` in the test case. This test step invokes the Open Account API and asserts that the API returns status code 200.
 
 ![Positive - Test Step](../../screenshots/http-http/positive-test-step.png)
 
