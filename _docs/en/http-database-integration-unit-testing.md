@@ -24,7 +24,7 @@ In an integration unit testing environment like the Dev environment (which is ty
     database.username=<encrypted username>
     database.password=<encrypted password>
 ~~~ 
-Here the database properties are of a local SQL Server Express (stub) database that is used for integration unit testing purpose. We use a local dedicated stub database, instead of any real (fully implemented and shared) SQL Server database like one in the SIT environment, as the dependency during integration unit testing, like shown below.
+Here the database properties are of a local SQL Server Express (stub) database that is used for integration unit testing purpose. We use a local dedicated stub database, instead of any fully implemented and shared SQL Server database like one in the SIT environment, as the dependency during integration unit testing, like shown below.
 
 ![Article API Test Isolation](../../screenshots/http-db/article-api-test-isolation.png)
 

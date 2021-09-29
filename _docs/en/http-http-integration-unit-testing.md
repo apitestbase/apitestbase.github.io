@@ -16,7 +16,7 @@ In an integration unit testing environment like the Dev environment (which is ty
     fraud.check.api.url=http://localhost:8090/fraudcheck
     account.api.url=http://localhost:8090/account
 ~~~ 
-Here the urls are the HTTP stubs' addresses. We use HTTP stubs, instead of any real (fully implemented) Fraud Check and Account APIs, as the dependencies during integration unit testing, like shown below.
+Here the urls are the HTTP stubs' addresses. We use HTTP stubs, instead of any fully implemented and shared Fraud Check and Account APIs, as the dependencies during integration unit testing, like shown below.
 
 ![Open Account API Test Isolation](../../screenshots/http-http/open-account-api-test-isolation.png)
 
