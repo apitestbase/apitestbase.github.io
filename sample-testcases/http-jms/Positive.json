@@ -1,0 +1,138 @@
+{
+  "name" : "Positive",
+  "udps" : [ {
+    "name" : "Output_Queue_Name",
+    "value" : "q/data/ingestion/api/stub/out"
+  }, {
+    "name" : "Input_Message",
+    "value" : "{\n  \"data\": \"...\"\n}"
+  }, {
+    "name" : "Expected_HTTP_Response_StatusCode",
+    "value" : "200"
+  }, {
+    "name" : "Expected_Output_Message",
+    "value" : "${Input_Message}"
+  } ],
+  "teststeps" : [ {
+    "name" : "Setup - clear stub output queue",
+    "type" : "JMS",
+    "action" : "Clear",
+    "endpoint" : {
+      "name" : "Unmanaged Endpoint",
+      "type" : "JMS",
+      "host" : "localhost",
+      "port" : 55555,
+      "username" : "admin",
+      "otherProperties" : {
+        "@type" : "JMSSolaceEndpointProperties",
+        "jmsProvider" : "Solace",
+        "vpn" : "default"
+      }
+    },
+    "otherProperties" : {
+      "destinationType" : "Queue",
+      "queueName" : "${Output_Queue_Name}",
+      "topicString" : null,
+      "browseMessageIndex" : 1
+    }
+  }, {
+    "name" : "Invoke the API to ingest data",
+    "type" : "HTTP",
+    "endpoint" : {
+      "name" : "Unmanaged Endpoint",
+      "type" : "HTTP",
+      "url" : "http://localhost:port/path/to/your/local/data/ingestion/api",
+      "otherProperties" : {
+        "@type" : "EndpointProperties"
+      }
+    },
+    "apiRequest" : {
+      "minClassName" : ".HTTPRequest",
+      "headers" : [ ],
+      "body" : "${Input_Message}",
+      "method" : "POST"
+    },
+    "assertions" : [ {
+      "name" : "StatusCodeEqual",
+      "type" : "StatusCodeEqual",
+      "otherProperties" : {
+        "statusCode" : "${Expected_HTTP_Response_StatusCode}"
+      }
+    } ],
+    "otherProperties" : {
+      "timeout" : "20"
+    }
+  }, {
+    "name" : "Wait for 0.5 seconds",
+    "type" : "Wait",
+    "otherProperties" : {
+      "milliseconds" : "500"
+    }
+  }, {
+    "name" : "Check stub output queue depth equals 1",
+    "type" : "JMS",
+    "action" : "CheckDepth",
+    "endpoint" : {
+      "name" : "Unmanaged Endpoint",
+      "type" : "JMS",
+      "host" : "localhost",
+      "port" : 55555,
+      "username" : "admin",
+      "otherProperties" : {
+        "@type" : "JMSSolaceEndpointProperties",
+        "jmsProvider" : "Solace",
+        "vpn" : "default"
+      }
+    },
+    "assertions" : [ {
+      "name" : "Queue depth equals",
+      "type" : "IntegerEqual",
+      "otherProperties" : {
+        "number" : 1
+      }
+    } ],
+    "otherProperties" : {
+      "destinationType" : "Queue",
+      "queueName" : "${Output_Queue_Name}",
+      "topicString" : null,
+      "browseMessageIndex" : 1
+    }
+  }, {
+    "name" : "Browse the stub output queue and assert message body",
+    "type" : "JMS",
+    "action" : "Browse",
+    "endpoint" : {
+      "name" : "Unmanaged Endpoint",
+      "type" : "JMS",
+      "host" : "localhost",
+      "port" : 55555,
+      "username" : "admin",
+      "otherProperties" : {
+        "@type" : "JMSSolaceEndpointProperties",
+        "jmsProvider" : "Solace",
+        "vpn" : "default"
+      }
+    },
+    "assertions" : [ {
+      "name" : "JSONEqual",
+      "type" : "JSONEqual",
+      "otherProperties" : {
+        "expectedJSON" : "${Expected_Output_Message}"
+      }
+    } ],
+    "otherProperties" : {
+      "destinationType" : "Queue",
+      "queueName" : "${Output_Queue_Name}",
+      "topicString" : null,
+      "browseMessageIndex" : 1
+    }
+  } ],
+  "dataTable" : {
+    "columns" : [ {
+      "name" : "Caption",
+      "type" : "String"
+    } ],
+    "rows" : [ ]
+  },
+  "checkHTTPStubsHitOrder" : false
+}
