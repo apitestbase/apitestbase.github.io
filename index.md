@@ -21,13 +21,14 @@ tags:     # Not sure why. Unlike other article pages, here can't use 'tags: tag1
   - data-driven-testing
   - amqp-testing
   - ftp-testing
+  - sftp-testing
   - solace-testing
   - mqtt-testing
   - jms-testing
 ---
 API Test Base is an open source tool for integration testing a variety of APIs. It is 100% free and suitable for Integration, ESB, Microservices and SOA testing.
 
-Supported API types: HTTP, SOAP, Relational databases (Oracle, SQL Server, H2), JMS (Solace), FTP(S), AMQP, MQTT, IBM MQ, IBM Integration Bus (IIB).
+Supported API types: HTTP, SOAP, Relational databases (Oracle, SQL Server, H2), JMS (Solace), FTP(S), SFTP, AMQP, MQTT, IBM MQ, IBM Integration Bus (IIB).
 
 <div style="text-align:center"><a class="button button--outline-success button--pill" href="/docs/en/quick-start">Quick Start</a></div>
 

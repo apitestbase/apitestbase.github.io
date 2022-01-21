@@ -29,6 +29,8 @@ docs-en:
         url: /docs/en/interact-with-other-systems
       - title: FTP Test Step
         url: /docs/en/ftp-test-step
+      - title: SFTP Test Step
+        url: /docs/en/sftp-test-step
       - title: MQ Test Step
         url: /docs/en/mq-test-step
       - title: AMQP Test Step
