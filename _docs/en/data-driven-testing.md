@@ -85,3 +85,6 @@ Finally, it's time to run the test case. Click the Run button on the test case e
 ![Data Driven Test Case Run](../../screenshots/data-driven-testing/data-driven-test-case-run.png)
 
 Click a step run link to view its report, or click the result link beside the Run button to see the whole test case run report.
+
+## Data Driven Test Step
+Similar to test case level data table, test step level data table enables the test step to be run one or more times during one test case run. This enables the test step to do repeated work driven by a data table, without duplicating the test step definition in the same test case.
