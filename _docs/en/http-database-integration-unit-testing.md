@@ -75,3 +75,6 @@ Refer to [Creating Automated Test Case](/docs/en/creating-automated-test-case). 
 
 ## Sample Test Case
 The test case created above is available for download at <a href="../../sample-testcases/http-db/Positive.json" download>sample test case</a>. After download, right click any folder on ATB UI and import it.
+
+## What is Integration Unit Testing?
+Refer to [this post](https://medium.com/@zhengwang666/integration-unit-testing-683fbf995c43).
