@@ -29,7 +29,7 @@ The timestamp when the test step run starts. Format is same as Test_Case_Start_T
 The timestamp when the test case individual run (like in data driven test case run) starts. Format is same as Test_Case_Start_Time.
 
 #### Test_Step_Repeat_Run_Index
-Index of repeat when a test step is defined as a repeated test step. Start from 1.
+Index of repeat run when a test step is defined as a repeated test step and it is run in a test case. Start from 1.
 
 ## Data Table
 Properties can also come from a data table. Refer to [Data Driven Testing](/docs/en/data-driven-testing).
