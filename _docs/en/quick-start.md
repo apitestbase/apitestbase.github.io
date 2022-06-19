@@ -8,8 +8,8 @@ Download the [latest API Test Base release](https://github.com/apitestbase/apite
 
 Alternatively, you can also [build API Test Base by yourself](/docs/en/build-api-test-base-by-yourself).
 
-## Prerequisite: Java 1.8+
-Install JRE (Java SE Runtime Environment) or JDK 1.8+ if it is not already on your machine.
+## Prerequisite: Java 9+
+Install JRE (Java Runtime Environment) or JDK (Java Development Kit) 9+ if it is not already on your machine.
 
 For example, if you want to install OpenJDK 12 on Windows, here is a [quick tutorial](https://java.tutorials24x7.com/blog/how-to-install-openjdk-12-on-windows).
 
