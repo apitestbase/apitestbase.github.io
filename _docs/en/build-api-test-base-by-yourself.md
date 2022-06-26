@@ -9,7 +9,10 @@ Download the latest API Test Base release source code from [here](https://github
 
 `mvn clean package -P prod`
 
-An `apitestbase-assembly/dist` folder is created containing the files and folders.
+An `apitestbase-assembly/dist` folder is created containing the build.
 
-Notice that if this is the first time you build API Test Base, it could take 10 minutes (depending on your network speed) for Maven to download all the dependencies. From the second time, you should see the build time decreased to around 30 seconds, as the dependencies are already in your Maven local repository.
+Notes:
+* If this is the first time you build ATB, it could take 10 minutes (depending on your network speed) for Maven to download all the dependencies. From the second time, you should see the build time decreased to around 30 seconds, as the dependencies are already in your Maven local repository.
+* Build from release source code is recommended. Build from snapshot source code might have breaking changes which couldn't work with existing ATB system database, and it couldn't be easily upgraded to newer release version in future.
+* Apache Maven 3.8.5 seems not working for building ATB.
   
