@@ -3,7 +3,7 @@ title: Build API Test Base by Yourself
 permalink: /docs/en/build-api-test-base-by-yourself
 key: docs-build-api-test-base-by-yourself
 ---
-Prerequisites: JDK (Java Development Kit) 9+, Apache Maven 3.3+.
+Prerequisites: JDK (Java Development Kit) 8+, Apache Maven 3.3+.
 
 Download the latest API Test Base release source code from [here](https://github.com/apitestbase/apitestbase/releases/latest) to your local machine. Extract it, cd to the root directory (in which there is README.md), and run below Maven command
 
