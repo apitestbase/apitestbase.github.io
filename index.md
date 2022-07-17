@@ -22,6 +22,7 @@ tags:     # Not sure why. Unlike other article pages, here can't use 'tags: tag1
   - amqp-testing
   - ftp-testing
   - sftp-testing
+  - activemq-testing
   - solace-testing
   - mqtt-testing
   - jms-testing
