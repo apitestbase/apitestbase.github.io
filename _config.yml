@@ -80,3 +80,5 @@ analytics:
   google:
     tracking_id: "G-728SGPGWQ6"
     anonymize_ip: false
+
+atb_version: 0.20.1
