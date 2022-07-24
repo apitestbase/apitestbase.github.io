@@ -9,8 +9,8 @@ jobs:
         uses: oprypin/find-latest-tag@v1
         with:
           repository: apitestbase/apitestbase
-      - name: Remove 'v' from the tag name
-        id: get-latest-atb-version
+      - name: Get latest ATB release version
+        id: get-latest-atb-release-version
         uses: frabert/replace-string-action@v2.0
         with:
           pattern: 'v'
@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Update ATB version
         run: |
-          (Get-Content _config.yml) -replace "^atb_version:.*$", "atb_version: ${{ steps.get-latest-atb-version.outputs.replaced }}" | Out-File -encoding ASCII _config.yml
+          (Get-Content _config.yml) -replace "^atb_version:.*$", "atb_version: ${{ steps.get-latest-atb-release-version.outputs.replaced }}" | Out-File -encoding ASCII _config.yml
       - name: Commit and push changes
         run: |
           git config --global user.name "Zheng Wang"
