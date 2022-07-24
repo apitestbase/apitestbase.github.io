@@ -4,7 +4,9 @@ permalink: /docs/en/quick-start
 key: docs-quick-start
 ---
 ## Download
-Download the [latest API Test Base release](https://github.com/apitestbase/apitestbase/releases/latest/download/apitestbase-dist.zip) and unpack it. The created folder will be referred to as `<APITestBase_Home>` hereafter.
+Download the latest API Test Base release [apitestbase-{{ site.atb_release_version }}-dist.zip](https://github.com/apitestbase/apitestbase/releases/download/{{ site.atb_release_version }}/apitestbase-{{ site.atb_release_version }}-dist.zip). Release note can be found [here](https://github.com/apitestbase/apitestbase/releases).
+
+Unpack the zip file. The created folder will be referred to as `<APITestBase_Home>` hereafter.
 
 Alternatively, you can also [build API Test Base by yourself](/docs/en/build-api-test-base-by-yourself).
 
@@ -26,7 +28,7 @@ You should see something like
 ## Launch
 Open a command line window, cd to `<APITestBase_Home>` and run below command
 
-`java -Djava.net.useSystemProxies=true -jar apitestbase-<version>.jar server config.yml`
+`java -Djava.net.useSystemProxies=true -jar apitestbase-{{ site.atb_release_version }}.jar server config.yml`
 
 On Windows, alternatively you can simply run `<APITestBase_Home>\start.bat`.
 
