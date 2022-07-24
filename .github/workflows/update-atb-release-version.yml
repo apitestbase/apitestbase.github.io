@@ -5,6 +5,7 @@ on:
       atb_release_version:
         description: 'ATB Release Version (e.g. 0.20.2)'
         required: true
+
 jobs:
   Update-ATB-Release-Version:
     runs-on: windows-latest
@@ -19,5 +20,5 @@ jobs:
           git config --global user.name "Zheng Wang"
           git config --global user.email "zheng-wang@users.noreply.github.com"
           git add -A
-          git commit -m "update ATB version to latest tag"
+          git commit -m "update ATB release version"
           git push
