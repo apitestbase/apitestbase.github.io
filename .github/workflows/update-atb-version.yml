@@ -1,0 +1,23 @@
+name: Update ATB Version
+on:
+  workflow_dispatch:
+    inputs:
+      atb_version:
+        description: 'ATB Version'
+        required: true
+jobs:
+  Update-ATB-Version:
+    runs-on: windows-latest
+    steps:
+      - name: Check out current web site repo
+        uses: actions/checkout@v3
+      - name: Update ATB version
+        run: |
+          (Get-Content _config.yml) -replace "^atb_version:.*$", "atb_version: ${{ atb_version }}" | Out-File -encoding ASCII _config.yml
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "Zheng Wang"
+          git config --global user.email "zheng-wang@users.noreply.github.com"
+          git add -A
+          git commit -m "update ATB version to latest tag"
+          git push
