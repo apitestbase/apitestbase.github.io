@@ -1,19 +1,19 @@
-name: Update ATB Version
+name: Update ATB Release Version
 on:
   workflow_dispatch:
     inputs:
-      atb_version:
-        description: 'ATB Version'
+      atb_release_version:
+        description: 'ATB Release Version (e.g. 0.20.2)'
         required: true
 jobs:
-  Update-ATB-Version:
+  Update-ATB-Release-Version:
     runs-on: windows-latest
     steps:
       - name: Check out current web site repo
         uses: actions/checkout@v3
-      - name: Update ATB version
+      - name: Update ATB release version
         run: |
-          (Get-Content _config.yml) -replace "^atb_version:.*$", "atb_version: ${{ atb_version }}" | Out-File -encoding ASCII _config.yml
+          (Get-Content _config.yml) -replace "^atb_release_version:.*$", "atb_release_version: ${{ atb_release_version }}" | Out-File -encoding ASCII _config.yml
       - name: Commit and push changes
         run: |
           git config --global user.name "Zheng Wang"
