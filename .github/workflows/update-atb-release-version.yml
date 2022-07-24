@@ -1,10 +1,5 @@
 name: Update ATB Release Version
 on:
-  workflow_call:
-    inputs:
-      atb_release_version:
-        required: true
-        type: string
   workflow_dispatch:
     inputs:
       atb_release_version:
@@ -17,8 +12,6 @@ jobs:
     steps:
       - name: Check out current web site repo
         uses: actions/checkout@v3
-        with:
-          repository: apitestbase/apitestbase.github.io
       - name: Update ATB release version
         run: |
           (Get-Content _config.yml) -replace "^atb_release_version:.*$", "atb_release_version: ${{ inputs.atb_release_version }}" | Out-File -encoding ASCII _config.yml
