@@ -17,7 +17,9 @@ For example, if you want to install OpenJDK 12 on Windows, here is a [quick tuto
 
 To verify Java is on your machine, just open a command line window and run
 
-`java -version`
+```
+java -version
+```
 
 You should see something like
 
@@ -26,15 +28,34 @@ You should see something like
     OpenJDK 64-Bit Server VM (build 12.0.2+10, mixed mode, sharing)
 
 ## Launch
+{% tabs launch %}
+
+{% tab launch Windows %}
 Open a command line window, cd to `<APITestBase_Home>` and run below command
 
-`java -Djava.net.useSystemProxies=true -jar apitestbase-{{ site.atb_release_version }}.jar server config.yml`
+If using PowerShell, it is
+```
+java "-Djava.net.useSystemProxies=true" -jar apitestbase-{{ site.atb_release_version }}.jar server config.yml
+```
+If using CMD, it is `java -Djava.net.useSystemProxies=true -jar apitestbase-{{ site.atb_release_version }}.jar server config.yml` instead.
 
-On Windows, alternatively you can simply run `<APITestBase_Home>\start.bat`.
+Alternatively you can simply double click `<APITestBase_Home>\start.bat` from File Explorer.
+{% endtab %}
+
+{% tab launch MacOS/Linux %}
+Open a terminal, cd to `<APITestBase_Home>` and run below command
+```
+java -Djava.net.useSystemProxies=true -jar apitestbase-{{ site.atb_release_version }}.jar server config.yml
+```
+{% endtab %}
+
+{% endtabs %}
 
 Once the application is successfully launched, there will be a log like below displayed in the command line output
 
-`API Test Base started with UI address http://localhost:8090/ui`
+```
+API Test Base started with UI address http://localhost:8090/ui
+```
 
 Open a web browser (Google Chrome preferred), and go to the UI address.
 
