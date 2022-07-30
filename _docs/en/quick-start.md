@@ -31,19 +31,18 @@ You should see something like
 {% tabs launch %}
 
 {% tab launch Windows %}
-Open a command line window, cd to `<APITestBase_Home>` and run below command
+Open a PowerShell window, cd to `<APITestBase_Home>` and run below command
 
-If using PowerShell, it is
 ```
 java "-Djava.net.useSystemProxies=true" -jar apitestbase-{{ site.atb_release_version }}.jar server config.yml
 ```
-If using CMD, it is `java -Djava.net.useSystemProxies=true -jar apitestbase-{{ site.atb_release_version }}.jar server config.yml` instead.
 
 Alternatively you can simply double click `<APITestBase_Home>\start.bat` from File Explorer.
 {% endtab %}
 
-{% tab launch MacOS/Linux %}
+{% tab launch MacOS or Linux %}
 Open a terminal, cd to `<APITestBase_Home>` and run below command
+
 ```
 java -Djava.net.useSystemProxies=true -jar apitestbase-{{ site.atb_release_version }}.jar server config.yml
 ```
