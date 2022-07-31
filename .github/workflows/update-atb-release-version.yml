@@ -10,7 +10,7 @@ jobs:
   Update-ATB-Release-Version:
     runs-on: windows-latest
     steps:
-      - name: Check out current web site repo
+      - name: Check out current repo
         uses: actions/checkout@v3
       - name: Update ATB release version
         run: |
