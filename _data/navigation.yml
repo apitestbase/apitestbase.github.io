@@ -55,6 +55,8 @@ docs-en:
         url: /docs/en/avoid-test-duplication
   - title: Other
     children:
+      - title: Install Java
+        url: /docs/en/install-java
       - title: Build API Test Base by Yourself
         url: /docs/en/build-api-test-base-by-yourself
       - title: Upgrade from Old Version

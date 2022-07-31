@@ -11,11 +11,9 @@ Unpack the zip file. The created folder will be referred to as `<APITestBase_Hom
 Alternatively, you can also [build API Test Base by yourself](/docs/en/build-api-test-base-by-yourself).
 
 ## Prerequisite: Java 11+
-Install JRE (Java Runtime Environment) or JDK (Java Development Kit) 11+ if it is not already on your machine.
+[Install JRE (Java Runtime Environment) or JDK (Java Development Kit)](/docs/en/install-java) 11+ if it is not already on your machine.
 
-For example, if you want to install OpenJDK 12 on Windows, here is a [quick tutorial](https://java.tutorials24x7.com/blog/how-to-install-openjdk-12-on-windows).
-
-To verify Java is on your machine, just open a command line window and run
+To verify Java is on your machine, just open a command line window/terminal and run
 
 ```
 java -version
@@ -23,9 +21,11 @@ java -version
 
 You should see something like
 
-    openjdk version "12.0.2" 2019-07-16
-    OpenJDK Runtime Environment (build 12.0.2+10)
-    OpenJDK 64-Bit Server VM (build 12.0.2+10, mixed mode, sharing)
+```
+openjdk version "17.0.4" 2022-07-19
+OpenJDK Runtime Environment Temurin-17.0.4+8 (build 17.0.4+8)
+OpenJDK 64-Bit Server VM Temurin-17.0.4+8 (build 17.0.4+8, mixed mode, sharing)
+```
 
 ## Launch
 {% tabs launch %}
