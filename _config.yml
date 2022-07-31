@@ -31,10 +31,7 @@ url: "https://apitestbase.io" # the base hostname & protocol for your site, e.g.
 #github_username:
 
 # Build settings
-#theme: jekyll-text-theme
-remote_theme: kitian616/jekyll-TeXt-theme@v2.2.6
-plugins:
-  - jekyll-remote-theme
+theme: jekyll-text-theme
 
 collections:
   docs:
