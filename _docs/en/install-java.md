@@ -5,7 +5,7 @@ key: docs-install-java
 ---
 Here are some simple instructions for installing Open JRE/JDK built by Eclipse Temurin, which is free and popular.
 
-You can also install JRE/JDK built by another organization (refer to the organization's documentation). API Test Base is not bound to any JRE/JDK vendor.
+You can also install JRE/JDK built by another organization (refer to the organization's documentation).
 
 ## Download
 Open [Eclipse Temurin web site](https://adoptium.net/temurin/releases) in your browser.
