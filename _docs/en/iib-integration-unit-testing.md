@@ -3,7 +3,7 @@ title: IIB Integration Unit Testing
 permalink: /docs/en/iib-integration-unit-testing
 key: docs-iib-integration-unit-testing
 ---
-Though API Test Base enables `test driven development (TDD) for IIB message flows`, this page is about basic method which assumes the message flow code has already been written before we test it.
+Though API Test Base enables `test driven development (TDD) for IBM Integration Bus (IIB) message flows`, this page is about basic method which assumes the message flow code has already been written before we test it.
 
 Below is the sample scenario. Check section [Sample Test Case](#sample-test-case) if you are eager to see what the test case looks like.
 
