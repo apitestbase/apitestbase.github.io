@@ -4,11 +4,9 @@ permalink: /docs/en/quick-start
 key: docs-quick-start
 ---
 ## Download
-Download the latest API Test Base release [apitestbase-{{ site.atb_release_version }}-dist.zip](https://github.com/apitestbase/apitestbase/releases/download/{{ site.atb_release_version }}/apitestbase-{{ site.atb_release_version }}-dist.zip). Release note can be found [here](https://github.com/apitestbase/apitestbase/releases).
+Download the latest API Test Base release [apitestbase-{{ site.atb_release_version }}-dist.zip](https://github.com/apitestbase/apitestbase-release/releases/download/{{ site.atb_release_version }}/apitestbase-{{ site.atb_release_version }}-dist.zip). Release note can be found [here](https://github.com/apitestbase/apitestbase-release/releases).
 
 Unpack the zip file. The created folder will be referred to as `<APITestBase_Home>` hereafter.
-
-Alternatively, you can also [build API Test Base by yourself](/docs/en/build-api-test-base-by-yourself).
 
 ## Prerequisite: Java 11+
 [Install JRE (Java Runtime Environment) or JDK (Java Development Kit)](/docs/en/install-java) 11+ if it is not already on your machine.

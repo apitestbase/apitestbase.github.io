@@ -27,7 +27,7 @@ tags:     # Not sure why. Unlike other article pages, here can't use 'tags: tag1
   - mqtt-testing
   - jms-testing
 ---
-API Test Base is an open source tool for integration testing a variety of APIs. It is 100% free and suitable for Integration, ESB, Microservices and SOA testing.
+API Test Base is a free tool for integration testing a variety of APIs. It is suitable for Integration, Microservices, ESB and SOA testing.
 
 Supported API types: HTTP, SOAP, Relational databases (Oracle, SQL Server, H2), JMS (ActiveMQ, Solace), FTP(S), SFTP, AMQP, MQTT, IBM MQ, IBM Integration Bus (IIB).
 

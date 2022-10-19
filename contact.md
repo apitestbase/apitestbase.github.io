@@ -6,4 +6,4 @@ key: contact
 pageview: true
 ---
 ### Issue, feature or improvement request
-Please raise an issue at [the repo](https://github.com/apitestbase/apitestbase/issues).
+Please raise an issue at [the release repo](https://github.com/apitestbase/apitestbase-release/issues).

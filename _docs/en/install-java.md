@@ -13,7 +13,7 @@ Open [Eclipse Temurin web site](https://adoptium.net/temurin/releases) in your b
 Parameters:
 * Operating System: choose your own.
 * Architecture: the CPU architecture. Choose your own.
-* Package Type: choose JRE if you only want to run API Test Base. Choose JDK if you want to [build API Test Base by yourself](/docs/en/build-api-test-base-by-yourself) as well.
+* Package Type: choose JRE.
 * Version: latest LTS version is recommended. Refer to the [Release Table](https://en.wikipedia.org/wiki/Java_version_history#Release_table) for available versions.
 
 Download your desired JRE/JDK after choosing the parameter values. For easy installation, .msi file is recommended for Windows user, and .pkg file is recommended for MacOS user.
