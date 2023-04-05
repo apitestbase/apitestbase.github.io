@@ -10,9 +10,9 @@ Download the latest API Test Base installer from the [release page](https://gith
 
 {% tab install Windows %}
 
-Download the installer `apitestbase-{{ site.atb_release_version }}.exe`, double click it and follow through the standard Windows application installation process.
+Download the installer `apitestbase-{{ site.atb_release_version }}.exe`, double click it and follow through the normal Windows application installation process.
 
-Once the installation finishes, you can launch API Test Base application from Start Menu or Desktop shortcut.
+Once the installation finishes, you can launch API Test Base from Start Menu or Desktop shortcut.
 
 First time launching, a Windows Defender Firewall alert will pop up. Uncheck the `Public networks ...` option, and click the `Allow access` button.
 
