@@ -28,7 +28,7 @@ Once the application is launched, a system tray icon shows. Click the icon to br
 
 ![System Tray Menu](../../screenshots/install-and-launch/system-tray-menu.png)
 
-Select `Open ATB` to open API Test Base UI in your default browser (Google Chrome preferred).
+Select `Open ATB` to open API Test Base UI in your default browser.
 
 ## Ad Hoc Invocation
 If you only want to invoke an API and see its response, just need to create a test step in a test case.
