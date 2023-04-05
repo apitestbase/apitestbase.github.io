@@ -53,8 +53,6 @@ docs-en:
         url: /docs/en/avoid-test-duplication
   - title: Other
     children:
-      - title: Install Java
-        url: /docs/en/install-java
       - title: Upgrade from Old Version
         url: /docs/en/upgrade-from-old-version
       - title: For Users

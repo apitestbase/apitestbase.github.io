@@ -3,68 +3,42 @@ title: Quick Start
 permalink: /docs/en/quick-start
 key: docs-quick-start
 ---
-## Download
-Download the latest API Test Base release [apitestbase-{{ site.atb_release_version }}-dist.zip](https://github.com/apitestbase/apitestbase-release/releases/download/{{ site.atb_release_version }}/apitestbase-{{ site.atb_release_version }}-dist.zip). Release note can be found [here](https://github.com/apitestbase/apitestbase-release/releases).
+## Install and Launch
+Download the latest API Test Base installer from the [release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}).
 
-Unpack the zip file. The created folder will be referred to as `<APITestBase_Home>` hereafter.
+{% tabs install %}
 
-## Prerequisite: Java 11+
-[Install JRE (Java Runtime Environment) or JDK (Java Development Kit)](/docs/en/install-java) 11+ if it is not already on your machine.
+{% tab install Windows %}
 
-To verify Java is on your machine, just open a command line window/terminal and run
+Download the installer `apitestbase-{{ site.atb_release_version }}.exe`, double click it and follow through the standard Windows application installation process.
 
-```
-java -version
-```
+Once the installation finishes, you can launch API Test Base application from Start Menu or Desktop shortcut.
 
-You should see something like
+First time launching, a Windows Defender Firewall alert will pop up. Uncheck the `Public networks ...` option, and click the `Allow access` button.
 
-```
-openjdk version "17.0.4" 2022-07-19
-OpenJDK Runtime Environment Temurin-17.0.4+8 (build 17.0.4+8)
-OpenJDK 64-Bit Server VM Temurin-17.0.4+8 (build 17.0.4+8, mixed mode, sharing)
-```
-
-## Launch
-{% tabs launch %}
-
-{% tab launch Windows %}
-Open a PowerShell window, cd to `<APITestBase_Home>` and run below command
-
-```
-java "-Djava.net.useSystemProxies=true" -jar apitestbase-{{ site.atb_release_version }}.jar server config.yml
-```
-
-Alternatively you can simply double click `<APITestBase_Home>\start.bat` from File Explorer.
 {% endtab %}
 
-{% tab launch MacOS or Linux %}
-Open a terminal, cd to `<APITestBase_Home>` and run below command
-
-```
-java -Djava.net.useSystemProxies=true -jar apitestbase-{{ site.atb_release_version }}.jar server config.yml
-```
+{% tab install Mac OS %}
+Coming soon ...
 {% endtab %}
 
 {% endtabs %}
 
-Once the application is successfully launched, there will be a log like below displayed in the command line output
+Once the application is launched, a system tray icon shows. Click the icon to bring up the menu, like below.
 
-```
-API Test Base started with UI address http://localhost:8090/ui
-```
+![System Tray Menu](../../screenshots/install-and-launch/system-tray-menu.png)
 
-Open a web browser (Google Chrome preferred), and go to the UI address.
+Select `Open ATB` to open API Test Base UI in your default browser (Google Chrome preferred).
 
 ## Ad Hoc Invocation
-If you only want to invoke an API and see its response, just need to create a test step in a new or existing test case.
+If you only want to invoke an API and see its response, just need to create a test step in a test case.
 
-To create a new test case, right click on a folder in the tree, select Create Test Case and give it a name.
+Right click on a folder in the tree, select Create Test Case and give it a name.
 
 ![New Ad Hoc Test Case](../../screenshots/basic-use/new-ad-hoc-test-case.png)
 
-Suppose you want to invoke a REST API. On the right pane of the screen, i.e. the test case edit view, under the Test Steps tab, click Create dropdown button and select HTTP Step. The test step edit view opens.
+Suppose you want to invoke a REST API. On the right pane of the screen, under the Test Steps tab, click the `Create` dropdown button and select `HTTP Step`. The test step edit view opens.
 
-Under the Basic Info tab, set the test step name. Under the Invocation tab, select Method like `GET`, set URL like `http://localhost:8090/api/articles` (an API Test Base bundled API) and click Invoke button.
+Under the Basic Info tab, enter the test step name. Under the Invocation tab, select Method like `GET`, enter a URL like `http://localhost:8090/api/articles` (an API Test Base bundled API) and click the `Invoke` button.
 
 ![Ad Hoc HTTP Invocation](../../screenshots/basic-use/ad-hoc-http-invocation.png)
