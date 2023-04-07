@@ -13,7 +13,7 @@ Here
 * abc.cer is the SSL certificate file (like that extracted from browser after opening the IIB integration node web console).
 * truststore.jks is the filename of the truststore. It will be created if not already existing.
 
-Copy the truststore file (here truststore.jks) to <APITestBase_Home>. The config.yml contains corresponding settings (sslTrustStorePath, sslTrustStorePassword) for using the truststore. Adjust their values accordingly.
+Copy the truststore file (here truststore.jks) to `<APITestBase_Data>`. The config.yml contains corresponding settings (sslTrustStorePath, sslTrustStorePassword) for using the truststore. Change the setting values if needed.
 
 Note
 * API Test Base application needs to be restarted for truststore change.
@@ -21,4 +21,4 @@ Note
 
 Reference
 
-https://www.sslshopper.com/article-most-common-java-keytool-keystore-commands.html?jn9ed3e997=3
+* https://www.sslshopper.com/article-most-common-java-keytool-keystore-commands.html?jn9ed3e997=3
