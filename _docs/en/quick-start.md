@@ -14,7 +14,7 @@ Download the installer `apitestbase-{{ site.atb_release_version }}.exe`, double 
 
 Once the installation finishes, you can launch API Test Base from Start Menu or Desktop shortcut.
 
-First time launching, a Windows Defender Firewall alert will pop up. Uncheck the `Public networks ...` option, and click the `Allow access` button.
+First time launching, a Windows Defender Firewall alert will pop up. Check the `Private networks ...` option, uncheck the `Public networks ...` option, and click the `Allow access` button.
 
 {% endtab %}
 
