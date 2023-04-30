@@ -19,7 +19,18 @@ First time launching, a Windows Defender Firewall alert will pop up. Check the `
 {% endtab %}
 
 {% tab install Mac OS %}
-Coming soon ...
+Download the `apitestbase-{{ site.atb_release_version }}.dmg`, double click it and copy `API Test Base.app` to your /Applications folder.
+
+Open the `API Test Base.app`, and you'll see a dialog stating '"API Test Base.app" can't be opened because Apple cannot check it for malicious software'. This is because the app hasn't been signed using Apple certificate (which is not free).
+
+Click OK on the dialog, open System Settings, go to Privacy & Security, and you'll see a warning message 'API Test Base.app was blocked from use because it is not from an identified developer'.
+
+Click the Open Anyway button. If prompted for login password (for approving the app opening), enter the password, and you'll see the first dialog again, but with an Open button.
+
+Click the Open button to launch API Test Base.
+
+After successful launch, you'll no longer see the dialogs when launching again.
+
 {% endtab %}
 
 {% endtabs %}
