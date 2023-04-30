@@ -17,7 +17,11 @@ Your test data, settings, etc. will stay untouched, under the `%USERPROFILE%\App
 {% endtab %}
 
 {% tab upgrade Mac OS %}
-Coming soon ...
+
+Open a new version of the dmg file, and you'll be able to copy the new version of `API Test Base.app` to your /Applications folder, replacing the old one.
+
+Your test data, settings, etc. will stay untouched, under the `~/Library/Application Support/API Test Base` directory.
+
 {% endtab %}
 
 {% endtabs %}
