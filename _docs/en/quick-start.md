@@ -4,13 +4,12 @@ permalink: /docs/en/quick-start
 key: docs-quick-start
 ---
 ## Install and Launch
-Download the latest API Test Base installer from the [release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}).
 
 {% tabs install %}
 
 {% tab install Windows %}
 
-Download the installer `apitestbase-{{ site.atb_release_version }}.exe`, double click it and follow through the normal Windows application installation process.
+Download installer `apitestbase-{{ site.atb_release_version }}.exe` from the [latest release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}), double click the installer and follow through the normal Windows application installation process.
 
 Once the installation finishes, you can launch API Test Base from Start Menu or Desktop shortcut.
 
@@ -20,7 +19,7 @@ First time launching, a Windows Defender Firewall alert will pop up. Check the `
 
 {% tab install Mac OS %}
 
-Download the `apitestbase-{{ site.atb_release_version }}.dmg`, double click it and copy `API Test Base.app` to your /Applications folder.
+Download `apitestbase-{{ site.atb_release_version }}.dmg` from the [latest release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}), double click the dmg and copy `API Test Base.app` to your /Applications folder.
 
 Open the `API Test Base.app`, and you'll see a dialog stating '"API Test Base.app" can't be opened because Apple cannot check it for malicious software'. This is because the app hasn't been signed using Apple certificate (which is not free).
 
