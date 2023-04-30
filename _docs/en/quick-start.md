@@ -9,7 +9,9 @@ key: docs-quick-start
 
 {% tab install Windows %}
 
-Download installer `apitestbase-{{ site.atb_release_version }}.exe` from the [latest release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}), double click the installer and follow through the normal Windows application installation process.
+Download installer `apitestbase-{{ site.atb_release_version }}.exe` from the [latest release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}).
+
+Double click the installer and follow through the normal Windows application installation process.
 
 Once the installation finishes, you can launch API Test Base from Start Menu or Desktop shortcut.
 
@@ -19,9 +21,11 @@ First time launching, a Windows Defender Firewall alert will pop up. Check the `
 
 {% tab install Mac OS %}
 
-Download `apitestbase-{{ site.atb_release_version }}.dmg` from the [latest release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}), double click the dmg and copy `API Test Base.app` to your /Applications folder.
+Download `apitestbase-{{ site.atb_release_version }}.dmg` from the [latest release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}).
 
-Open the `API Test Base.app`, and you'll see a dialog stating '"API Test Base.app" can't be opened because Apple cannot check it for malicious software'. This is because the app hasn't been signed using Apple certificate (which is not free).
+Double click the dmg and copy `API Test Base.app` to your /Applications folder.
+
+Open the `/Applications/API Test Base.app`, and you'll see a dialog stating '"API Test Base.app" can't be opened because Apple cannot check it for malicious software'. This is because the app hasn't been signed using Apple certificate (which is not free).
 
 Click OK on the dialog, open System Settings, go to Privacy & Security, and you'll see a warning message 'API Test Base.app was blocked from use because it is not from an identified developer'.
 
