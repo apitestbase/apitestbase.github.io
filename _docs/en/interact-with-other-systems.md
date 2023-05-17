@@ -32,17 +32,13 @@ Sample JDBC URLs:
     jdbc:sqlserver://myhost:1433;database=myDatabase;integratedSecurity=true
 
 ## IBM MQ
-To use MQ Test Step to interact with IBM MQ, copy below jars to `<APITestBase_Data>/lib/mq`.
+To use MQ Test Step to interact with IBM MQ, download the `MQ allclient` jar from Maven Central to `<APITestBase_Data>/lib/mq`.
 
-    //  For MQ 8.0.0.x
-    com.ibm.mq.headers.jar
-    com.ibm.mq.jar
-    com.ibm.mq.jmqi.jar
-    com.ibm.mq.pcf.jar
-   
-These jars can be found at `<MQ_Install_Dir>/java/lib`.
+For example, version 9.3.2.1 jar can be downloaded at https://repo1.maven.org/maven2/com/ibm/mq/com.ibm.mq.allclient/9.3.2.1/com.ibm.mq.allclient-9.3.2.1.jar.
 
-To interact with multiple versions of MQ at the same time, use the jars of the highest version.
+Latest version jar is recommended.
+
+To interact with multiple versions of MQ at the same time, use the jar of the highest version.
 
 ## IIB
 To use IIB Test Step to interact with IIB (only v10 is supported), copy IBM jars to corresponding folders.
@@ -59,9 +55,11 @@ Copy below jars to `<APITestBase_Data>/lib/iib/v100`.
 These jars can be found at `<IIB_Install_Dir>/common/classes` and `<IIB_Install_Dir>/common/jetty/lib`.
 
 ## Solace
-To use JMS Test Step with Solace provider to interact with Solace broker, download following jar files from Maven Central
+To use JMS Test Step with Solace provider to interact with Solace broker, download the Solace jars from Maven Central to `<APITestBase_Data>/lib/solace`.
 
-    https://repo1.maven.org/maven2/com/solacesystems/sol-jcsmp/10.12.0/sol-jcsmp-10.12.0.jar
-    https://repo1.maven.org/maven2/com/solacesystems/sol-jms/10.12.0/sol-jms-10.12.0.jar
+For example, version 10.19.0 jars can be downloaded at
 
-and place the jar files under `<APITestBase_Data>/lib/solace`.
+    https://repo1.maven.org/maven2/com/solacesystems/sol-jcsmp/10.19.0/sol-jcsmp-10.19.0.jar
+    https://repo1.maven.org/maven2/com/solacesystems/sol-jms/10.19.0/sol-jms-10.19.0.jar
+
+Latest version jars are recommended.
