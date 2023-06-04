@@ -37,6 +37,9 @@ collections:
   docs:
     output: true
 
+plugins:
+  - jekyll-redirect-from
+
 defaults:
   ## docs
   - scope:

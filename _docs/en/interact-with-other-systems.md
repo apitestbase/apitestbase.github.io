@@ -40,19 +40,8 @@ Latest version jar is recommended.
 
 To interact with multiple versions of MQ at the same time, use the jar of the highest version.
 
-## IIB
-To use IIB Test Step to interact with IIB (only v10 is supported), copy IBM jars to corresponding folders.
-
-Copy below jars to `<APITestBase_Data>/lib/iib/v100`.
-
-    IntegrationAPI.jar
-    jetty-io.jar
-    jetty-util.jar
-    websocket-api.jar
-    websocket-client.jar
-    websocket-common.jar
-
-These jars can be found at `<IIB_Install_Dir>/common/classes` and `<IIB_Install_Dir>/common/jetty/lib`.
+## IBM ACE
+To use ACE Test Step to interact with ACE, copy the `<ACE_Install_Dir>/common/classes/IntegrationAPI.jar` to the `<APITestBase_Data>/lib/ace` folder.
 
 ## Solace
 To use JMS Test Step with Solace provider to interact with Solace broker, download the Solace jars from Maven Central to `<APITestBase_Data>/lib/solace`.
