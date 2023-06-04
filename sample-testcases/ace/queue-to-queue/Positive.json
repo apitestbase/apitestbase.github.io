@@ -1,6 +1,9 @@
 {
   "name" : "Positive",
-  "udps" : [ {
+  "udps" : [{
+    "name" : "App_Name",
+    "value" : "App1"
+  }, {
     "name" : "Flow_Name",
     "value" : "Flow1"
   }, {
@@ -24,16 +27,13 @@
       "name" : "Unmanaged Endpoint",
       "type" : "MQ",
       "otherProperties" : {
-        "@type" : "MQEndpointProperties",
-        "connectionMode" : "Bindings",
-        "queueManagerName" : "",
-        "svrConnChannelName" : null
+        "@type" : "MqEndpointProperties",
+        "connectionMode" : "Bindings"
       }
     },
     "otherProperties" : {
       "destinationType" : "Queue",
-      "queueName" : "${Stub_Output_Queue}",
-      "topicString" : null
+      "queueName" : "${Stub_Output_Queue}"
     }
   }, {
     "name" : "Inject message into input queue",
@@ -43,37 +43,33 @@
       "name" : "Unmanaged Endpoint",
       "type" : "MQ",
       "otherProperties" : {
-        "@type" : "MQEndpointProperties",
-        "connectionMode" : "Bindings",
-        "queueManagerName" : "",
-        "svrConnChannelName" : null
+        "@type" : "MqEndpointProperties",
+        "connectionMode" : "Bindings"
       }
     },
     "apiRequest" : {
-      "minClassName" : ".MQEnqueueOrPublishFromTextRequest",
-      "body" : "${Input_Message}",
-      "rfh2Header" : null
+      "@type": "MqEnqueueOrPublishFromTextRequest",
+      "body" : "${Input_Message}"
     },
     "otherProperties" : {
       "destinationType" : "Queue",
-      "queueName" : "${Input_Queue_Name}",
-      "topicString" : null
+      "queueName" : "${Input_Queue_Name}"
     }
   }, {
     "name" : "Wait for message processing completion",
-    "type" : "IIB",
+    "type" : "ACE",
     "action" : "WaitForProcessingCompletion",
     "endpoint" : {
       "name" : "Unmanaged Endpoint",
-      "type" : "IIB",
+      "type" : "ACE",
       "otherProperties" : {
-        "@type" : "IIBEndpointProperties",
+        "@type" : "AceEndpointProperties",
         "useSSL" : false
       }
     },
     "otherProperties" : {
       "integrationServerName" : "default",
-      "applicationName" : null,
+      "applicationName" : "${App_Name}",
       "messageFlowName" : "${Flow_Name}",
       "waitForProcessingCompletionTimeout" : 20
     }
@@ -85,10 +81,8 @@
       "name" : "Unmanaged Endpoint",
       "type" : "MQ",
       "otherProperties" : {
-        "@type" : "MQEndpointProperties",
-        "connectionMode" : "Bindings",
-        "queueManagerName" : "",
-        "svrConnChannelName" : null
+        "@type" : "MqEndpointProperties",
+        "connectionMode" : "Bindings"
       }
     },
     "assertions" : [ {
@@ -100,8 +94,7 @@
     } ],
     "otherProperties" : {
       "destinationType" : "Queue",
-      "queueName" : "${Stub_Output_Queue}",
-      "topicString" : null
+      "queueName" : "${Stub_Output_Queue}"
     }
   }, {
     "name" : "Dequeue message from stub output queue and assert message body",
@@ -111,23 +104,20 @@
       "name" : "Unmanaged Endpoint",
       "type" : "MQ",
       "otherProperties" : {
-        "@type" : "MQEndpointProperties",
-        "connectionMode" : "Bindings",
-        "queueManagerName" : "",
-        "svrConnChannelName" : null
+        "@type" : "MqEndpointProperties",
+        "connectionMode" : "Bindings"
       }
     },
     "assertions" : [ {
-      "name" : "XMLEqual",
-      "type" : "XMLEqual",
+      "name" : "XmlEqual",
+      "type" : "XmlEqual",
       "otherProperties" : {
         "expectedXML" : "${Expected_Output_Message}"
       }
     } ],
     "otherProperties" : {
       "destinationType" : "Queue",
-      "queueName" : "${Stub_Output_Queue}",
-      "topicString" : null
+      "queueName" : "${Stub_Output_Queue}"
     }
   } ],
   "dataTable" : {

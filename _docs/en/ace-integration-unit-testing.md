@@ -42,7 +42,7 @@ Based on the isolation, a positive test case for Flow1 would have these steps.
     4. Check stub output queue depth equals 1
     5. Dequeue message from stub output queue and assert message body    
 
-Step 3 is to ensure that Flow1 finishes all the work processing the input message, including putting the message to the output queue. Without it, the test case will fail, as step 2 finishes immediately and there is no message in the stub output queue when step 4 runs.
+Step 3 is to ensure that Flow1 finishes all the work processing the input message, including putting the message to the output queue. Without it, the test case run might fail, as we don't know how much time the Compute node will take to finish the message processing, but the step 2 finishes immediately and there might be no message in the stub output queue when step 4 runs.
 
 Step 3 is backed by ACE test step 'Wait For Processing Completion' action which monitors message flow's activity log to `timely detect the signal of message processing completion`.
 
