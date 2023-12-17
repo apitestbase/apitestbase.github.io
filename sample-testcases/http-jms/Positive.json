@@ -20,20 +20,18 @@
     "endpoint" : {
       "name" : "Unmanaged Endpoint",
       "type" : "JMS",
+      "provider": "Solace",
       "host" : "localhost",
       "port" : 55555,
       "username" : "admin",
       "otherProperties" : {
-        "@type" : "JMSSolaceEndpointProperties",
-        "jmsProvider" : "Solace",
+        "@type" : "JmsSolaceEndpointProperties",
         "vpn" : "default"
       }
     },
     "otherProperties" : {
       "destinationType" : "Queue",
-      "queueName" : "${Output_Queue_Name}",
-      "topicString" : null,
-      "browseMessageIndex" : 1
+      "queueName" : "${Output_Queue_Name}"
     }
   }, {
     "name" : "Invoke the API to ingest data",
@@ -41,13 +39,10 @@
     "endpoint" : {
       "name" : "Unmanaged Endpoint",
       "type" : "HTTP",
-      "url" : "http://localhost:port/path/to/your/local/data/ingestion/api",
-      "otherProperties" : {
-        "@type" : "EndpointProperties"
-      }
+      "url" : "http://localhost:port/path/to/your/local/data/ingestion/api"
     },
     "apiRequest" : {
-      "minClassName" : ".HTTPRequest",
+      "@type": "HttpRequest",
       "headers" : [ ],
       "body" : "${Input_Message}",
       "method" : "POST"
@@ -75,12 +70,12 @@
     "endpoint" : {
       "name" : "Unmanaged Endpoint",
       "type" : "JMS",
+      "provider": "Solace",
       "host" : "localhost",
       "port" : 55555,
       "username" : "admin",
       "otherProperties" : {
-        "@type" : "JMSSolaceEndpointProperties",
-        "jmsProvider" : "Solace",
+        "@type" : "JmsSolaceEndpointProperties",
         "vpn" : "default"
       }
     },
@@ -93,9 +88,7 @@
     } ],
     "otherProperties" : {
       "destinationType" : "Queue",
-      "queueName" : "${Output_Queue_Name}",
-      "topicString" : null,
-      "browseMessageIndex" : 1
+      "queueName" : "${Output_Queue_Name}"
     }
   }, {
     "name" : "Browse the stub output queue and assert message body",
@@ -104,18 +97,18 @@
     "endpoint" : {
       "name" : "Unmanaged Endpoint",
       "type" : "JMS",
+      "provider": "Solace",
       "host" : "localhost",
       "port" : 55555,
       "username" : "admin",
       "otherProperties" : {
-        "@type" : "JMSSolaceEndpointProperties",
-        "jmsProvider" : "Solace",
+        "@type" : "JmsSolaceEndpointProperties",
         "vpn" : "default"
       }
     },
     "assertions" : [ {
-      "name" : "JSONEqual",
-      "type" : "JSONEqual",
+      "name" : "JsonEqual",
+      "type" : "JsonEqual",
       "otherProperties" : {
         "expectedJSON" : "${Expected_Output_Message}"
       }
@@ -123,8 +116,10 @@
     "otherProperties" : {
       "destinationType" : "Queue",
       "queueName" : "${Output_Queue_Name}",
-      "topicString" : null,
-      "browseMessageIndex" : 1
+      "browsePattern": {
+        "@type": "ByIndex",
+        "messageIndex": "1"
+      }
     }
   } ],
   "dataTable" : {

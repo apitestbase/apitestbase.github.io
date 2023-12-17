@@ -54,4 +54,4 @@ The result test case looks like below
 The test case created above is available for download at <a href="../../sample-testcases/ace/queue-to-queue/Positive.json" download>sample test case</a>. After download, right click any folder on ATB UI and import it.
 
 ## What is Integration Unit Testing?
-Refer to [this post](https://medium.com/@zhengwang666/integration-unit-testing-683fbf995c43).
+Refer to [this post](https://medium.com/@zhengwang666/integration-unit-testing-683fbf995c43){:target="_blank"}.

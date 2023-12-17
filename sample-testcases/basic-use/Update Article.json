@@ -7,13 +7,10 @@
       "name" : "Unmanaged Endpoint",
       "type" : "DB",
       "url" : "jdbc:h2:./database/sample;AUTO_SERVER=TRUE",
-      "username" : "user",
-      "otherProperties" : {
-        "@type" : "EndpointProperties"
-      }
+      "username" : "user"
     },
     "apiRequest" : {
-      "minClassName" : ".DBRequest",
+      "@type": "DbRequest",
       "sqlScript" : "-- Clear the table\ndelete from article;\n\n-- Create two article records\ninsert into article (id, title, content) values (1, 'article1', 'content1');\ninsert into article (id, title, content) values (2, 'article2', 'content2');"
     },
     "otherProperties" : { }
@@ -23,13 +20,10 @@
     "endpoint" : {
       "name" : "Unmanaged Endpoint",
       "type" : "HTTP",
-      "url" : "http://localhost:8090/api/articles/2",
-      "otherProperties" : {
-        "@type" : "EndpointProperties"
-      }
+      "url" : "http://localhost:8090/api/articles/2"
     },
     "apiRequest" : {
-      "minClassName" : ".HTTPRequest",
+      "@type": "HttpRequest",
       "headers" : [ {
         "name" : "Content-Type",
         "value" : "application/json"
@@ -54,18 +48,15 @@
       "name" : "Unmanaged Endpoint",
       "type" : "DB",
       "url" : "jdbc:h2:./database/sample;AUTO_SERVER=TRUE",
-      "username" : "user",
-      "otherProperties" : {
-        "@type" : "EndpointProperties"
-      }
+      "username" : "user"
     },
     "apiRequest" : {
-      "minClassName" : ".DBRequest",
+      "@type": "DbRequest",
       "sqlScript" : "select id, title, content from article;"
     },
     "assertions" : [ {
-      "name" : "JSONEqual",
-      "type" : "JSONEqual",
+      "name" : "JsonEqual",
+      "type" : "JsonEqual",
       "otherProperties" : {
         "expectedJSON" : "[{\"ID\":1,\"TITLE\":\"article1\",\"CONTENT\":\"content1\"},{\"ID\":2,\"TITLE\":\"article2\",\"CONTENT\":\"Once upon a time ...\"}]"
       }
