@@ -9,7 +9,7 @@ key: docs-quick-start
 
 {% tab install Windows %}
 
-Download installer `apitestbase-{{ site.atb_release_version }}.exe` from the [latest release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}).
+Download installer `apitestbase-{{ site.atb_release_version }}.exe` from the [latest release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}){:target="_blank"}.
 
 Double click the installer and follow through the normal Windows application installation process.
 
@@ -21,7 +21,7 @@ First time launching, a Windows Defender Firewall alert will pop up. Check the `
 
 {% tab install Mac OS %}
 
-Download `apitestbase-{{ site.atb_release_version }}.dmg` from the [latest release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}).
+Download `apitestbase-{{ site.atb_release_version }}.dmg` from the [latest release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}){:target="_blank"}.
 
 Double click the dmg and copy `API Test Base.app` to your /Applications folder.
 

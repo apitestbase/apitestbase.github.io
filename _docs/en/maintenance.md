@@ -15,4 +15,4 @@ The first time you launch the application, two new folders are created automatic
 
 **It is highly recommended that you back up `<APITestBase_Data>/database` folder regularly.** Remember to exit the application before backing up.
 
-You can tune API Test Base application to suit your runtime needs by changing contents of the config.yml under `<APITestBase_Data>`. For example, you can change the UI port number through the property `server > applicationConnectors > port` in config.yml. Refer to [Dropwizard doc](https://www.dropwizard.io/1.3.4/docs/manual/configuration.html) for more information. Re-launch API Test Base for the changes to take effect.
+You can tune API Test Base application to suit your runtime needs by changing contents of the config.yml under `<APITestBase_Data>`. For example, you can change the UI port number through the property `server > applicationConnectors > port` in config.yml. Refer to [Dropwizard doc](https://www.dropwizard.io/en/stable/manual/configuration.html){:target="_blank"} for more information. Re-launch API Test Base for the changes to take effect.

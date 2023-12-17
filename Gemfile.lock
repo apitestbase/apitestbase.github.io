@@ -45,6 +45,8 @@ GEM
     jekyll-feed (0.15.1)
       jekyll (>= 3.7, < 5.0)
     jekyll-paginate (1.1.0)
+    jekyll-redirect-from (0.16.0)
+      jekyll (>= 3.3, < 5.0)
     jekyll-sass-converter (3.0.0)
       sass-embedded (~> 1.54)
     jekyll-sitemap (1.4.0)
@@ -112,6 +114,7 @@ PLATFORMS
 DEPENDENCIES
   jekyll (~> 4.3.2)
   jekyll-feed (~> 0.12)
+  jekyll-redirect-from
   jekyll-tabs
   jekyll-text-theme
   tzinfo (~> 1.2)

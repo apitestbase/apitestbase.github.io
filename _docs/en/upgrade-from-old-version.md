@@ -7,7 +7,7 @@ key: docs-upgrade-from-old-version
 
 Before upgrade, make sure you `exit API Test Base app` if it is running.
 
-Download the latest API Test Base installer from the [release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}).
+Download the latest API Test Base installer from the [release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}){:target="_blank"}.
 
 {% tabs upgrade %}
 

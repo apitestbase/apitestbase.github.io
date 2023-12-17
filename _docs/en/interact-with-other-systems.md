@@ -17,7 +17,7 @@ Sample JDBC URLs:
     jdbc:oracle:thin:@myhost:1521/myServiceName
 
 ### SQL Server    
-SQL Server JDBC driver can be downloaded from Microsoft [web site](https://msdn.microsoft.com/en-us/library/mt484311(v=sql.110).aspx). After unzipping it, copy `sqljdbc41.jar` to `<APITestBase_Data>/lib/jdbc/sqlserver` folder.
+SQL Server JDBC driver can be downloaded from Microsoft [web site](https://msdn.microsoft.com/en-us/library/mt484311(v=sql.110).aspx){:target="_blank"}. After unzipping it, copy `sqljdbc41.jar` to `<APITestBase_Data>/lib/jdbc/sqlserver` folder.
 
 To enable API Test Base to use Windows authentication to connect to SQL Server, also copy `sqljdbc_auth.dll` from the unzipped folder to `<APITestBase_Data>/lib/jdbc/sqlserver`, and add `<APITestBase_Data>/lib/jdbc/sqlserver` to the `PATH` environment variable of the Windows OS where API Test Base is running.
 
@@ -34,7 +34,9 @@ Sample JDBC URLs:
 ## IBM MQ
 To use MQ Test Step to interact with IBM MQ, download the `MQ allclient` jar from Maven Central to `<APITestBase_Data>/lib/mq`.
 
-For example, version 9.3.2.1 jar can be downloaded at https://repo1.maven.org/maven2/com/ibm/mq/com.ibm.mq.allclient/9.3.2.1/com.ibm.mq.allclient-9.3.2.1.jar.
+For example, version 9.3.2.1 jar can be downloaded at 
+
+    https://repo1.maven.org/maven2/com/ibm/mq/com.ibm.mq.allclient/9.3.2.1/com.ibm.mq.allclient-9.3.2.1.jar.
 
 Latest version jar is recommended.
 
