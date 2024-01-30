@@ -29,4 +29,4 @@ Your test data, settings, etc. will stay untouched, under the `~/Library/Applica
 
 {% endtabs %}
 
-After the upgrade, clear your browser cache files (clearing last one hour is enough). Launch ATB, and refresh ATB UI page if it is open.
+After the upgrade, clear your browser cache files (clearing last one hour is enough). Launch API Test Base, and refresh UI page if it is open.
