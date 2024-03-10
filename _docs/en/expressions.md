@@ -18,7 +18,7 @@ You can embed groovy expressions inside [Properties](/docs/en/properties), or di
 
 When running the test step or test case, the expressions are evaluated and replaced by the evaluation results.
 
-## Default Imports
+### Default Imports
 
 Following Java classes are by default imported when every Groovy expression is evaluated, so you can use their shorthand names instead of fully qualified names in the expressions.
 
