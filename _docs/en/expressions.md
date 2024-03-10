@@ -3,7 +3,7 @@ title: Expressions
 permalink: /docs/en/expressions
 key: docs-expressions
 ---
-ATB supports Groovy expressions in test cases. The syntax is `${= the expresson }`. Examples:
+ATB supports Groovy expressions in test cases. The syntax is `${= the expression }`. Examples:
 ```
 ${= UUID.randomUUID() }
 ${= RandomStringUtils.randomAlphanumeric(10) }
