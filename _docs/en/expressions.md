@@ -20,7 +20,7 @@ When running the test step or test case, the expressions are evaluated and repla
 
 ## Default Imports
 
-Following Java classes are by default imported in every Groovy expression, so you can use their shorthand names instead of fully qualified names in the expressions.
+Following Java classes are by default imported when every Groovy expression is evaluated, so you can use their shorthand names instead of fully qualified names in the expressions.
 
 ```
 java.lang.*
