@@ -16,7 +16,7 @@ You can embed groovy expressions inside [Properties](/docs/en/properties), or di
 
 ![Groovy Expression in Request Body](../../screenshots/expressions/groovy-expression-in-request-body.png)
 
-When running the test step or test case, the expressions are evaluated and the expressions are replaced by the evaluation results.
+When running the test step or test case, the expressions are evaluated and replaced by the evaluation results.
 
 ## Default Imports
 
