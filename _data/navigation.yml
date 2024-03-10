@@ -21,6 +21,8 @@ docs-en:
         url: /docs/en/assertions
       - title: Properties
         url: /docs/en/properties
+      - title: Expressions
+        url: /docs/en/expressions
       - title: HTTP Stubs
         url: /docs/en/http-stubs
       - title: Interact with Other Systems
