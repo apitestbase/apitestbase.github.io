@@ -25,6 +25,8 @@ docs-en:
         url: /docs/en/http-stubs
       - title: Interact with Other Systems
         url: /docs/en/interact-with-other-systems
+      - title: JMS Test Step
+        url: /docs/en/jms-test-step
       - title: FTP Test Step
         url: /docs/en/ftp-test-step
       - title: SFTP Test Step
