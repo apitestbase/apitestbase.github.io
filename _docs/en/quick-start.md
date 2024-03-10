@@ -57,3 +57,11 @@ Suppose you want to invoke a REST API. On the right pane of the screen, under th
 Under the Basic Info tab, enter the test step name. Under the Invocation tab, select Method like `GET`, enter a URL like `http://localhost:8090/api/articles` (an API Test Base bundled API) and click the `Invoke` button.
 
 ![Ad Hoc HTTP Invocation](../../screenshots/basic-use/ad-hoc-http-invocation.png)
+
+## New UI
+A new UI, still under development, is available as a preview. Check the 'Open New UI (WIP)' item in the ATB system tray menu. Here is a sample screenshot:
+
+![New UI Glance](../../screenshots/new-ui-glance.png)
+
+Currently it is mainly used for [JMS Test Step](/docs/en/jms-test-step), but gradually all old ATB UI features will be converted into the new UI.
+
