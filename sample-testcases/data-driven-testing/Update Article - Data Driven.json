@@ -42,7 +42,10 @@
       "otherProperties" : {
         "expectedJSON" : "${Expected_API_Response_JSON}"
       }
-    } ]
+    } ],
+    "otherProperties" : {
+      "timeout" : "20"
+    }
   }, {
     "name" : "Check database data",
     "type" : "DB",
