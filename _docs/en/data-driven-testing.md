@@ -48,7 +48,7 @@ Notice that the properties Input_Article_Title, Expected_API_Response_Status_Cod
 #### Refactor step 3
 Go back to test case edit view, and on Test Steps tab open step 3 `Check database data`.
 
-Replace the Expected JSON of the JSONEqual assertion with a property reference ${Expected_Result_Database_Data}.
+Replace the Expected JSON of the JSONEqual assertion with a property reference `${Expected_Result_Database_Data}`.
 
 ![Refactored Step 3](../../screenshots/data-driven-testing/refactored-step-3.png)
 
@@ -67,7 +67,7 @@ On the Data Table tab, use the Add Row button to add two rows, and fill the rows
 | Positive | article2 | 200 | {<br>&nbsp;&nbsp;"id": 2,<br>&nbsp;&nbsp;"title": "article2",<br>&nbsp;&nbsp;"content": "Once upon a time ..."<br>} | [{"id":1,"title":"article1","content":"content1"},{"id":2,"title":"article2","content":"Once upon a time ..."}] |
 | Negative - article title too long | looooooooooooooo ooooooooooooo oooooooooooong title | 500 | {<br>&nbsp;&nbsp;"code": 500,<br>&nbsp;&nbsp;"message": "#{json-unit.ignore}",<br>&nbsp;&nbsp;"details": "#{json-unit.regex}.\*Value too long for column \\"TITLE[\\\\s\\\\S]\*"<br>} | [{"id":1,"title":"article1","content":"content1"},{"id":2,"title":"article2","content":"content2"}] |
 
-If you don't understand what #{json-unit.ignore} or #{json-unit.regex} means, refer to [JSONEqual Assertion](/docs/en/assertions#jsonequal-assertion).
+If you don't understand what `#{json-unit.ignore}` or `#{json-unit.regex}` means, refer to [JSONEqual Assertion](/docs/en/assertions#jsonequal-assertion).
 
 In the data table, click a cell to fill short (typically one line) data, or double click a cell to bring up a modal for filling long (typically multi-line) value like below.
 
