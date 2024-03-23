@@ -23,6 +23,8 @@ A `Caption` column is by default defined in data table. It enables you to mark/l
 ## Sample Scenario
 Take the test case from [Creating Automated Test Case](/docs/en/creating-automated-test-case) as a starting point. We will refactor it to enable testing Article update with two sets of data in one test case. One is for testing successful article update, and the other is for testing an error case when the article title is too long (over 50 chars) to be persisted into the database.
 
+Check section [Sample Test Case](#sample-test-case) if you are eager to see what the final test case looks like.
+
 ### Refactor the test case to be data driven
 What we got from [Creating Automated Test Case](/docs/en/creating-automated-test-case) was a test case like below
 
@@ -88,3 +90,6 @@ Click a step run link to view its report, or click the result link beside the Ru
 
 ## Data Driven Test Step
 Similar to test case level data table, test step level data table enables the test step to be run one or more times during one test case run. This enables the test step to do repeated work driven by a data table, without duplicating the test step definition in the same test case.
+
+## Sample Test Case
+The final test case created above is available for download at <a href="../../sample-testcases/data-driven-testing/Update Article - Data Driven.json" download>sample test case</a>. After download, right click any folder on ATB UI and import it.

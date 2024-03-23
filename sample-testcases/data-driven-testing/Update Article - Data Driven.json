@@ -1,0 +1,129 @@
+{
+  "name" : "Update Article - Data Driven",
+  "teststeps" : [ {
+    "name" : "Set up database data",
+    "type" : "DB",
+    "endpoint" : {
+      "name" : "Unmanaged Endpoint",
+      "type" : "DB",
+      "url" : "jdbc:h2:C:\\Users\\zheng\\AppData\\Roaming\\ApiTestBase/database/sample;AUTO_SERVER=TRUE",
+      "username" : "user"
+    },
+    "apiRequest" : {
+      "@type" : "DbRequest",
+      "sqlScript" : "-- Clear the table\ndelete from article;\n\n-- Create two article records\ninsert into article (id, title, content) values (1, 'article1', 'content1');\ninsert into article (id, title, content) values (2, 'article2', 'content2');"
+    }
+  }, {
+    "name" : "Invoke the API to update article",
+    "type" : "HTTP",
+    "endpoint" : {
+      "name" : "Unmanaged Endpoint",
+      "type" : "HTTP",
+      "url" : "http://localhost:8090/api/articles/2"
+    },
+    "apiRequest" : {
+      "@type" : "HttpRequest",
+      "headers" : [ {
+        "name" : "Content-Type",
+        "value" : "application/json"
+      } ],
+      "body" : "{\n  \"id\": 2,\n  \"title\": \"${Input_Article_Title}\",\n  \"content\": \"Once upon a time ...\"\n}",
+      "method" : "PUT"
+    },
+    "assertions" : [ {
+      "name" : "StatusCodeEqual",
+      "type" : "StatusCodeEqual",
+      "otherProperties" : {
+        "statusCode" : "${Expected_API_Response_Status_Code}"
+      }
+    }, {
+      "name" : "JSONEqual",
+      "type" : "JsonEqual",
+      "otherProperties" : {
+        "expectedJSON" : "${Expected_API_Response_JSON}"
+      }
+    } ]
+  }, {
+    "name" : "Check database data",
+    "type" : "DB",
+    "endpoint" : {
+      "name" : "Unmanaged Endpoint",
+      "type" : "DB",
+      "url" : "jdbc:h2:C:\\Users\\zheng\\AppData\\Roaming\\ApiTestBase/database/sample;AUTO_SERVER=TRUE",
+      "username" : "user"
+    },
+    "apiRequest" : {
+      "@type" : "DbRequest",
+      "sqlScript" : "select id, title, content from article;"
+    },
+    "assertions" : [ {
+      "name" : "JSONEqual",
+      "type" : "JsonEqual",
+      "otherProperties" : {
+        "expectedJSON" : "${Expected_Result_Database_Data}"
+      }
+    } ]
+  } ],
+  "dataTable" : {
+    "columns" : [ {
+      "name" : "Caption",
+      "type" : "String"
+    }, {
+      "name" : "Input_Article_Title",
+      "type" : "String"
+    }, {
+      "name" : "Expected_API_Response_Status_Code",
+      "type" : "String"
+    }, {
+      "name" : "Expected_API_Response_JSON",
+      "type" : "String"
+    }, {
+      "name" : "Expected_Result_Database_Data",
+      "type" : "String"
+    } ],
+    "rows" : [ {
+      "Caption" : {
+        "rowSequence" : 1,
+        "value" : "Positive"
+      },
+      "Input_Article_Title" : {
+        "rowSequence" : 1,
+        "value" : "article2"
+      },
+      "Expected_API_Response_Status_Code" : {
+        "rowSequence" : 1,
+        "value" : "200"
+      },
+      "Expected_API_Response_JSON" : {
+        "rowSequence" : 1,
+        "value" : "{\n  \"id\": 2,\n  \"title\": \"article2\",\n  \"content\": \"Once upon a time ...\"\n}"
+      },
+      "Expected_Result_Database_Data" : {
+        "rowSequence" : 1,
+        "value" : "[{\"id\":1,\"title\":\"article1\",\"content\":\"content1\"},{\"id\":2,\"title\":\"article2\",\"content\":\"Once upon a time ...\"}]"
+      }
+    }, {
+      "Caption" : {
+        "rowSequence" : 2,
+        "value" : "Negative - article title too long"
+      },
+      "Input_Article_Title" : {
+        "rowSequence" : 2,
+        "value" : "looooooooooooooo ooooooooooooo oooooooooooong title"
+      },
+      "Expected_API_Response_Status_Code" : {
+        "rowSequence" : 2,
+        "value" : "500"
+      },
+      "Expected_API_Response_JSON" : {
+        "rowSequence" : 2,
+        "value" : "{\n  \"code\": 500,\n  \"message\": \"#{json-unit.ignore}\",\n  \"details\": \"#{json-unit.regex}.*Value too long for column \\\"TITLE[\\\\s\\\\S]*\"\n}"
+      },
+      "Expected_Result_Database_Data" : {
+        "rowSequence" : 2,
+        "value" : "[{\"id\":1,\"title\":\"article1\",\"content\":\"content1\"},{\"id\":2,\"title\":\"article2\",\"content\":\"content2\"}]"
+      }
+    } ]
+  },
+  "checkHTTPStubsHitOrder" : false
+}
