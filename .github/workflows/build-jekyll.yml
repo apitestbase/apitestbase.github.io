@@ -11,9 +11,9 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Check out current repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4.1.1
       - name: Cache dependencies on servers
-        uses: actions/cache@v2
+        uses: actions/cache@v4.0.2
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
