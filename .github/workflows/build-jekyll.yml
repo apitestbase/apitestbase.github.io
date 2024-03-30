@@ -1,9 +1,9 @@
 name: Build and Deploy to Github Pages
 on:
-  push:
+  push:                   # triggered by any push to master branch
     branches:
       - master
-  workflow_dispatch:
+  workflow_dispatch:      # manual trigger (without any input)
 
 jobs:
   Build_and_Deploy_to_GitHub_Pages:
@@ -20,7 +20,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
       - name: Build and deploy
-        uses: jeffreytse/jekyll-deploy-action@v0.5.0
+        uses: jeffreytse/jekyll-deploy-action@v0.5.1
         with:
           branch: 'gh-pages'
           token: ${{ secrets.GITHUB_TOKEN }}
