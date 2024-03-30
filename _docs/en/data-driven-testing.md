@@ -14,9 +14,7 @@ Data table can be defined on a test case under the Data Table tab of test case e
 
 Each row in the table contains a set of properties to feed each test case individual run. Property name is column name, and property value is cell value.
     
-You can define two types of columns in the table: `String column, DB endpoint column`.
-
-String property can be referenced in any test step or assertion, and DB endpoint property can only be referenced in DB test step. Refer to [Properties](/docs/en/properties) for more details.
+Property can be used in any test step or assertion. Refer to [Properties](/docs/en/properties) for more details.
 
 A `Caption` column is by default defined in data table. It enables you to mark/label each row in the table, so that the purpose of the row is clear. Caption column will not be used as property when running test case, but it makes test case run report easier to read.
 
