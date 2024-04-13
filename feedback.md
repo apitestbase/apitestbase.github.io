@@ -1,8 +1,8 @@
 ---
-title: Contact
+title: Feedback
 layout: article
-permalink: /contact
-key: contact
+permalink: /feedback
+key: feedback
 pageview: true
 ---
 ### Issue, feature or improvement request
