@@ -35,7 +35,7 @@ Supported API types: HTTP, SOAP, Relational databases (Oracle, SQL Server, Postg
 
 The tool
 * has GUI, saving user programming skills. Users have better experience using GUIed tool, as writing, reading and maintaining code are more brain power draining.
-* runs offline. All data you create is stored on your local machine. No internet connection is required to use the tool.
+* runs offline. All your data is stored on your local machine. No internet connection is required to use the tool.
 * intends to provide a platform that enables integrating testing capabilities for all types of APIs.
 * produces test cases easily readable by technical and non-technical people, and intends to enable sharing test cases across the entire organization.
 * intends to replace traditional unit testing in the API ecosystem with integration unit testing. [Here](https://medium.com/@zhengwang666/integration-unit-testing-683fbf995c43) is the theory.
