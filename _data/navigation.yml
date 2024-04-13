@@ -59,5 +59,3 @@ docs-en:
     children:
       - title: Upgrade from Old Version
         url: /docs/en/upgrade-from-old-version
-      - title: Feedback
-        url: /feedback
