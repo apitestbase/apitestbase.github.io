@@ -11,7 +11,7 @@ key: docs-quick-start
 
 Download installer `apitestbase-{{ site.atb_release_version }}.exe` from the [latest release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}){:target="_blank"}.
 
-Double click the installer and follow through the normal Windows application installation process.
+Double click the installer and follow through the normal Windows application installation process. You will likely get a warning dialog from Windows Defender SmartScreen, because the app hasn't been digitally signed by a Microsoft trusted Certificate Authority (which is not free). Click 'More info' on the dialog, and click 'Run anyway' to proceed installing API Test Base.
 
 Once the installation finishes, you can launch API Test Base from Start Menu or Desktop shortcut.
 
@@ -25,7 +25,7 @@ Download `apitestbase-{{ site.atb_release_version }}.dmg` from the [latest relea
 
 Double click the dmg and copy `API Test Base.app` to your /Applications folder.
 
-Open the `/Applications/API Test Base.app`, and you'll see a dialog stating '"API Test Base.app" can't be opened because Apple cannot check it for malicious software'. This is because the app hasn't been signed using Apple certificate (which is not free).
+Open the `/Applications/API Test Base.app`, and you'll see a warning dialog stating '"API Test Base.app" can't be opened because Apple cannot check it for malicious software'. This is because the app hasn't been digitally signed using Apple certificate (which is not free). Below steps enable you to launch API Test Base.
 
 Click OK on the dialog, open System Settings, go to Privacy & Security, and you'll see a warning message 'API Test Base.app was blocked from use because it is not from an identified developer'.
 
