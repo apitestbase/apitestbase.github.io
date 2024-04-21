@@ -11,8 +11,6 @@ docs-en:
         url: /docs/en/quick-start
       - title: Creating Automated Test Case
         url: /docs/en/creating-automated-test-case
-      - title: Maintenance
-        url: /docs/en/maintenance
   - title: Usages
     children:
       - title: Endpoints Management
@@ -59,3 +57,5 @@ docs-en:
     children:
       - title: Upgrade from Old Version
         url: /docs/en/upgrade-from-old-version
+      - title: Maintenance
+        url: /docs/en/maintenance
