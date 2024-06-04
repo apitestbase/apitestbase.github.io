@@ -113,21 +113,17 @@
         "expectedJSON" : "${Expected_Output_Message}"
       }
     } ],
-    "otherProperties" : {
-      "destinationType" : "Queue",
-      "queueName" : "${Output_Queue_Name}",
+    "actionProperties" : {
+      "@type": "JmsBrowse",
       "browsePattern": {
         "@type": "ByIndex",
         "messageIndex": "1"
       }
+    },
+    "otherProperties" : {
+      "destinationType" : "Queue",
+      "queueName" : "${Output_Queue_Name}"
     }
   } ],
-  "dataTable" : {
-    "columns" : [ {
-      "name" : "Caption",
-      "type" : "String"
-    } ],
-    "rows" : [ ]
-  },
   "checkHTTPStubsHitOrder" : false
 }

@@ -11,8 +11,7 @@
     "apiRequest" : {
       "@type": "DbRequest",
       "sqlScript" : "-- Clear the table\ndelete from article;\n\n-- Create two article records\ninsert into article (id, title, content) values (1, 'article1', 'content1');\ninsert into article (id, title, content) values (2, 'article2', 'content2');"
-    },
-    "otherProperties" : { }
+    }
   }, {
     "name" : "Invoke the API to update article",
     "type" : "HTTP",
@@ -58,15 +57,7 @@
       "otherProperties" : {
         "expectedJSON" : "[{\"ID\":1,\"TITLE\":\"article1\",\"CONTENT\":\"content1\"},{\"ID\":2,\"TITLE\":\"article2\",\"CONTENT\":\"Once upon a time ...\"}]"
       }
-    } ],
-    "otherProperties" : { }
+    } ]
   } ],
-  "dataTable" : {
-    "columns" : [ {
-      "name" : "Caption",
-      "type" : "String"
-    } ],
-    "rows" : [ ]
-  },
   "checkHTTPStubsHitOrder" : false
 }

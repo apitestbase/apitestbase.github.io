@@ -69,20 +69,15 @@
   } ],
   "dataTable" : {
     "columns" : [ {
-      "name" : "Caption",
-      "type" : "String"
+      "name" : "Caption"
     }, {
-      "name" : "Input_Article_Title",
-      "type" : "String"
+      "name" : "Input_Article_Title"
     }, {
-      "name" : "Expected_API_Response_Status_Code",
-      "type" : "String"
+      "name" : "Expected_API_Response_Status_Code"
     }, {
-      "name" : "Expected_API_Response_JSON",
-      "type" : "String"
+      "name" : "Expected_API_Response_JSON"
     }, {
-      "name" : "Expected_Result_Database_Data",
-      "type" : "String"
+      "name" : "Expected_Result_Database_Data"
     } ],
     "rows" : [ {
       "Caption" : {

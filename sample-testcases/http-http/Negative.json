@@ -25,13 +25,6 @@
       "timeout" : "20"
     }
   } ],
-  "dataTable" : {
-    "columns" : [ {
-      "name" : "Caption",
-      "type" : "String"
-    } ],
-    "rows" : [ ]
-  },
   "httpStubMappings" : [ {
     "number" : 1,
     "spec" : {

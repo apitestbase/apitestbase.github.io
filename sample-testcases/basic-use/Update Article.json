@@ -9,7 +9,6 @@
       "url" : "jdbc:h2:C:\\Users\\zheng\\AppData\\Roaming\\ApiTestBase/database/sample;AUTO_SERVER=TRUE",
       "username" : "user"
     },
-    "otherProperties" : { },
     "apiRequest" : {
       "@type" : "DbRequest",
       "sqlScript" : "-- Clear the table\ndelete from article;\n\n-- Create two article records\ninsert into article (id, title, content) values (1, 'article1', 'content1');\ninsert into article (id, title, content) values (2, 'article2', 'content2');"
@@ -50,7 +49,6 @@
       "url" : "jdbc:h2:C:\\Users\\zheng\\AppData\\Roaming\\ApiTestBase/database/sample;AUTO_SERVER=TRUE",
       "username" : "user"
     },
-    "otherProperties" : { },
     "apiRequest" : {
       "@type" : "DbRequest",
       "sqlScript" : "select id, title, content from article;"
