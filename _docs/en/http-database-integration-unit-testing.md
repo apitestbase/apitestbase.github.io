@@ -74,7 +74,7 @@ Once a couple of `INSERT` statements are prepared, they can be tailored and used
 Refer to [Creating Automated Test Case](/docs/en/creating-automated-test-case). On that page, the database is an H2 database, but the same steps for test case creation and run can be similarly applied here. Just remember to use your own local Article API endpoint (instead of the ATB bundled one) and your SQL Server stub database endpoint (instead of the H2 one) in the test case.
 
 ## Sample Test Case
-The test case created above is available for download at <a href="../../sample-testcases/http-db/Positive.json" download>sample test case</a>. After download, right click any folder on ATB UI and import it.
+The test case created above is available for download at <a href="../../sample-testcases/http-db/Positive.json" download>sample test case</a>. After download, right click anywhere in the left side pane on ATB UI, and select `Import Test Case` to import it.
 
 ## What is Integration Unit Testing?
 Refer to [this post](https://medium.com/@zhengwang666/integration-unit-testing-683fbf995c43){:target="_blank"}.

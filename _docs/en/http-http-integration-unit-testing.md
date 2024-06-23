@@ -52,7 +52,7 @@ In this example, only one HTTP stub is needed, i.e. the Fraud Check API stub, be
 Run the test case by clicking the `Run` button, and check the test report.
 
 ## Sample Test Cases
-The test cases created above are available for download at <a href="../../sample-testcases/http-http/Positive.json" download>Positive test case</a> and <a href="../../sample-testcases/http-http/Negative.json" download>Negative test case</a>. After download, right click any folder on ATB UI and import.
+The test cases created above are available for download at <a href="../../sample-testcases/http-http/Positive.json" download>Positive test case</a> and <a href="../../sample-testcases/http-http/Negative.json" download>Negative test case</a>. After download, right click anywhere in the left side pane on ATB UI, and select `Import Test Case` to import it.
 
 ## What is Integration Unit Testing?
 Refer to [this post](https://medium.com/@zhengwang666/integration-unit-testing-683fbf995c43){:target="_blank"}.

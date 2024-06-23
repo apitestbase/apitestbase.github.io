@@ -15,22 +15,22 @@ We are planning to have three test steps in our test case
 ```
 
 ## Create Test Case Outline
-First of all, create a new test case. (You can create your preferred folder structure for managing test cases, by right clicking on folder and selecting needed context menu item.)
+First of all, create a new test case. (You can create your preferred folder structure for managing test cases, by right clicking anywhere in the left side pane and selecting needed context menu item.)
 
 Now we can add test steps to the test case.
 
-Under the Test Steps tab, click Create dropdown button and select Database Step. Enter the name of step 1 `Set up database data`. Click `Back` link to return to the test case edit view. Repeat this to add the other two test steps (one HTTP Step and one Database Step). The test case outline is created as shown below.
+Under the Test Steps tab, click `+ Test Step` dropdown button and select `Database`. Enter the name of step 1 `Set up database data`. Repeat this to add the other two test steps (one HTTP step and another Database step). The test case outline is created as shown below.
 
 ![Test Case Outline](../../screenshots/basic-use/test-case-outline.png)
 
 ## Populate Step 1
 Click the name of step 1 to open its edit view.
 
-Under the Endpoint Details tab, set JDBC URL `jdbc:h2:<APITestBase_Data>/database/sample;AUTO_SERVER=TRUE`, replacing `<APITestBase_Data>` with the real directory you can get by clicking the `Open Data Folder` item in the ATB system tray menu. The JDBC URL will be used by the test step to connect to the sample database.
+Under the `Endpoint` tab, set JDBC URL `jdbc:h2:<APITestBase_Data>/database/sample;AUTO_SERVER=TRUE`, replacing `<APITestBase_Data>` with the real directory you can get by clicking the `Open Data Folder` item in the ATB system tray menu. The JDBC URL will be used by the test step to connect to the sample database.
 
 Then set Username and Password which can be found in `<APITestBase_Data>/config.yml`.
 
-Under the Invocation tab, enter below SQL script.
+Under the `Invocation` tab, enter below SQL script.
 ```
 -- Clear the table
 delete from article;
@@ -44,18 +44,16 @@ Click the Invoke button to try it out (i.e. run the script), like shown below.
 
 ![Database Setup](../../screenshots/basic-use/database-setup.png)
 
-Click the Back link to return to test case edit view.
-
 ## Populate Step 2
-Click the name of step 2 to open its edit view.
+Open step 2 from the test case.
 
-Under the Endpoint Details tab, set URL `http://localhost:8090/api/articles/2`. Ignore Username and Password fields as they are not used in this demo.
+Under the `Invocation` tab, select `PUT` from the Method dropdown list, and set URL `http://localhost:8090/api/articles/2`.
 
-Under the Invocation tab, select `PUT` from the Method dropdown list, click the menu dropdown button and select `Show HTTP Headers`.
+Under the `Header` sub tab, add a request HTTP header using the `+` button, and update it to be `Content-Type: application/json`. This header is required by the Article API.
 
-In the grid above the Request Body text area, add a request HTTP header `Content-Type: application/json` using the Create item in the grid menu (located in the top right corner of the grid). We need this header in the request because the Article API requires it. If it is not provided, the invocation will see error response.
+![HTTP Request Header](../../screenshots/basic-use/http-request-header.png)
 
-Input the request body for updating article 2.
+Input the request body:
 
 ```
 {
@@ -65,45 +63,43 @@ Input the request body for updating article 2.
 }
 ```
 
-Click the Invoke button to try it out and you'll see a successful response in the right pane.
+Click the `Invoke` button to try it out.
 
-Click the Assertions button to open the assertions pane. In the assertions pane, click Create dropdown button and select `StatusCodeEqual Assertion` to create a StatusCodeEqual assertion. Set the expected HTTP response status code (here 200), and click the Verify button to verify the assertion, as shown below.
+![HTTP Invocation](../../screenshots/basic-use/http-invocation.png)
+
+Click the `Assertions` tab at the bottom of the screen to open the assertions panel.
+
+In the assertions panel, click `+ Assertion` dropdown button and select `StatusCodeEqual` to create a StatusCodeEqual assertion. Set the expected HTTP response status code (here 204), and click the `Verify` button to verify the assertion, as shown below.
 
 ![HTTP Invocation and Assertion](../../screenshots/basic-use/http-invocation-and-assertion.png)
 
 More information about assertions can be found on this [page](/docs/en/assertions).
 
-Click the Back link to return to the test case edit view.
-
 ## Populate Step 3
-Click the name of step 3 to open its edit view.
+Open step 3 from the test case.
 
-Under the Endpoint Details tab, enter exactly the same information as in step 1 because we are interacting with the same database. The information duplication can be avoided by using `managed endpoints`. Refer to this [page](/docs/en/endpoints-management) for more details.
+Under the `Endpoint` tab, enter exactly the same information as in step 1 because we are interacting with the same database. The information duplication can be avoided by using `managed endpoints`. Refer to this [page](/docs/en/endpoints-management) for more details.
 
-Under the Invocation tab, enter SQL query `select id, title, content from article;`.
+Under the `Invocation` tab, enter SQL query `select id, title, content from article;`.
 
-Click the Invoke button to try it out (run the query), like shown below.
+Click the `Invoke` button to try it out (run the query), like shown below.
 
 ![Database Check Query Result](../../screenshots/basic-use/database-check-query-result.png)
 
-Click the JSON View tab to see the JSON representation of the SQL query result set.
-
-Click the Assertions button to open the assertions pane. In the assertions pane, click Create dropdown button and select `JSONEqual Assertion` to create a JSONEqual assertion. Copy the JSON string from the JSON View to the Expected JSON field. Click the Verify button to verify the assertion, as shown below.
+Click the `Assertions` tab to open the assertions panel. In the assertions panel, click `+ Assertion` dropdown button and select `JSONEqual` to create a JSONEqual assertion. Copy the JSON string from the test step invocation response to the Expected JSON field, and click the `Verify` button to verify the assertion, as shown below.
 
 ![Database Check Query Result and Assertion](../../screenshots/basic-use/database-check-query-result-and-assertion.png)
 
-Click the Back link to return to the test case edit view.
-
 ## Run the Test Case
-Now we have finished editing our test case. It's time to run it. Click the Run button, and you'll see the result for the whole test case beside the Run button, and in the bottom pane an outline of result for all test steps, like shown below. Passed test step is indicated by green color and failed test step by red color.
+Now we have finished editing our test case. It's time to run it. Open the test case, click the `Run` button and you'll see the result, like shown below.
 
 ![Test Case Run Result](../../screenshots/basic-use/test-case-run-result.png)
 
-Click the link for a test step in the bottom pane to open a modal and see the step run report, like shown below.
+Click a test step in the right side outline to open a modal and see the step's run report, like shown below.
 
 ![Test Step Run Report](../../screenshots/basic-use/test-step-run-report.png)
 
-Click the result link beside the Run button to see the whole test case run report. This report can be saved as HTML file and used as test evidence in other places such as HP ALM.
+Click the result link beside the Run button to see the whole test case run report. There is a download icon in the report for you to download the report as HTML file, which can then be used as test evidence in other places such as HP ALM.
 
 ## Sample Test Case
-The test case created above is available for download at <a href="../../sample-testcases/basic-use/Update Article.json" download>sample test case</a>. After download, right click any folder on ATB UI and import it.
+The test case created above is available for download at <a href="../../sample-testcases/basic-use/Update Article.json" download>sample test case</a>. After download, right click anywhere in the left side pane on ATB UI, and select `Import Test Case` to import it.

@@ -90,4 +90,4 @@ Click a step run link to view its report, or click the result link beside the Ru
 Similar to test case level data table, test step level data table enables the test step to be run one or more times during one test case run. This enables the test step to do repeated work driven by a data table, without duplicating the test step definition in the same test case.
 
 ## Sample Test Case
-The final test case created above is available for download at <a href="../../sample-testcases/data-driven-testing/Update Article - Data Driven.json" download>sample test case</a>. After download, right click any folder on ATB UI and import it.
+The final test case created above is available for download at <a href="../../sample-testcases/data-driven-testing/Update Article - Data Driven.json" download>sample test case</a>. After download, right click anywhere in the left side pane on ATB UI, and select `Import Test Case` to import it.
