@@ -13,9 +13,11 @@ Download the latest API Test Base installer from the [release page](https://gith
 
 {% tab upgrade Windows %}
 
-Running a new version of the installer will automatically uninstall the old version and install the new version.
+Running a new version installer will automatically uninstall the old ATB version and install the new version. It is typical for you to install the new version into the existing ATB installation directory.
 
 Your test data, settings, etc. will stay untouched, under the `%USERPROFILE%\AppData\Roaming\ApiTestBase` directory.
+
+When running the new version installer, you'll see the same security warning as before. Refer to [Quick Start](/docs/en/quick-start) for how to resolve it.
 
 {% endtab %}
 
@@ -25,8 +27,8 @@ Open a new version of the dmg file, and you'll be able to copy the new version o
 
 Your test data, settings, etc. will stay untouched, under the `~/Library/Application Support/API Test Base` directory.
 
+When launching the new version, you'll see the same security warning as before. Refer to [Quick Start](/docs/en/quick-start) for how to resolve it.
+
 {% endtab %}
 
 {% endtabs %}
-
-After the upgrade, clear your browser cache files (clearing last one hour is enough). Launch API Test Base, and refresh UI page if it is open.
