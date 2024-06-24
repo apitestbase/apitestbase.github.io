@@ -3,39 +3,41 @@ title: Endpoints Management
 permalink: /docs/en/endpoints-management
 key: docs-endpoints-management
 ---
-When a new test step is created, and it needs an endpoint, an 'unmanaged' endpoint with empty values will be created and associated with it. Unmanaged endpoint is specific to a test step, and is invisible to other test steps (in the same test case, or in other test cases).
+When a new test step is created, and it needs an endpoint, an `unmanaged endpoint` with empty values will be created and associated with it. Unmanaged endpoint is specific to a test step, and is invisible to other test steps (in the same test case, or in other test cases).
 
 To reuse endpoints across test steps or test cases, you can create `managed endpoints`.
 
 ## Create Environment
-Managed endpoint resides in environment. If you haven't created an environment, click the Administration > Environments link in the left panel, and click Create button. A new environment is created and its edit view displays.
- 
-Under the Basic Info tab, enter name and (optional) description. Click Endpoints tab.
+Managed endpoints reside in environments.
+
+To create an environment, click the `Environments` icon in the left side bar of the screen, right click the blank space in the left side pane and select `New Environment` from the context menu.
+
+Give it a name (like 'Local'), press Enter, and a new empty environment is created with its edit view opened.
 
 ![Environment](../../screenshots/env-mgmt/environment.png)
 
-There are two ways to create a managed endpoint. Here we use SOAP endpoint as an example.
+There are two ways to create a managed endpoint. Here we use HTTP endpoint as an example.
 
 ## Create Managed Endpoint in the Environments area
-In the 'Local' environment we just created, click Create dropdown button and select SOAP Endpoint to create a managed SOAP endpoint. SOAP endpoint edit view displays. Enter details which will be automatically saved.
+In the 'Local' environment we just created, click `+ Endpoint` dropdown button, select `HTTP`, give it a name (like 'Article API') and press Enter. A managed HTTP endpoint is created with its edit view displayed on the right.
 
-![Managed SOAP Endpoint](../../screenshots/env-mgmt/managed-soap-endpoint.png)
+Input details into the fields, and the endpoint looks like below. 
 
-To use the newly created managed endpoint, go to the SOAP test step by clicking its link in the test case edit view, and click the Endpoint Details tab. Click Select Managed Endpoint button to see a SOAP endpoint list popup. 
+![Managed HTTP Endpoint](../../screenshots/env-mgmt/managed-http-endpoint.png)
+
+To use the newly created managed endpoint, go to an HTTP test step, click the `Endpoint` tab, and click `Select Managed Endpoint` button to see a modal that lists all HTTP endpoints. 
 
 ![Select Managed Endpoint](../../screenshots/env-mgmt/select-managed-endpoint.png)
 
-Click the endpoint name to select it for use in the SOAP test step.
+Click the endpoint name to select it for use in the HTTP test step.
 
 ## Share Unmanaged Endpoint from Test Step
-This is a convenient function for you to capture endpoint during test step edit.
+This is a convenient feature for you to capture endpoint details while editing a test step, and then turn the (unmanaged) endpoint into managed.
 
-Under Endpoint Details tab of a test step with unmanaged endpoint, click Share Endpoint button. Enter details and click OK button. The unmanaged endpoint will be turned into managed.
+Under `Endpoint` tab of a test step, click `Share Endpoint` button. Enter details and click `OK` button. The (unmanaged) endpoint will be shared into the specified environment (here 'Local').
 
 ![Share Unmanaged Endpoint](../../screenshots/env-mgmt/share-unmanaged-endpoint.png)
 
-Notice that while unmanaged endpoint can be edited in test step edit view, managed endpoint can only be edited in the Environments area.
-
 ## Changing from Managed Endpoint to Unmanaged for a Test Step
-Clicking the Unmanage Endpoint button under the Endpoint Details tab of a test step will allow you to change the already chosen managed endpoint to unmanaged (keeping the managed one untouched).
+Clicking the `Unmanage Endpoint` button under the `Endpoint` tab of a test step will allow you to turn the managed endpoint to unmanaged for the test step. The managed one stays untouched in the environment.
  
