@@ -5,12 +5,10 @@ key: docs-properties
 ---
 A property in API Test Base is a named String. A property can be used in any test case, test step, assertion or HTTP stub with syntax `${<Property_Name>}`, e.g. ${Output_Queue_Name}.
 
-On running a test case or test step, the properties defined in them are resolved to String values.
-
-Nested property, i.e. property inside property value, is supported. For example: define Prop1="Hello" and Prop2="${Prop1} World!", and Prop2's value will be "Hello World!".
+On running a test case or test step, the properties used in them are resolved to String values.
 
 ## User Defined Properties
-You can define custom properties on a test case through the Properties tab, then use them in the test steps and assertions inside the test case. You can double click the property value cell (after entering edit mode) in the grid to pop out a textarea to edit big string, especially one with line breaks.
+You can define custom properties in a test case on the `Properties` tab, then use them in the test steps and assertions inside the test case. You can double click the property value cell (after entering edit mode) in the grid to pop out a textarea to edit big text, especially one with line breaks, like JSON or XML document.
 
 A straightforward usage of user defined property is that it can be defined once and used multiple times in the test steps or assertions inside the test case.
 
@@ -40,11 +38,18 @@ Extract properties from API response in one test step, and use them in later tes
 Currently only HTTP test step has property extractors.
 
 ### JSONPath Property Extractor
-Used to extract property from HTTP response body via JSON path.
+Used for extracting property from HTTP response body via JSON path. For example:
 
 ![JSONPath Property Extractor](../../screenshots/properties/jsonpath-property-extractor.png)
 
 ### Cookie Property Extractor
-Used to extract property from HTTP response Set-Cookie header by cookie name. 
+Used for extracting property from HTTP response Set-Cookie header by cookie name. For example:
 
 ![Cookie Property Extractor](../../screenshots/properties/cookie-property-extractor.png)
+
+## Nested Properties
+Nested property, i.e. property inside property value, is supported. For example:
+```
+Prop1="Hello"
+Prop2="${Prop1} World!"        // Prop2's value is "Hello World!"
+```
