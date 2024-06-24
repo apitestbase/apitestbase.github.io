@@ -19,13 +19,13 @@ Send action is used to send a JMS message into a queue.
 
 You can do one-way/fire-and-forget style invocation, i.e. send message to queue and done.
 
-You can also do request-reply style invocation, i.e. send message to request queue and receive another message from reply queue. Following is an example:
+You can also do request-reply style invocation, i.e. send message to request queue and receive another message from reply queue. For example:
 
 ![Send Message and Also Receive](../../screenshots/jms/send-message-and-also-receive.png)
 
 Message body can be XML, JSON, or any other text format.
 
-Click Do button to Send the message into the queue.
+Click `Do` button to Send the message and receive the reply.
 
 ## Browse Action
 Browse action is used to read a message from a queue without deleting the message.
@@ -34,6 +34,4 @@ You can browse the queue by message index or by a substring (in message body).
  
 ![Browse Queue by Substring](../../screenshots/jms/browse-queue-by-substring.png)
 
-Click Do button to read the message.
-
-Click the Assertions button to open assertions panel and add/edit/verify assertions.
+Click `Do` button to read the message.
