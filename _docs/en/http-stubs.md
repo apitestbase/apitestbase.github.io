@@ -17,7 +17,7 @@ The HTTP Stubs feature in API Test Base is powered by [WireMock](http://wiremock
 Let's play with an HTTP stub quickly.
 
 ### Create a stub and load it
-Create a temp test case. Go to its HTTP Stubs tab and click Create. On the stub edit view, select `POST` method, enter URL `/some/thing`, select request body pattern 'Equal to JSON', enter request body `{ "a": "b" }`, and enter response body `Hello!`.
+Create a temp test case. Go to its `HTTP Stubs` tab and click `+ Stub` button. On the stub edit view, select `POST` method, enter URL `/some/thing`, select request body pattern `Equal to JSON`, enter request body `{ "a": "b" }`, and enter response body `Hello!`.
 
 ![Quick Play Stub Details](../../screenshots/http-stubs/quick-play-stub-details.png)
 
@@ -27,21 +27,19 @@ The mock server is embedded in the API Test Base instance and is started when AP
 
 To use HTTPS with the mock server, you can just use URL `https://<APITestBaseHost>:<MockServerHTTPSPort>/some/thing`.
 
-The mock server has a default HTTP port number 8092 and a default HTTPS port number 8093. Both can be changed in the `<APITestBase_Home>/config.yml`, under the `wireMock` section.
+The mock server has a default HTTP port number 8092 and a default HTTPS port number 8093. Both can be changed in the `<APITestBase_Data>/config.yml`, under the `wireMock` section.
 
-Click the Back link to return to the test case details view.
+To manually load the stub into the mock server, go to the test case edit view > HTTP Stubs tab, and click the `Load All` button.
 
 ![Quick Play Stub List](../../screenshots/http-stubs/quick-play-stub-list.png)
 
-Click the `Load All` button to load the stub into the mock server.
-
 ### Test the stub
-Go to the Test Steps tab, and create an HTTP test step with method `POST`, URL `http://localhost:8083/some/thing` and request body `{ "a": "b" }`. Click the Invoke button to invoke the stub, and you'll see a response body `Hello!`.
+Go to the `Test Steps` tab of the test case, and create an HTTP test step with method `POST`, URL `http://localhost:8092/some/thing` and request body `{ "a": "b" }`. Click the `Invoke` button to invoke the stub, and you'll see a response body `Hello!`.
 
 ![Quick Play Stub Invocation](../../screenshots/http-stubs/quick-play-stub-invocation.png)
 
 ## Mock server status
-To know what stubs have been loaded into the mock server, or check stub request log, open `http://localhost:8081/ui/mockserver`. There is also a convenient link under the HTTP Stubs tab on the test case edit view to open the mock server status page.
+To know what stubs have been loaded into the mock server, or check stub request log, open the mock server page by clicking the `Mock Server` link under the `HTTP Stubs` tab of the test case.
 
 ![Mock Server Status Page](../../screenshots/http-stubs/mock-server-status-page.png)
 
