@@ -28,44 +28,46 @@ What we got from [Creating Automated Test Case](/docs/en/creating-automated-test
 
 ![Basic Test Case](../../screenshots/basic-use/test-case-outline.png)
 
-Firstly, we rename the test case to `Update Article - Data Driven` by right clicking the test case in the tree pane and select Rename.
+Firstly, we copy the `Update Article` test case, and rename the new test case to `Update Article - Data Driven`. These actions can be done by using the context menus (right click test case or folder) in the tree pane.
 
-Then we refactor test steps to use property references for variable test data, and then add data table rows to define the properties.
+Secondly, we refactor test steps of the new test case to use property references.
+
+Then we add data table rows on the new test case to define the properties.
 
 #### Refactor step 2
-On Test Steps tab, open step 2 `Invoke the API to update article`.
+Open step 2 `Invoke the API to update article` of the new test case.
 
-On the Invocation tab, replace the "title" field value in the request body with a property reference ${Input_Article_Title}.
+Under the `Invocation` tab, replace the "title" field value in the request body with a property reference `${Input_Article_Title}`.
 
-Click the Assertions button to open the assertions area. Replace the Status Code value of the StatusCodeEqual assertion with a property reference ${Expected_API_Response_Status_Code}.
+Click the `Assertions` tab (at bottom of screen) to open the assertions panel. Replace the Status Code value of the StatusCodeEqual assertion with a property reference `${Expected_API_Response_Status_Code}`.
 
-For more thorough testing than only checking API response status code, we add a JSONEqual assertion to check the API response body. Set the Expected JSON with a property reference ${Expected_API_Response_JSON}.
+For more thorough testing than only checking API response status code, we add a JSONEqual assertion to check the API response body. Set the Expected JSON with a property reference `${Expected_API_Response_JSON}`.
 
 ![Refactored Step 2](../../screenshots/data-driven-testing/refactored-step-2.png)
 
-Notice that the properties Input_Article_Title, Expected_API_Response_Status_Code and Expected_API_Response_JSON do not exist yet. We'll create them in data table later.
+Notice that the properties `Input_Article_Title`, `Expected_API_Response_Status_Code` and `Expected_API_Response_JSON` do not exist yet. We'll create them in data table later.
 
 #### Refactor step 3
-Go back to test case edit view, and on Test Steps tab open step 3 `Check database data`.
+Open step 3 `Check database data` of the new test case.
 
 Replace the Expected JSON of the JSONEqual assertion with a property reference `${Expected_Result_Database_Data}`.
 
 ![Refactored Step 3](../../screenshots/data-driven-testing/refactored-step-3.png)
 
 #### Add data table columns
-We have used property references in our test steps. Now we create the properties in data table.
+We have used property references in our test steps. Now we'll create the properties in data table.
 
-Go back to the test case edit view, and on the Data Table tab click the Add Column > String Column button to add a new column. Set its name Input_Article_Title. Similarly, add more columns for the other properties.
+Open the new test case, and under the `Data Table` tab click the `+ Column` button to add a new column. Rename it (via column header menu) to `Input_Article_Title`. Similarly, add more columns for the other properties.
 
 ![Data Table with Columns Only](../../screenshots/data-driven-testing/data-table-with-columns-only.png)
 
 #### Add data table rows
-On the Data Table tab, use the Add Row button to add two rows, and fill the rows with below data
+Under the `Data Table` tab, use the `+ Row` button to add two rows, and fill the rows with below data
 
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Caption&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Input_Article_Title | Expected_API_Response_Status_Code | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expected_API_Response_JSON&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Expected_Result_Database_Data |
 | --- | --- | --- | --- | --- |
-| Positive | article2 | 200 | {<br>&nbsp;&nbsp;"id": 2,<br>&nbsp;&nbsp;"title": "article2",<br>&nbsp;&nbsp;"content": "Once upon a time ..."<br>} | [{"id":1,"title":"article1","content":"content1"},{"id":2,"title":"article2","content":"Once upon a time ..."}] |
-| Negative - article title too long | looooooooooooooo ooooooooooooo oooooooooooong title | 500 | {<br>&nbsp;&nbsp;"code": 500,<br>&nbsp;&nbsp;"message": "#{json-unit.ignore}",<br>&nbsp;&nbsp;"details": "#{json-unit.regex}.\*Value too long for column \\"TITLE[\\\\s\\\\S]\*"<br>} | [{"id":1,"title":"article1","content":"content1"},{"id":2,"title":"article2","content":"content2"}] |
+| Positive | article2 | 200 | {<br>&nbsp;&nbsp;"id": 2,<br>&nbsp;&nbsp;"title": "article2",<br>&nbsp;&nbsp;"content": "Once upon a time ..."<br>} | [<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"ID":&nbsp;1,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"TITLE":&nbsp;"article1",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"CONTENT":&nbsp;"content1"<br>&nbsp;&nbsp;&nbsp;&nbsp;},<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"ID":&nbsp;2,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"TITLE":&nbsp;"article2",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"CONTENT":&nbsp;"Once&nbsp;upon&nbsp;a&nbsp;time&nbsp;..."<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>] |
+| Negative - article title too long | looooooooooooooo ooooooooooooo oooooooooooong title | 500 | {<br>&nbsp;&nbsp;"code": 500,<br>&nbsp;&nbsp;"message": "#{json-unit.ignore}",<br>&nbsp;&nbsp;"details": "#{json-unit.regex}.\*Value too long for column \\"TITLE[\\\\s\\\\S]\*"<br>} | [<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"ID":&nbsp;1,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"TITLE":&nbsp;"article1",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"CONTENT":&nbsp;"content1"<br>&nbsp;&nbsp;&nbsp;&nbsp;},<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"ID":&nbsp;2,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"TITLE":&nbsp;"article2",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"CONTENT":&nbsp;"content2"<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>] |
 
 If you don't understand what `#{json-unit.ignore}` or `#{json-unit.regex}` means, refer to [JSONEqual Assertion](/docs/en/assertions#jsonequal-assertion).
 
@@ -80,7 +82,7 @@ The complete data table looks like below.
 Now we have finished refactoring the test case. The testing logic is not changed. The only thing changed is that the test case is now data driven.
 
 ### Run the test case
-Finally, it's time to run the test case. Click the Run button on the test case edit view, and you'll see the result for the whole test case beside the Run button, and in the bottom pane an outline of result for all individual runs. Click an individual run to expand it and view the result of its step runs.
+Finally, it's time to run the test case. Click the `Run` button on the test case edit view, and you'll see the result for the whole test case beside the Run button, and in the right pane an outline of result for all individual runs. Click an individual run to expand it and view the result of its step runs.
 
 ![Data Driven Test Case Run](../../screenshots/data-driven-testing/data-driven-test-case-run.png)
 

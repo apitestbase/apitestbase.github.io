@@ -30,7 +30,7 @@ Create a test case `Positive` under a folder for the Open Account API. Create an
 
 ![Positive - Test Step](../../screenshots/http-http/positive-test-step.png)
 
-Under the HTTP Stubs tab, create the HTTP stubs so that a 'successful' open-account operation is done by the Open Account API. For how to create an HTTP stub in ATB, refer to [HTTP Stubs](/docs/en/http-stubs).
+Under the HTTP Stubs tab, create the two HTTP stubs so that a 'successful' open-account operation is done by the Open Account API. For how to create an HTTP stub in ATB, refer to [HTTP Stubs](/docs/en/http-stubs).
 
 ![Positive - Fraud Check API Stub](../../screenshots/http-http/positive-fraud-check-api-stub.png)
 

@@ -6,7 +6,7 @@
     "endpoint" : {
       "name" : "Unmanaged Endpoint",
       "type" : "DB",
-      "url" : "jdbc:h2:C:\\Users\\zheng\\AppData\\Roaming\\ApiTestBase/database/sample;AUTO_SERVER=TRUE",
+      "url" : "jdbc:h2:C:/Users/zheng/AppData/Roaming/ApiTestBase/database/sample;AUTO_SERVER=TRUE",
       "username" : "user"
     },
     "apiRequest" : {
@@ -46,7 +46,7 @@
     "endpoint" : {
       "name" : "Unmanaged Endpoint",
       "type" : "DB",
-      "url" : "jdbc:h2:C:\\Users\\zheng\\AppData\\Roaming\\ApiTestBase/database/sample;AUTO_SERVER=TRUE",
+      "url" : "jdbc:h2:C:/Users/zheng/AppData/Roaming/ApiTestBase/database/sample;AUTO_SERVER=TRUE",
       "username" : "user"
     },
     "apiRequest" : {
