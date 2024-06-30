@@ -5,17 +5,16 @@ const removeActiveClasses = function (ulElement) {
     });
   }
 
-  const getChildPosition = function (element) {
-        var parent = element.parentNode;
-        var i = 0;
-        for (var i = 0; i < parent.children.length; i++) {
-            if (parent.children[i] === element) {
-                return i;
-            }
+const getChildPosition = function (element) {
+    const parent = element.parentNode;
+    for (let i = 0; i < parent.children.length; i++) {
+        if (parent.children[i] === element) {
+            return i;
         }
-
-        throw new Error('No parent found');
     }
+
+    throw new Error('No parent found');
+}
 
 window.addEventListener('load', function () {
     const tabLinks = document.querySelectorAll('ul.tab li a');
