@@ -25,16 +25,16 @@ docs-en:
         url: /docs/en/http-stubs
       - title: Interact with Other Systems
         url: /docs/en/interact-with-other-systems
-      - title: JMS Test Step
-        url: /docs/en/jms-test-step
-      - title: MQ Test Step
-        url: /docs/en/mq-test-step
-      - title: AMQP Test Step
-        url: /docs/en/amqp-test-step
-      - title: FTP Test Step
-        url: /docs/en/ftp-test-step
-      - title: SFTP Test Step
-        url: /docs/en/sftp-test-step
+      - title: JMS Request
+        url: /docs/en/jms-request
+      - title: MQ Request
+        url: /docs/en/mq-request
+      - title: AMQP Request
+        url: /docs/en/amqp-request
+      - title: FTP Request
+        url: /docs/en/ftp-request
+      - title: SFTP Request
+        url: /docs/en/sftp-request
       - title: Configure API Test Base to be an SSL Client
         url: /docs/en/configure-api-test-base-to-be-an-ssl-client
   - title: Testing Practices

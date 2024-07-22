@@ -1,13 +1,14 @@
 ---
-title: AMQP Test Step
-permalink: /docs/en/amqp-test-step
-key: docs-amqp-test-step
+title: AMQP Request
+redirect_from: /docs/en/amqp-test-step
+permalink: /docs/en/amqp-request
+key: docs-amqp-request
 ---
-AMQP test step is used to interact with AMQP services. It can be used in combination with other test steps to create automated test cases. It can also be used to manually operate on an AMQP node (like queue).
+AMQP request is used to operate on an AMQP node (like queue).
 
-AMQP test step only supports AMQP 1.0. It was tested against ActiveMQ 5.17.x, RabbitMQ 3.13.1 (with AMQP 1.0 plugin enabled), as well as IBM MQ 8 and 9, with no security.
+AMQP request only supports AMQP 1.0. It was tested against ActiveMQ 5.17.x, RabbitMQ 3.13.1 (with AMQP 1.0 plugin enabled), as well as IBM MQ 8 and 9, with no security.
 
-Actions available in the AMQP test step: **Send**.
+Actions available: **Send**.
 
 Example AMQP service URI: `amqp://localhost:5672`.
 

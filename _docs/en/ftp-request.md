@@ -1,11 +1,12 @@
 ---
-title: FTP Test Step
-permalink: /docs/en/ftp-test-step
-key: docs-ftp-test-step
+title: FTP Request
+redirect_from: /docs/en/ftp-test-step
+permalink: /docs/en/ftp-request
+key: docs-ftp-request
 ---
-FTP test step is normally used in combination with other test steps to create automated test cases. However, you can also use it to manually do FTP operations like uploading a file.
+FTP request is used to do FTP operations like uploading a file.
 
-Actions available in the FTP test step: **Put**.
+Actions available: **Put**.
 
 ## Put Action
 You can upload file from text or from file. The action uses passive mode to transfer file to the FTP server.

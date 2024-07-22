@@ -1,7 +1,8 @@
 ---
-title: MQ Test Step
-permalink: /docs/en/mq-test-step
-key: docs-mq-test-step
+title: MQ Request
+redirect_from: /docs/en/mq-test-step
+permalink: /docs/en/mq-request
+key: docs-mq-request
 ---
 MQ request is used to operate on an IBM MQ queue or topic.
 

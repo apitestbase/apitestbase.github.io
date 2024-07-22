@@ -1,13 +1,14 @@
 ---
-title: JMS Test Step
-permalink: /docs/en/jms-test-step
-key: docs-jms-test-step
+title: JMS Request
+redirect_from: /docs/en/jms-test-step
+permalink: /docs/en/jms-request
+key: docs-jms-request
 ---
-JMS test step is normally used in combination with other test steps to create automated test cases. However, you can also use it to manually operate on a JMS queue or topic, like sending messages to a queue.
+JMS request is used to operate on a JMS queue or topic, like sending messages to a queue.
 
 Supported JMS providers: **ActiveMQ, Solace**.
 
-Actions available in the JMS test step: **Send (and optionally Also Receive), Browse Queue, Publish, Clear Queue, Check Queue Depth**.
+Actions available: **Send (and optionally Also Receive), Browse Queue, Publish, Clear Queue, Check Queue Depth**.
 
 ## Endpoint Details
 To operate on a JMS queue or topic, some endpoint parameters are needed for API Test Base to connect to the queue manager.
