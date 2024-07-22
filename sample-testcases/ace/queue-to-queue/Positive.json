@@ -1,124 +1,145 @@
 {
-  "name" : "Positive",
-  "udps" : [{
-    "name" : "App_Name",
-    "value" : "App1"
-  }, {
-    "name" : "Flow_Name",
-    "value" : "Flow1"
-  }, {
-    "name" : "Input_Queue_Name",
-    "value" : "${Flow_Name}.IN"
-  }, {
-    "name" : "Stub_Output_Queue",
-    "value" : "${Flow_Name}.STUB.OUT"
-  }, {
-    "name" : "Input_Message",
-    "value" : "<XYZ/>"
-  }, {
-    "name" : "Expected_Output_Message",
-    "value" : ""
-  } ],
-  "teststeps" : [ {
-    "name" : "Setup - clear stub output queue",
-    "type" : "MQ",
-    "action" : "Clear",
-    "endpoint" : {
-      "name" : "Unmanaged Endpoint",
-      "type" : "MQ",
-      "otherProperties" : {
-        "@type" : "MqEndpointProperties",
-        "connectionMode" : "Bindings"
-      }
-    },
-    "otherProperties" : {
-      "destinationType" : "Queue",
-      "queueName" : "${Stub_Output_Queue}"
+  "testcases": [
+    {
+      "name": "Positive",
+      "udps": [
+        {
+          "name": "App_Name",
+          "value": "App1"
+        },
+        {
+          "name": "Flow_Name",
+          "value": "Flow1"
+        },
+        {
+          "name": "Input_Queue_Name",
+          "value": "${Flow_Name}.IN"
+        },
+        {
+          "name": "Stub_Output_Queue",
+          "value": "${Flow_Name}.STUB.OUT"
+        },
+        {
+          "name": "Input_Message",
+          "value": "<XYZ/>"
+        },
+        {
+          "name": "Expected_Output_Message",
+          "value": ""
+        }
+      ],
+      "teststeps": [
+        {
+          "name": "Setup - clear stub output queue",
+          "type": "MQ",
+          "action": "Clear",
+          "endpoint": {
+            "name": "Unmanaged Endpoint",
+            "type": "MQ",
+            "otherProperties": {
+              "@type": "MqEndpointProperties",
+              "connectionMode": "Bindings"
+            }
+          },
+          "otherProperties": {
+            "destinationType": "Queue",
+            "queueName": "${Stub_Output_Queue}"
+          }
+        },
+        {
+          "name": "Inject message into input queue",
+          "type": "MQ",
+          "action": "Enqueue",
+          "endpoint": {
+            "name": "Unmanaged Endpoint",
+            "type": "MQ",
+            "otherProperties": {
+              "@type": "MqEndpointProperties",
+              "connectionMode": "Bindings"
+            }
+          },
+          "apiRequest": {
+            "@type": "MqEnqueueOrPublishFromTextRequest",
+            "body": "${Input_Message}"
+          },
+          "otherProperties": {
+            "destinationType": "Queue",
+            "queueName": "${Input_Queue_Name}"
+          }
+        },
+        {
+          "name": "Wait for message processing completion",
+          "type": "ACE",
+          "action": "WaitForProcessingCompletion",
+          "endpoint": {
+            "name": "Unmanaged Endpoint",
+            "type": "ACE",
+            "otherProperties": {
+              "@type": "AceEndpointProperties",
+              "useSSL": false
+            }
+          },
+          "otherProperties": {
+            "integrationServerName": "default",
+            "applicationName": "${App_Name}",
+            "messageFlowName": "${Flow_Name}",
+            "waitForProcessingCompletionTimeout": 20
+          }
+        },
+        {
+          "name": "Check stub output queue depth equals 1",
+          "type": "MQ",
+          "action": "CheckDepth",
+          "endpoint": {
+            "name": "Unmanaged Endpoint",
+            "type": "MQ",
+            "otherProperties": {
+              "@type": "MqEndpointProperties",
+              "connectionMode": "Bindings"
+            }
+          },
+          "assertions": [
+            {
+              "name": "MQ queue depth equals",
+              "type": "IntegerEqual",
+              "otherProperties": {
+                "number": 1
+              }
+            }
+          ],
+          "otherProperties": {
+            "destinationType": "Queue",
+            "queueName": "${Stub_Output_Queue}"
+          }
+        },
+        {
+          "name": "Dequeue message from stub output queue and assert message body",
+          "type": "MQ",
+          "action": "Dequeue",
+          "endpoint": {
+            "name": "Unmanaged Endpoint",
+            "type": "MQ",
+            "otherProperties": {
+              "@type": "MqEndpointProperties",
+              "connectionMode": "Bindings"
+            }
+          },
+          "assertions": [
+            {
+              "name": "XmlEqual",
+              "type": "XmlEqual",
+              "otherProperties": {
+                "expectedXML": "${Expected_Output_Message}"
+              }
+            }
+          ],
+          "otherProperties": {
+            "destinationType": "Queue",
+            "queueName": "${Stub_Output_Queue}"
+          }
+        }
+      ],
+      "checkHTTPStubsHitOrder": false
     }
-  }, {
-    "name" : "Inject message into input queue",
-    "type" : "MQ",
-    "action" : "Enqueue",
-    "endpoint" : {
-      "name" : "Unmanaged Endpoint",
-      "type" : "MQ",
-      "otherProperties" : {
-        "@type" : "MqEndpointProperties",
-        "connectionMode" : "Bindings"
-      }
-    },
-    "apiRequest" : {
-      "@type": "MqEnqueueOrPublishFromTextRequest",
-      "body" : "${Input_Message}"
-    },
-    "otherProperties" : {
-      "destinationType" : "Queue",
-      "queueName" : "${Input_Queue_Name}"
-    }
-  }, {
-    "name" : "Wait for message processing completion",
-    "type" : "ACE",
-    "action" : "WaitForProcessingCompletion",
-    "endpoint" : {
-      "name" : "Unmanaged Endpoint",
-      "type" : "ACE",
-      "otherProperties" : {
-        "@type" : "AceEndpointProperties",
-        "useSSL" : false
-      }
-    },
-    "otherProperties" : {
-      "integrationServerName" : "default",
-      "applicationName" : "${App_Name}",
-      "messageFlowName" : "${Flow_Name}",
-      "waitForProcessingCompletionTimeout" : 20
-    }
-  }, {
-    "name" : "Check stub output queue depth equals 1",
-    "type" : "MQ",
-    "action" : "CheckDepth",
-    "endpoint" : {
-      "name" : "Unmanaged Endpoint",
-      "type" : "MQ",
-      "otherProperties" : {
-        "@type" : "MqEndpointProperties",
-        "connectionMode" : "Bindings"
-      }
-    },
-    "assertions" : [ {
-      "name" : "MQ queue depth equals",
-      "type" : "IntegerEqual",
-      "otherProperties" : {
-        "number" : 1
-      }
-    } ],
-    "otherProperties" : {
-      "destinationType" : "Queue",
-      "queueName" : "${Stub_Output_Queue}"
-    }
-  }, {
-    "name" : "Dequeue message from stub output queue and assert message body",
-    "type" : "MQ",
-    "action" : "Dequeue",
-    "endpoint" : {
-      "name" : "Unmanaged Endpoint",
-      "type" : "MQ",
-      "otherProperties" : {
-        "@type" : "MqEndpointProperties",
-        "connectionMode" : "Bindings"
-      }
-    },
-    "assertions" : [ {
-      "name" : "XmlEqual",
-      "type" : "XmlEqual",
-      "otherProperties" : {
-        "expectedXML" : "${Expected_Output_Message}"
-      }
-    } ],
-    "otherProperties" : {
-      "destinationType" : "Queue",
-      "queueName" : "${Stub_Output_Queue}"
-    }
-  } ],
-  "checkHTTPStubsHitOrder" : false
+  ]
 }

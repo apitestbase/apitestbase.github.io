@@ -1,47 +1,59 @@
 {
-  "name" : "Negative",
-  "teststeps" : [ {
-    "name" : "Invoke the API and Assert Response",
-    "type" : "HTTP",
-    "endpoint" : {
-      "name" : "Unmanaged Endpoint",
-      "type" : "HTTP",
-      "url" : "http://localhost:port/path/to/your/local/open/account/api"
-    },
-    "apiRequest" : {
-      "@type": "HttpRequest",
-      "headers" : [ ],
-      "body" : "{\n  \"type\": \"savings\",\n  \"holderName\": \"Jack\",\n  \"holderPhone\": 1234567,\n  \"branchNumber\": 123\n}",
-      "method" : "POST"
-    },
-    "assertions" : [ {
-      "name" : "StatusCodeEqual",
-      "type" : "StatusCodeEqual",
-      "otherProperties" : {
-        "statusCode" : "500"
-      }
-    } ],
-    "otherProperties" : {
-      "timeout" : "20"
+  "testcases": [
+    {
+      "name": "Negative",
+      "teststeps": [
+        {
+          "name": "Invoke the API and Assert Response",
+          "type": "HTTP",
+          "endpoint": {
+            "name": "Unmanaged Endpoint",
+            "type": "HTTP",
+            "url": "http://localhost:port/path/to/your/local/open/account/api"
+          },
+          "apiRequest": {
+            "@type": "HttpRequest",
+            "headers": [],
+            "body": "{\n  \"type\": \"savings\",\n  \"holderName\": \"Jack\",\n  \"holderPhone\": 1234567,\n  \"branchNumber\": 123\n}",
+            "method": "POST"
+          },
+          "assertions": [
+            {
+              "name": "StatusCodeEqual",
+              "type": "StatusCodeEqual",
+              "otherProperties": {
+                "statusCode": "500"
+              }
+            }
+          ],
+          "otherProperties": {
+            "timeout": "20"
+          }
+        }
+      ],
+      "httpStubMappings": [
+        {
+          "number": 1,
+          "spec": {
+            "request": {
+              "url": "/fraudcheck",
+              "method": "POST",
+              "bodyPatterns": [
+                {
+                  "equalToJson": "\"APITestBase_ToBeSubstitutedDuringStepRun\""
+                }
+              ]
+            },
+            "response": {
+              "status": 500,
+              "body": "{\n  \"result\": \"it's a fraud\"\n}"
+            }
+          },
+          "requestBodyMainPatternValue": "{\n  \"operation\": \"OpenAccount\",\n  \"type\": \"savings\",\n  \"holderName\": \"Jack\",\n  \"holderPhone\": 1234567,\n  \"branchNumber\": 123\n}",
+          "expectedHitCount": 1
+        }
+      ],
+      "checkHTTPStubsHitOrder": false
     }
-  } ],
-  "httpStubMappings" : [ {
-    "number" : 1,
-    "spec" : {
-      "request" : {
-        "url" : "/fraudcheck",
-        "method" : "POST",
-        "bodyPatterns" : [ {
-          "equalToJson" : "\"APITestBase_ToBeSubstitutedDuringStepRun\""
-        } ]
-      },
-      "response" : {
-        "status" : 500,
-        "body" : "{\n  \"result\": \"it's a fraud\"\n}"
-      }
-    },
-    "requestBodyMainPatternValue" : "{\n  \"operation\": \"OpenAccount\",\n  \"type\": \"savings\",\n  \"holderName\": \"Jack\",\n  \"holderPhone\": 1234567,\n  \"branchNumber\": 123\n}",
-    "expectedHitCount" : 1
-  } ],
-  "checkHTTPStubsHitOrder" : false
+  ]
 }
