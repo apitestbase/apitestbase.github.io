@@ -65,4 +65,4 @@ Placeholders can be used in the expected XML, as described in the [XMLEqual Asse
 ## Plain Text Related Assertions
 Used for verifying the actual (API response) text is as expected.
 
-There are Contains, TextEqual, Substring and RegexMatch assertions in this category.
+There are `Contains`, `TextEqual`, `Substring` and `RegexMatch` assertions in this category.
