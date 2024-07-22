@@ -46,18 +46,12 @@ Once the application is launched, a system tray icon shows. Click the icon to br
 Select `Open ATB` to open API Test Base UI in your default browser.
 
 ## Ad Hoc Invocation
-If you only want to invoke an API and see its response, just need to create a test step in a test case.
+Suppose you want to invoke a REST API.
 
-Right click anywhere in the left side pane, select Create Test Case, give it a name and press Enter. The test case is created, like the following.
+Right click anywhere in the left side pane, select `New Request` > HTTP, give it a name and press Enter. The request is created:
 
-![New Ad Hoc Test Case](../../screenshots/basic-use/new-ad-hoc-test-case.png)
+![New HTTP Request](../../screenshots/basic-use/new-http-request.png)
 
-Suppose you want to invoke a REST API. On the right pane of the screen, under the Test Steps tab, click the `+ Test Step` dropdown button and select `HTTP`. Give the test step a name, and press Enter, like the following.
-
-![New Ad Hoc Test Step](../../screenshots/basic-use/new-ad-hoc-test-step.png)
-
-Click the test step name to open the test step edit view.
-
-Under the Invocation tab, select Method like `GET`, enter a URL like `http://localhost:8090/api/articles` (an API Test Base bundled API) and click the `Invoke` button.
+In the request edit view, under the Invocation tab, select Method `GET`, enter a URL like `http://localhost:8090/api/articles` (an API Test Base bundled API) and click the `Invoke` button.
 
 ![Ad Hoc HTTP Invocation](../../screenshots/basic-use/ad-hoc-http-invocation.png)
