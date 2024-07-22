@@ -10,7 +10,7 @@ Supported JMS providers: **ActiveMQ, Solace**.
 Actions available in the JMS test step: **Send (and optionally Also Receive), Browse Queue, Publish, Clear Queue, Check Queue Depth**.
 
 ## Endpoint Details
-To operate on a JMS queue or topic, some parameters are needed for API Test Base to connect to the queue manager.
+To operate on a JMS queue or topic, some endpoint parameters are needed for API Test Base to connect to the queue manager.
 
 ![Endpoint Details](../../screenshots/jms/endpoint-details.png)
 
