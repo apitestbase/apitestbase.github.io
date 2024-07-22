@@ -3,12 +3,12 @@ title: MQ Test Step
 permalink: /docs/en/mq-test-step
 key: docs-mq-test-step
 ---
-MQ test step is normally used in combination with other test steps to create automated test cases. However, you can also use it to manually operate on an MQ queue or topic.
+MQ request is used to operate on an IBM MQ queue or topic.
 
-Actions available in the MQ test step: **Enqueue, Dequeue, Publish, Clear Queue, Check Queue Depth**.
+Actions available: **Enqueue, Dequeue, Publish, Clear Queue, Check Queue Depth**.
 
 ## Endpoint Details
-To operate on an MQ queue or topic, some parameters are needed for API Test Base to connect to the queue manager.
+To operate on an IBM MQ queue or topic, some endpoint parameters are needed for API Test Base to connect to the queue manager.
 
 ![Endpoint Details](../../screenshots/mq/endpoint-details.png)
 
@@ -58,7 +58,7 @@ Click `Do` button to get the message. Click the `Assertions` button to open asse
 Currently the dequeued message body is assumed to be text.
 
 ## Publish Action
-Publish action is used to publish a message onto a topic (specified by topic string). Same as Enqueue action, you can provide the message in two ways.
+Publish action is used to publish a message onto a topic. Same as Enqueue action, you can provide the message in two ways. Here is the text way:
 
 ![Publish MQ Message From Text](../../screenshots/mq/publish-message-from-text.png)
 
