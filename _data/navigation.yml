@@ -13,6 +13,8 @@ docs-en:
         url: /docs/en/creating-automated-test-case
   - title: Usages
     children:
+      - title: Environments Management
+        url: /docs/en/environments-management
       - title: Endpoints Management
         url: /docs/en/endpoints-management
       - title: Assertions
