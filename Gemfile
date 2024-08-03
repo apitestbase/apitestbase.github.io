@@ -34,4 +34,4 @@ gem "webrick", "~> 1.7"
 
 gem "jekyll-redirect-from"
 
-gem "google-protobuf", "~> 3.25.5"
+gem "google-protobuf", "3.25.3"
