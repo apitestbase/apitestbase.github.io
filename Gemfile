@@ -34,4 +34,7 @@ gem "webrick", "~> 1.7"
 
 gem "jekyll-redirect-from"
 
+# This version of the transitive dependency was added to avoid 'format not a string literal and no format arguments'
+# error on version 3.25.4. Refer to https://github.com/protocolbuffers/protobuf/issues/15585.
+# Remove it when version 3.25.5 comes out and has no problem.
 gem "google-protobuf", "3.25.3"
