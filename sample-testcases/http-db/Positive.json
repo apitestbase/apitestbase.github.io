@@ -7,7 +7,6 @@
           "name": "Set up database data",
           "type": "DB",
           "endpoint": {
-            "name": "Unmanaged Endpoint",
             "type": "DB",
             "url": "jdbc:sqlserver://localhost:1433;database=Article"
           },
@@ -20,7 +19,6 @@
           "name": "Invoke the API to update article",
           "type": "HTTP",
           "endpoint": {
-            "name": "Unmanaged Endpoint",
             "type": "HTTP",
             "url": "http://localhost:port/path/to/your/local/article/api/2"
           },
@@ -52,7 +50,6 @@
           "name": "Check database data",
           "type": "DB",
           "endpoint": {
-            "name": "Unmanaged Endpoint",
             "type": "DB",
             "url": "jdbc:sqlserver://localhost:1433;database=Article"
           },

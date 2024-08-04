@@ -77,7 +77,6 @@
             "sqlScript": "-- Clear the table\ndelete from article;\n\n-- Create two article records\ninsert into article (id, title, content) values (1, 'article1', 'content1');\ninsert into article (id, title, content) values (2, 'article2', 'content2');"
           },
           "endpoint": {
-            "name": "Unmanaged Endpoint",
             "type": "DB",
             "username": "user",
             "url": "jdbc:h2:C:/Users/zheng/AppData/Roaming/ApiTestBase/database/sample;AUTO_SERVER=TRUE"
@@ -101,7 +100,6 @@
             "body": "{\n  \"id\": 2,\n  \"title\": \"${Input_Article_Title}\",\n  \"content\": \"Once upon a time ...\"\n}"
           },
           "endpoint": {
-            "name": "Unmanaged Endpoint",
             "type": "HTTP",
             "url": "http://localhost:8090/api/articles/2"
           },
@@ -130,7 +128,6 @@
             "sqlScript": "select id, title, content from article;"
           },
           "endpoint": {
-            "name": "Unmanaged Endpoint",
             "type": "DB",
             "username": "user",
             "url": "jdbc:h2:C:/Users/zheng/AppData/Roaming/ApiTestBase/database/sample;AUTO_SERVER=TRUE"

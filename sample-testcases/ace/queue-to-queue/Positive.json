@@ -34,7 +34,6 @@
           "type": "MQ",
           "action": "Clear",
           "endpoint": {
-            "name": "Unmanaged Endpoint",
             "type": "MQ",
             "otherProperties": {
               "@type": "MqEndpointProperties",
@@ -51,7 +50,6 @@
           "type": "MQ",
           "action": "Enqueue",
           "endpoint": {
-            "name": "Unmanaged Endpoint",
             "type": "MQ",
             "otherProperties": {
               "@type": "MqEndpointProperties",
@@ -72,7 +70,6 @@
           "type": "ACE",
           "action": "WaitForProcessingCompletion",
           "endpoint": {
-            "name": "Unmanaged Endpoint",
             "type": "ACE",
             "otherProperties": {
               "@type": "AceEndpointProperties",
@@ -91,7 +88,6 @@
           "type": "MQ",
           "action": "CheckDepth",
           "endpoint": {
-            "name": "Unmanaged Endpoint",
             "type": "MQ",
             "otherProperties": {
               "@type": "MqEndpointProperties",
@@ -117,7 +113,6 @@
           "type": "MQ",
           "action": "Dequeue",
           "endpoint": {
-            "name": "Unmanaged Endpoint",
             "type": "MQ",
             "otherProperties": {
               "@type": "MqEndpointProperties",

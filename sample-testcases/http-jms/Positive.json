@@ -26,7 +26,6 @@
           "type": "JMS",
           "action": "Clear",
           "endpoint": {
-            "name": "Unmanaged Endpoint",
             "type": "JMS",
             "provider": "Solace",
             "host": "localhost",
@@ -46,7 +45,6 @@
           "name": "Invoke the API to ingest data",
           "type": "HTTP",
           "endpoint": {
-            "name": "Unmanaged Endpoint",
             "type": "HTTP",
             "url": "http://localhost:port/path/to/your/local/data/ingestion/api"
           },
@@ -81,7 +79,6 @@
           "type": "JMS",
           "action": "CheckDepth",
           "endpoint": {
-            "name": "Unmanaged Endpoint",
             "type": "JMS",
             "provider": "Solace",
             "host": "localhost",
@@ -111,7 +108,6 @@
           "type": "JMS",
           "action": "Browse",
           "endpoint": {
-            "name": "Unmanaged Endpoint",
             "type": "JMS",
             "provider": "Solace",
             "host": "localhost",
