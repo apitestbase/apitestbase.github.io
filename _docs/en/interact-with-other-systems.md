@@ -26,7 +26,7 @@ Notice that there are two `sqljdbc_auth.dll` files in the unzipped folder. Use t
 Sample JDBC URLs:
 
     //  When using SQL Server authentication
-    jdbc:sqlserver://myhost:1433;database=myDatabase;
+    jdbc:sqlserver://myhost:1433;database=myDatabase
 
     //  When using Windows authentication
     jdbc:sqlserver://myhost:1433;database=myDatabase;integratedSecurity=true
