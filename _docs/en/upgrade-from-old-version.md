@@ -33,7 +33,7 @@ When launching the new version, you'll see the same security warning as before. 
 
 {% tab upgrade Docker %}
 
-`Remove the existing API Test Base container`.
+`Stop or remove the existing API Test Base container` (to avoid port number conflict with the new container).
 
 Run the new version following the instructions on [Quick Start](/docs/en/quick-start) page.
 
