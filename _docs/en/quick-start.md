@@ -17,6 +17,12 @@ Once the installation finishes, you can launch API Test Base from Start Menu or 
 
 First time launching, a Windows Defender Firewall alert will pop up. Check the `Private networks ...` option, uncheck the `Public networks ...` option, and click the `Allow access` button.
 
+Once the application is launched, a system tray icon shows. Click the icon to bring up the menu, like below.
+
+![System Tray Menu](../../screenshots/install-and-launch/system-tray-menu.png)
+
+Select `Open ATB` to open API Test Base UI in your default browser.
+
 {% endtab %}
 
 {% tab install Mac OS %}
@@ -35,15 +41,41 @@ Click the Open button to launch API Test Base.
 
 After successful launch, you'll no longer see the dialogs when launching again.
 
-{% endtab %}
-
-{% endtabs %}
-
 Once the application is launched, a system tray icon shows. Click the icon to bring up the menu, like below.
 
 ![System Tray Menu](../../screenshots/install-and-launch/system-tray-menu.png)
 
 Select `Open ATB` to open API Test Base UI in your default browser.
+
+{% endtab %}
+
+{% tab install Docker %}
+
+On Windows or Mac OS host
+
+```
+docker run -d -t -v /data/folder/on/host:/atb/data --name apitestbase-{{ site.atb_release_version }} -p 8090:8090 apitestbase/apitestbase:{{ site.atb_release_version }}
+```
+
+On Linux host
+
+```
+docker run -d -t -v /data/folder/on/host:/atb/data --add-host=host.docker.internal:host-gateway --name apitestbase-{{ site.atb_release_version }} -p 8090:8090 apitestbase/apitestbase:{{ site.atb_release_version }}
+```
+
+Notice: Replace `/data/folder/on/host` with your own value. For example (Windows host):
+
+```
+docker run -d -t -v C:\Users\zheng\AppData\Roaming\ApiTestBaseDocker:/atb/data --name apitestbase-{{ site.atb_release_version }} -p 8090:8090 apitestbase/apitestbase:{{ site.atb_release_version }}
+```
+
+This is so that your data can be retained on the host machine when the container is deleted.
+
+Once the container is running, open `http://localhost:8090/ui` in a Chrome browser on the host machine.
+
+{% endtab %}
+
+{% endtabs %}
 
 ## Ad Hoc Invocation
 Suppose you want to invoke a REST API.
@@ -55,3 +87,5 @@ Right click anywhere in the left side pane, select `New Request` > HTTP, give it
 In the request edit view, under the Invocation tab, select Method `GET`, enter a URL like `http://localhost:8090/api/articles` (an API Test Base bundled API) and click the `Invoke` button.
 
 ![Ad Hoc HTTP Invocation](../../screenshots/basic-use/ad-hoc-http-invocation.png)
+
+Docker users: to use ATB docker container to call your API on the host machine, use `host.docker.internal` as hostname in the request URL.
