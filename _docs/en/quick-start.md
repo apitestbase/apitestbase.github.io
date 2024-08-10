@@ -51,13 +51,13 @@ Select `Open ATB` to open API Test Base UI in your default browser.
 
 {% tab install Docker %}
 
-On Windows or Mac OS host
+Windows or Mac OS host
 
 ```
 docker run -d -t -v /data/folder/on/host:/atb/data --name apitestbase-{{ site.atb_release_version }} -p 8090:8090 apitestbase/apitestbase:{{ site.atb_release_version }}
 ```
 
-On Linux host
+Linux host
 
 ```
 docker run -d -t -v /data/folder/on/host:/atb/data --add-host=host.docker.internal:host-gateway --name apitestbase-{{ site.atb_release_version }} -p 8090:8090 apitestbase/apitestbase:{{ site.atb_release_version }}
