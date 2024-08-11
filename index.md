@@ -37,6 +37,8 @@ The tool
 * has GUI, saving user programming skills. Users have better experience using GUIed tool, as writing, reading and maintaining code are more brain power draining.
 * runs offline. All your data is stored on your local machine. No internet connection is required to use the tool.
 * intends to provide a platform that enables integrating testing capabilities for all types of APIs.
-* produces test cases easily readable by technical and non-technical people, and intends to enable sharing test cases across the entire organization.
+* supports both standalone requests and plain old test cases.
+* supports advanced features like HTTP stubs, built-in data driven testing, endpoints management, etc.
+* intends to enable sharing requests and test cases which are readable to developers, testers, BAs, architects, application/platform support, etc.
 
 ![UI Glance](../../screenshots/ui-glance.png)
