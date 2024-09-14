@@ -25,9 +25,7 @@ When running the new version installer, you'll see the same security warning as 
 
 Download the latest API Test Base dmg from the [release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}){:target="_blank"}.
 
-Open the new dmg file, and you'll be able to copy the new version of `API Test Base.app` to your /Applications folder, `replacing` the old one.
-
-When launching the new version, you'll see the same security warning as before. Refer to [Quick Start](/docs/en/quick-start) for how to resolve it.
+Open the new dmg file, and you'll be able to drag the new version of `API Test Base.app` to your /Applications folder, `replacing` the old one.
 
 {% endtab %}
 
