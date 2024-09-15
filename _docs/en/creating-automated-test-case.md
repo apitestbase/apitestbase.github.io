@@ -49,11 +49,7 @@ Open step 2 from the test case.
 
 Under the `Invocation` tab, select `PUT` from the Method dropdown list, and set URL `http://localhost:8090/api/articles/2`.
 
-Under the `Header` sub tab, add a request HTTP header using the `+` button, and update it to be `Content-Type: application/json`. This header is required by the Article API.
-
-![HTTP Request Header](../../screenshots/basic-use/http-request-header.png)
-
-Input the request body:
+Select JSON from the Body type dropdown list, and paste the request body:
 
 ```
 {
