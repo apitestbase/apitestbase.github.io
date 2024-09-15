@@ -41,25 +41,26 @@ Select `Open ATB` to open API Test Base UI in your default browser.
 
 {% tab install Docker %}
 
-Windows or Mac OS host
+If you are using Docker Engine (Linux only) or Docker Desktop version 4.34 or later, the recommended way to launch API Test Base is with [host networking](https://docs.docker.com/engine/network/drivers/host/){:target="_blank"}.
 
 ```
+docker run -d -t -v /data/folder/on/host:/atb/data --name apitestbase-{{ site.atb_release_version }} --net=host apitestbase/apitestbase:{{ site.atb_release_version }}
+```
+
+Notice: Replace `/data/folder/on/host` with your own value, so that your data can be retained on the host machine when the container is deleted. For example (Windows host):
+
+```
+docker run -d -t -v C:\Users\zheng\AppData\Roaming\ApiTestBaseDocker:/atb/data --name apitestbase-{{ site.atb_release_version }} --net=host apitestbase/apitestbase:{{ site.atb_release_version }}
+```
+
+If not using host networking
+```
+// Windows or Mac OS host
 docker run -d -t -v /data/folder/on/host:/atb/data --name apitestbase-{{ site.atb_release_version }} -p 8090:8090 apitestbase/apitestbase:{{ site.atb_release_version }}
-```
 
-Linux host
-
-```
+// Linux host
 docker run -d -t -v /data/folder/on/host:/atb/data --add-host=host.docker.internal:host-gateway --name apitestbase-{{ site.atb_release_version }} -p 8090:8090 apitestbase/apitestbase:{{ site.atb_release_version }}
 ```
-
-Notice: Replace `/data/folder/on/host` with your own value. For example (Windows host):
-
-```
-docker run -d -t -v C:\Users\zheng\AppData\Roaming\ApiTestBaseDocker:/atb/data --name apitestbase-{{ site.atb_release_version }} -p 8090:8090 apitestbase/apitestbase:{{ site.atb_release_version }}
-```
-
-This is so that your data can be retained on the host machine when the container is deleted.
 
 Once the container is running, open `http://localhost:8090/ui` in a Chrome browser on the host machine.
 
@@ -78,4 +79,4 @@ In the request edit view, under the Invocation tab, select Method `GET`, enter a
 
 ![Ad Hoc HTTP Invocation](../../screenshots/basic-use/ad-hoc-http-invocation.png)
 
-Docker users: to use ATB docker container to call your API on the host machine, use `host.docker.internal` as hostname in the request URL.
+Docker users: if not using host networking, to enable ATB docker container to call your API on the host machine, use `host.docker.internal` as hostname in the request URL.
