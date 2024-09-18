@@ -26,7 +26,7 @@ Under the Test Steps tab, click `+ Test Step` dropdown button and select `Databa
 ## Populate Step 1
 Click the name of step 1 to open its edit view.
 
-Under the `Endpoint` tab, set JDBC URL `jdbc:h2:<APITestBase_Data>/database/sample;AUTO_SERVER=TRUE`, replacing `<APITestBase_Data>` with the real directory you can get by clicking the `Open Data Folder` item in the ATB system tray menu. The JDBC URL will be used by the test step to connect to the sample database.
+Under the `Endpoint` tab, set JDBC URL `jdbc:h2:<APITestBase_Data>/database/sample;AUTO_SERVER=TRUE`, replacing `<APITestBase_Data>` with the value on your machine (refer to [Maintenance](/docs/en/maintenance)). The JDBC URL will be used by the test step to connect to the sample database.
 
 Then set Username and Password which can be found in `<APITestBase_Data>/config.yml`.
 
@@ -40,7 +40,7 @@ insert into article (id, title, content) values (1, 'article1', 'content1');
 insert into article (id, title, content) values (2, 'article2', 'content2');
 ```
 
-Click the Invoke button to try it out (i.e. run the script), like shown below.
+Click the `Invoke` button to try it out (i.e. run the script), like shown below.
 
 ![Database Setup](../../screenshots/basic-use/database-setup.png)
 
