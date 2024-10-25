@@ -3,7 +3,9 @@ title: Properties
 permalink: /docs/en/properties
 key: docs-properties
 ---
-A property in API Test Base is a named String. A property can be used in any request, test case, test step, assertion or HTTP stub with syntax `${<Property_Name>}`, e.g. ${Output_Queue_Name}.
+A property in API Test Base is a named String.
+
+A property can be defined in various ways and scopes, and used in request, test case, test step, assertion or HTTP stub with syntax `${<Property_Name>}`, e.g. ${Output_Queue_Name}.
 
 ## User Defined Properties
 You can define custom properties in a request or test case on the `Properties` tab, then use them in the request, test steps or assertions.
