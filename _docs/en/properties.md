@@ -3,14 +3,14 @@ title: Properties
 permalink: /docs/en/properties
 key: docs-properties
 ---
-A property in API Test Base is a named String. A property can be used in any test case, test step, assertion or HTTP stub with syntax `${<Property_Name>}`, e.g. ${Output_Queue_Name}.
-
-On running a test case or test step, the properties used in them are resolved to String values.
+A property in API Test Base is a named String. A property can be used in any request, test case, test step, assertion or HTTP stub with syntax `${<Property_Name>}`, e.g. ${Output_Queue_Name}.
 
 ## User Defined Properties
-You can define custom properties in a test case on the `Properties` tab, then use them in the test steps and assertions inside the test case. You can double click the property value cell (after entering edit mode) in the grid to pop out a textarea to edit big text, especially one with line breaks, like JSON or XML document.
+You can define custom properties in a request or test case on the `Properties` tab, then use them in the request, test steps or assertions.
 
-A straightforward usage of user defined property is that it can be defined once and used multiple times in the test steps or assertions inside the test case.
+You can double click the property value cell (after entering edit mode) in the grid to pop out a textarea to edit big text, especially one with line breaks, like JSON or XML.
+
+A straightforward usage of user defined property is that it can be defined once and used multiple times in the same request or test case.
 
 Another usage is `pattern based test case creation`. If already familiar with a test pattern, you can define a test case as template to capture the test steps. You can then define properties on the template test case and reference them in the test steps. To create a new test case, copy corresponding test case template, tailor the test steps as appropriate (such as removing unnecessary steps), enter the property values and the new test case is ready to run. There is no need for you to dive into any test step to locate and enter those values. This treats the test case somewhat like a black box and properties like the arguments to the black box, hence increasing the speed of test case creation.
 
