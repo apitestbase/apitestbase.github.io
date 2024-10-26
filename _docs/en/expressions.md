@@ -16,11 +16,11 @@ ${= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date()) }
 ${= (5 + 2) * 8 / 2 % 5 + 0.5 }
 ```
 
-You can embed groovy expressions inside [Properties](/docs/en/properties), or directly inside test step. For example:
+You can embed groovy expressions inside [Properties](/docs/en/properties), or directly inside request. For example:
 
 ![Groovy Expression in Request Body](../../screenshots/expressions/groovy-expression-in-request-body.png)
 
-When running the test step or test case, the expressions are evaluated and replaced by the evaluation results.
+When running the request, the expressions are evaluated and replaced by the evaluation results.
 
 ### Default Imports
 
