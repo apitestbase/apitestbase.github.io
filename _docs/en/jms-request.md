@@ -20,6 +20,10 @@ Send action is used to send a JMS message into a queue.
 
 You can do one-way/fire-and-forget style invocation, i.e. send message to queue and done.
 
+<div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/EZzxLVzw-vo?si=GUVb6urvdscrGHxU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
 You can also do request-reply style invocation, i.e. send message to request queue and receive another message from reply queue. For example:
 
 ![Send Message and Also Receive](../../screenshots/jms/send-message-and-also-receive.png)
