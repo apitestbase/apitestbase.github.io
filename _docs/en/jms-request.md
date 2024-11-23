@@ -28,6 +28,10 @@ You can also do request-reply style invocation, i.e. send message to request que
 
 ![Send Message and Also Receive](../../screenshots/jms/send-message-and-also-receive.png)
 
+<div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/n_aMtRdIMr4?si=uMpDZl1hQjm4O_nX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
 Message body can be XML, JSON, or any other text format.
 
 Click `Do` button to Send the message and receive the reply.
