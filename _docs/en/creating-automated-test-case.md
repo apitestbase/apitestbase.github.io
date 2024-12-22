@@ -5,7 +5,7 @@ key: docs-creating-automated-test-case
 ---
 We are going to demo how to test a REST API that updates an article in database. Check section [Sample Test Case](#sample-test-case) if you are eager to see what the test case looks like.
 
-The API is the sample Article API that is bundled with API Test Base. It does CRUD operations against the Article table in a sample H2 database. The sample database is automatically created under `<APITestBase_Data>/database` when API Test Base is launched for the first time. You can find `<APITestBase_Data>` directory via system tray menu item `Open Data Folder`.
+The API is the sample Article API that is bundled with API Test Base. It does CRUD operations against the Article table in a sample H2 database. The sample database is automatically created under `<ATB_DATA_DIR>/database` when API Test Base is launched for the first time. You can find `<ATB_DATA_DIR>` directory via system tray menu item `Open Data Folder`.
 
 We are planning to have three test steps in our test case
 ```
@@ -26,9 +26,9 @@ Under the Test Steps tab, click `+ Test Step` dropdown button and select `Databa
 ## Populate Step 1
 Click the name of step 1 to open its edit view.
 
-Under the `Endpoint` tab, set JDBC URL `jdbc:h2:<APITestBase_Data>/database/sample;AUTO_SERVER=TRUE`, replacing `<APITestBase_Data>` with the value on your machine (refer to [Maintenance](/docs/en/maintenance)). The JDBC URL will be used by the test step to connect to the sample database.
+Under the `Endpoint` tab, set JDBC URL `jdbc:h2:<ATB_DATA_DIR>/database/sample;AUTO_SERVER=TRUE`, replacing `<ATB_DATA_DIR>` with the value on your machine (refer to [Maintenance](/docs/en/maintenance)). The JDBC URL will be used by the test step to connect to the sample database.
 
-Then set Username and Password which can be found in `<APITestBase_Data>/config.yml`.
+Then set Username to `user` and Password to `pass`.
 
 Under the `Invocation` tab, enter below SQL script.
 ```

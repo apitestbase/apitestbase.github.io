@@ -27,7 +27,7 @@ The mock server is embedded in the API Test Base instance and is started when AP
 
 To use HTTPS with the mock server, you can just use URL `https://<APITestBaseHost>:<MockServerHTTPSPort>/some/thing`.
 
-The mock server has a default HTTP port number 8092 and a default HTTPS port number 8093. Both can be changed in the `<APITestBase_Data>/config.yml`, under the `wireMock` section.
+The mock server has a default HTTP port number 8092 and a default HTTPS port number 8093. Both can be changed in the `<ATB_DATA_DIR>/config.properties`.
 
 To manually load the stub into the mock server, go to the test case edit view > HTTP Stubs tab, and click the `Load All` button.
 
