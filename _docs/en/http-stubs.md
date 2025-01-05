@@ -61,7 +61,7 @@ It is easy. Create stubs in your test case under its `HTTP Stubs` tab. Every tim
     - If the 'Check Hit Order' option is selected under the HTTP Stubs tab on the test case edit view, the stubs from the test case have been hit in ascending order by stub number.
     - All stub requests received by the `Auto` mock server have been matched (i.e. each request has hit a stub from the test case).
 
-## Other supported features
+## Other Supported Features
 - **Setting a delay for response**
 - [Response templating](http://wiremock.org/docs/response-templating/)  
     Use attributes of the request in the response.
