@@ -17,7 +17,7 @@ The HTTP Stubs feature in API Test Base is powered by [WireMock](http://wiremock
 Let's play with an HTTP stub quickly.
 
 ### Create a Stub
-Open the Mock Servers view, select the `Manual` mock server, and select its HTTP Stubs tab.
+Open the `Mock Servers` view, select the `Manual` mock server, and select its `HTTP Stubs` tab.
 
 ![Quick Play - Manual Mock Server](../../screenshots/http-stubs/quick-play-manual-mock-server.png)
 
