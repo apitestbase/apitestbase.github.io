@@ -13,50 +13,63 @@ The same technique is also called mock service or service virtualization in the 
 
 The HTTP Stubs feature in API Test Base is powered by [WireMock](http://wiremock.org/).
 
-## A quick play
+## A Quick Play
 Let's play with an HTTP stub quickly.
 
-### Create a stub and load it
-Create a temp test case. Go to its `HTTP Stubs` tab and click `+ Stub` button. On the stub edit view, select `POST` method, enter URL `/some/thing`, select request body pattern `Equal to JSON`, enter request body `{ "a": "b" }`, and enter response body `Hello!`.
+### Create a Stub
+Open the Mock Servers view, select the `Manual` mock server, and select its HTTP Stubs tab.
+
+![Quick Play - Manual Mock Server](../../screenshots/http-stubs/quick-play-manual-mock-server.png)
+
+Click `+ Stub` button. On the stub edit view, enter URL `/some/thing` and response body `Hello!`.
 
 ![Quick Play Stub Details](../../screenshots/http-stubs/quick-play-stub-details.png)
 
-The meaning of the stub is that when an HTTP POST request is sent to the mock server with URL `http://<APITestBaseHost>:<MockServerHTTPPort>/some/thing` (like http://localhost:8092/some/thing) and request body `{ "a": "b" }`, the mock server will return an HTTP response with status code 200 and response body `Hello!`.
+The meaning of the stub is that when an HTTP GET request is sent to the `Manual` mock server with URL `http://<ApiTestBaseHost>:<MockServerHttpPort>/some/thing` (like http://localhost:8094/some/thing), the mock server will return an HTTP response with status code `200` and response body `Hello!`.
 
-The mock server is embedded in the API Test Base instance and is started when API Test Base starts.
+The default port number of the `Manual` mock server is `8094`, and it can be changed under the `Settings` tab of the mock server.
 
-To use HTTPS with the mock server, you can just use URL `https://<APITestBaseHost>:<MockServerHTTPSPort>/some/thing`.
-
-The mock server has a default HTTP port number 8092 and a default HTTPS port number 8093. Both can be changed in the `<ATB_DATA_DIR>/config.properties`.
-
-To manually load the stub into the mock server, go to the test case edit view > HTTP Stubs tab, and click the `Load All` button.
-
-![Quick Play Stub List](../../screenshots/http-stubs/quick-play-stub-list.png)
-
-### Test the stub
-Go to the `Test Steps` tab of the test case, and create an HTTP test step with method `POST`, URL `http://localhost:8092/some/thing` and request body `{ "a": "b" }`. Click the `Invoke` button to invoke the stub, and you'll see a response body `Hello!`.
+### Test the Stub
+Open a new tab in your browser, and go to `http://localhost:8094/some/thing`, and you'll see response body `Hello!` on the page.
 
 ![Quick Play Stub Invocation](../../screenshots/http-stubs/quick-play-stub-invocation.png)
 
-## Mock server status
-To know what stubs have been loaded into the mock server, or check stub request log, open the mock server page by clicking the `Mock Server` link under the `HTTP Stubs` tab of the test case.
+## Mock Server Status
+To know what stubs have been loaded into the mock server, or check stub request log, open the mock server Status tab.
 
-![Mock Server Status Page](../../screenshots/http-stubs/mock-server-status-page.png)
+![Mock Server Status](../../screenshots/http-stubs/mock-server-status.png)
 
-## Use HTTP stubs in automated API testing
-It is easy. Create stubs in your test case like above, but no need to load them into mock server manually (via the Load All button). Every time you run the test case, below things happen automatically
-- On test case run start, the mock server is reset and the stubs defined on the test case are loaded into the mock server.
-    - Mock server reset means all stubs and all stub request logs are cleared from the mock server.
+## Mock Servers
+There are two mock servers in API Test Base: `Manual`, `Auto`.
+
+### The Manual Mock Server
+The `Manual` mock server is used for defining and hosting ad hoc HTTP stubs. You can define HTTP stubs on the `Manual` mock server, and then immediately use/invoke it without any dependency.
+
+### The Auto Mock Server
+The `Auto` mock server is used when running test cases which have HTTP stubs defined on them. The HTTP stubs are defined on test cases, rather than on mock server.
+
+When a test case runs, the `Auto` mock server is cleared and all HTTP stubs defined on the test case are automatically loaded into the `Auto` mock server, ready to be invoked (by your API under test).
+
+More details follow.
+
+## Use HTTP Stubs in Automated API Testing
+It is easy. Create stubs in your test case under its `HTTP Stubs` tab. Every time you run the test case, below things happen automatically
+- On test case run start, the `Auto` mock server is reset and all the stubs defined on the test case are automatically loaded into the mock server, ready to be invoked (by your API under test).
+    - Mock server reset means all stubs, stub request logs, scenarios, etc. are cleared from the mock server.
 - On test case run end, stub requests received by the mock server are checked by asserting
-    - All stubs in the test case have been hit.
-    - If the 'Check Hit Order' option is selected under the HTTP Stubs tab on the test case edit view, the stubs have been hit in ascending order by stub number.
-    - All stub requests received by the mock server have been matched (i.e. each request has hit a stub in the test case).
+    - All stubs from the test case have been hit.
+    - If the 'Check Hit Order' option is selected under the HTTP Stubs tab on the test case edit view, the stubs from the test case have been hit in ascending order by stub number.
+    - All stub requests received by the `Auto` mock server have been matched (i.e. each request has hit a stub from the test case).
 
 ## Other supported features
-- Setting a delay for response
+- **Setting a delay for response**
 - [Response templating](http://wiremock.org/docs/response-templating/)  
     Use attributes of the request in the response.
 - [Regex matching on path and query](http://wiremock.org/docs/request-matching/#regex-matching-on-path-and-query)  
     Use this when your client request URL contains dynamic parts.
 - [Stateful Behaviour](http://wiremock.org/docs/stateful-behaviour/)  
     This is useful when you want to ensure the stubs are hit in specified order.
+- **HTTPS stubs**<br>
+    This is useful when your API under test can only call HTTPS dependencies.<br>
+    The same stub can be invoked via both HTTP and HTTPS. To invoke a stub via HTTPS, simply use a different port number. `https://<ApiTestBaseHost>:<MockServerHttpsPort>/some/thing`, like `https://localhost:8095/some/thing`.<br>
+    The HTTPS port number can be changed under the mock server's `Settings` tab.
