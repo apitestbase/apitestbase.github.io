@@ -30,7 +30,7 @@
           }
         }
       ],
-      "httpStubMappings": [
+      "httpStubs": [
         {
           "number": 1,
           "spec": {
