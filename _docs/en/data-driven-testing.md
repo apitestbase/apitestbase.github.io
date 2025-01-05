@@ -23,7 +23,7 @@ Take the test case from [Creating Automated Test Case](/docs/en/creating-automat
 
 Check section [Sample Test Case](#sample-test-case) if you are eager to see what the final test case looks like.
 
-### Refactor the test case to be data driven
+### Refactor the Test Case to be Data Driven
 What we got from [Creating Automated Test Case](/docs/en/creating-automated-test-case) was a test case like below
 
 ![Basic Test Case](../../screenshots/basic-use/test-case-outline.png)
@@ -34,7 +34,7 @@ Secondly, we refactor test steps of the new test case to use property references
 
 Then we add data table rows on the new test case to define the properties.
 
-#### Refactor step 2
+#### Refactor Step 2
 Open step 2 `Invoke the API to update article` of the new test case.
 
 Under the `Invocation` tab, replace the "title" field value in the request body with a property reference `${Input_Article_Title}`.
@@ -47,21 +47,21 @@ For more thorough testing than only checking API response status code, we add a 
 
 Notice that the properties `Input_Article_Title`, `Expected_API_Response_Status_Code` and `Expected_API_Response_JSON` do not exist yet. We'll create them in data table later.
 
-#### Refactor step 3
+#### Refactor Step 3
 Open step 3 `Check database data` of the new test case.
 
 Replace the Expected JSON of the JSONEqual assertion with a property reference `${Expected_Result_Database_Data}`.
 
 ![Refactored Step 3](../../screenshots/data-driven-testing/refactored-step-3.png)
 
-#### Add data table columns
+#### Add Data Table Columns
 We have used property references in our test steps. Now we'll create the properties in data table.
 
 Open the new test case, and under the `Data Table` tab click the `+ Column` button to add a new column. Rename it (via column header menu) to `Input_Article_Title`. Similarly, add more columns for the other properties.
 
 ![Data Table with Columns Only](../../screenshots/data-driven-testing/data-table-with-columns-only.png)
 
-#### Add data table rows
+#### Add Data Table Rows
 Under the `Data Table` tab, use the `+ Row` button to add two rows, and fill the rows with below data
 
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Caption&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Input_Article_Title | Expected_API_Response_Status_Code | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expected_API_Response_JSON&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Expected_Result_Database_Data |
@@ -81,7 +81,7 @@ The complete data table looks like below.
 
 Now we have finished refactoring the test case. The testing logic is not changed. The only thing changed is that the test case is now data driven.
 
-### Run the test case
+### Run the Test Case
 Finally, it's time to run the test case. Click the `Run` button on the test case edit view, and you'll see the result for the whole test case beside the Run button, and in the right pane an outline of result for all individual runs. Click an individual run to expand it and view the result of its step runs.
 
 ![Data Driven Test Case Run](../../screenshots/data-driven-testing/data-driven-test-case-run.png)

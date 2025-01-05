@@ -13,7 +13,7 @@ Refer to this [page](/docs/en/environments-management) for more information abou
 
 There are two ways to create a managed endpoint. Here we use HTTP endpoint as an example.
 
-## Create Managed Endpoint in the Environments area
+## Create Managed Endpoint in the Environments Area
 Suppose you have created an environment (like 'Local') in the Environments area, open the environment. Click `+ Endpoint` dropdown button, select `HTTP`, give it a name (like 'Articles API') and press Enter. A managed HTTP endpoint is created with its edit view displayed on the right.
 
 Input details into the fields, and the endpoint looks like below. 

@@ -16,7 +16,7 @@ To operate on an IBM MQ queue or topic, some endpoint parameters are needed for 
 ## Enqueue Action
 Enqueue action is used to `PUT` a message into a queue. You can provide the message in two ways.
 
-### Provide message by entering text
+### Provide Message by Entering Text
 ![Enqueue MQ Message From Text](../../screenshots/mq/enqueue-message-from-text.png)
 
 Text can be XML, JSON, or any other text format.
@@ -39,7 +39,7 @@ You can also include an **MQRFH2 header**, with one or more MQRFH2 folders, in t
 
 ![Enqueue MQ Message From Text with MQRFH2 Header](../../screenshots/mq/enqueue-message-from-text-with-rfh2-header.png)
 
-### Provide message by uploading a file
+### Provide Message by Uploading a File
 
 ![Enqueue MQ Message From File](../../screenshots/mq/enqueue-message-from-file.png)
 
