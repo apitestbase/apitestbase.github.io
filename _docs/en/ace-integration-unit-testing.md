@@ -16,7 +16,7 @@ The message flow under test (Flow1) has an MQ Input node to receive input messag
 
 The output queue is a 'joint' queue as there is a downstream message flow (Flow2) listening to it, like shown below.
 
-![Original Design](../../screenshots/ace/original-design.png)
+![Original Design](../../screenshots/ace/original-design.svg)
 
 The primary way to integration unit test Flow1 is to provide input to it and examine its output. Now there is a problem. Before we get a chance, the output message produced by Flow1 is immediately picked up by Flow2, i.e. we won't be able to examine Flow1's output message here.
 
@@ -29,7 +29,7 @@ A critical thing to do for ACE integration unit testing is to `isolate the messa
 
 Approach 1 is my favorite as it is simple.
 
-![New Design](../../screenshots/ace/new-design.png)
+![New Design](../../screenshots/ace/new-design.svg)
 
 Notice that the isolation is only needed in integration unit testing environment. Other environment such as ST (System Testing) or SIT (System Integration Testing) environment may not need it as the testing scope or strategy is different. On the other hand, configuring a message flow or queue differently in different environments is quite common in ACE project.
    
