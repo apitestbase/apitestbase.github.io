@@ -51,7 +51,7 @@ To change configurations like port numbers, modify the `<ATB_DATA_DIR>/config.pr
 #### Changing \<ATB_DATA_DIR\>
 To change `<ATB_DATA_DIR>` to a different location, just set an environment variable `ATB_DATA_DIR=/path/to/the/new/location` on your operating system, and restart API Test Base.
 
-`Mac users`: to set environment variables for applications (launched from Spotlight, Dock, etc.), create a plist file under ~/Library/LaunchAgents folder, and restart the machine. For example:
+`Mac users`: to set environment variables for applications (launched from Spotlight, Dock, etc.), create a plist file under ~/Library/LaunchAgents folder, and restart the machine. For example: io.apitestbase.plist
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
