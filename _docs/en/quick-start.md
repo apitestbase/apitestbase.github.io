@@ -9,33 +9,19 @@ key: docs-quick-start
 
 {% tab install Windows %}
 
-Download installer `apitestbase-{{ site.atb_release_version }}.exe` from the [latest release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}){:target="_blank"}.
+Download API Test Base `{{ site.atb_release_version }}` from the [latest release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}){:target="_blank"}.
 
-Double click the installer and follow through the normal Windows application installation process. You will likely get a warning dialog from Windows Defender SmartScreen, because the app hasn't been digitally signed by a Microsoft trusted Certificate Authority (which is expensive!). Click 'More info' on the dialog, and click 'Run anyway' to proceed installing API Test Base.
-
-Once the installation finishes, you can launch API Test Base from Start Menu or Desktop shortcut.
+When running the setup or portable binary, you will likely get a warning dialog from Microsoft Defender SmartScreen, because the app hasn't been digitally signed by a Microsoft trusted Certificate Authority (which is expensive!). Click 'More info' on the dialog, and click 'Run anyway' to proceed.
 
 First time launching, a Windows Defender Firewall alert will pop up. Check the `Private networks ...` option, uncheck the `Public networks ...` option, and click the `Allow access` button.
 
-Once the application is launched, a system tray icon shows. Click the icon to bring up the menu, like below.
-
-![System Tray Menu](../../screenshots/install-and-launch/system-tray-menu.png)
-
-Select `Open ATB` to open API Test Base UI in your default browser.
-
 {% endtab %}
 
-{% tab install Mac OS %}
+{% tab install macOS %}
 
-Download `apitestbase-{{ site.atb_release_version }}.dmg` from the [latest release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}){:target="_blank"}.
+Download API Test Base `{{ site.atb_release_version }}` from the [latest release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}){:target="_blank"}.
 
-Double click the dmg and drag `API Test Base.app` to your /Applications folder.
-
-Open the `/Applications/API Test Base.app` to launch API Test Base. A system tray icon shows. Click the icon to bring up the menu, like below.
-
-![System Tray Menu](../../screenshots/install-and-launch/system-tray-menu.png)
-
-Select `Open ATB` to open API Test Base UI in your default browser.
+Double click the dmg and drag `API Test Base.app` to your `/Applications` folder.
 
 {% endtab %}
 
@@ -55,7 +41,7 @@ docker run -d -t -v C:\Users\zheng\AppData\Roaming\ApiTestBaseDocker:/atb/data -
 
 If not using host networking
 ```
-// Windows or Mac OS host
+// Windows or macOS host
 docker run -d -t -v /data/folder/on/host:/atb/data --name apitestbase-{{ site.atb_release_version }} -p 8090:8090 apitestbase/apitestbase:{{ site.atb_release_version }}
 
 // Linux host
@@ -71,7 +57,9 @@ Once the container is running, open `http://localhost:8090/ui` in a Chrome brows
 ## Ad Hoc Invocation
 Suppose you want to invoke a REST API.
 
-Right click anywhere in the left side pane, select `New Request` > HTTP, give it a name and press Enter. The request is created:
+Right click anywhere on the left side pane, select `New Request` > HTTP, give it a name and press Enter.
+
+The request is created:
 
 ![New HTTP Request](../../screenshots/basic-use/new-http-request.png)
 
@@ -79,6 +67,6 @@ In the request edit view, under the Invocation tab, select Method `GET`, enter a
 
 ![Ad Hoc HTTP Invocation](../../screenshots/basic-use/ad-hoc-http-invocation.png)
 
-The request, as well as all the data you create in API Test Base, is automatically persisted (no Save button), so no need to worry about data loss across browser or machine restarts.
+The request, as well as all the data you create in API Test Base, is automatically persisted (no Save button), so no need to worry about data loss across app or machine restarts.
 
 `Docker users`: if not using host networking, to enable ATB docker container to call your API on the host machine, use `host.docker.internal` as hostname in the request URL.

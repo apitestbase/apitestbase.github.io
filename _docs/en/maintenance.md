@@ -15,7 +15,7 @@ API Test Base application stores data in a folder called `<ATB_DATA_DIR>`. Follo
 
 {% endtab %}
 
-{% tab data-folder Mac OS %}
+{% tab data-folder macOS %}
 
 ```
 ~/Library/Application Support/API Test Base
@@ -35,23 +35,25 @@ The first time you launch the application, below new folders are created automat
 
 ```
 database - where system database and a sample database are located. Both are H2 databases. 
-    System database is used to store all test cases, environments, endpoints, etc. you create using API Test Base.
-    Sample database is for you to play with API Test Base basic features such as REST API testing or database testing. An Article table is in it.
+    System database is used to store all test cases, environments, endpoints, etc. you create using ATB.
+    Sample database is for you to play with ATB basic features such as REST API testing or database testing. An Article table is in it.
    
-logs - where API Test Base application runtime logs are located.
+logs - where ATB application runtime logs are located.
    
 lib - where you put external libraries when needed.
+
+electron - where the Electron app data and logs are located. Not applicable to ATB Docker container.
 ```
 
 It is recommended that you back up `<ATB_DATA_DIR>/database` folder regularly. Remember to exit the application before backing up.
 
 #### Changing Configurations
-To change configurations like port numbers, modify the `<ATB_DATA_DIR>/config.properties` file content, and restart API Test Base.
+To change configurations like port numbers, modify the `<ATB_DATA_DIR>/config.properties` file content, and restart ATB.
 
 #### Changing \<ATB_DATA_DIR\>
-To change `<ATB_DATA_DIR>` to a different location, just set an environment variable `ATB_DATA_DIR=/path/to/the/new/location` on your operating system, and restart API Test Base.
+To change `<ATB_DATA_DIR>` to a different location, set an environment variable `ATB_DATA_DIR=/path/to/the/new/location` on your operating system, and restart ATB.
 
-`Mac users`: to set environment variables for applications (launched from Spotlight, Dock, etc.), create a plist file under ~/Library/LaunchAgents folder, and restart the machine. For example: io.apitestbase.plist
+`macOS users`: to set environment variables for applications (launched from Spotlight, Dock, etc.), create a plist file under ~/Library/LaunchAgents folder, and restart the machine. For example: io.apitestbase.plist
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>

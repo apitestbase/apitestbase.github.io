@@ -30,7 +30,7 @@ The meaning of the stub is that when an HTTP GET request is sent to the `Manual`
 The default port number of the `Manual` mock server is `8094`, and it can be changed under the `Settings` tab of the mock server.
 
 ### Test the Stub
-Open a new tab in your browser, and go to `http://localhost:8094/some/thing`, and you'll see response body `Hello!` on the page.
+Open your browser, and go to `http://localhost:8094/some/thing`, and you'll see response body `Hello!` on the page.
 
 ![Quick Play Stub Invocation](../../screenshots/http-stubs/quick-play-stub-invocation.png)
 
