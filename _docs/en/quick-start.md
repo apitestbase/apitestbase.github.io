@@ -11,7 +11,7 @@ key: docs-quick-start
 
 Download API Test Base `{{ site.atb_release_version }}` from the [latest release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}){:target="_blank"}.
 
-When running the setup or portable binary, you will likely get a warning dialog from Microsoft Defender SmartScreen, because the app hasn't been digitally signed by a Microsoft trusted Certificate Authority (which is expensive!). Click 'More info' on the dialog, and click 'Run anyway' to proceed.
+When running the setup or portable binary, you will likely get a warning dialog from Microsoft Defender SmartScreen, because the app hasn't been digitally signed by a Microsoft trusted Certificate Authority (which is expensive!). Click `More info` on the dialog, and click `Run anyway` to proceed.
 
 First time launching, a Windows Defender Firewall alert will pop up. Check the `Private networks ...` option, uncheck the `Public networks ...` option, and click the `Allow access` button.
 
