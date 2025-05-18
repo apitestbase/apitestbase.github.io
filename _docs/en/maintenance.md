@@ -25,7 +25,11 @@ API Test Base application stores data in a folder called `<ATB_DATA_DIR>`. Follo
 
 {% tab data-folder Docker %}
 
-The `/data/folder/on/host` you provided in the `docker run` command.
+There are two `<ATB_DATA_DIR>`s.
+
+One is inside the Docker container, with default value `/atb/data`. It is used by ATB application (like in the endpoint of a database request for invoking the ATB bundled sample H2 database).
+
+The other one is on the host and mapped to `/atb/data` in the `-v` parameter when running the `docker run` command (refer to [Quick Start](/docs/en/quick-start)). This one is for human reference.
 
 {% endtab %}
 
