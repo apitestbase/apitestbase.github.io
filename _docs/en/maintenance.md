@@ -38,10 +38,13 @@ The other one is on the host and mapped to `/atb/data` in the `-v` parameter whe
 The first time you launch the application, below new folders are created automatically under the `<ATB_DATA_DIR>` folder.
 
 ```
-database - where system database and a sample database are located. Both are H2 databases. 
-    System database is used to store all test cases, environments, endpoints, etc. you create using ATB.
+database - where a sample H2 database is located.
     Sample database is for you to play with ATB basic features such as REST API testing or database testing. An Article table is in it.
-   
+
+fileplace - where all your local workspaces are stored
+    Each folder under the fileplace folder is a workspace.
+    A workspace has requests, test cases, environments, etc. you create for your testing work.
+
 logs - where ATB application runtime logs are located.
    
 lib - where you put external libraries when needed.
