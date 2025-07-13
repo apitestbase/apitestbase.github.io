@@ -35,6 +35,8 @@ The other one is on the host and mapped to `/atb/data` in the `-v` parameter whe
 
 {% endtabs %}
 
+When using ATB desktop application, you can open the data folder directly via menu `Help > Open Data Folder`.
+
 The first time you launch the application, below new folders are created automatically under the `<ATB_DATA_DIR>` folder.
 
 ```
@@ -51,8 +53,6 @@ lib - where you put external libraries when needed.
 
 electron - where the Electron app data and logs are located. Not applicable to ATB Docker container.
 ```
-
-It is recommended that you back up `<ATB_DATA_DIR>/database` folder regularly. Remember to exit the application before backing up.
 
 #### Changing Configurations
 To change configurations like port numbers, modify the `<ATB_DATA_DIR>/config.properties` file content, and restart ATB.
