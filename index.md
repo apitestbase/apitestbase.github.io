@@ -29,7 +29,7 @@ tags:     # Not sure why. Unlike other article pages, here can't use 'tags: tag1
 ---
 API Test Base is a free tool for integration testing a variety of APIs. It is suitable for Integration, Microservices, ESB and SOA testing.
 
-Supported API types: HTTP, SOAP, Relational databases (Oracle, SQL Server, PostgreSQL, H2, etc.), JMS (ActiveMQ, Solace), FTP(S), SFTP, AMQP, MQTT, IBM MQ, IBM App Connect Enterprise (ACE; formerly IIB).
+Currently supported API types: HTTP, SOAP, Relational databases (Oracle, SQL Server, PostgreSQL, H2, etc.), JMS (ActiveMQ, Solace), FTP(S), SFTP, AMQP, MQTT, IBM MQ, IBM App Connect Enterprise (ACE; formerly IIB).
 
 <div style="text-align:center"><a class="button button--outline-primary button--pill" href="/docs/en/quick-start">Quick Start</a></div>
 
