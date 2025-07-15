@@ -5,8 +5,4 @@ permalink: /feedback
 key: feedback
 pageview: true
 ---
-### Issue, feature or improvement request
-Please raise an issue at [the release repo](https://github.com/apitestbase/apitestbase-release/issues){:target="_blank"}.
-
-### Non-technical issues
-Use: apitestbase at gmail.com.
+Send to: apitestbase at gmail.com.
