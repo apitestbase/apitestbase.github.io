@@ -31,7 +31,7 @@ API Test Base is a free tool for integration testing a variety of APIs, not just
 
 Currently supported API types: HTTP, SOAP, Relational databases (Oracle, SQL Server, PostgreSQL, H2, etc.), JMS (ActiveMQ, Solace), FTP(S), SFTP, AMQP, MQTT, IBM MQ, IBM App Connect Enterprise (ACE; formerly IIB).
 
-API Test Base enables you to create and maintain automated API test cases with not only HTTP involved, at lower cost.
+API Test Base enables you to create and maintain automated API test cases at lower cost.
 
 <div style="text-align:center"><a class="button button--outline-primary button--pill" href="/docs/en/quick-start">Quick Start</a></div>
 
