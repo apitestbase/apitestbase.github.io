@@ -49,6 +49,15 @@ Used for extracting property from HTTP response Set-Cookie header by cookie name
 
 ![Cookie Property Extractor](../../screenshots/properties/cookie-property-extractor.png)
 
+### XPath Property Extractor
+Used for extracting property from HTTP response body via XPath. The response body can be XML or HTML.
+
+When the response body is HTML, the XPath evaluation is powered by [JsoupXpath](https://github.com/zhegexiaohuozi/JsoupXpath).
+
+Some tips on JsoupXpath:
+- In absolute XPath, root node is `<html>`. For example, to select an element, you can use an absolute XPath like `/body/form`, but not `/html/body/form`.
+- XML namespace is not applicable.
+
 ## Nested Properties
 Nested property, i.e. property inside property value, is supported. For example:
 ```
