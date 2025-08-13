@@ -57,13 +57,9 @@ Once the container is running, open `http://localhost:8090/ui` in a Chrome brows
 ## Ad Hoc Invocation
 Suppose you want to invoke a REST API.
 
-Right click anywhere on the left side pane, select `New Request` > HTTP, give it a name and press Enter.
+Right click anywhere on the left side pane, select `New Request` > `HTTP`, give it a name and press Enter. The request is created.
 
-The request is created:
-
-![New HTTP Request](../../screenshots/basic-use/new-http-request.png)
-
-In the request edit view, under the Invocation tab, select Method `GET`, enter a URL like `http://localhost:8090/api/articles` (an API Test Base bundled API) and click the `Invoke` button.
+In the request edit view, under the `Invocation` tab, enter a URL like `http://localhost:8090/api/articles` (an API Test Base bundled API) and click the `Invoke` button.
 
 ![Ad Hoc HTTP Invocation](../../screenshots/basic-use/ad-hoc-http-invocation.png)
 
