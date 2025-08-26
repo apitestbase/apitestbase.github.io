@@ -15,7 +15,7 @@ We are planning to have three test steps in our test case
 ```
 
 ## Create Test Case Outline
-First of all, create a new test case, by right clicking anywhere in the left side pane and select `New Test Case`.
+First of all, create a new test case, by right clicking anywhere in the left side pane and selecting `New Test Case`.
 
 Now we can add test steps to the test case.
 
