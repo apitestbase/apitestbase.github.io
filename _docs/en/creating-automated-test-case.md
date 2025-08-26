@@ -15,7 +15,7 @@ We are planning to have three test steps in our test case
 ```
 
 ## Create Test Case Outline
-First of all, create a new test case. (You can create your preferred folder structure for managing test cases, by right clicking anywhere in the left side pane and selecting needed context menu item.)
+First of all, create a new test case, by right clicking anywhere in the left side pane and select `New Test Case`.
 
 Now we can add test steps to the test case.
 
