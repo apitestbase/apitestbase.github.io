@@ -36,7 +36,6 @@ API Test Base enables you to create and maintain automated API test cases at low
 <div style="text-align:center"><a class="button button--outline-primary button--pill" href="/docs/en/quick-start">Quick Start</a></div>
 
 The tool
-* has GUI, saving user programming skills. Users have better experience using GUIed tool, as writing, reading and maintaining code are more brain power draining.
 * runs offline. All your data is stored on your local machine. No internet connection is required to use the tool.
 * intends to provide a platform that enables integrating testing capabilities for all types of APIs.
 * supports both standalone requests and plain old test cases.
