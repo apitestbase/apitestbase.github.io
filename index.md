@@ -27,7 +27,7 @@ tags:     # Not sure why. Unlike other article pages, here can't use 'tags: tag1
   - mqtt-testing
   - jms-testing
 ---
-API Test Base is a free tool for integration testing a variety of APIs, not just HTTP. It is suitable for Integration, ESB and Microservices testing.
+API Test Base is a free tool for integration testing a variety of APIs. It is suitable for Integration, ESB and Microservices testing.
 
 Currently supported API types: HTTP, SOAP, Relational databases (Oracle, SQL Server, PostgreSQL, H2, etc.), JMS (ActiveMQ, Solace), FTP(S), SFTP, AMQP, MQTT, IBM MQ, IBM App Connect Enterprise (ACE; formerly IIB).
 
@@ -35,12 +35,13 @@ API Test Base enables you to create and maintain automated API test cases at low
 
 <div style="text-align:center"><a class="button button--outline-primary button--pill" href="/docs/en/quick-start">Quick Start</a></div>
 
-The tool
-* runs offline. All your data is stored on your local machine. No internet connection is required to use the tool.
-* intends to provide a platform that enables integrating testing capabilities for all types of APIs.
-* supports both standalone requests and plain old test cases.
-* supports advanced features like HTTP stubs, built-in data driven testing, endpoints management, placeholders in assertions, etc.
-* supports VCS (like Git) based team collaboration.
-* intends to enable sharing requests and test cases which are readable to developers, testers, BAs, architects, application/platform support, etc.
+Feature highlights
+* Support a lot of API types. Not just HTTP.
+* No code. Low code.
+* Offline first. All your data is stored on your local machine. No internet connection is required to use the tool.
+* Standalone requests, and plain old test cases.
+* HTTP stubs (mock servers), built-in data driven testing, endpoints management, placeholders in assertions, etc.
+* Support Docker.
+* Support VCS (like Git) based team collaboration.
 
 ![UI Glance](../../screenshots/ui-glance.png)
