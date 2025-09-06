@@ -8,7 +8,7 @@ Suppose you have an Article API that exposes an HTTP endpoint. When a client inv
 
 ![Article API](../../screenshots/http-db/article-api.png)
 
-Check section [Sample Test Case](#sample-test-case) if you are eager to see what the test case looks like.
+The result test case can be downloaded in section [Sample Test Case](#sample-test-case).
 
 The example uses SQL Server database, but in the real world it can be any brand of database. The way of doing test isolation, database test data preparation and test case creation is similar, with some differences in detailed techniques.
 

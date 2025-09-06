@@ -21,7 +21,7 @@ A `Caption` column is by default defined in data table. It enables you to mark/l
 ## Sample Scenario
 Take the test case from [Creating Automated Test Case](/docs/en/creating-automated-test-case) as a starting point. We will refactor it to enable testing Article update with two sets of data in one test case. One is for testing successful article update, and the other is for testing an error case when the article title is too long (over 50 chars) to be persisted into the database.
 
-Check section [Sample Test Case](#sample-test-case) if you are eager to see what the final test case looks like.
+The result test case can be downloaded in section [Sample Test Case](#sample-test-case).
 
 ### Refactor the Test Case to be Data Driven
 What we got from [Creating Automated Test Case](/docs/en/creating-automated-test-case) was a test case like below

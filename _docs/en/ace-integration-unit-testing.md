@@ -6,7 +6,7 @@ key: docs-ace-integration-unit-testing
 ---
 Though API Test Base enables `test driven development (TDD) for IBM ACE message flows`, this page is about basic method which assumes the message flow code has already been written before we test it.
 
-Below is the sample scenario. Check section [Sample Test Case](#sample-test-case) if you are eager to see what the test case looks like.
+Below is the sample scenario. The result test case can be downloaded in section [Sample Test Case](#sample-test-case).
 
 ## Message Flow Introduction
 
