@@ -26,7 +26,7 @@ The result test case can be downloaded in section [Sample Test Case](#sample-tes
 ### Refactor the Test Case to be Data Driven
 What we got from [Creating Automated Test Case](/docs/en/creating-automated-test-case) was a test case like below
 
-![Basic Test Case](../../screenshots/basic-use/test-case-outline.png)
+![Basic Test Case](../../screenshots/basic-use/skeleton-test-case.png)
 
 Firstly, we copy the `Update Article` test case, and rename the new test case to `Update Article - Data Driven`. These actions can be done by using the context menus (right click test case or folder) in the tree pane.
 
