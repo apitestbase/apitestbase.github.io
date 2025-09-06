@@ -3,7 +3,7 @@ title: Team Collaboration
 permalink: /docs/en/team-collaboration
 key: docs-team-collaboration
 ---
-API Test Base application stores the requests, test cases, environments etc. you create in an ATB workspace under folder `<ATB_DATA_DIR>/fileplace/<the workspace>`. Refer to [Maintenance](/docs/en/maintenance) for more information.
+API Test Base application stores the requests, test cases, environments etc. you create in an ATB workspace under folder `<ATB_DATA_DIR>/fileplace/<the workspace>`. Refer to [Administration](/docs/en/administration) for more information.
 
 Each request, test case, environment etc. is stored in a YAML file.
 

@@ -1,7 +1,7 @@
 ---
-title: Maintenance
-permalink: /docs/en/maintenance
-key: docs-maintenance
+title: Administration
+permalink: /docs/en/administration
+key: docs-administration
 ---
 API Test Base application stores data in a folder called `<ATB_DATA_DIR>`. Following is the default value:
 
@@ -74,7 +74,7 @@ To change `<ATB_DATA_DIR>` to a different location, set an environment variable 
             <string>/bin/launchctl</string>
             <string>setenv</string>
             <string>ATB_DATA_DIR</string>
-            <string>/Users/zhengwang/atb-data</string>
+            <string>/Users/your-username/atb-data</string>
         </array>
         <key>RunAtLoad</key>
         <true/>

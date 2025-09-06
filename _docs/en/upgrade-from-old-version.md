@@ -39,4 +39,4 @@ Run the new version following the instructions on [Quick Start](/docs/en/quick-s
 
 {% endtabs %}
 
-Your test data, settings, etc. will stay untouched, under the `<ATB_DATA_DIR>` folder (refer to [Maintenance](/docs/en/maintenance) for the location).
+Your test data, settings, etc. will stay untouched, under the `<ATB_DATA_DIR>` folder (refer to [Administration](/docs/en/administration) for the location).
