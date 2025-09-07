@@ -7,16 +7,14 @@ When a new request is created, an `unmanaged endpoint` with empty values will be
 
 Unmanaged endpoint is specific to a request, and is invisible to other requests.
 
-To reuse endpoints across requests, you can create `managed endpoints` in environments.
-
-Refer to this [page](/docs/en/environments-management) for more information about environments.
+To reuse endpoints across requests, you can create `managed endpoints` in [Environments](/docs/en/environments-management).
 
 There are two ways to create a managed endpoint. Here we use HTTP endpoint as an example.
 
-## Create Managed Endpoint in the Environments Area
-Suppose you have created an environment (like 'Local') in the Environments area, open the environment. Click `+ Endpoint` dropdown button, select `HTTP`, give it a name (like 'Articles API') and press Enter. A managed HTTP endpoint is created with its edit view displayed on the right.
+## Create Managed Endpoint in an Environment
+Suppose you have created an environment (like 'Local') in the Environments area, open the environment. Click `+ Endpoint` dropdown button, select `HTTP`, give it a name (like 'Article API') and press Enter. A managed HTTP endpoint is created.
 
-Input details into the fields, and the endpoint looks like below. 
+Enter details into the fields, and the endpoint looks like below. 
 
 ![Managed HTTP Endpoint](../../screenshots/env-mgmt/managed-http-endpoint.png)
 
@@ -29,9 +27,9 @@ Go to an HTTP request, click the `Endpoint` tab, and click `Select Managed Endpo
 Click the endpoint name to select it for use in the HTTP request.
 
 ## Share Unmanaged Endpoint from Request
-This is a convenient feature for you to capture endpoint details while editing a request, and then turn the (unmanaged) endpoint into managed.
+This is a convenient feature for you to capture endpoint details while editing a request, and then turn the unmanaged endpoint into managed.
 
-Under `Endpoint` tab of a request, click `Share Endpoint` button. Enter details and click `OK` button. The (unmanaged) endpoint will be shared into the currently selected environment (here 'Local').
+Under `Endpoint` tab of a request, click `Share Endpoint` button. Enter details and click `OK` button. The unmanaged endpoint will be shared into the currently selected environment (here 'Local').
 
 ![Share Unmanaged Endpoint](../../screenshots/env-mgmt/share-unmanaged-endpoint.png)
 
