@@ -58,7 +58,7 @@ It is easy. Create stubs in your test case under its `HTTP Stubs` tab. Every tim
     - Mock server reset means all stubs, stub request logs, scenarios, etc. are cleared from the mock server.
 - On test case run end, stub requests received by the mock server are checked by asserting
     - All stubs from the test case have been hit.
-    - If the 'Check Hit Order' option is selected under the HTTP Stubs tab on the test case edit view, the stubs from the test case have been hit in ascending order by stub number.
+    - If the `Check Hit Order` option is selected under the HTTP Stubs tab on the test case edit view, the stubs from the test case have been hit in ascending order by stub number.
     - All stub requests received by the `Auto` mock server have been matched (i.e. each request has hit a stub from the test case).
 
 ## Other Supported Features

@@ -29,8 +29,6 @@ To create the stub queue, you can simply do it via the Solace web console.
 * And then create the JNDI queue `/jndi/q/data/ingestion/api/stub/out` which is effectively an alias, and associate it with the physical queue.
 
 ## Test Case Creation
-It is recommended that you have a look at [Quick Start](/docs/en/quick-start) if ATB is new to you.
-
 Create a test case `Positive` under a folder for the Data Ingestion API, with below test steps
 ```
     1. (JMS step) Setup - clear stub output queue

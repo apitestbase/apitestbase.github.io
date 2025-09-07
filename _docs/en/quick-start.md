@@ -63,6 +63,6 @@ In the request edit view, under the `Invocation` tab, enter a URL like `http://l
 
 ![Ad Hoc HTTP Invocation](../../screenshots/basic-use/ad-hoc-http-invocation.png)
 
-The request, as well as all the data you create in API Test Base, is automatically persisted (no Save button), so no need to worry about data loss across app or machine restarts.
+The request, as well as all the data you create in API Test Base, is automatically persisted on your local machine. No Save button.
 
 `Docker users`: if not using host networking, to enable ATB docker container to call your API on the host machine, use `host.docker.internal` as hostname in the request URL.
