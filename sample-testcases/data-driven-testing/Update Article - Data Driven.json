@@ -79,7 +79,7 @@
           "endpoint": {
             "type": "DB",
             "username": "user",
-            "url": "jdbc:h2:C:/Users/zheng/AppData/Roaming/ApiTestBase/database/sample;AUTO_SERVER=TRUE"
+            "url": "jdbc:h2:${ATB_Data_Dir}/database/sample;AUTO_SERVER=TRUE"
           }
         },
         {
@@ -130,7 +130,7 @@
           "endpoint": {
             "type": "DB",
             "username": "user",
-            "url": "jdbc:h2:C:/Users/zheng/AppData/Roaming/ApiTestBase/database/sample;AUTO_SERVER=TRUE"
+            "url": "jdbc:h2:${ATB_Data_Dir}/database/sample;AUTO_SERVER=TRUE"
           },
           "assertions": [
             {
