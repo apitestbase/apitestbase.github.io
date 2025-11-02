@@ -8,7 +8,7 @@ A property in API Test Base is a named String.
 A property can be defined in various ways and scopes, and used in request, test case, test step, assertion or HTTP stub with syntax `${<Property_Name>}`, e.g. ${Output_Queue_Name}.
 
 ## User Defined Properties
-You can define custom properties in a request, test case or environment on the `Properties` tab, then use/reuse them across the request, test case or environment.
+You can define custom properties in a request, test case, environment or workspace on the `Properties` tab, then use/reuse them across the request, test case, environment or workspace.
 
 Another usage is `template based test case creation`. If already familiar with a test pattern, you can create a test case as template to capture the test steps. Define properties on the template test case and use them in the test steps. To create a new test case, copy the test case template, tailor the test steps as appropriate (such as removing unnecessary steps), enter the property values and the new test case is ready to run. There is no need for you to dive into any test step to locate and enter those values. This treats the test case like a black box and properties like the parameters to the black box, hence making it easier to create a new test case.
 
