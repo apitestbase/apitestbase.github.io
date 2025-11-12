@@ -1,5 +1,6 @@
 ---
 title: Administration
+redirect_from: /docs/en/maintenance
 permalink: /docs/en/administration
 key: docs-administration
 ---
