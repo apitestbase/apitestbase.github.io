@@ -52,6 +52,18 @@ Once the container is running, open `http://localhost:8090/ui` in a Chrome brows
 
 {% endtab %}
 
+{% tab install Java %}
+
+Download `apitestbase-{{ site.atb_release_version }}-allos-nojre.zip` from the [release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}){:target="_blank"}.
+
+This build is for running ATB on any OS where `Java 21+` has been installed. To run the ATB, extract the downloaded zip, and run the `start.bat` (on Windows) or `start.sh` (on macOS or Linux).
+
+It is typically used in CI/CD pipeline where you call ATB's own API (with HTTP command line tool like `curl`) for API test automation. Open `http://localhost:8090/apidoc` for Swagger UI.
+
+You can also use it (on page `http://localhost:8090/ui`) for requests or test cases creation, but it opens a terminal window which might not be the best UX.
+
+{% endtab %}
+
 {% endtabs %}
 
 ## Ad Hoc Invocation
