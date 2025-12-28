@@ -37,6 +37,29 @@ Run the new version following the instructions on [Quick Start](/docs/en/quick-s
 
 {% endtab %}
 
+{% tab upgrade Java %}
+
+When the build is used for API test automation in CI/CD pipeline, there is no need to upgrade, since the build is discarded after the pipeline run. You can just change the ATB version number in your pipeline definition file to use the latest ATB version.
+
+If you use the build for other purposes like trying out ATB, the steps for upgrade are as follows.
+
+`Stop the existing API Test Base instance` (to avoid port number conflict with the new instance).
+
+Download `apitestbase-{{ site.atb_release_version }}-allos-nojre.zip` from the [release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}){:target="_blank"}.
+
+Extract the downloaded zip, and copy following folders and file from the old `<ATB_DATA_DIR>` to the new `<ATB_DATA_DIR>`:
+```
+database
+fileplace
+lib
+logs
+config.properties     # override target config.properties
+``` 
+
+Run the new version following the instructions on [Quick Start](/docs/en/quick-start) page.
+
+{% endtab %}
+
 {% endtabs %}
 
-Your test data, settings, etc. will stay untouched, under the `<ATB_DATA_DIR>` folder (refer to [Administration](/docs/en/administration) for the location).
+During ATB upgrade, your test data, settings, etc. will stay untouched, under the `<ATB_DATA_DIR>` folder (refer to [Administration](/docs/en/administration) for the location).

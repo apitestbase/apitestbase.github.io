@@ -34,6 +34,12 @@ The other one is on the host and mapped to `/atb/data` in the `-v` parameter whe
 
 {% endtab %}
 
+{% tab data-folder Java %}
+
+The directory where the downloaded apitestbase-&lt;version&gt;-allos-nojre.zip was extracted to.
+
+{% endtab %}
+
 {% endtabs %}
 
 When using ATB desktop application, you can open the data folder directly via menu `Help > Open Data Folder`.
