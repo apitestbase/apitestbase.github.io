@@ -50,6 +50,8 @@ docker run -d -t -v /data/folder/on/host:/atb/data --add-host=host.docker.intern
 
 Once the container is running, open `http://localhost:8090/ui` in a Chrome browser on the host machine.
 
+If you use the docker container in `CI/CD` pipeline, call ATB's own API (with HTTP command line tool like `curl`) for API test automation. Open `http://localhost:8090/apidoc` on host machine for checking the Swagger UI.
+
 {% endtab %}
 
 {% tab install Java %}
@@ -58,7 +60,7 @@ Download `apitestbase-{{ site.atb_release_version }}-allos-nojre.zip` from the [
 
 This build is for running ATB on any OS where `Java 21+` has been installed. To run the ATB, extract the downloaded zip, and run the `start.bat` (on Windows) or `start.sh` (on macOS or Linux).
 
-It is typically used in CI/CD pipeline where you call ATB's own API (with HTTP command line tool like `curl`) for API test automation. Open `http://localhost:8090/apidoc` for Swagger UI.
+It is typically used in `CI/CD` pipeline where you call ATB's own API (with HTTP command line tool like `curl`) for API test automation. Open `http://localhost:8090/apidoc` for checking the Swagger UI.
 
 You can also use it (on page `http://localhost:8090/ui`) for requests or test cases creation, but it opens a terminal window which might not be the best UX.
 
