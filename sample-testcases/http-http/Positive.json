@@ -1,0 +1,78 @@
+{
+  "testcases": [
+    {
+      "name": "Positive",
+      "teststeps": [
+        {
+          "name": "Invoke the API and Assert Response",
+          "type": "HTTP",
+          "endpoint": {
+            "type": "HTTP",
+            "url": "http://localhost:port/path/to/your/local/open/account/api"
+          },
+          "apiRequest": {
+            "@type": "HttpRequest",
+            "headers": [],
+            "body": "{\n  \"type\": \"savings\",\n  \"holderName\": \"Jack\",\n  \"holderPhone\": 1234567,\n  \"branchNumber\": 123\n}",
+            "method": "POST"
+          },
+          "assertions": [
+            {
+              "name": "StatusCodeEqual",
+              "type": "StatusCodeEqual",
+              "otherProperties": {
+                "statusCode": "200"
+              }
+            }
+          ],
+          "otherProperties": {
+            "timeout": "20"
+          }
+        }
+      ],
+      "httpStubs": [
+        {
+          "number": 1,
+          "spec": {
+            "request": {
+              "url": "/fraudcheck",
+              "method": "POST",
+              "bodyPatterns": [
+                {
+                  "equalToJson": "\"APITestBase_ToBeSubstitutedDuringStepRun\""
+                }
+              ]
+            },
+            "response": {
+              "status": 200,
+              "body": "{\n  \"result\": \"no issue\"\n}"
+            }
+          },
+          "requestBodyMainPatternValue": "{\n  \"operation\": \"OpenAccount\",\n  \"type\": \"savings\",\n  \"holderName\": \"Jack\",\n  \"holderPhone\": 1234567,\n  \"branchNumber\": 123\n}",
+          "expectedHitCount": 1
+        },
+        {
+          "number": 2,
+          "spec": {
+            "request": {
+              "url": "/account",
+              "method": "POST",
+              "bodyPatterns": [
+                {
+                  "equalToJson": "\"APITestBase_ToBeSubstitutedDuringStepRun\""
+                }
+              ]
+            },
+            "response": {
+              "status": 200,
+              "body": "{\n  \"accountNumber\": 5678\n}"
+            }
+          },
+          "requestBodyMainPatternValue": "{\n  \"type\": \"savings\",\n  \"holderName\": \"Jack\",\n  \"holderPhone\": 1234567,\n  \"branchNumber\": 123\n}",
+          "expectedHitCount": 1
+        }
+      ],
+      "checkHTTPStubsHitOrder": false
+    }
+  ]
+}

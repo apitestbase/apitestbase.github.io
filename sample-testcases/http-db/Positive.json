@@ -1,0 +1,74 @@
+{
+  "testcases": [
+    {
+      "name": "Positive",
+      "teststeps": [
+        {
+          "name": "Set up database data",
+          "type": "DB",
+          "endpoint": {
+            "type": "DB",
+            "url": "jdbc:sqlserver://localhost:1433;database=Article"
+          },
+          "apiRequest": {
+            "@type": "DbRequest",
+            "sqlScript": "-- Clear the table\ndelete from article;\n\n-- Create two article records\ninsert into article (id, title, content) values (1, 'article1', 'content1');\ninsert into article (id, title, content) values (2, 'article2', 'content2');"
+          }
+        },
+        {
+          "name": "Invoke the API to update article",
+          "type": "HTTP",
+          "endpoint": {
+            "type": "HTTP",
+            "url": "http://localhost:port/path/to/your/local/article/api/2"
+          },
+          "apiRequest": {
+            "@type": "HttpRequest",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"id\": 2,\n  \"title\": \"article2\",\n  \"content\": \"Once upon a time ...\"\n}",
+            "method": "PUT"
+          },
+          "assertions": [
+            {
+              "name": "StatusCodeEqual",
+              "type": "StatusCodeEqual",
+              "otherProperties": {
+                "statusCode": "200"
+              }
+            }
+          ],
+          "otherProperties": {
+            "timeout": "20"
+          }
+        },
+        {
+          "name": "Check database data",
+          "type": "DB",
+          "endpoint": {
+            "type": "DB",
+            "url": "jdbc:sqlserver://localhost:1433;database=Article"
+          },
+          "apiRequest": {
+            "@type": "DbRequest",
+            "sqlScript": "select id, title, content from article;"
+          },
+          "assertions": [
+            {
+              "name": "JsonEqual",
+              "type": "JsonEqual",
+              "otherProperties": {
+                "expectedJSON": "[{\"ID\":1,\"TITLE\":\"article1\",\"CONTENT\":\"content1\"},{\"ID\":2,\"TITLE\":\"article2\",\"CONTENT\":\"Once upon a time ...\"}]"
+              }
+            }
+          ]
+        }
+      ],
+      "checkHTTPStubsHitOrder": false
+    }
+  ]
+}

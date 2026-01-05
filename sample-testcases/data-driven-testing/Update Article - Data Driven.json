@@ -1,0 +1,148 @@
+{
+  "testcases": [
+    {
+      "name": "Update Article - Data Driven",
+      "checkHTTPStubsHitOrder": false,
+      "dataTable": {
+        "rows": [
+          {
+            "Caption": {
+              "value": "Positive",
+              "rowSequence": 1
+            },
+            "Input_Article_Title": {
+              "value": "article2",
+              "rowSequence": 1
+            },
+            "Expected_API_Response_Status_Code": {
+              "value": "200",
+              "rowSequence": 1
+            },
+            "Expected_API_Response_JSON": {
+              "value": "{\n  \"id\": 2,\n  \"title\": \"article2\",\n  \"content\": \"Once upon a time ...\"\n}",
+              "rowSequence": 1
+            },
+            "Expected_Result_Database_Data": {
+              "value": "[\r\n    {\r\n        \"ID\": 1,\r\n        \"TITLE\": \"article1\",\r\n        \"CONTENT\": \"content1\"\r\n    },\r\n    {\r\n        \"ID\": 2,\r\n        \"TITLE\": \"article2\",\r\n        \"CONTENT\": \"Once upon a time ...\"\r\n    }\r\n]",
+              "rowSequence": 1
+            }
+          },
+          {
+            "Caption": {
+              "value": "Negative - article title too long",
+              "rowSequence": 2
+            },
+            "Input_Article_Title": {
+              "value": "looooooooooooooo ooooooooooooo oooooooooooong title",
+              "rowSequence": 2
+            },
+            "Expected_API_Response_Status_Code": {
+              "value": "500",
+              "rowSequence": 2
+            },
+            "Expected_API_Response_JSON": {
+              "value": "{\n  \"code\": 500,\n  \"message\": \"#{json-unit.ignore}\",\n  \"details\": \"#{json-unit.regex}.*Value too long for column \\\"TITLE[\\\\s\\\\S]*\"\n}",
+              "rowSequence": 2
+            },
+            "Expected_Result_Database_Data": {
+              "value": "[\r\n    {\r\n        \"ID\": 1,\r\n        \"TITLE\": \"article1\",\r\n        \"CONTENT\": \"content1\"\r\n    },\r\n    {\r\n        \"ID\": 2,\r\n        \"TITLE\": \"article2\",\r\n        \"CONTENT\": \"content2\"\r\n    }\r\n]",
+              "rowSequence": 2
+            }
+          }
+        ],
+        "columns": [
+          {
+            "name": "Caption"
+          },
+          {
+            "name": "Input_Article_Title"
+          },
+          {
+            "name": "Expected_API_Response_Status_Code"
+          },
+          {
+            "name": "Expected_API_Response_JSON"
+          },
+          {
+            "name": "Expected_Result_Database_Data"
+          }
+        ]
+      },
+      "teststeps": [
+        {
+          "name": "Set up database data",
+          "type": "DB",
+          "apiRequest": {
+            "@type": "DbRequest",
+            "sqlScript": "-- Clear the table\ndelete from article;\n\n-- Create two article records\ninsert into article (id, title, content) values (1, 'article1', 'content1');\ninsert into article (id, title, content) values (2, 'article2', 'content2');"
+          },
+          "endpoint": {
+            "type": "DB",
+            "username": "user",
+            "url": "jdbc:h2:${ATB_Data_Dir}/database/sample;AUTO_SERVER=TRUE"
+          }
+        },
+        {
+          "name": "Invoke the API to update article",
+          "type": "HTTP",
+          "otherProperties": {
+            "timeout": "20"
+          },
+          "apiRequest": {
+            "@type": "HttpRequest",
+            "method": "PUT",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"id\": 2,\n  \"title\": \"${Input_Article_Title}\",\n  \"content\": \"Once upon a time ...\"\n}"
+          },
+          "endpoint": {
+            "type": "HTTP",
+            "url": "http://localhost:8090/api/articles/2"
+          },
+          "assertions": [
+            {
+              "name": "StatusCodeEqual",
+              "type": "StatusCodeEqual",
+              "otherProperties": {
+                "statusCode": "${Expected_API_Response_Status_Code}"
+              }
+            },
+            {
+              "name": "JSONEqual",
+              "type": "JsonEqual",
+              "otherProperties": {
+                "expectedJSON": "${Expected_API_Response_JSON}"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Check database data",
+          "type": "DB",
+          "apiRequest": {
+            "@type": "DbRequest",
+            "sqlScript": "select id, title, content from article;"
+          },
+          "endpoint": {
+            "type": "DB",
+            "username": "user",
+            "url": "jdbc:h2:${ATB_Data_Dir}/database/sample;AUTO_SERVER=TRUE"
+          },
+          "assertions": [
+            {
+              "name": "JSONEqual",
+              "type": "JsonEqual",
+              "otherProperties": {
+                "expectedJSON": "${Expected_Result_Database_Data}"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

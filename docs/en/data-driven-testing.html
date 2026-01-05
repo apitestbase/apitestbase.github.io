@@ -1,0 +1,874 @@
+<!DOCTYPE html><html lang="en">
+  <head><!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-728SGPGWQ6"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-728SGPGWQ6');
+		
+	</script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Data Driven Testing - API Test Base</title>
+
+<meta name="description" content="Data driven testing is a popular technique in API testing. It enables you to run the same test case with various test data.">
+<link rel="canonical" href="https://apitestbase.io/docs/en/data-driven-testing"><link rel="alternate" type="application/rss+xml" title="API Test Base" href="/feed.xml"><link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+<link rel="manifest" href="/favicons/site.webmanifest">
+<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff"><link rel="stylesheet" href="/assets/css/tabs.css">
+<link rel="stylesheet" href="/assets/css/video-container.css"><link rel="stylesheet" href="/assets/css/main.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.css" ><!-- start custom head snippets -->
+
+<!-- end custom head snippets -->
+<script>(function() {
+  window.isArray = function(val) {
+    return Object.prototype.toString.call(val) === '[object Array]';
+  };
+  window.isString = function(val) {
+    return typeof val === 'string';
+  };
+
+  window.hasEvent = function(event) {
+    return 'on'.concat(event) in window.document;
+  };
+
+  window.isOverallScroller = function(node) {
+    return node === document.documentElement || node === document.body || node === window;
+  };
+
+  window.isFormElement = function(node) {
+    var tagName = node.tagName;
+    return tagName === 'INPUT' || tagName === 'SELECT' || tagName === 'TEXTAREA';
+  };
+
+  window.pageLoad = (function () {
+    var loaded = false, cbs = [];
+    window.addEventListener('load', function () {
+      var i;
+      loaded = true;
+      if (cbs.length > 0) {
+        for (i = 0; i < cbs.length; i++) {
+          cbs[i]();
+        }
+      }
+    });
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  })();
+})();
+(function() {
+  window.throttle = function(func, wait) {
+    var args, result, thisArg, timeoutId, lastCalled = 0;
+
+    function trailingCall() {
+      lastCalled = new Date;
+      timeoutId = null;
+      result = func.apply(thisArg, args);
+    }
+    return function() {
+      var now = new Date,
+        remaining = wait - (now - lastCalled);
+
+      args = arguments;
+      thisArg = this;
+
+      if (remaining <= 0) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+        lastCalled = now;
+        result = func.apply(thisArg, args);
+      } else if (!timeoutId) {
+        timeoutId = setTimeout(trailingCall, remaining);
+      }
+      return result;
+    };
+  };
+})();
+(function() {
+  var Set = (function() {
+    var add = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (data[i] === item) {
+          return;
+        }
+      }
+      this.size ++;
+      data.push(item);
+      return data;
+    };
+
+    var Set = function(data) {
+      this.size = 0;
+      this._data = [];
+      var i;
+      if (data.length > 0) {
+        for (i = 0; i < data.length; i++) {
+          add.call(this, data[i]);
+        }
+      }
+    };
+    Set.prototype.add = add;
+    Set.prototype.get = function(index) { return this._data[index]; };
+    Set.prototype.has = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (this.get(i) === item) {
+          return true;
+        }
+      }
+      return false;
+    };
+    Set.prototype.is = function(map) {
+      if (map._data.length !== this._data.length) { return false; }
+      var i, j, flag, tData = this._data, mData = map._data;
+      for (i = 0; i < tData.length; i++) {
+        for (flag = false, j = 0; j < mData.length; j++) {
+          if (tData[i] === mData[j]) {
+            flag = true;
+            break;
+          }
+        }
+        if (!flag) { return false; }
+      }
+      return true;
+    };
+    Set.prototype.values = function() {
+      return this._data;
+    };
+    return Set;
+  })();
+
+  window.Lazyload = (function(doc) {
+    var queue = {js: [], css: []}, sources = {js: {}, css: {}}, context = this;
+    var createNode = function(name, attrs) {
+      var node = doc.createElement(name), attr;
+      for (attr in attrs) {
+        if (attrs.hasOwnProperty(attr)) {
+          node.setAttribute(attr, attrs[attr]);
+        }
+      }
+      return node;
+    };
+    var end = function(type, url) {
+      var s, q, qi, cbs, i, j, cur, val, flag;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        s[url] = true;
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (cur.urls.has(url)) {
+            qi = cur, val = qi.urls.values();
+            qi && (cbs = qi.callbacks);
+            for (flag = true, j = 0; j < val.length; j++) {
+              cur = val[j];
+              if (!s[cur]) {
+                flag = false;
+              }
+            }
+            if (flag && cbs && cbs.length > 0) {
+              for (j = 0; j < cbs.length; j++) {
+                cbs[j].call(context);
+              }
+              qi.load = true;
+            }
+          }
+        }
+      }
+    };
+    var load = function(type, urls, callback) {
+      var s, q, qi, node, i, cur,
+        _urls = typeof urls === 'string' ? new Set([urls]) : new Set(urls), val, url;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (_urls.is(cur.urls)) {
+            qi = cur;
+            break;
+          }
+        }
+        val = _urls.values();
+        if (qi) {
+          callback && (qi.load || qi.callbacks.push(callback));
+          callback && (qi.load && callback());
+        } else {
+          q.push({
+            urls: _urls,
+            callbacks: callback ? [callback] : [],
+            load: false
+          });
+          for (i = 0; i < val.length; i++) {
+            node = null, url = val[i];
+            if (s[url] === undefined) {
+              (type === 'js' ) && (node = createNode('script', { src: url }));
+              (type === 'css') && (node = createNode('link', { rel: 'stylesheet', href: url }));
+              if (node) {
+                node.onload = (function(type, url) {
+                  return function() {
+                    end(type, url);
+                  };
+                })(type, url);
+                (doc.head || doc.body).appendChild(node);
+                s[url] = false;
+              }
+            }
+          }
+        }
+      }
+    };
+    return {
+      js: function(url, callback) {
+        load('js', url, callback);
+      },
+      css: function(url, callback) {
+        load('css', url, callback);
+      }
+    };
+  })(this.document);
+})();
+</script><script>
+  (function() {
+    var TEXT_VARIABLES = {
+      version: '2.2.6',
+      sources: {
+        font_awesome: 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.css',
+        jquery: 'https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js',
+        leancloud_js_sdk: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js',
+        chart: 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js',
+        gitalk: {
+          js: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.js',
+          css: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.css'
+        },
+        valine: 'https://unpkg.com/valine/dist/Valine.min.js',
+        mathjax: 'https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML',
+        mermaid: 'https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js'
+      },
+      site: {
+        toc: {
+          selectors: 'h1,h2,h3'
+        }
+      },
+      paths: {
+        search_js: '/assets/search.js'
+      }
+    };
+    window.TEXT_VARIABLES = TEXT_VARIABLES;
+  })();
+</script>
+</head>
+  <body>
+    <div class="root" data-is-touch="false">
+      <div class="layout--page layout--page--sidebar clearfix js-page-root">
+  <div class="page__mask d-print-none js-page-mask js-sidebar-hide"></div>
+  <div class="page__viewport">
+    <div class="page__actions d-print-none">
+      <div class="button button--circle button--lg box-shadow-2 sidebar-button js-sidebar-show">
+        <i class="fas fa-bars icon--show"></i>
+      </div>
+    </div>
+
+    <div class="grid page__grid">
+
+      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Start</li><li class="toc-h2"><a href="/docs/en/quick-start">Quick Start</a></li><li class="toc-h2"><a href="/docs/en/creating-automated-test-case">Creating Automated Test Case</a></li><li class="toc-h1">Usages</li><li class="toc-h2"><a href="/docs/en/environments-management">Environments Management</a></li><li class="toc-h2"><a href="/docs/en/endpoints-management">Endpoints Management</a></li><li class="toc-h2"><a href="/docs/en/assertions">Assertions</a></li><li class="toc-h2"><a href="/docs/en/properties">Properties</a></li><li class="toc-h2"><a href="/docs/en/expressions">Expressions</a></li><li class="toc-h2"><a href="/docs/en/http-stubs">HTTP Stubs</a></li><li class="toc-h2"><a href="/docs/en/interact-with-other-systems">Interact with Other Systems</a></li><li class="toc-h2"><a href="/docs/en/jms-request">JMS Request</a></li><li class="toc-h2"><a href="/docs/en/mq-request">MQ Request</a></li><li class="toc-h2"><a href="/docs/en/amqp-request">AMQP Request</a></li><li class="toc-h2"><a href="/docs/en/ftp-request">FTP Request</a></li><li class="toc-h2"><a href="/docs/en/sftp-request">SFTP Request</a></li><li class="toc-h2"><a href="/docs/en/configure-api-test-base-to-be-an-ssl-client">Configure API Test Base to be an SSL Client</a></li><li class="toc-h1">Testing Practices</li><li class="toc-h2"><a href="/docs/en/http-http-integration-unit-testing">HTTP-HTTP Integration Unit Testing</a></li><li class="toc-h2"><a href="/docs/en/http-database-integration-unit-testing">HTTP-Database Integration Unit Testing</a></li><li class="toc-h2"><a href="/docs/en/http-jms-integration-unit-testing">HTTP-JMS Integration Unit Testing</a></li><li class="toc-h2"><a href="/docs/en/ace-integration-unit-testing">ACE Integration Unit Testing</a></li><li class="toc-h2"><a href="/docs/en/real-test-automation-is-data-driven">Real Test Automation is Data Driven</a></li><li class="toc-h2 active"><a href="/docs/en/data-driven-testing">Data Driven Testing</a></li><li class="toc-h2"><a href="/docs/en/avoid-test-duplication">Avoid Test Duplication</a></li><li class="toc-h1">Other</li><li class="toc-h2"><a href="/docs/en/administration">Administration</a></li><li class="toc-h2"><a href="/docs/en/team-collaboration">Team Collaboration</a></li><li class="toc-h2"><a href="/docs/en/upgrade-from-old-version">Upgrade from Old Version</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+
+      <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
+      <div class="header__title">
+        <div class="header__brand"><svg xmlns="http://www.w3.org/2000/svg" viewBox="142 200 420 200" style="width:2.5rem">
+    <text transform="matrix(9.12762 0 0 9.39839 -2313.55 -3286.96)" stroke="#000" font-style="italic" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="sans-serif" font-size="24" id="svg_5" y="391.9064" x="270.44603" stroke-width="0" fill="#0052ff">A</text>
+    <text transform="matrix(10.1452 0 0 9.3745 -2676.92 -3251.82)" stroke="#000" font-weight="bold" font-style="normal" xml:space="preserve" text-anchor="start" font-family="sans-serif" font-size="24" id="svg_8" y="389" x="291" stroke-width="0" fill="#0052ff">T</text>
+    <text transform="matrix(9.21656 0 0 9.54658 -2451.83 -3304.91)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="sans-serif" font-size="24" id="svg_10" y="387.80667" x="310.15586" stroke-width="0" fill="#0052ff">B</text>
+</svg><a title="A simple tool for comprehensive API testing." href="/">API Test Base</a></div></div><nav class="navigation">
+        <ul><li class="navigation__item"><a href="/docs/en/quick-start">Docs</a></li><li class="navigation__item"><a href="/feedback">Feedback</a></li></ul>
+      </nav></div>
+  </header>
+</div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
+
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
+
+              <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
+
+<!-- end custom main top snippet -->
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Data Driven Testing</h1></header></div><meta itemprop="headline" content="Data Driven Testing"><div class="article__info clearfix"><ul class="right-col menu"></ul></div><meta itemprop="datePublished" content="2026-01-05T11:38:57+00:00"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p>Data driven testing is a popular technique in API testing. It enables you to run the same test case with various test data.</p>
+
+<p>Suppose you have a test case that invokes an API with input data and examines the API’s output data. If you want to invoke the same API with different input data and examine corresponding output data, data driven testing can help. Define a data table on the test case, and each row in the table will trigger one individual run of the test case, feeding the run with properties in the row.</p>
+
+<p>This technique saves you the need to create multiple test cases that use different test data but have the same test steps. It greatly reduces the cost of test case creation, run and maintenance when various test data is involved.</p>
+
+<h2 id="data-table">Data Table</h2>
+<p>Data table can be defined on a test case under the Data Table tab of test case edit view. A sample is shown below.</p>
+
+<p>Each row in the table contains a set of properties to feed each test case individual run. Property name is column name, and property value is cell value.</p>
+
+<p>Property can be used in any test step or assertion. Refer to <a href="/docs/en/properties">Properties</a> for more details.</p>
+
+<p>A <code class="language-plaintext highlighter-rouge">Caption</code> column is by default defined in data table. It enables you to mark/label each row in the table, so that the purpose of the row is clear. Caption column will not be used as property when running test case, but it makes test case run report easier to read.</p>
+
+<h2 id="sample-scenario">Sample Scenario</h2>
+<p>Take the test case from <a href="/docs/en/creating-automated-test-case">Creating Automated Test Case</a> as a starting point. We will refactor it to enable testing Article update with two sets of data in one test case. One is for testing successful article update, and the other is for testing an error case when the article title is too long (over 50 chars) to be persisted into the database.</p>
+
+<p>The result test case can be downloaded in section <a href="#sample-test-case">Sample Test Case</a>.</p>
+
+<h3 id="refactor-the-test-case-to-be-data-driven">Refactor the Test Case to be Data Driven</h3>
+<p>What we got from <a href="/docs/en/creating-automated-test-case">Creating Automated Test Case</a> was a test case like below</p>
+
+<p><img src="../../screenshots/basic-use/skeleton-test-case.png" alt="Basic Test Case" /></p>
+
+<p>Firstly, we copy the <code class="language-plaintext highlighter-rouge">Update Article</code> test case, and rename the new test case to <code class="language-plaintext highlighter-rouge">Update Article - Data Driven</code>. These actions can be done by using the context menus (right click test case or folder) in the tree pane.</p>
+
+<p>Secondly, we refactor test steps of the new test case to use property references.</p>
+
+<p>Then we add data table rows on the new test case to define the properties.</p>
+
+<h4 id="refactor-step-2">Refactor Step 2</h4>
+<p>Open step 2 <code class="language-plaintext highlighter-rouge">Invoke the API to update article</code> of the new test case.</p>
+
+<p>Under the <code class="language-plaintext highlighter-rouge">Invocation</code> tab, replace the “title” field value in the request body with a property reference <code class="language-plaintext highlighter-rouge">${Input_Article_Title}</code>.</p>
+
+<p>Click the <code class="language-plaintext highlighter-rouge">Assertions</code> tab (at bottom of screen) to open the assertions panel. Replace the Status Code value of the StatusCodeEqual assertion with a property reference <code class="language-plaintext highlighter-rouge">${Expected_API_Response_Status_Code}</code>.</p>
+
+<p>For more thorough testing than only checking API response status code, we add a JSONEqual assertion to check the API response body. Set the Expected JSON with a property reference <code class="language-plaintext highlighter-rouge">${Expected_API_Response_JSON}</code>.</p>
+
+<p><img src="../../screenshots/data-driven-testing/refactored-step-2.png" alt="Refactored Step 2" /></p>
+
+<p>Notice that the properties <code class="language-plaintext highlighter-rouge">Input_Article_Title</code>, <code class="language-plaintext highlighter-rouge">Expected_API_Response_Status_Code</code> and <code class="language-plaintext highlighter-rouge">Expected_API_Response_JSON</code> do not exist yet. We’ll create them in data table later.</p>
+
+<h4 id="refactor-step-3">Refactor Step 3</h4>
+<p>Open step 3 <code class="language-plaintext highlighter-rouge">Check database data</code> of the new test case.</p>
+
+<p>Replace the Expected JSON of the JSONEqual assertion with a property reference <code class="language-plaintext highlighter-rouge">${Expected_Result_Database_Data}</code>.</p>
+
+<p><img src="../../screenshots/data-driven-testing/refactored-step-3.png" alt="Refactored Step 3" /></p>
+
+<h4 id="add-data-table-columns">Add Data Table Columns</h4>
+<p>We have used property references in our test steps. Now we’ll create the properties in data table.</p>
+
+<p>Open the new test case, and under the <code class="language-plaintext highlighter-rouge">Data Table</code> tab click the <code class="language-plaintext highlighter-rouge">+ Column</code> button to add a new column. Rename it (via column header menu) to <code class="language-plaintext highlighter-rouge">Input_Article_Title</code>. Similarly, add more columns for the other properties.</p>
+
+<p><img src="../../screenshots/data-driven-testing/data-table-with-columns-only.png" alt="Data Table with Columns Only" /></p>
+
+<h4 id="add-data-table-rows">Add Data Table Rows</h4>
+<p>Under the <code class="language-plaintext highlighter-rouge">Data Table</code> tab, use the <code class="language-plaintext highlighter-rouge">+ Row</code> button to add two rows, and fill the rows with below data</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>        Caption        </th>
+      <th>Input_Article_Title</th>
+      <th>Expected_API_Response_Status_Code</th>
+      <th>      Expected_API_Response_JSON      </th>
+      <th>Expected_Result_Database_Data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Positive</td>
+      <td>article2</td>
+      <td>200</td>
+      <td>{<br />  “id”: 2,<br />  “title”: “article2”,<br />  “content”: “Once upon a time …“<br />}</td>
+      <td>[<br />    {<br />        “ID”: 1,<br />        “TITLE”: “article1”,<br />        “CONTENT”: “content1”<br />    },<br />    {<br />        “ID”: 2,<br />        “TITLE”: “article2”,<br />        “CONTENT”: “Once upon a time …“<br />    }<br />]</td>
+    </tr>
+    <tr>
+      <td>Negative - article title too long</td>
+      <td>looooooooooooooo ooooooooooooo oooooooooooong title</td>
+      <td>500</td>
+      <td>{<br />  “code”: 500,<br />  “message”: “#{json-unit.ignore}”,<br />  “details”: “#{json-unit.regex}.*Value too long for column \“TITLE[\\s\\S]*“<br />}</td>
+      <td>[<br />    {<br />        “ID”: 1,<br />        “TITLE”: “article1”,<br />        “CONTENT”: “content1”<br />    },<br />    {<br />        “ID”: 2,<br />        “TITLE”: “article2”,<br />        “CONTENT”: “content2”<br />    }<br />]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If you don’t understand what <code class="language-plaintext highlighter-rouge">#{json-unit.ignore}</code> or <code class="language-plaintext highlighter-rouge">#{json-unit.regex}</code> means, refer to <a href="/docs/en/assertions#jsonequal-assertion">JSONEqual Assertion</a>.</p>
+
+<p>In the data table, click a cell to fill short (typically one line) data, or double click a cell to bring up a modal for filling long (typically multi-line) value like below.</p>
+
+<p><img src="../../screenshots/data-driven-testing/filling-multi-line-value.png" alt="Filling Multi-line Value" /></p>
+
+<p>The complete data table looks like below.</p>
+
+<p><img src="../../screenshots/data-driven-testing/complete-data-table.png" alt="Complete Data Table" /></p>
+
+<p>Now we have finished refactoring the test case. The testing logic is not changed. The only thing changed is that the test case is now data driven.</p>
+
+<h3 id="run-the-test-case">Run the Test Case</h3>
+<p>Finally, it’s time to run the test case. Click the <code class="language-plaintext highlighter-rouge">Run</code> button on the test case edit view, and you’ll see the result for the whole test case beside the Run button, and in the right pane an outline of result for all individual runs. Click an individual run to expand it and view the result of its step runs.</p>
+
+<p><img src="../../screenshots/data-driven-testing/data-driven-test-case-run.png" alt="Data Driven Test Case Run" /></p>
+
+<p>Click a step run link to view its report, or click the result link beside the Run button to see the whole test case run report.</p>
+
+<h2 id="data-driven-test-step">Data Driven Test Step</h2>
+<p>Similar to test case level data table, test step level data table enables the test step to be run one or more times during one test case run. This enables the test step to do repeated work driven by a data table, without duplicating the test step definition in the same test case.</p>
+
+<h2 id="sample-test-case">Sample Test Case</h2>
+<p>The final test case created above is available for download at <a href="../../sample-testcases/data-driven-testing/Update Article - Data Driven.json" download="">sample test case</a>. After download, right click anywhere in the left side pane on ATB UI, and select <code class="language-plaintext highlighter-rouge">Import Test Case</code> to import it.</p>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2026-01-05T11:38:57+00:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+</footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/docs/en/real-test-automation-is-data-driven">Real Test Automation is Data Driven</a></div><div class="next"><span>NEXT</span><a href="/docs/en/avoid-test-duplication">Avoid Test Duplication</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+</script>
+
+<script src="/assets/js/tabs.js"></script></div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
+
+<!-- end custom main bottom snippet -->
+</div>
+            </div></div></div><div class="page__footer d-print-none">
+<footer class="footer py-4 js-page-footer">
+  <div class="main"><div itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content=""><meta itemprop="url" content="/"><div class="footer__author-links"><div class="author-links">
+  <ul class="menu menu--nowrap menu--inline"></ul>
+</div>
+</div>
+    </div><div class="site-info mt-2">
+      <div>© API Test Base 2020,
+        Powered by <a title="Jekyll is a simple, blog-aware, static site generator." href="http://jekyllrb.com/">Jekyll</a> & <a
+        title="TeXt is a super customizable Jekyll theme." href="https://github.com/kitian616/jekyll-TeXt-theme">TeXt Theme</a>.
+      </div>
+    </div>
+  </div>
+</footer>
+</div></div>
+    </div></div></div><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $body = $('body'), $window = $(window);
+    var $pageRoot = $('.js-page-root'), $pageMain = $('.js-page-main');
+    var activeCount = 0;
+    function modal(options) {
+      var $root = this, visible, onChange, hideWhenWindowScroll = false;
+      var scrollTop;
+      function setOptions(options) {
+        var _options = options || {};
+        visible = _options.initialVisible === undefined ? false : show;
+        onChange = _options.onChange;
+        hideWhenWindowScroll = _options.hideWhenWindowScroll;
+      }
+      function init() {
+        setState(visible);
+      }
+      function setState(isShow) {
+        if (isShow === visible) {
+          return;
+        }
+        visible = isShow;
+        if (visible) {
+          activeCount++;
+          scrollTop = $(window).scrollTop() || $pageMain.scrollTop();
+          $root.addClass('modal--show');
+          $pageMain.scrollTop(scrollTop);
+          activeCount === 1 && ($pageRoot.addClass('show-modal'), $body.addClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.on('scroll', hide);
+          $window.on('keyup', handleKeyup);
+        } else {
+          activeCount > 0 && activeCount--;
+          $root.removeClass('modal--show');
+          $window.scrollTop(scrollTop);
+          activeCount === 0 && ($pageRoot.removeClass('show-modal'), $body.removeClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.off('scroll', hide);
+          $window.off('keyup', handleKeyup);
+        }
+        onChange && onChange(visible);
+      }
+      function show() {
+        setState(true);
+      }
+      function hide() {
+        setState(false);
+      }
+      function handleKeyup(e) {
+        // Char Code: 27  ESC
+        if (e.which ===  27) {
+          hide();
+        }
+      }
+      setOptions(options);
+      init();
+      return {
+        show: show,
+        hide: hide,
+        $el: $root
+      };
+    }
+    $.fn.modal = modal;
+  });
+})();
+</script><div class="modal modal--overflow page__search-modal d-print-none js-page-search-modal"></div></div>
+
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function scrollToAnchor(anchor, duration, callback) {
+      var $root = this;
+      $root.animate({ scrollTop: $(anchor).position().top }, duration, function() {
+        window.history.replaceState(null, '', window.location.href.split('#')[0] + anchor);
+        callback && callback();
+      });
+    }
+    $.fn.scrollToAnchor = scrollToAnchor;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function affix(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroll,
+        offsetBottom = 0, scrollTarget = window, scroll = window.document, disabled = false, isOverallScroller = true,
+        rootTop, rootLeft, rootHeight, scrollBottom, rootBottomTop,
+        hasInit = false, curState;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.offsetBottom && (offsetBottom = _options.offsetBottom);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroll && (scroll = _options.scroll);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $scrollTarget = $(scrollTarget);
+        isOverallScroller = window.isOverallScroller($scrollTarget[0]);
+        $scroll = $(scroll);
+      }
+      function preCalc() {
+        top();
+        rootHeight = $root.outerHeight();
+        rootTop = $root.offset().top + (isOverallScroller ? 0 :  $scrollTarget.scrollTop());
+        rootLeft = $root.offset().left;
+      }
+      function calc(needPreCalc) {
+        needPreCalc && preCalc();
+        scrollBottom = $scroll.outerHeight() - offsetBottom - rootHeight;
+        rootBottomTop = scrollBottom - rootTop;
+      }
+      function top() {
+        if (curState !== 'top') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: 0
+          });
+          curState = 'top';
+        }
+      }
+      function fixed() {
+        if (curState !== 'fixed') {
+          $root.addClass('fixed').css({
+            left: rootLeft + 'px',
+            top: 0
+          });
+          curState = 'fixed';
+        }
+      }
+      function bottom() {
+        if (curState !== 'bottom') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: rootBottomTop + 'px'
+          });
+          curState = 'bottom';
+        }
+      }
+      function setState() {
+        var scrollTop = $scrollTarget.scrollTop();
+        if (scrollTop >= rootTop && scrollTop <= scrollBottom) {
+          fixed();
+        } else if (scrollTop < rootTop) {
+          top();
+        } else {
+          bottom();
+        }
+      }
+      function init() {
+        if(!hasInit) {
+          var interval, timeout;
+          calc(true); setState();
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState();
+          });
+          $window.on('resize', function() {
+            disabled || (calc(true), setState());
+          });
+          hasInit = true;
+        }
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions,
+        refresh: function() {
+          calc(true, { animation: false }); setState();
+        }
+      };
+    }
+    $.fn.affix = affix;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function toc(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroller, $tocUl = $('<ul class="toc toc--ellipsis"></ul>'), $tocLi, $headings, $activeLast, $activeCur,
+        selectors = 'h1,h2,h3', container = 'body', scrollTarget = window, scroller = 'html, body', disabled = false,
+        headingsPos, scrolling = false, hasRendered = false, hasInit = false;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.selectors && (selectors = _options.selectors);
+        _options.container && (container = _options.container);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroller && (scroller = _options.scroller);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $headings = $(container).find(selectors).filter('[id]');
+        $scrollTarget = $(scrollTarget);
+        $scroller = $(scroller);
+      }
+      function calc() {
+        headingsPos = [];
+        $headings.each(function() {
+          headingsPos.push(Math.floor($(this).position().top));
+        });
+      }
+      function setState(element, disabled) {
+        var scrollTop = $scrollTarget.scrollTop(), i;
+        if (disabled || !headingsPos || headingsPos.length < 1) { return; }
+        if (element) {
+          $activeCur = element;
+        } else {
+          for (i = 0; i < headingsPos.length; i++) {
+            if (scrollTop >= headingsPos[i]) {
+              $activeCur = $tocLi.eq(i);
+            } else {
+              $activeCur || ($activeCur = $tocLi.eq(i));
+              break;
+            }
+          }
+        }
+        $activeLast && $activeLast.removeClass('active');
+        ($activeLast = $activeCur).addClass('active');
+      }
+      function render() {
+        if(!hasRendered) {
+          $root.append($tocUl);
+          $headings.each(function() {
+            var $this = $(this);
+            $tocUl.append($('<li></li>').addClass('toc-' + $this.prop('tagName').toLowerCase())
+              .append($('<a></a>').text($this.text()).attr('href', '#' + $this.prop('id'))));
+          });
+          $tocLi = $tocUl.children('li');
+          $tocUl.on('click', 'a', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            scrolling = true;
+            setState($this.parent());
+            $scroller.scrollToAnchor($this.attr('href'), 400, function() {
+              scrolling = false;
+            });
+          });
+        }
+        hasRendered = true;
+      }
+      function init() {
+        var interval, timeout;
+        if(!hasInit) {
+          render(); calc(); setState(null, scrolling);
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState(null, scrolling);
+          });
+          $window.on('resize', window.throttle(function() {
+            if (!disabled) {
+              render(); calc(); setState(null, scrolling);
+            }
+          }, 100));
+        }
+        hasInit = true;
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions
+      };
+    }
+    $.fn.toc = toc;
+  });
+})();
+/*(function () {
+
+})();*/
+</script><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $pageMask = $('.js-page-mask');
+    var $pageRoot = $('.js-page-root');
+    var $sidebarShow = $('.js-sidebar-show');
+    var $sidebarHide = $('.js-sidebar-hide');
+
+    function freeze(e) {
+      if (e.target === $pageMask[0]) {
+        e.preventDefault();
+      }
+    }
+    function stopBodyScrolling(bool) {
+      if (bool === true) {
+        window.addEventListener('touchmove', freeze, { passive: false });
+      } else {
+        window.removeEventListener('touchmove', freeze, { passive: false });
+      }
+    }
+
+    $sidebarShow.on('click', function() {
+      stopBodyScrolling(true); $pageRoot.addClass('show-sidebar');
+    });
+    $sidebarHide.on('click', function() {
+      stopBodyScrolling(false); $pageRoot.removeClass('show-sidebar');
+    });
+  });
+})();
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
+</script>
+    </div>
+    <script>(function () {
+  var $root = document.getElementsByClassName('root')[0];
+  if (window.hasEvent('touchstart')) {
+    $root.dataset.isTouch = true;
+    document.addEventListener('touchstart', function(){}, false);
+  }
+})();
+</script>
+  </body>
+</html>
+
