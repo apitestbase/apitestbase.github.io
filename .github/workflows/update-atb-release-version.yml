@@ -9,7 +9,7 @@ on:
 jobs:
   Update-ATB-Release-Version:
     runs-on: windows-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - name: Check out current repo
         uses: actions/checkout@v3
