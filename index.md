@@ -28,22 +28,100 @@ tags:     # Not sure why. Unlike other article pages, here can't use 'tags: tag1
   - mqtt-testing
   - jms-testing
 ---
-API Test Base is a free tool for integration testing a variety of APIs. It is suitable for Integration, ESB and Microservices testing.
+# Test what your API **really did**
 
-Currently supported protocols: HTTP, SOAP, Relational databases (Oracle, SQL Server, PostgreSQL, H2, etc.), JMS (ActiveMQ, Solace), AMQP, MQTT, IBM MQ, File, FTP(S), SFTP.
+Most API testing tools only verify the **response**.
 
-API Test Base makes it easier and better experience to create and maintain automated API test cases.
+But real APIs do much more.
+
+They also:
+
+-   write records to **databases**
+-   publish messages to **queues**
+-   upload **files**
+-   call **downstream services**
+
+If your test only checks the response, you might miss what the API
+actually changed.
+
+**API Test Base** allows you to verify both the response **and the side
+effects** of an API in one automated test.
 
 <div style="text-align:center"><a class="button button--outline-primary button--pill" href="/docs/en/quick-start">Quick Start</a></div>
 
-Feature highlights
-* Support a lot of protocols. Not just HTTP.
-* No code. Low code.
-* Offline first. All your data is stored on your local machine. No internet connection is required to use the tool.
-* Standalone requests, and plain old test cases.
-* HTTP stubs (mock servers), pattern based test case creation, built-in data driven testing, endpoints management, placeholders in assertions, etc.
-* Support automated test setup.
-* Support Docker.
-* Support VCS (like Git) based team collaboration.
+------------------------------------------------------------------------
+
+# Example
+
+Testing an API should not stop at the response.
+
+    POST /orders
+
+Assertions:
+
+    ✓ HTTP response = 200
+
+    ✓ Order record created in database
+    ✓ Message sent to queue
+    ✓ File uploaded to FTP server
+    ✓ Downstream API called successfully
+
+API Test Base makes it easy to verify all these behaviors in one test
+case.
+
+------------------------------------------------------------------------
+
+# Test APIs and their dependencies together
+
+Modern APIs rarely work alone.\
+They interact with multiple systems.
+
+API Test Base supports testing these dependencies directly:
+
+-   HTTP / REST APIs
+-   SOAP services
+-   Relational databases (Oracle, SQL Server, PostgreSQL, H2, etc.)
+-   Message queues (JMS, ActiveMQ, Solace, AMQP, MQTT, IBM MQ)
+-   File systems
+-   FTP / SFTP servers
+
+This allows creating **end-to-end API tests** that verify real system
+behavior.
+
+------------------------------------------------------------------------
+
+# Integration Unit Testing
+
+This testing approach is called **Integration Unit Testing**.
+
+It focuses on testing a single API together with the systems it
+interacts with, such as databases or message queues.
+
+Compared with traditional API testing, it verifies not only the response
+but also the **changes caused by the API**.
+
+Learn more:
+
+👉
+https://medium.com/@zhengwang666/integration-unit-testing-683fbf995c43
+
+------------------------------------------------------------------------
+
+# Feature highlights
+
+-   Support a wide range of protocols --- not just HTTP
+-   No code / low code test case creation
+-   Standalone requests and structured test cases
+-   Built-in data driven testing
+-   HTTP stubs (mock servers)
+-   Pattern-based test case generation
+-   Automated test setup
+-   Docker support
+-   Git-based team collaboration
+-   Offline first --- all data stored locally
+
+------------------------------------------------------------------------
+
+# User Interface
 
 ![UI Glance](../../screenshots/ui-glance.png)
