@@ -73,6 +73,36 @@ API Test Base makes it easy to verify all these behaviors in one test case.
 
 ------------------------------------------------------------------------
 
+# Built-in test setup for integration testing
+
+Integration tests often require preparing test data before calling an API.
+
+For example, when testing an API that updates a database record, the test may need to:
+
+1. clear the table
+2. insert a record
+3. call the API
+4. verify the updated data
+
+With many tools, this requires writing separate scripts for database setup and verification.
+
+API Test Base allows performing these steps directly in the test case.
+
+Example workflow:
+
+Database step  
+→ clear table and insert test record
+
+HTTP step  
+→ call the REST API
+
+Database step  
+→ query the table and assert the updated values
+
+This makes it easier to create **self-contained integration tests**.
+
+------------------------------------------------------------------------
+
 # Test APIs across different system interfaces
 
 In many systems, APIs are not limited to HTTP endpoints.
