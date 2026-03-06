@@ -51,7 +51,10 @@ effects** of an API in one automated test.
 
 ------------------------------------------------------------------------
 
-# Example
+# Test APIs and their dependencies – together
+Modern APIs rarely work alone.
+
+They interact with multiple systems such as databases, message queues, and files.
 
 Testing an API should not stop at the response.
 
@@ -66,27 +69,30 @@ Assertions:
     ✓ File uploaded to FTP server
     ✓ Downstream API called successfully
 
-API Test Base makes it easy to verify all these behaviors in one test
-case.
+API Test Base makes it easy to verify all these behaviors in one test case.
 
 ------------------------------------------------------------------------
 
-# Test APIs and their dependencies together
+# Test APIs across different system interfaces
 
-Modern APIs rarely work alone.\
-They interact with multiple systems.
+In many systems, APIs are not limited to HTTP endpoints.
 
-API Test Base supports testing these dependencies directly:
+They may be exposed through different interfaces such as:
 
--   HTTP / REST APIs
--   SOAP services
--   Relational databases (Oracle, SQL Server, PostgreSQL, H2, etc.)
--   Message queues (JMS, ActiveMQ, Solace, AMQP, MQTT, IBM MQ)
--   File systems
--   FTP / SFTP servers
+- HTTP / REST
+- SOAP
+- Message queues (JMS, AMQP, MQTT, IBM MQ)
+- Databases
+- File systems
+- FTP / SFTP
 
-This allows creating **end-to-end API tests** that verify real system
-behavior.
+For example:
+
+- an HTTP API may write to a database
+- a message queue may trigger a message flow
+- a file drop may start a processing pipeline
+
+API Test Base allows creating tests that interact with these interfaces and verify their effects across the system.
 
 ------------------------------------------------------------------------
 
