@@ -128,21 +128,6 @@ This makes it easier to create **self‑contained integration tests**.
 
 ------------------------------------------------------------------------
 
-# Integration Unit Testing
-
-This testing approach is called **Integration Unit Testing**.
-
-It focuses on testing a single API together with the systems it interacts with, such as databases, message queues, or files.
-
-Compared with traditional API testing, it verifies not only the response but also the **changes caused by the API**.
-
-Learn more:
-
-👉
-[https://medium.com/@zhengwang666/integration-unit-testing-683fbf995c43](https://medium.com/@zhengwang666/integration-unit-testing-683fbf995c43){:target="_blank"}
-
-------------------------------------------------------------------------
-
 # Feature highlights
 
 -   Support many protocols --- not just HTTP
