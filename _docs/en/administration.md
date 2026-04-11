@@ -8,18 +8,18 @@ API Test Base application stores data in a folder called `<ATB_DATA_DIR>`. Follo
 
 {% tabs data-folder %}
 
-{% tab data-folder Windows %}
-
-```
-%USERPROFILE%\AppData\Roaming\ApiTestBase
-```
-
-{% endtab %}
-
 {% tab data-folder macOS %}
 
 ```
 ~/Library/Application Support/API Test Base
+```
+
+{% endtab %}
+
+{% tab data-folder Windows %}
+
+```
+%USERPROFILE%\AppData\Roaming\ApiTestBase
 ```
 
 {% endtab %}
