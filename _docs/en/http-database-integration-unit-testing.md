@@ -79,7 +79,7 @@ Just remember to
 * Include the steps for setting up the local stub database.
 * Use the local stub database endpoint (instead of the H2 one) in the test case.
 * Use your own local Article API endpoint (instead of the ATB bundled one).
-* Make sure SQL Server JDBC libraries are copied to ATB lib folder, as described [here](/docs/en/interact-with-other-systems#sql-server)
+* Make sure SQL Server JDBC libraries are copied to ATB lib folder, as described [here](/docs/en/interact-with-other-systems#sql-server).
 
 ## Sample Test Case
 The test case created above is available for download at <a href="../../sample-testcases/http-db/Positive.json" download>sample test case</a>.
