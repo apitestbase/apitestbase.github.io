@@ -15,28 +15,28 @@ Another usage is `template based test case creation`. If already familiar with a
 ## Implicit Properties
 These are properties dynamically created by ATB.
 
-#### ATB_Data_Dir
+#### atb.data.dir
 The file system directory where all your test data and configurations are located. Refer to [Administration](/docs/en/administration) for more details.
 
-#### ATB_HTTP_Port
+#### atb.http.port
 The HTTP port number exposed by ATB for its REST APIs and UI. It can be configured as seen in [Administration](/docs/en/administration).
 
-#### Auto_Mock_Server_HTTP_Port
+#### auto.mock.server.http.port
 The HTTP port number of the `Auto` mock server in the current workspace.
 
-#### Manual_Mock_Server_HTTP_Port
+#### manual.mock.server.http.port
 The HTTP port number of the `Manual` mock server in the current workspace.
 
-#### Test_Case_Start_Time
+#### test.case.start.time
 The timestamp when the test case run starts. Format is yyyy-mm-dd hh:mm:ss.fff, e.g. 1997-01-31 09:26:50.124.
 
-#### Test_Step_Start_Time
+#### test.step.start.time
 The timestamp when the test step run starts. Format is same as Test_Case_Start_Time.
 
-#### Test_Case_Individual_Start_Time
+#### test.case.individual.start.time
 The timestamp when the test case individual run (like in data driven test case run) starts. Format is same as Test_Case_Start_Time.
 
-#### Test_Step_Repeat_Run_Index
+#### test.step.repeat.run.index
 Index of repeat run when a test step is defined as a repeated test step and it is run in a test case. Starting from 1.
 
 ## Data Table
