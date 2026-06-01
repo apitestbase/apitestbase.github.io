@@ -19,16 +19,16 @@ Sample JDBC URLs:
 ### SQL Server    
 SQL Server JDBC driver can be downloaded from Microsoft [web site](https://msdn.microsoft.com/en-us/library/mt484311(v=sql.110).aspx){:target="_blank"}. After unzipping it, copy `sqljdbc41.jar` to `<ATB_DATA_DIR>/lib/jdbc/sqlserver` folder.
 
-To enable API Test Base to use Windows authentication to connect to SQL Server, also copy `sqljdbc_auth.dll` from the unzipped folder to `<ATB_DATA_DIR>/lib/jdbc/sqlserver`, and add `<ATB_DATA_DIR>/lib/jdbc/sqlserver` to the `PATH` environment variable of the Windows OS where API Test Base is running.
+The jar is sufficient for most cases when SQL Server Authentication is used.
 
-Notice that there are two `sqljdbc_auth.dll` files in the unzipped folder. Use the one from folder x64 or x86 for 64 or 32 bit Windows OS.
+To enable API Test Base to use Windows Authentication to connect to SQL Server, also copy `sqljdbc_auth.dll` from the unzipped folder to `<ATB_DATA_DIR>/lib/jdbc/sqlserver`, and add `<ATB_DATA_DIR>/lib/jdbc/sqlserver` to the `PATH` environment variable of the Windows OS where API Test Base is running. Notice that there are two `sqljdbc_auth.dll` files in the unzipped folder. Use the one from folder x64 or x86 for 64 or 32 bit Windows OS.
 
 Sample JDBC URLs:
 
-    //  When using SQL Server authentication
+    //  When using SQL Server Authentication
     jdbc:sqlserver://myhost:1433;database=myDatabase
 
-    //  When using Windows authentication
+    //  When using Windows Authentication
     jdbc:sqlserver://myhost:1433;database=myDatabase;integratedSecurity=true
 
 ## IBM MQ
