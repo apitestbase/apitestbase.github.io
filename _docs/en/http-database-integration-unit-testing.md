@@ -9,19 +9,19 @@ Suppose you want to test an Article API that exposes an HTTP endpoint. When a cl
 ![Article API](../../screenshots/http-db/article-api.png)
 
 ## Test Isolation
-To integration unit test the Article API, you would set up and use a local stub database. This has some benefits
+To integration unit test the Article API, you would typically set up and use a local database. This has some benefits
 
 * The test includes testing the side effect of the Article API. That is, the API interacts with a real database, and actually results in the database data being changed.
 * The test is fully controlled by you on your local machine, without impacting any other developer.
 
 ![Article API Test Isolation](../../screenshots/http-db/article-api-test-isolation.png)
 
-### Set up Stub Database Instance
+### Set up the Stub Database Instance
 The simplest way of spinning up a local SQL Server instance is probably launching a Docker container.
 
 This can be done through ATB's Docker test step.
 
-### Create Stub Database and Table
+### Create the Stub Database and Table
 The Article API will write into the dbo.Article table in the Article database. We need a DDL script that creates the database and the table.
 
 Some common ways to obtain or draft the DDL script are
@@ -48,8 +48,8 @@ Below is a sample DDL script
 
 The script can be run through ATB's Database test step.
 
-### Use Stub Database Endpoint
-Design the API to point to different dependencies in different environments. This is normally achieved by setting different dependency endpoint addresses in different property files. Each property file contains all properties for the API for a specific environment like Dev/Test/QA/Prod.
+### Use the Stub Database Endpoint
+Design the Article API to point to different dependencies in different environments. This is normally achieved by setting different dependency endpoint addresses in different property files. Each property file contains all properties for the API for a specific environment like Dev/Test/QA/Prod.
 
 When deploying and running the API, dynamically load the property file for that specific environment.
 
