@@ -3,7 +3,7 @@ title: What is Integration Unit Testing?
 permalink: /docs/en/what-is-integration-unit-testing
 key: docs-what-is-integration-unit-testing
 ---
-**Integration Unit Testing** is a method for testing an API thoroughly as a black box.
+**Integration Unit Testing** is a method for functionally testing an API as a black box, in an isolated manner.
 
 The method includes
 
