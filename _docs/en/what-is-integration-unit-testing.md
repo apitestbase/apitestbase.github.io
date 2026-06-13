@@ -8,7 +8,7 @@ key: docs-what-is-integration-unit-testing
 The method includes
 
 * **Testing the API's contract**, i.e. request and response.
-* **Testing the API's side effect**, i.e. database data update, calls to other APIs, asynchronous messages sending, etc.
+* **Testing the API's side effect**, i.e. database record updated, other APIs called, messages sent to a queue, logs written to a file, etc.
 
 The API can use any input protocol, including but not limited to HTTP. RESTful API is the most widely adopted form of API.
 
