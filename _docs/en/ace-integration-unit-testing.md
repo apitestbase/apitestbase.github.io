@@ -6,9 +6,7 @@ key: docs-ace-integration-unit-testing
 ---
 Though API Test Base enables `test driven development (TDD) for IBM ACE message flows`, this page is about basic method which assumes the message flow code has already been written before we test it.
 
-Below is the sample scenario. The result test case can be downloaded in section [Sample Test Case](#sample-test-case).
-
-## Message Flow Introduction
+## Sample Message Flow Introduction
 
 The message flow under test (Flow1) has an MQ Input node to receive input message, a Compute node to process the message, and an MQ Output node to output the message to an MQ local queue. 
 
@@ -31,7 +29,9 @@ Approach 1 is my favorite as it is simple.
 
 ![New Design](../../screenshots/ace/new-design.svg)
 
-Notice that the isolation is only needed in integration unit testing environment. Other environment such as ST (System Testing) or SIT (System Integration Testing) environment may not need it as the testing scope or strategy is different. On the other hand, configuring a message flow or queue differently in different environments is quite common in ACE project.
+Notice that the isolation is only needed in integration unit testing environment (developer's local machine or the CI/CD pipeline). Other environment such as ST (System Testing) or SIT (System Integration Testing) environment may not need it as the testing scope or strategy is different.
+
+On the other hand, configuring a message flow or queue differently in different environments is quite common in ACE project.
    
 ## Test Case Creation
 Based on the isolation, a positive test case for Flow1 would have these steps.
@@ -51,7 +51,9 @@ The result test case looks like below
 ![Queue to Queue](../../screenshots/ace/queue-to-queue.png)
 
 ## Sample Test Case
-The test case created above is available for download at <a href="../../sample-testcases/ace/queue-to-queue/Positive.json" download>sample test case</a>. After download, right click anywhere in the left side pane on ATB UI, and select `Import Test Case` to import it.
+The test case created above is available for download at <a href="../../sample-testcases/ace/queue-to-queue/Positive.json" download>sample test case</a>.
+
+After download, right click anywhere in the left side pane on ATB UI, and select `Import Test Case` to import it.
 
 ## What is Integration Unit Testing?
 Refer to [this post](https://medium.com/@zhengwang666/integration-unit-testing-683fbf995c43){:target="_blank"}.

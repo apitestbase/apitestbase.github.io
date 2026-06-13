@@ -9,22 +9,21 @@ Suppose you have an Open (Bank) Account API that exposes an HTTP endpoint. When 
 ![Open Account API](../../screenshots/http-http/open-account-api.png)
 
 ## Test Isolation
-To integration unit test the Open Account API, design the API to point to different dependencies in different environments. This is normally achieved by setting different dependency endpoint addresses in different property files. Each property file contains all properties for the API for a specific environment like Dev/Test/QA/Prod. When deploying and running the API, dynamically load the property file for that specific environment.
+To integration unit test the Open Account API, design the API to point to different dependencies in different environments. This is normally achieved by setting different dependency endpoint addresses in different property files. Each property file contains all properties for the API for a specific environment like Dev/Test/QA/Prod.
 
-In an integration unit testing environment like the Dev environment (which is typically a developer's local machine), a property file like `open-account-api-dev.properties` is used for the Open Account API. The property file contains something like below
+When deploying and running the API, dynamically load the property file for that specific environment.
+
+Here is a sample property file `open-account-api-dev.properties` for a developer's local machine.
 ~~~
     fraud.check.api.url=http://localhost:8090/fraudcheck
     account.api.url=http://localhost:8090/account
 ~~~ 
+
 Here the urls are the HTTP stubs' addresses. We use HTTP stubs, instead of any fully implemented and shared Fraud Check and Account APIs, as the dependencies during integration unit testing, like shown below.
 
 ![Open Account API Test Isolation](../../screenshots/http-http/open-account-api-test-isolation.png)
 
 ## Test Cases Creation
-It is recommended that you have a look at [Quick Start](/docs/en/quick-start) if ATB is new to you.
-
-Check section [Sample Test Cases](#sample-test-cases) if you are eager to see what the test cases look like.
-
 ### Positive Test
 Create a test case `Positive` under a folder for the Open Account API. Create an HTTP test step `Invoke the API and Assert Response` in the test case. This test step invokes the Open Account API and asserts that the API returns status code 200.
 
@@ -52,7 +51,9 @@ In this example, only one HTTP stub is needed, i.e. the Fraud Check API stub, be
 Run the test case by clicking the `Run` button, and check the test report.
 
 ## Sample Test Cases
-The test cases created above are available for download at <a href="../../sample-testcases/http-http/Positive.json" download>Positive test case</a> and <a href="../../sample-testcases/http-http/Negative.json" download>Negative test case</a>. After download, right click anywhere in the left side pane on ATB UI, and select `Import Test Case` to import it.
+The test cases created above are available for download at <a href="../../sample-testcases/http-http/Positive.json" download>Positive test case</a> and <a href="../../sample-testcases/http-http/Negative.json" download>Negative test case</a>.
+
+After download, right click anywhere in the left side pane on ATB UI, and select `Import Test Case` to import it.
 
 ## What is Integration Unit Testing?
 Refer to [this post](https://medium.com/@zhengwang666/integration-unit-testing-683fbf995c43){:target="_blank"}.
