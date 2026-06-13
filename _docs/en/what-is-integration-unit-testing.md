@@ -12,7 +12,7 @@ The method includes
 
 The API can use any input protocol, including but not limited to HTTP. RESTful API is the most widely adopted form of API.
 
-Integration unit tests are not coupled with, hence have no knowledge about, the API's internal implementation code. The tests care about the API's interactions with the outside world instead.
+Integration unit tests are not coupled with, hence have no knowledge about, the API's internal implementation code. The tests care about the API's interactions with its outside world instead.
 
 The purpose of integration unit testing is to make testing the API's business logic (functionalities) easier and a better experience for developers.
 
