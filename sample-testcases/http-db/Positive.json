@@ -2,7 +2,7 @@
   "testcases": [ {
     "name": "Positive",
     "teststeps": [ {
-      "name": "Spin up SQL Server Docker container",
+      "name": "Setup - Spin up SQL Server Docker container",
       "type": "Docker",
       "actionProperties": {
         "@type": "DockerRun",
@@ -21,7 +21,7 @@
         } ]
       }
     }, {
-      "name": "Wait for SQL Server to start",
+      "name": "Setup - Wait for SQL Server to start",
       "type": "DB",
       "endpoint": {
         "type": "DB",
@@ -33,7 +33,7 @@
         "sqlScript": "select 1;"
       }
     }, {
-      "name": "Create stub database",
+      "name": "Setup - Create stub database",
       "type": "DB",
       "endpoint": {
         "type": "DB",
@@ -45,7 +45,7 @@
         "sqlScript": "IF DB_ID('Article') IS NULL\n   CREATE DATABASE Article;"
       }
     }, {
-      "name": "Create stub table",
+      "name": "Setup - Create stub table",
       "type": "DB",
       "endpoint": {
         "type": "DB",

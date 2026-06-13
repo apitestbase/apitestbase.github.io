@@ -15,8 +15,8 @@ When deploying and running the API, dynamically load the property file for that 
 
 Here is a sample property file `open-account-api-dev.properties` for a developer's local machine.
 ~~~
-    fraud.check.api.url=http://localhost:8090/fraudcheck
-    account.api.url=http://localhost:8090/account
+fraud.check.api.url=http://localhost:8090/fraudcheck
+account.api.url=http://localhost:8090/account
 ~~~ 
 
 Here the urls are the HTTP stubs' addresses. We use HTTP stubs, instead of any fully implemented and shared Fraud Check and Account APIs, as the dependencies during integration unit testing, like shown below.

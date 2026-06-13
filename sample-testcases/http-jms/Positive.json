@@ -15,7 +15,7 @@
       "value": "${input.message}"
     } ],
     "teststeps": [ {
-      "name": "Start solace-auto",
+      "name": "Setup - Start solace-auto",
       "type": "Docker",
       "description": "zzz",
       "actionProperties": {
@@ -60,7 +60,7 @@
         } ]
       }
     }, {
-      "name": "Ensure Solace is ready",
+      "name": "Setup - Ensure Solace is ready",
       "type": "HTTP",
       "endpoint": {
         "type": "HTTP",
@@ -83,7 +83,7 @@
         "timeout": "30000"
       }
     }, {
-      "name": "Delete stub output queue",
+      "name": "Setup - Delete stub output queue",
       "type": "HTTP",
       "description": "Response status code could be 200 or 400 (queue not found).",
       "endpoint": {
@@ -103,7 +103,7 @@
         "method": "DELETE"
       }
     }, {
-      "name": "Create stub output queue",
+      "name": "Setup - Create stub output queue",
       "type": "HTTP",
       "endpoint": {
         "type": "HTTP",

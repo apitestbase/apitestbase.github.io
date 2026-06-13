@@ -31,23 +31,25 @@ When deploying and running the API, dynamically load the property file for that 
 
 Here is a sample property file `data-ingestion-api-dev.properties` for a developer's local machine.
 ~~~
-    solace.host=localhost:55555
-    solace.vpn=default
-    solace.queue.name=q/data/ingestion/api/stub/out
+solace.host=localhost:55555
+solace.vpn=default
+solace.queue.name=q/data/ingestion/api/stub/out
 ~~~
 
 ## Test Case Creation
 Create a test case `Positive` under a folder for the Data Ingestion API, with below test steps
+
 ```
-   1. (Docker step) Start solace-auto
-   2. (HTTP step) Ensure Solace is ready
-   3. (HTTP step) Delete stub output queue
-   4. (HTTP step) Create stub output queue
-   5. (HTTP step) Invoke the API to ingest data
-   6. (Wait step) Wait for 0.5 seconds
-   7. (JMS step) Check stub output queue depth equals 1
-   8. (JMS step) Browse the stub output queue and assert message body
+1. (Docker step) Setup - Start solace-auto
+2. (HTTP step) Setup - Ensure Solace is ready
+3. (HTTP step) Setup - Delete stub output queue
+4. (HTTP step) Setup - Create stub output queue
+5. (HTTP step) Invoke the API to ingest data
+6. (Wait step) Wait for 0.5 seconds
+7. (JMS step) Check stub output queue depth equals 1
+8. (JMS step) Browse the stub output queue and assert message body
 ```
+
 Step 6 might be optional depending on the Data Ingestion API's implementation. It is needed when the implementation is of asynchronous style, i.e. the API returns no matter whether the JMS message delivery is acknowledged.
 
 ## Sample Test Case

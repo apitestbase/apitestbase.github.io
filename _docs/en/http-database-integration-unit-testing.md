@@ -33,17 +33,17 @@ Tailor the script, like by removing unneeded table columns, to suit your testing
 
 Below is a sample DDL script
 ```
-    IF DB_ID('Article') IS NULL
-        CREATE DATABASE Article;
-    
-    IF OBJECT_ID('Article.dbo.Article', 'U') IS NOT NULL
-        DROP TABLE Article.dbo.Article;
-    
-    CREATE TABLE [Article].[dbo].[Article] (
-        ID INT,
-        Title VARCHAR(50),
-        Content VARCHAR(5000)
-    );
+IF DB_ID('Article') IS NULL
+    CREATE DATABASE Article;
+
+IF OBJECT_ID('Article.dbo.Article', 'U') IS NOT NULL
+    DROP TABLE Article.dbo.Article;
+
+CREATE TABLE [Article].[dbo].[Article] (
+    ID INT,
+    Title VARCHAR(50),
+    Content VARCHAR(5000)
+);
 ```
 
 The script can be run through ATB's Database test step.
@@ -55,11 +55,11 @@ When deploying and running the API, dynamically load the property file for that 
 
 Here is a sample property file `article-api-dev.properties` for a developer's local machine.
 ~~~
-    database.host=localhost
-    database.port=1433
-    database.name=Article
-    database.username=<encrypted username>
-    database.password=<encrypted password>
+database.host=localhost
+database.port=1433
+database.name=Article
+database.username=<encrypted username>
+database.password=<encrypted password>
 ~~~
 
 ## Database Test Data Preparation
@@ -73,13 +73,19 @@ Some common ways to obtain or draft the `INSERT` statements are
 The `INSERT` statements can be run through ATB's Database test step.
 
 ## Test Case Creation
-Refer to [Creating Automated Test Case](/docs/en/creating-automated-test-case). On that page, the database is an H2 database, but the steps for test case creation and run can be similarly applied here.
+Create a test case `Positive` under a folder for the Article API, with below test steps
 
-Just remember to
-* Include the steps for setting up the local stub database.
-* Use the local stub database endpoint (instead of the H2 one) in the test case.
-* Use your own local Article API endpoint (instead of the ATB bundled one).
-* Make sure SQL Server JDBC libraries are copied to ATB lib folder, as described [here](/docs/en/interact-with-other-systems#sql-server).
+```
+1. (Docker step) Setup - Spin up SQL Server Docker container
+2. (DB step) Setup - Wait for SQL Server to start
+3. (DB step) Setup - Create stub database
+4. (DB step) Setup - Create stub table
+5. (DB step) Set up database data
+6. (HTTP step) Invoke the API to update article
+7. (DB step) Check database data
+```
+
+Not part of the test case, but as a once-off task, make sure SQL Server JDBC libraries are copied to ATB lib folder, as described [here](/docs/en/interact-with-other-systems#sql-server).
 
 ## Sample Test Case
 The test case created above is available for download at <a href="../../sample-testcases/http-db/Positive.json" download>sample test case</a>.
