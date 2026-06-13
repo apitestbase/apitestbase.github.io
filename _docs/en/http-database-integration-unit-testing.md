@@ -91,6 +91,3 @@ Not part of the test case, but as a once-off task, make sure SQL Server JDBC lib
 The test case created above is available for download at <a href="../../sample-testcases/http-db/Positive.json" download>sample test case</a>.
 
 After download, right click anywhere in the left side pane on ATB UI, and select `Import Test Case` to import it.
-
-## What is Integration Unit Testing?
-Refer to [this post](https://medium.com/@zhengwang666/integration-unit-testing-683fbf995c43){:target="_blank"}.

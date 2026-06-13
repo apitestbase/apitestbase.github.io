@@ -47,6 +47,8 @@ docs-en:
         url: /docs/en/upgrade-from-old-version
   - title: Integration Unit Testing
     children:
+      - title: What is Integration Unit Testing?
+        url: /docs/en/what-is-integration-unit-testing
       - title: HTTP-HTTP Integration Unit Testing
         url: /docs/en/http-http-integration-unit-testing
       - title: HTTP-Database Integration Unit Testing
@@ -55,6 +57,8 @@ docs-en:
         url: /docs/en/http-jms-integration-unit-testing
       - title: ACE Integration Unit Testing
         url: /docs/en/ace-integration-unit-testing
+      - title: Structured Test Setup for Integration Unit Test Isolation
+        url: /docs/en/structured-test-setup-for-integration-unit-test-isolation
   - title: Other Testing Practices
     children:
       - title: Data Driven Testing
