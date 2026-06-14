@@ -68,27 +68,19 @@ A small "Online Store" application with three REST APIs. To test each API in iso
 
 That's the whole picture: one Docker + schema setup at the top of the REST API tests, a table setup local to the one API that owns its table, and a shared table setup referenced by the two APIs that share a table.
 
-## Walking Through the Setups
+## Why the Setups Live Where They Do
 
-**Online Store (workspace)** — holds the API tests for this application. The Third-Party Integration Tests folder is shown only to place the REST API tests in the context of the application's full test suite; its setup is outside the scope of this example.
+The tree shows *what* the setups are; the placement decisions are what make it work:
 
-**REST API Tests (folder setup)** — a Docker step starts the stub database: a dedicated PostgreSQL container, with database `online_store` created automatically. A database step then creates the `online_store` schema. Because this stub database belongs to the tests alone, the APIs run against a known, isolated dependency rather than a shared one. It sits at the top of the API tests so the stub database is provisioned in one place.
+* **The stub database is provisioned at the top.** The Docker step (PostgreSQL container) and schema creation sit on **REST API Tests**, so every API beneath it shares one isolated stub database instead of each standing up its own.
+* **A table's setup is owned by whoever uses it.** `user_preferences` is created on the **User Preferences API** folder, because that's the only API that touches it. `orders` is used by two APIs, so its setup — **Create Orders Table** — is *referenced* by both the Create Order and Update Order Status folders rather than duplicated in each.
+* **A reference can reach anywhere in the tree.** **Create Orders Table** deliberately lives in **Common Test Setups**, outside REST API Tests, to show a Setup Reference isn't limited to a folder's own subtree. The setup itself is written to be repeatable — it drops the `orders` table before creating it — so running it more than once does no harm.
 
-**User Preferences API (folder setup)** — one database step creates the `user_preferences` table in the stub database. It lives here, and only here, because no other API touches this table.
-
-**Common Test Setups / Create Orders Table (test case)** — a standalone test case, in its own folder *outside* REST API Tests, with a database step that creates the `orders` table in the stub database. It's written to be repeatable — it drops the table first, then creates it — so it's safe to run more than once.
-
-**Create Order API and Update Order Status API (setup references)** — both folders reference "Create Orders Table" instead of duplicating its DDL. Because the referenced test case lives outside REST API Tests, this also shows that setup references aren't limited to a folder's own subtree.
+The workspace holds only the application's API tests; the **Third-Party Integration Tests** folder is shown purely to place the REST API tests within the application's full test suite.
 
 ## Running the Tests
 
-A folder's **Run Pattern** controls what a run includes — which setups run, and whether test cases run with them. ATB offers three:
-
-* **Setups to Here** — runs every setup defined or referenced from the workspace level down to the folder, and no test cases. It prepares the environment without running any test.
-* **Default** — runs the folder's own setups, then recurses through everything beneath it: each descendant sub-folder's setups and all test cases. It does not run ancestor setups.
-* **All** — the same as Default, plus the ancestor setups first. A fully self-contained run.
-
-One current limitation to note: running a single test case on its own does not run any folder setups — neither its own folder's nor its ancestors'. Preparing those setups is what **Setups to Here** is for.
+How a run behaves depends on the folder's [**Run Pattern**](/docs/en/folder-run-patterns) — which setups run, and whether test cases run with them. Two workflows put the patterns to use.
 
 ### During API development
 
@@ -106,4 +98,4 @@ One note for the full run: setup deduplication isn't implemented yet, so "Create
 
 ## Why This Matters
 
-Each table's setup lives in exactly one place, owned by whichever folder(s) actually depend on it — not duplicated, and not buried inside individual test cases. Dependencies between folders are explicit through setup references rather than assumed. The stub database keeps every run isolated from shared environments, and the same structure that provisions it also lets each test case verify the resulting row in `user_preferences` or `orders` as a side effect of the API call. That combination of isolation and side-effect verification is the heart of what ATB is for.
+Each setup is defined once, in the place that matches its scope: on a folder when it belongs only to that folder's subtree, or in a setup test case that other folders reference when it's shared. Nothing is copied, so every prerequisite has a single source of truth. Run together, these setups stand up a stub database that's entirely the tests' own — so the API runs in isolation and its real side effects stay verifiable, which is what ATB exists to do.
