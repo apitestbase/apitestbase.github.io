@@ -56,3 +56,6 @@ Step 6 might be optional depending on the Data Ingestion API's implementation. I
 The test case created above is available for download at <a href="../../sample-testcases/http-jms/Positive.json" download>sample test case</a>.
 
 After download, right click anywhere in the left side pane on ATB UI, and select `Import Test Case` to import it.
+
+## Further Note
+Here we are setting up the stub Solace and queue in the test case, for making the example simple. In real work, we don't want to duplicate the test setup steps here and there in many test cases. Instead, we want to manage test setup in a structured manner. Refer to [Structured Test Setup for Integration Unit Test Isolation](/docs/en/structured-test-setup-for-integration-unit-test-isolation) for more details.
