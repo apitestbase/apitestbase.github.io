@@ -17,7 +17,7 @@ The purpose of integration unit testing is to make testing the API's business lo
 For more details, please refer to [this post](https://medium.com/@zhengwang666/integration-unit-testing-683fbf995c43){:target="_blank"}.
 
 ### Integration Unit
-We can think of an API as an integration unit. An API has following characteristics:
+We can think of an API as an integration unit. An API has the following characteristics:
 
 * It receives a request message from its client, sends a response message to the client and/or interacts with other systems (database, message broker, FTP server, etc.) or APIs.
 * It can use any input protocol, including but not limited to HTTP. RESTful API is the most widely adopted form of API.
@@ -25,4 +25,3 @@ We can think of an API as an integration unit. An API has following characterist
   * Examples: a Spring Boot REST API, a NextJS REST API, a Django REST API, a Java gRPC API, a MuleSoft message flow, a webMethods service, a StreamSets data pipeline, etc.
 
 When zooming out to a higher level architecture (web app, microservices, event driven, API topology, SOA, etc.), there could be one or more APIs working together to integrate a system (UI, application, database, FTP server, main frame, etc.) with other systems. Therefore, **an API is a unit of the integration**.
-
