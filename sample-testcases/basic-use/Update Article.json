@@ -6,7 +6,7 @@
       "type" : "DB",
       "endpoint" : {
         "type" : "DB",
-        "url" : "jdbc:h2:${ATB_Data_Dir}/database/sample;AUTO_SERVER=TRUE",
+        "url" : "jdbc:h2:${ATB_DATA_DIR}/database/sample;AUTO_SERVER=TRUE",
         "username" : "user"
       },
       "apiRequest" : {
@@ -41,7 +41,7 @@
       "type" : "DB",
       "endpoint" : {
         "type" : "DB",
-        "url" : "jdbc:h2:${ATB_Data_Dir}/database/sample;AUTO_SERVER=TRUE",
+        "url" : "jdbc:h2:${ATB_DATA_DIR}/database/sample;AUTO_SERVER=TRUE",
         "username" : "user"
       },
       "apiRequest" : {

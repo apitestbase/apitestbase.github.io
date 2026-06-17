@@ -23,13 +23,13 @@ First of all, create a new test case, by right clicking anywhere in the left sid
 
 ![Test Case Patterns](../../screenshots/basic-use/test-case-patterns.png)
 
-Select the `HTTP - DB` pattern, and the pattern details form displays. Populate test case name `Update Article`, scenario `Update`, HTTP Endpoint URL `http://localhost:8090/api/articles/2`, Database Endpoint JDBC URL `jdbc:h2:${ATB_Data_Dir}/database/sample;AUTO_SERVER=TRUE`, Username `user` and Password `pass`.  
+Select the `HTTP - DB` pattern, and the pattern details form displays. Populate test case name `Update Article`, scenario `Update`, HTTP Endpoint URL `http://localhost:8090/api/articles/2`, Database Endpoint JDBC URL `jdbc:h2:${ATB_DATA_DIR}/database/sample;AUTO_SERVER=TRUE`, Username `user` and Password `pass`.  
 
 ![Test Case Pattern Details](../../screenshots/basic-use/test-case-pattern-details.png)
 
 Here the scenario `Update` means we are testing a resource-update scenario. HTTP Endpoint is the endpoint of the REST API we are going to test. Database Endpoint is the endpoint of the `sample` H2 database.
 
-For more details about the `${ATB_Data_Dir}` in the Database Endpoint JDBC URL, please refer to [Properties](/docs/en/properties). 
+For more details about the `${ATB_DATA_DIR}` in the Database Endpoint JDBC URL, please refer to [Properties](/docs/en/properties). 
 
 Click `OK` to create the skeleton test case.
 
@@ -106,4 +106,6 @@ Click a test step in the right side outline to open a modal and see the step's r
 ![Test Step Run Report](../../screenshots/basic-use/test-step-run-report.png)
 
 ## Sample Test Case
-The test case created above is available for download at <a href="../../sample-testcases/basic-use/Update Article.json" download>sample test case</a>. After download, right click anywhere in the left side pane on ATB UI, and select `Import Test Case` to import it.
+The test case created above is available for download at <a href="../../sample-testcases/basic-use/Update Article.json" download>sample test case</a>.
+
+After download, right click anywhere in the left side pane on ATB UI, and select `Import Test Case` to import it.
