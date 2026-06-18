@@ -61,6 +61,8 @@ docs-en:
         url: /docs/en/ace-integration-unit-testing
       - title: Structured Test Setup for Integration Unit Test Isolation
         url: /docs/en/structured-test-setup-for-integration-unit-test-isolation
+      - title: Integration Unit Testing Automation in CI/CD Pipeline
+        url: /docs/en/integration-unit-testing-automation-in-cicd-pipeline
   - title: Other Testing Practices
     children:
       - title: Data Driven Testing
