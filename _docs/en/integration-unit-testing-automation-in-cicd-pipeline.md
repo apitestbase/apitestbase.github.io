@@ -357,7 +357,7 @@ a particular platform. To wire it in:
   **masked variables** and surface each one to the script &mdash; secrets the tests
   consume go in as `ATB_ENV_PROP_<property>` variables.
 - Publish the `test-reports` folder as a **pipeline artifact** so the HTML report
-  is available from the run summary.
+  is available from the pipeline's run summary.
 
 On an ephemeral runner or container you can skip explicit teardown &mdash; the runner
 is discarded when the job ends. On a long-lived self-hosted runner, stop the API
