@@ -16,6 +16,8 @@ The purpose of integration unit testing is to make testing the API's business lo
 
 For more details, please refer to [this post](https://medium.com/@zhengwang666/integration-unit-testing-683fbf995c43){:target="_blank"}.
 
+Integration unit tests are run by hand during API development, and automated in a [CI/CD pipeline](/docs/en/integration-unit-testing-automation-in-cicd-pipeline) to run the whole set on every build.
+
 ### Integration Unit
 We can think of an API as an integration unit. An API has the following characteristics:
 

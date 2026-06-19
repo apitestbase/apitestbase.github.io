@@ -90,7 +90,7 @@ From there they iterate quickly. Running a single test case re-runs no setup at 
 
 ### In CI/CD
 
-A pipeline runs a folder with **All**, so the run is self-contained: the ancestor setups run first, then the folder's own setups and every test case beneath it.
+A pipeline runs a folder with the **All** pattern, so the run is self-contained: the ancestor setups run first, then the folder's own setups and every test case beneath it. See [Integration Unit Testing Automation in CI/CD Pipeline](/docs/en/integration-unit-testing-automation-in-cicd-pipeline) for how to drive this from a pipeline.
 
 Pointing this at a single API folder (say, Create Order API) runs just that API's setups and tests — useful when each API has its own Git repository, so a change to one API doesn't trigger the whole suite. Pointing it at the REST API Tests folder runs everything, for a full pass across all APIs.
 
