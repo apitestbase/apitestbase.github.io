@@ -30,7 +30,7 @@ tags:     # Not sure why. Unlike other article pages, here can't use 'tags: tag1
 ---
 # Test what your API *really did*
 
-**API Test Base** is a free, offline‑first tool for testing APIs and their side effects — across HTTP/REST, message queues (IBM MQ, JMS, AMQP, MQTT), databases, files, and SOAP.
+API Test Base is a free, offline‑first tool for testing APIs **and their side effects** — the records your API writes to a database, the messages it publishes to a queue, the files it creates.
 
 No account, no cloud. You download it and run it on your own machine or in your CI/CD pipeline. Test cases are created with a **no‑code / low‑code** UI, so you can be productive in minutes.
 
@@ -57,7 +57,7 @@ For example, a single `POST /orders` call can be verified end to end:
     ✓ File uploaded to FTP server
     ✓ Downstream API called successfully
 
-API Test Base verifies both the response **and** these side effects in one automated test case. See [Interact with Other Systems](/docs/en/interact-with-other-systems) for the systems it can reach.
+API Test Base verifies both the response **and** these side effects in one automated test case.
 
 ------------------------------------------------------------------------
 
@@ -102,7 +102,7 @@ Setup isn't limited to seeding data. For full isolation, a setup can stand up a 
 
 ## Feature highlights
 
--   [Many protocols](/docs/en/interact-with-other-systems) --- not just HTTP
+-   Many protocols --- not just HTTP
 -   [No‑code / low‑code test case creation](/docs/en/creating-automated-test-case)
 -   Standalone requests and structured test cases
 -   Built‑in [data‑driven testing](/docs/en/data-driven-testing)
