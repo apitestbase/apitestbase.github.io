@@ -9,7 +9,7 @@ tags:     # Not sure why. Unlike other article pages, here can't use 'tags: tag1
   - home
   - integration-unit-testing
   - integration-testing
-  - test-automation 
+  - test-automation
   - api-testing
   - database-testing
   - http-stub
@@ -30,119 +30,96 @@ tags:     # Not sure why. Unlike other article pages, here can't use 'tags: tag1
 ---
 # Test what your API *really did*
 
-Most API testing tools only verify the **response**.
+**API Test Base** is a free, offline‑first tool for testing APIs and their side effects — across HTTP/REST, message queues (IBM MQ, JMS, AMQP, MQTT), databases, files, and SOAP.
 
-But real APIs do much more. They may:
+No account, no cloud. You download it and run it on your own machine or in your CI/CD pipeline. Test cases are created with a **no‑code / low‑code** UI, so you can be productive in minutes.
 
--   write records to **databases**
--   publish messages to **queues**
--   upload **files**
--   trigger **integration flows**
--   call **downstream services**
+<div style="text-align:center">
+  <a class="button button--primary button--pill" style="margin: 0.25rem 0.4rem;" href="/docs/en/quick-start">Download</a>
+  <a class="button button--outline-primary button--pill" style="margin: 0.25rem 0.4rem;" href="/docs/en/creating-automated-test-case">See how it works</a>
+</div>
 
-If your test only checks the response, you may miss what the API actually changed.
-
-**API Test Base** allows you to verify both the response **and the side effects** of an API in one automated test.
-
-<div style="text-align:center"><a class="button button--outline-primary button--pill" href="/docs/en/quick-start">Quick Start</a></div>
+<div style="text-align:center; margin-top: 1rem;">
+  <img alt="API Test Base test case run result — three steps (set up database data, invoke the HTTP API, check the database) all passed, shown in green with per-step timings" src="../../screenshots/basic-use/test-case-run-result.png" width="90%">
+</div>
 
 ------------------------------------------------------------------------
 
-# Test APIs and their dependencies – together
+## Verify the side effects, not just the response
 
-Modern APIs rarely work alone.
+Tools like **Postman** make it easy to verify an API's **response** — and that's where most testing stops. But real APIs do more: they write to databases, publish messages to queues, upload files, and call downstream services. If your test only checks the response, you may miss what the API actually changed.
 
-They interact with databases, message queues, files, and other services.
-
-Testing an API should not stop at the response.
-
-Example:
-
-Send request:
-
-    POST /orders
-
-Assertions:
+For example, a single `POST /orders` call can be verified end to end:
 
     ✓ HTTP response = 200
-
     ✓ Order record created in database
     ✓ Message sent to queue
     ✓ File uploaded to FTP server
     ✓ Downstream API called successfully
 
-API Test Base makes it easy to verify these behaviors in a single automated test case.
+API Test Base verifies both the response **and** these side effects in one automated test case. See [Interact with Other Systems](/docs/en/interact-with-other-systems) for the systems it can reach.
 
 ------------------------------------------------------------------------
 
-# Test APIs across different system interfaces
+## Test APIs triggered by queue messages and file drops
 
-In many systems, APIs are not limited to HTTP endpoints.
+Not every API is an HTTP endpoint. The same business logic may be triggered by:
 
-They may be exposed through different system interfaces such as:
+- a message on a queue — [IBM MQ](/docs/en/mq-request), [JMS](/docs/en/jms-request), [AMQP](/docs/en/amqp-request), or MQTT
+- a file dropped on an [FTP](/docs/en/ftp-request) or [SFTP](/docs/en/sftp-request) server
+- a SOAP call
 
-- HTTP / REST
-- SOAP
-- Message queues (JMS, AMQP, MQTT, IBM MQ)
-- Databases
-- File systems
-- FTP / SFTP
-
-For example:
-
-- an HTTP API may update database records
-- a message sent to a queue may trigger an integration flow
-- a file drop may start a processing pipeline
-
-API Test Base allows creating tests that interact with these interfaces and verify their effects across the system.
+API Test Base can send the trigger over the right protocol and then verify the outcome — so you can test the API the same way no matter how it is invoked. That makes it well suited to integration and ESB scenarios such as IBM MQ testing, JMS testing, SFTP testing, and SOAP API testing.
 
 ------------------------------------------------------------------------
 
-# Built‑in test setup for integration testing
+## Built on a method: Integration Unit Testing
 
-Integration tests often require preparing test data before calling an API.
+API Test Base is built around **Integration Unit Testing** — testing an API as a black box, in isolation, by checking both its **contract** (request and response) and its **side effects** (database records, messages, files, downstream calls).
 
-For example, when testing an API that updates a database record, a test may need to:
+Because the tests know nothing about the API's internal code, they stay stable as the implementation changes. The same API tests you run by hand during development can be [automated in a CI/CD pipeline](/docs/en/integration-unit-testing-automation-in-cicd-pipeline) to run the whole set on every build.
 
-1.  clear a table
-2.  insert a test record
-3.  call the API
-4.  verify the updated data
+[Learn more about Integration Unit Testing →](/docs/en/what-is-integration-unit-testing)
 
-With many tools this requires external scripts.
+------------------------------------------------------------------------
 
-API Test Base allows performing these steps directly inside the test case.
+## Built‑in test setup for integration testing
 
-Example workflow:
+Integration tests need the right state before the API runs, and with most tools that means external scripts. API Test Base runs the setup directly inside the test. A typical database test is three steps in one case:
 
 Database step\
-→ clear table and insert test record
+→ clear the table and insert a test record
 
 HTTP step\
-→ call REST API
+→ call the REST API
 
 Database step\
-→ query table and assert updated values
+→ query the table and assert the updated values
 
-This makes it easier to create **self‑contained integration tests**.
+Setup isn't limited to seeding data. For full isolation, a setup can stand up a dedicated **stub database** — a real database such as PostgreSQL, running in a throwaway Docker container — and create its schema and tables, so the API runs against state that's entirely the test's own. [Structured test setup](/docs/en/structured-test-setup-for-integration-unit-test-isolation) lets you define each setup once, reuse it across folders, and run only what's needed.
 
 ------------------------------------------------------------------------
 
-# Feature highlights
+## Feature highlights
 
--   Support many protocols --- not just HTTP
--   No‑code / low‑code test case creation
+-   [Many protocols](/docs/en/interact-with-other-systems) --- not just HTTP
+-   [No‑code / low‑code test case creation](/docs/en/creating-automated-test-case)
 -   Standalone requests and structured test cases
--   Built‑in data‑driven testing
--   HTTP stubs (mock servers)
+-   Built‑in [data‑driven testing](/docs/en/data-driven-testing)
+-   [HTTP stubs (mock servers)](/docs/en/http-stubs)
 -   Pattern‑based test case generation
--   Automated test setup
--   Docker support
--   Git‑based team collaboration
+-   [Automated test setup](/docs/en/structured-test-setup-for-integration-unit-test-isolation)
+-   [Docker support](/docs/en/quick-start)
+-   [Git‑based team collaboration](/docs/en/team-collaboration)
 -   Offline‑first --- all data stored locally
 
 ------------------------------------------------------------------------
 
-# User Interface
+## Ready to get started?
 
-![UI Glance](../../screenshots/ui-glance.png)
+Download API Test Base and write your first test in minutes --- then run the same tests in your CI/CD pipeline.
+
+<div style="text-align:center">
+  <a class="button button--primary button--pill" style="margin: 0.25rem 0.4rem;" href="/docs/en/quick-start">Download</a>
+  <a class="button button--outline-primary button--pill" style="margin: 0.25rem 0.4rem;" href="/docs/en/integration-unit-testing-automation-in-cicd-pipeline">Automate in CI/CD</a>
+</div>
