@@ -30,7 +30,7 @@ tags:     # Not sure why. Unlike other article pages, here can't use 'tags: tag1
 ---
 # Test what your API *really did*
 
-API Test Base is a free, offline‑first tool for testing APIs **and their side effects** — the records your API writes to a database, the messages it publishes to a queue, the files it creates.
+API Test Base is a free, offline‑first tool for testing APIs **and their side effects** — the records your API writes to a database, the messages it publishes to a queue, the downstream services it calls.
 
 No account, no cloud. You download it and run it on your own machine or in your CI/CD pipeline. Test cases are created with a **no‑code / low‑code** UI, so you can be productive in minutes.
 
@@ -47,14 +47,13 @@ No account, no cloud. You download it and run it on your own machine or in your 
 
 ## Verify the side effects, not just the response
 
-Tools like **Postman** make it easy to verify an API's **response** — and that's where most testing stops. But real APIs do more: they write to databases, publish messages to queues, upload files, and call downstream services. If your test only checks the response, you may miss what the API actually changed.
+Tools like **Postman** make it easy to verify an API's **response** — and that's where most testing stops. But real APIs do more: they write to databases, publish messages to queues, and call downstream services. If your test only checks the response, you may miss what the API actually changed.
 
 For example, a single `POST /orders` call can be verified end to end:
 
     ✓ HTTP response = 200
     ✓ Order record created in database
     ✓ Message sent to queue
-    ✓ File uploaded to FTP server
     ✓ Downstream API called successfully
 
 API Test Base verifies both the response **and** these side effects in one automated test case.
