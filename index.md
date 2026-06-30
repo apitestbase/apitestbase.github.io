@@ -36,7 +36,7 @@ No account, no cloud. You download it and run it on your own machine or in your 
 
 <div style="text-align:center">
   <a class="button button--primary button--pill" style="margin: 0.25rem 0.4rem;" href="/docs/en/quick-start">Download</a>
-  <a class="button button--outline-primary button--pill" style="margin: 0.25rem 0.4rem;" href="/docs/en/creating-automated-test-case">See how it works</a>
+  <a class="button button--outline-primary button--pill" style="margin: 0.25rem 0.4rem;" href="/docs/en/creating-an-automated-test-case">See how it works</a>
 </div>
 
 <div style="text-align:center; margin-top: 1rem;">
@@ -102,7 +102,7 @@ Setup isn't limited to seeding data. For full isolation, a setup can stand up a 
 ## Feature highlights
 
 -   Many protocols --- not just HTTP
--   [No‑code / low‑code test case creation](/docs/en/creating-automated-test-case)
+-   [No‑code / low‑code test case creation](/docs/en/creating-an-automated-test-case)
 -   Standalone requests and structured test cases
 -   Built‑in [data‑driven testing](/docs/en/data-driven-testing)
 -   [HTTP stubs (mock servers)](/docs/en/http-stubs)

@@ -1,9 +1,10 @@
 ---
-title: Creating Automated Test Case
-permalink: /docs/en/creating-automated-test-case
-key: docs-creating-automated-test-case
+title: Creating an Automated Test Case
+redirect_from: /docs/en/creating-automated-test-case
+permalink: /docs/en/creating-an-automated-test-case
+key: docs-creating-an-automated-test-case
 ---
-We are going to demo how to test a REST API that updates an article record in database, like shown below.
+We are going to walk through how to test a REST API that updates an article record in the database, like shown below.
 
 <div style="text-align: center">
     <img alt="The Scenario to Test" src="../../screenshots/basic-use/the-scenario-to-test-with-automated-test-case.svg" width="65%" height="65%">
@@ -18,18 +19,20 @@ We are planning to have three test steps in our test case
 3. Check database data
 ```
 
+Step 3 is the important one: it verifies the API's **side effect** — the change it made in the database — not just the HTTP response that most API tests stop at.
+
 ## Create Skeleton Test Case
 First of all, create a new test case, by right clicking anywhere in the left side pane and selecting `New Test Case`. A wizard pops up.
 
 ![Test Case Patterns](../../screenshots/basic-use/test-case-patterns.png)
 
-Select the `HTTP - DB` pattern, and the pattern details form displays. Populate test case name `Update Article`, scenario `Update`, HTTP Endpoint URL `http://localhost:8090/api/articles/2`, Database Endpoint JDBC URL `jdbc:h2:${ATB_DATA_DIR}/database/sample;AUTO_SERVER=TRUE`, Username `user` and Password `pass`.  
+Select the `HTTP - DB` pattern, and the pattern details form displays. Populate test case name `Update Article`, scenario `Update`, HTTP Endpoint URL `http://localhost:8090/api/articles/2`, Database Endpoint JDBC URL `jdbc:h2:${ATB_DATA_DIR}/database/sample;AUTO_SERVER=TRUE`, Username `user` and Password `pass`.
 
 ![Test Case Pattern Details](../../screenshots/basic-use/test-case-pattern-details.png)
 
 Here the scenario `Update` means we are testing a resource-update scenario. HTTP Endpoint is the endpoint of the REST API we are going to test. Database Endpoint is the endpoint of the `sample` H2 database.
 
-For more details about the `${ATB_DATA_DIR}` in the Database Endpoint JDBC URL, please refer to [Properties](/docs/en/properties). 
+For more details about the `${ATB_DATA_DIR}` in the Database Endpoint JDBC URL, please refer to [Properties](/docs/en/properties).
 
 Click `OK` to create the skeleton test case.
 
@@ -109,3 +112,6 @@ Click a test step in the right side outline to open a modal and see the step's r
 The test case created above is available for download at <a href="../../sample-testcases/basic-use/Update Article.json" download>sample test case</a>.
 
 After download, right click anywhere in the left side pane on ATB UI, and select `Import Test Case` to import it.
+
+## Next Steps
+You've built and run your first automated test case. Next, drive the same test with multiple sets of data in a single test case — see [Data Driven Testing](/docs/en/data-driven-testing).

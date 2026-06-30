@@ -86,4 +86,4 @@ The request, as well as all the data you create in API Test Base, is automatical
 `Docker users`: if not using host networking, to enable ATB docker container to call your API on the host machine, use `host.docker.internal` as hostname in the request URL.
 
 ## Next Steps
-You've run an ad hoc request. Next, build a structured test case that invokes an API and verifies its side effect — see [Creating Automated Test Case](/docs/en/creating-automated-test-case).
+You've run an ad hoc request. Next, build a structured test case that invokes an API and verifies its side effect — see [Creating an Automated Test Case](/docs/en/creating-an-automated-test-case).

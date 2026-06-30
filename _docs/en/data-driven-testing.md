@@ -13,18 +13,18 @@ This technique saves you the need to create multiple test cases that use differe
 Data table can be defined on a test case under the Data Table tab of test case edit view. A sample is shown below.
 
 Each row in the table contains a set of properties to feed each test case individual run. Property name is column name, and property value is cell value.
-    
+
 Property can be used in any test step or assertion. Refer to [Properties](/docs/en/properties) for more details.
 
 A `Caption` column is by default defined in data table. It enables you to mark/label each row in the table, so that the purpose of the row is clear. Caption column will not be used as property when running test case, but it makes test case run report easier to read.
 
 ## Sample Scenario
-Take the test case from [Creating Automated Test Case](/docs/en/creating-automated-test-case) as a starting point. We will refactor it to enable testing Article update with two sets of data in one test case. One is for testing successful article update, and the other is for testing an error case when the article title is too long (over 50 chars) to be persisted into the database.
+Take the test case from [Creating an Automated Test Case](/docs/en/creating-an-automated-test-case) as a starting point. We will refactor it to enable testing Article update with two sets of data in one test case. One is for testing successful article update, and the other is for testing an error case when the article title is too long (over 50 chars) to be persisted into the database.
 
 The result test case can be downloaded in section [Sample Test Case](#sample-test-case).
 
 ### Refactor the Test Case to be Data Driven
-What we got from [Creating Automated Test Case](/docs/en/creating-automated-test-case) was a test case like below
+What we got from [Creating an Automated Test Case](/docs/en/creating-an-automated-test-case) was a test case like below
 
 ![Basic Test Case](../../screenshots/basic-use/skeleton-test-case.png)
 

@@ -9,8 +9,8 @@ docs-en:
     children:
       - title: Quick Start
         url: /docs/en/quick-start
-      - title: Creating Automated Test Case
-        url: /docs/en/creating-automated-test-case
+      - title: Creating an Automated Test Case
+        url: /docs/en/creating-an-automated-test-case
   - title: Usages
     children:
       - title: Environments Management
