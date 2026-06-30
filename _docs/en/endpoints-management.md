@@ -5,9 +5,9 @@ key: docs-endpoints-management
 ---
 When a new request is created, an `unmanaged endpoint` with empty values will be created and associated with it.
 
-Unmanaged endpoint is specific to a request, and is invisible to other requests.
+Every request has exactly one endpoint. A test step has at most one: steps that interact with another system — an HTTP step, a database step, and so on — each have one, while steps such as Wait or Docker have none. An endpoint, where present, is either unmanaged or managed. An unmanaged endpoint has all its fields defined inline, so it is specific to that request or test step and invisible to everything else. A test step has no YAML file of its own; its details, including any endpoint, are stored in the containing test case YAML.
 
-To reuse endpoints across requests, you can create `managed endpoints` in [Environments](/docs/en/environments-management) or workspace.
+To reuse endpoints across requests, you can create `managed endpoints` in [Environments](/docs/en/environments-management) or workspace. A managed endpoint is referenced by name: only the endpoint name is stored in the request or test case YAML, and the details come from a managed endpoint of that name in the currently selected environment or the workspace. Under the `Endpoint` tab of a request or test step, a managed endpoint's details appear read-only whenever an endpoint of that name exists in the selected environment or workspace, and can be changed only in that environment or workspace; an unmanaged endpoint's details, by contrast, are edited directly on that tab. At run time, a managed endpoint is resolved by name the same way, against the selected environment or workspace.
 
 ## Scope
 Endpoint created in an environment is only effective when the environment is selected.
@@ -23,7 +23,7 @@ Here we use HTTP endpoint as an example.
 ### Create Managed Endpoint in an Environment
 Suppose you have created an environment (like `Local`) in the Environments area, open the environment. Click `+ Endpoint` dropdown button, select `HTTP`, give it a name (like 'Article API') and press Enter. A managed HTTP endpoint is created.
 
-Enter details into the fields, and the endpoint looks like below. 
+Enter details into the fields, and the endpoint looks like below.
 
 ![Managed HTTP Endpoint](../../screenshots/env-mgmt/managed-http-endpoint.png)
 
@@ -47,4 +47,3 @@ Under `Endpoint` tab of a request, click `Share Endpoint` button. Enter details 
 
 ## Changing from Managed Endpoint to Unmanaged for a Request
 Clicking the `Unmanage Endpoint` button under the `Endpoint` tab will allow you to clone the managed endpoint to an unmanaged one for the request. The managed one stays untouched in its containing environment or workspace.
- 

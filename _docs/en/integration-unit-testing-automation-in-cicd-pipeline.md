@@ -226,15 +226,11 @@ for each step, any error, the duration, and a Passed/Failed result.
 
 ## Secrets
 
-ATB keeps secret values out of the workspace repo. Each environment is a YAML file
-under `fileplace/<workspace name>/environments/` (for example
-`environments/CICD.yaml`). An environment can define a secret by name, but the
-YAML never stores the value &mdash; it references the value by an id (a random
-string). The encrypted values live in a `secrets.properties` file under the
-`fileplace` folder of ATB's default data directory (see
-[Administration](/docs/en/administration) for where that is). That location is
-fixed &mdash; it stays at the default even when `ATB_DATA_DIR` is changed &mdash; and the
-file is local to the machine, never part of the workspace repo.
+A secret defined on an ATB environment keeps its value out of the workspace repo:
+the environment YAML stores only a reference, and the encrypted value lives in a
+local `secrets.properties` file that is never committed. See
+[Environments Management](/docs/en/environments-management) for how secrets are
+defined and stored.
 
 Developers keep their own private environment, typically `Local`, and add
 `Local.yaml` to `.gitignore` so it never reaches the repo. The shared `CICD`
