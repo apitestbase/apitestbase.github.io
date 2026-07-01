@@ -19,7 +19,7 @@ An endpoint defined on an environment is effective only while that environment i
 The steps below use an HTTP endpoint as the example; the same applies to other endpoint types. For fields specific to a type, see [JMS Request](/docs/en/jms-request) and [MQ Request](/docs/en/mq-request).
 
 ### Create Managed Endpoint in an Environment
-Suppose you have created an environment (like `Local`) in the Environments area, open the environment. Click `+ Endpoint` dropdown button, select `HTTP`, give it a name (like 'Article API') and press Enter. A managed HTTP endpoint is created.
+Suppose you have created an environment (like `Local`) in the Environments area, open the environment. Click the `+ Endpoint` dropdown button, select `HTTP`, give it a name (like 'Article API') and press Enter. A managed HTTP endpoint is created.
 
 Enter details into the fields, and the endpoint looks like below.
 
@@ -27,7 +27,7 @@ Enter details into the fields, and the endpoint looks like below.
 
 To use the newly created managed endpoint, first make sure its environment is selected for your workspace.
 
-Go to an HTTP request, click the `Endpoint` tab, and click `Select Managed Endpoint` button to see a modal that lists all HTTP endpoints from the selected environment (here `Local`) and workspace.
+Go to an HTTP request, click the `Endpoint` tab, and click the `Select Managed Endpoint` button to see a modal that lists all HTTP endpoints from the selected environment (here `Local`) and workspace.
 
 ![Select Managed Endpoint](../../screenshots/env-mgmt/select-managed-endpoint.png)
 
