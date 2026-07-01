@@ -3,7 +3,7 @@ title: Endpoints Management
 permalink: /docs/en/endpoints-management
 key: docs-endpoints-management
 ---
-An endpoint holds the connection details — the address, credentials, and any other parameters — for the system a request or test step talks to.
+An endpoint holds the connection details — the address, credentials, and any other parameters — a request or test step uses to reach its target, such as a REST API, a database, or a JMS provider.
 
 When a new request is created, an `unmanaged endpoint` with empty values will be created and associated with it.
 
