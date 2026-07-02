@@ -3,7 +3,7 @@ title: Expressions
 permalink: /docs/en/expressions
 key: docs-expressions
 ---
-ATB supports Groovy expressions in test cases. The syntax is `${= the expression }`. Examples:
+ATB supports Groovy expressions for generating dynamic values at run time — a fresh UUID, a timestamp, a random string, or the result of a calculation. The syntax is `${= the expression }`, where the leading `=` is what sets an expression apart from a property reference (`${ ... }`). Examples:
 ```
 ${= UUID.randomUUID() }
 
@@ -16,15 +16,15 @@ ${= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date()) }
 ${= (5 + 2) * 8 / 2 % 5 + 0.5 }
 ```
 
-You can embed groovy expressions inside [Properties](/docs/en/properties), or directly inside request. For example:
+You can embed a Groovy expression directly in a request, or inside a [property](/docs/en/properties)'s value. For example:
 
 ![Groovy Expression in Request Body](../../screenshots/expressions/groovy-expression-in-request-body.png)
 
-When running the request, the expressions are evaluated and replaced by the evaluation results.
+When the request or test case runs, each expression is evaluated and its result is substituted in place as text.
 
-### Default Imports
+## Default Imports
 
-Following Java classes are by default imported when any Groovy expression is evaluated, so you can use their shorthand names instead of fully qualified names in the expressions.
+The following packages and classes are imported by default whenever a Groovy expression is evaluated, so you can use their shorthand names instead of fully qualified names.
 
 ```
 java.lang.*

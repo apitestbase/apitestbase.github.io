@@ -89,3 +89,5 @@ Nested property, i.e. property inside property value, is supported. For example:
 prop1="Hello"
 prop2="${prop1} World!"        // prop2's value is "Hello World!"
 ```
+
+A property value can likewise contain a [Groovy expression](/docs/en/expressions), which is evaluated at run time.
