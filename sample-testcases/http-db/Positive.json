@@ -1,0 +1,115 @@
+{
+  "testcases": [ {
+    "name": "Positive",
+    "teststeps": [ {
+      "name": "Setup - Spin up SQL Server Docker container",
+      "type": "Docker",
+      "actionProperties": {
+        "@type": "DockerRun",
+        "imageName": "mcr.microsoft.com/mssql/server:2022-latest",
+        "containerName": "sqlserver-auto",
+        "portMappings": [ {
+          "hostPort": "1433",
+          "containerPort": "1433"
+        } ],
+        "envVars": [ {
+          "name": "ACCEPT_EULA",
+          "value": "Y"
+        }, {
+          "name": "MSSQL_SA_PASSWORD",
+          "value": "YourStr0ng!Pass"
+        } ]
+      }
+    }, {
+      "name": "Setup - Wait for SQL Server to start",
+      "type": "DB",
+      "endpoint": {
+        "type": "DB",
+        "url": "jdbc:sqlserver://localhost:1433",
+        "username": "sa"
+      },
+      "apiRequest": {
+        "@type": "DbRequest",
+        "sqlScript": "select 1;"
+      }
+    }, {
+      "name": "Setup - Create stub database",
+      "type": "DB",
+      "endpoint": {
+        "type": "DB",
+        "url": "jdbc:sqlserver://localhost:1433",
+        "username": "sa"
+      },
+      "apiRequest": {
+        "@type": "DbRequest",
+        "sqlScript": "IF DB_ID('Article') IS NULL\n   CREATE DATABASE Article;"
+      }
+    }, {
+      "name": "Setup - Create stub table",
+      "type": "DB",
+      "endpoint": {
+        "type": "DB",
+        "url": "jdbc:sqlserver://localhost:1433",
+        "username": "sa"
+      },
+      "apiRequest": {
+        "@type": "DbRequest",
+        "sqlScript": "IF OBJECT_ID('Article.dbo.Article', 'U') IS NOT NULL\n    DROP TABLE Article.dbo.Article;\n    \nCREATE TABLE [Article].[dbo].[Article] (\n    ID INT,\n    Title VARCHAR(50),\n    Content VARCHAR(5000)\n);\n\n"
+      }
+    }, {
+      "name": "Set up database data",
+      "type": "DB",
+      "endpoint": {
+        "type": "DB",
+        "url": "jdbc:sqlserver://localhost:1433;database=Article",
+        "username": "sa"
+      },
+      "apiRequest": {
+        "@type": "DbRequest",
+        "sqlScript": "-- Clear the table\ndelete from article;\n\n-- Create two article records\ninsert into article (id, title, content) values (1, 'article1', 'content1');\ninsert into article (id, title, content) values (2, 'article2', 'content2');"
+      }
+    }, {
+      "name": "Invoke the API to update article",
+      "type": "HTTP",
+      "endpoint": {
+        "type": "HTTP",
+        "url": "http://localhost:port/path/to/your/local/article/api/2"
+      },
+      "apiRequest": {
+        "@type": "HttpRequest",
+        "method": "PUT",
+        "headers": [ {
+          "name": "Content-Type",
+          "value": "application/json"
+        } ],
+        "body": "{\n  \"id\": 2,\n  \"title\": \"article2\",\n  \"content\": \"Once upon a time ...\"\n}"
+      },
+      "assertions": [ {
+        "name": "StatusCodeEqual",
+        "type": "StatusCodeEqual",
+        "otherProperties": {
+          "statusCode": "200"
+        }
+      } ]
+    }, {
+      "name": "Check database data",
+      "type": "DB",
+      "endpoint": {
+        "type": "DB",
+        "url": "jdbc:sqlserver://localhost:1433;database=Article",
+        "username": "sa"
+      },
+      "apiRequest": {
+        "@type": "DbRequest",
+        "sqlScript": "select id, title, content from article;"
+      },
+      "assertions": [ {
+        "name": "JsonEqual",
+        "type": "JsonEqual",
+        "otherProperties": {
+          "expectedJSON": "[{\"ID\":1,\"TITLE\":\"article1\",\"CONTENT\":\"content1\"},{\"ID\":2,\"TITLE\":\"article2\",\"CONTENT\":\"Once upon a time ...\"}]"
+        }
+      } ]
+    } ]
+  } ]
+}
