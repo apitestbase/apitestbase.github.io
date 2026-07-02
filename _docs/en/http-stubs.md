@@ -27,7 +27,7 @@ Click `+ Stub` button. On the stub edit view, enter URL `/some/thing` and respon
 
 The meaning of the stub is that when an HTTP GET request is sent to the `Manual` mock server with URL `http://<ApiTestBaseHost>:<MockServerHttpPort>/some/thing` (like http://localhost:8094/some/thing), the mock server will return an HTTP response with status code `200` and response body `Hello!`.
 
-The default port number of the `Manual` mock server is `8094`, and it can be changed under the `Settings` tab of the mock server.
+The default port number of the `Manual` mock server is `8094`, and it can be changed under the `Settings` tab of the mock server. Inside ATB you can also reference this port as the implicit property `${manual.mock.server.http.port}` instead of hardcoding it. See [Properties](/docs/en/properties#manualmockserverhttpport).
 
 ### Test the Stub
 Open your browser, and go to `http://localhost:8094/some/thing`, and you'll see response body `Hello!` on the page.
@@ -50,6 +50,8 @@ The `Auto` mock server is used when running test cases which have HTTP stubs def
 
 When a test case runs, the `Auto` mock server is cleared and all HTTP stubs defined on the test case are automatically loaded into the `Auto` mock server, ready to be invoked (by your API under test).
 
+The `Auto` mock server's HTTP port is available as the implicit property `${auto.mock.server.http.port}`. See [Properties](/docs/en/properties#automockserverhttpport).
+
 More details follow.
 
 ## Use HTTP Stubs in Automated API Testing
@@ -61,15 +63,17 @@ It is easy. Create stubs in your test case under its `HTTP Stubs` tab. Every tim
     - If the `Check Hit Order` option is selected under the HTTP Stubs tab on the test case edit view, the stubs from the test case have been hit in ascending order by stub number.
     - All stub requests received by the `Auto` mock server have been matched (i.e. each request has hit a stub from the test case).
 
+For a complete worked example, see [HTTP-HTTP Integration Unit Testing](/docs/en/http-http-integration-unit-testing).
+
 ## Other Supported Features
 - **Setting a delay for response**
 - [Response templating](http://wiremock.org/docs/response-templating/)  
-    Use attributes of the request in the response.
+  Use attributes of the request in the response.
 - [Regex matching on path and query](http://wiremock.org/docs/request-matching/#regex-matching-on-path-and-query)  
-    Use this when your client request URL contains dynamic parts.
+  Use this when your client request URL contains dynamic parts.
 - [Stateful Behaviour](http://wiremock.org/docs/stateful-behaviour/)  
-    This is useful when you want to ensure the stubs are hit in specified order.
-- **HTTPS stubs**<br>
-    This is useful when your API under test can only call HTTPS dependencies.<br>
-    The same stub can be invoked via both HTTP and HTTPS. To invoke a stub via HTTPS, simply use a different port number. `https://<ApiTestBaseHost>:<MockServerHttpsPort>/some/thing`, like `https://localhost:8095/some/thing`.<br>
-    The HTTPS port number can be changed under the mock server's `Settings` tab.
+  This is useful when you want to ensure the stubs are hit in specified order.
+- **HTTPS stubs**  
+  This is useful when your API under test can only call HTTPS dependencies.  
+  The same stub can be invoked via both HTTP and HTTPS. To invoke a stub via HTTPS, simply use a different port number. `https://<ApiTestBaseHost>:<MockServerHttpsPort>/some/thing`, like `https://localhost:8095/some/thing`.  
+  The HTTPS port number can be changed under the mock server's `Settings` tab.
