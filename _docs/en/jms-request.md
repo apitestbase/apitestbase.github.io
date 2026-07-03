@@ -8,6 +8,8 @@ JMS request is used to operate on a JMS queue or topic, like sending messages to
 
 Supported JMS providers: **ActiveMQ, Solace**.
 
+The ActiveMQ jars are bundled with API Test Base. To use the Solace provider, set up the Solace jars first as described in [Interact with Other Systems](/docs/en/interact-with-other-systems#solace).
+
 Actions available: **Send (and optionally Also Receive), Browse Queue, Clear Queue, Check Queue Depth, Publish**.
 
 ## Endpoint Details
@@ -34,13 +36,13 @@ You can also do request-reply style invocation, i.e. send message to request que
 
 Message body can be XML, JSON, or any other text format.
 
-Click `Do` button to Send the message and receive the reply.
+Click `Do` button to send the message and, in the case of request-reply style invocation, receive the reply.
 
 ## Browse Action
 Browse action is used to read a message from a queue without deleting the message.
 
 You can browse the queue by message index or by a substring (in message body).
- 
+
 ![Browse Queue by Substring](../../screenshots/jms/browse-queue-by-substring.png)
 
 Click `Do` button to read the message.
