@@ -5,24 +5,31 @@ key: docs-configure-api-test-base-to-be-an-ssl-client
 ---
 Sometimes API Test Base needs to connect to a service through SSL/TLS protected transport. Examples:
 * HTTP request connects to a REST API that requires client certificate authentication.
-* ACE test step connects to an integration node that requires SSL.
+* ACE request connects to an integration node that requires SSL.
 
-In these cases, we need to prepare a truststore for API Test Base and import the certificate from the remote service into the truststore.
+In these cases, prepare a truststore for API Test Base and import the certificate from the remote service into it.
 
-If you don't already have a truststore, or you have a truststore but don't have the certificate in it, run command like below to prepare the truststore.
+## Prepare the Truststore
+If you don't already have a truststore, or you have one but the certificate is not in it, run a command like the one below. The `keytool` utility comes with a Java (JDK or JRE) installation.
 
 `<Java_Home>/bin/keytool -importcert -file abc.cer -alias <certificate_alias> -keystore truststore.jks -storepass <truststore_password> -noprompt`
 
 Here
-* abc.cer is the SSL certificate file.
-* truststore.jks is the filename of the truststore. It will be created if not already existing.
+* `abc.cer` is the SSL certificate file from the remote service.
+* `truststore.jks` is the truststore file. It will be created if not already existing.
+* `truststorepass` is the truststore password API Test Base expects by default. To use a different password, see the configuration below.
 
-Copy the truststore file (here truststore.jks) to `<ATB_DATA_DIR>`. An app/config.yml file under the API Test Base installation directory contains corresponding settings (sslTrustStorePath, sslTrustStorePassword) for using the truststore. The settings can be overridden in the `<ATB_DATA_DIR>/config.properties` file. 
+For client certificate authentication (mutual TLS), also import the client certificate together with its private key (for example from a PKCS#12 file, via `keytool -importkeystore`) into the same truststore file — API Test Base uses this single file for both trusted server certificates and the client certificate.
 
-Note
-* API Test Base application needs to be restarted for truststore change.
-* HTTP or SOAP request in API Test Base trusts all remote SSL certificates, hence no need to configure SSL for them if the remote API doesn't require client certificate authentication.
+## Configure API Test Base
+Copy the truststore file to `<ATB_DATA_DIR>` (refer to [Administration](/docs/en/administration) for its location), making sure it is named `truststore.jks` — API Test Base looks for the truststore at exactly `<ATB_DATA_DIR>/truststore.jks`.
 
-Reference
+The truststore password API Test Base uses defaults to `truststorepass`. If your truststore has a different password, set the `atb.app.ssl.trust.store.password` option in the `<ATB_DATA_DIR>/config.properties` file.
 
-* https://www.sslshopper.com/article-most-common-java-keytool-keystore-commands.html?jn9ed3e997=3
+Restart API Test Base for a truststore or configuration change to take effect.
+
+## Note
+HTTP or SOAP request in API Test Base trusts all remote SSL certificates, hence no need to configure SSL for them if the remote API doesn't require client certificate authentication.
+
+## Reference
+* [The Most Common Java Keytool Keystore Commands](https://www.sslshopper.com/article-most-common-java-keytool-keystore-commands.html)
