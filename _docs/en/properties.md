@@ -26,8 +26,8 @@ Folders form a hierarchy: a property defined on a lower-level (nested) folder ov
 
 A value defined on an environment is effective only while that environment is selected, while a value defined on the workspace is effective across all environments. See [Environments Management](/docs/en/environments-management#scope-environment-and-workspace) for more on environment and workspace scope.
 
-## Secrets
-A secret is referenced with the same `${<Property_Name>}` syntax as a property, but its value is stored encrypted and kept out of the shared workspace. Secrets are defined on an environment only. See [Environments Management](/docs/en/environments-management#properties-and-secrets) for how to define and store them.
+## Named Secrets
+A named secret is referenced with the same `${<Property_Name>}` syntax as a property, but its value is stored encrypted and kept out of the shared workspace. Named secrets are defined on an environment only. See [Environments Management](/docs/en/environments-management#properties-and-secrets) for how to define and store them.
 
 ## Implicit Properties
 These are properties dynamically created by ATB.

@@ -4,7 +4,8 @@ redirect_from: /docs/en/maintenance
 permalink: /docs/en/administration
 key: docs-administration
 ---
-API Test Base application stores data in a folder called `<ATB_DATA_DIR>`. Its default value depends on the ATB build:
+## ATB Data Directory
+API Test Base stores data in a folder called `<ATB_DATA_DIR>`. Its default value depends on the ATB build:
 
 {% tabs data-folder %}
 
