@@ -6,6 +6,8 @@ key: docs-jms-request
 ---
 JMS request is used to operate on a JMS queue or topic, like sending messages to a queue.
 
+A JMS request can be used for ad hoc queue or topic operations, replacing the JMS provider's own console or client tool, or in a test case to send a message that triggers the API under test, to browse the API's output queue and verify the output message, or both — see [Test APIs triggered by queue messages and file drops](/#test-apis-triggered-by-queue-messages-and-file-drops).
+
 Supported JMS providers: **ActiveMQ, Solace**.
 
 The ActiveMQ jars are bundled with API Test Base. To use the Solace provider, set up the Solace jars first as described in [Interact with Other Systems](/docs/en/interact-with-other-systems#solace).

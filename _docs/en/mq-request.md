@@ -6,6 +6,8 @@ key: docs-mq-request
 ---
 MQ request is used to operate on an IBM MQ queue or topic.
 
+An MQ request can be used for ad hoc queue operations, replacing tools like RFHUtil or MQ Explorer, or in a test case to enqueue a message that triggers the API under test, to dequeue the API's output message for verification, or both — see [Test APIs triggered by queue messages and file drops](/#test-apis-triggered-by-queue-messages-and-file-drops).
+
 To use MQ requests, set up the IBM MQ client jar first, as described in [Interact with Other Systems](/docs/en/interact-with-other-systems#ibm-mq).
 
 Actions available: **Enqueue, Dequeue, Publish, Clear Queue, Check Queue Depth**.

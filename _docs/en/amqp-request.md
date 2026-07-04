@@ -6,6 +6,8 @@ key: docs-amqp-request
 ---
 AMQP request is used to operate on an AMQP node (such as a queue or topic).
 
+An AMQP request can be used for ad hoc message sending, replacing the broker's management console or a throwaway client script, or in a test case to send a message that triggers the API under test, whose side effects can then be verified in the same test case — see [Test APIs triggered by queue messages and file drops](/#test-apis-triggered-by-queue-messages-and-file-drops).
+
 AMQP request only supports AMQP 1.0. It has been tested against ActiveMQ 5.17.x, RabbitMQ 3.13.1 (with the AMQP 1.0 plugin enabled), and IBM MQ 8 and 9, all without security enabled.
 
 A generic AMQP client library is bundled with API Test Base, so no setup is needed.
