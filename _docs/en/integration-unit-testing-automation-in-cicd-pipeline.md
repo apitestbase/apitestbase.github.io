@@ -88,10 +88,9 @@ extract it into the directory you'll use as ATB's data directory, `ATB_DATA_DIR`
 under `$ATB_DATA_DIR/fileplace`, which a fresh extract doesn't include &mdash; the
 script creates it when it adds the workspace (the next step).
 
-ATB listens on two ports: the **app port** (default `8090`) serves the REST API
-under `/api/...`, and the **admin port** (default `8091`) serves the `/ping`
-readiness endpoint. Both can be overridden with the `ATB_App_Port` and
-`ATB_App_Admin_Port` environment variables when the defaults clash with something
+ATB serves everything on a single **app port** (default `8090`): the REST API
+under `/api/...` and the UI under `/ui`. The port can be overridden with the
+`ATB_App_Port` environment variable when the default clashes with something
 else on the runner (for instance the API under test).
 
 ## Add your test workspace
@@ -139,14 +138,14 @@ stands up during the run.
 
 ## Start ATB and wait until it is ready
 
-Start ATB with its `start.sh` script in the background, then poll the admin port
-until it answers:
+Start ATB with its `start.sh` script in the background, then poll the app port
+until it answers (it starts answering only once ATB has fully started):
 
 ```bash
 ( cd "$ATB_DATA_DIR" && nohup ./start.sh >/dev/null 2>&1 & echo $! > atb.pid )
 
 for i in $(seq 1 30); do
-    curl -sf -o /dev/null "http://localhost:8091/ping" && break
+    curl -sf -o /dev/null "http://localhost:8090/ui" && break
     sleep 2
     [ "$i" -eq 30 ] && { echo "ATB did not start in time."; exit 1; }
 done
@@ -272,8 +271,7 @@ WORKSPACE_NAME="my-iut-workspace"                # folder name under fileplace/
 WORKSPACE_REPO="https://github.com/your-org/my-iut-workspace.git"
 FOLDER_ID="${WORKSPACE_NAME}/REST API Tests"     # folder to run
 ENVIRONMENT_ID="${WORKSPACE_NAME}/CICD"          # environment defined in the workspace
-APP_PORT=8090                                    # ATB REST API (/api/...)
-ADMIN_PORT=8091                                  # ATB readiness (/ping)
+APP_PORT=8090                                    # ATB REST API (/api/...) and readiness (/ui)
 API_HEALTH_URL="http://localhost:8081/actuator/health"   # API under test
 REPORTS_DIR="$(pwd)/test-reports"
 API_PID="$(pwd)/api.pid"
@@ -305,11 +303,10 @@ git clone "$WORKSPACE_REPO" "$ATB_DATA_DIR/fileplace/$WORKSPACE_NAME"
 
 # ---- 4. Start ATB in the background -------------------------------------
 export ATB_App_Port=$APP_PORT
-export ATB_App_Admin_Port=$ADMIN_PORT
 # export ATB_ENV_PROP_db_password="$DB_PASSWORD"   # inject a secret if your tests need one
 ( cd "$ATB_DATA_DIR" && nohup ./start.sh >/dev/null 2>&1 & echo $! > "$ATB_PID" )
 for i in $(seq 1 30); do
-    if curl -sf -o /dev/null "http://localhost:${ADMIN_PORT}/ping"; then
+    if curl -sf -o /dev/null "http://localhost:${APP_PORT}/ui"; then
         echo "ATB is up."
         break
     fi
