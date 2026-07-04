@@ -264,7 +264,7 @@ API.
 set -euo pipefail
 
 # ---- Configuration -------------------------------------------------------
-ATB_VERSION="0.39.4"
+ATB_VERSION="{{ site.atb_release_version }}"
 ATB_DATA_DIR="$(pwd)/atb-${ATB_VERSION}"        # release extracted here; also holds fileplace/
 export ATB_DATA_DIR
 WORKSPACE_NAME="my-iut-workspace"                # folder name under fileplace/
