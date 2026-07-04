@@ -4,7 +4,7 @@ redirect_from: /docs/en/maintenance
 permalink: /docs/en/administration
 key: docs-administration
 ---
-API Test Base application stores data in a folder called `<ATB_DATA_DIR>`. Following is the default value:
+API Test Base application stores data in a folder called `<ATB_DATA_DIR>`. Its default value depends on the ATB build:
 
 {% tabs data-folder %}
 
@@ -26,11 +26,11 @@ API Test Base application stores data in a folder called `<ATB_DATA_DIR>`. Follo
 
 {% tab data-folder Docker %}
 
-There are two `<ATB_DATA_DIR>`s.
+```
+/atb/data
+```
 
-One is inside the Docker container, with default value `/atb/data`. It is used by ATB application (like in the endpoint of a database request for invoking the ATB bundled sample H2 database).
-
-The other one is on the host and mapped to `/atb/data` in the `-v` parameter when running the `docker run` command (refer to [Quick Start](/docs/en/quick-start)). This one is for human reference.
+This is a path inside the Docker container. It is used by the ATB application (like in the endpoint of a database request for invoking the ATB bundled sample H2 database). The `-v` parameter of the `docker run` command (refer to [Quick Start](/docs/en/quick-start)) maps it to a folder on the host machine, so the data can be checked and edited from the host - for example, setting values in the `config.properties` file, or editing a request YAML file under the `fileplace` folder.
 
 {% endtab %}
 
@@ -42,30 +42,31 @@ The directory where the downloaded apitestbase-&lt;version&gt;-allos-nojre.zip w
 
 {% endtabs %}
 
-When using ATB desktop application, you can open the data folder directly via menu `Help > Open Data Folder`.
+When using the ATB desktop application, you can open the data folder directly via menu `Help > Open Data Folder`.
 
-The first time you launch the application, below new folders are created automatically under the `<ATB_DATA_DIR>` folder.
+The first time you launch the application, the following folders are created automatically under the `<ATB_DATA_DIR>` folder.
+
+* `database` - where a sample H2 database named `sample` is located. The sample database is for you to play with ATB basic features such as REST API testing or database testing. An `Article` table is in it.
+* `fileplace` - where all your local workspaces are stored. Each folder under the `fileplace` folder is a workspace, which has the requests, test cases, environments, etc. you create for your testing work (refer to [Team Collaboration](/docs/en/team-collaboration)). Workspace files can also be edited directly - a running ATB automatically picks up the saved changes and reflects them on the ATB UI. The `secrets.properties` file holding [secret](/docs/en/environments-management) values is also located directly under this folder, but only under the default `<ATB_DATA_DIR>` (see [Changing \<ATB_DATA_DIR\>](#changing-atb_data_dir) below).
+* `logs` - where ATB application runtime logs are located.
+* `lib` - where you put external libraries when needed (refer to [Interact with Other Systems](/docs/en/interact-with-other-systems)).
+* `electron` - where the Electron app data and logs are located. Only applicable to the ATB desktop application.
+
+In addition, a `config.properties` file is copied into `<ATB_DATA_DIR>` at launch if not already there (see [Changing Configurations](#changing-configurations) below).
+
+## Changing Configurations
+To change configurations like port numbers, edit the `<ATB_DATA_DIR>/config.properties` file (uncommenting the relevant options and setting their values), and restart ATB. For example, to change the port ATB serves its UI and REST APIs on (default `8090`):
 
 ```
-database - where a sample H2 database is located.
-    Sample database is for you to play with ATB basic features such as REST API testing or database testing. An Article table is in it.
-
-fileplace - where all your local workspaces are stored
-    Each folder under the fileplace folder is a workspace.
-    A workspace has requests, test cases, environments, etc. you create for your testing work.
-
-logs - where ATB application runtime logs are located.
-   
-lib - where you put external libraries when needed.
-
-electron - where the Electron app data and logs are located. Not applicable to ATB Docker container.
+atb.app.port=9090
 ```
 
-#### Changing Configurations
-To change configurations like port numbers, modify the `<ATB_DATA_DIR>/config.properties` file content, and restart ATB.
+Another example is the truststore password used for SSL connections - refer to [Configure API Test Base to be an SSL Client](/docs/en/configure-api-test-base-to-be-an-ssl-client).
 
-#### Changing \<ATB_DATA_DIR\>
-To change `<ATB_DATA_DIR>` to a different location, set an environment variable `ATB_DATA_DIR=/path/to/the/new/location` on your operating system, and restart ATB.
+## Changing \<ATB_DATA_DIR\>
+To change `<ATB_DATA_DIR>` to a different location, set an environment variable `ATB_DATA_DIR=/path/to/the/new/location` on your operating system, and restart ATB. This works for every ATB build. For the Docker build, set the environment variable when running the container (for example, via the `-e` parameter of the `docker run` command), and notice that the value is a path inside the container rather than on the host machine.
+
+Note that the `secrets.properties` file stays under the `fileplace` folder of the default `<ATB_DATA_DIR>` even when `ATB_DATA_DIR` is changed (refer to [Environments Management](/docs/en/environments-management)).
 
 `macOS users`: to set environment variables for applications (launched from Spotlight, Dock, etc.), create a plist file under ~/Library/LaunchAgents folder, and restart the machine. For example: io.apitestbase.plist
 

@@ -23,4 +23,6 @@ otherProperties:
 
 You can use VCS (like Git) to share the YAML files to team members, and work on the requests, test cases, environments etc. as a team.
 
+When the YAML files change on disk - for example, after a `git pull` of teammates' work, or after you edit a file manually - a running ATB picks up the saved changes automatically and reflects them on the ATB UI. No restart is needed.
+
 Recommended: share each ATB workspace as a separate VCS (like Git) repo.
