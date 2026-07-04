@@ -5,7 +5,7 @@ key: docs-team-collaboration
 ---
 An API Test Base (ATB) workspace is a folder of plain files on disk, so an ordinary VCS (like Git) is all your team needs to collaborate on it.
 
-ATB stores the requests, test cases, environments, etc. you create in a workspace under folder `<ATB_DATA_DIR>/fileplace/<workspace name>`. Refer to [Administration](/docs/en/administration) for more information.
+ATB stores the requests, test cases, environments, etc. you create in a workspace under folder `<ATB_DATA_DIR>/fileplace/<workspace name>`. You can create multiple workspaces as needed — each folder under `fileplace` is one workspace. Refer to [Administration](/docs/en/administration) for more information.
 
 Each request, test case, environment, etc. is stored in its own YAML file.
 
