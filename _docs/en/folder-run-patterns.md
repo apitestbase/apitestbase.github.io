@@ -11,13 +11,15 @@ There are three patterns:
 
 * **Setups to Here** — runs every setup defined or referenced from the workspace level down to the folder, and no test cases. It prepares the environment without running any test.
 * **Default** — runs the folder's own setups, then recurses through everything beneath it: each descendant sub-folder's setups and all test cases. It does not run ancestor setups.
-* **All** — the same as Default, plus the ancestor setups first: ancestor + own + descendants, a fully self-contained run.
+* **All** — the same as Default, plus the ancestor setups first, from the workspace down: ancestor + own + descendants, a fully self-contained run.
 
 | Pattern | Ancestor setups | Folder's own setups | Descendant setups | Test cases |
 |---|:---:|:---:|:---:|:---:|
 | Setups to Here | ✓ | ✓ | — | — |
 | Default | — | ✓ | ✓ | ✓ |
 | All | ✓ | ✓ | ✓ | ✓ |
+
+For worked examples of choosing a pattern — during API development, where a run is triggered from the ATB UI, and in a CI/CD pipeline, where it is triggered over ATB's REST API — see [Structured Test Setup for Integration Unit Test Isolation](/docs/en/structured-test-setup-for-integration-unit-test-isolation) and [Integration Unit Testing Automation in CI/CD Pipeline](/docs/en/integration-unit-testing-automation-in-cicd-pipeline).
 
 ## A Current Limitation
 
