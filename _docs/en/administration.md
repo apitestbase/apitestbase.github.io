@@ -20,7 +20,7 @@ API Test Base stores data in a folder called `<ATB_DATA_DIR>`. Its default value
 {% tab data-folder Windows %}
 
 ```
-%USERPROFILE%\AppData\Roaming\ApiTestBase
+%APPDATA%\ApiTestBase
 ```
 
 {% endtab %}
@@ -37,7 +37,18 @@ This is a path inside the Docker container. It is used by the ATB application (l
 
 {% tab data-folder Java %}
 
-The directory where the downloaded apitestbase-&lt;version&gt;-allos-nojre.zip was extracted to.
+Depends on the OS where API Test Base runs:
+
+```
+// Windows
+%APPDATA%\ApiTestBase
+
+// macOS
+~/Library/Application Support/API Test Base
+
+// Linux
+~/.local/share/API Test Base
+```
 
 {% endtab %}
 
