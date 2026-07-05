@@ -3,26 +3,24 @@ title: Structured Test Setup for Integration Unit Test Isolation
 permalink: /docs/en/structured-test-setup-for-integration-unit-test-isolation
 key: docs-structured-test-setup-for-integration-unit-test-isolation
 ---
-One of the core requirements of integration unit testing is to **isolate the API under test**. This means we need to **set up mock/stub dependencies for the API**, to be able to control the testing behavior.
+One of the core requirements of integration unit testing is to **isolate the API under test**. This means we need to **set up stub dependencies for the API**, to be able to control the testing behavior.
 
-We need an approach that enables **automated test setup** during API development and also inside CI/CD pipeline. The approach ATB recommends is **Structured Test Setup** which has below simple principles:
+We need an approach that enables **automated test setup** during API development and in a CI/CD pipeline. The approach ATB recommends is **Structured Test Setup**, which follows two simple principles:
 * Enable running only necessary setups for a test case or folder.
 * Enable reusing test setup steps.
-
-The approach makes test setup management and automation simple.
 
 ## How It Works
 
 ATB delivers these two principles through two mechanisms:
 
 * **Inheritance and references, to reuse setup steps.** A setup defined on a folder is inherited by the sub-folders beneath it: written once on the parent, it runs ahead of each descendant sub-folder's own setups and test cases when the parent folder is run, instead of being copied into every sub-folder. When folders in different parts of the tree — with no shared ancestor — need the same setup, a folder can add a **Setup Reference** pointing at a setup test case defined elsewhere, reusing those steps without copying them.
-* **Run Patterns, to run only what's needed.** A folder's **Run Pattern** decides what a run does: prepare the environment by running setups without any test, or run setups together with the test cases beneath the folder.
+* **Run Patterns, to run only what's needed.** A folder's [**Run Pattern**](/docs/en/folder-run-patterns) decides what a run does: prepare the environment by running setups without any test, or run setups together with the test cases beneath the folder.
 
-Isolation is the goal these serve. To test an API in isolation, it runs against a local, dedicated **stub database** — not a shared database such as one in a SIT environment — so the dependency is fully under the test's control. Creating that stub database and its tables is part of the test isolation work, and it's exactly the kind of prerequisite Structured Test Setup is designed to manage: defined once, reused where shared, and run only when needed.
+Isolation is the goal these serve. Creating stub dependencies — such as a stub database and its tables — is exactly the kind of prerequisite Structured Test Setup is designed to manage: defined once, reused where shared, and run only when needed.
 
 ## The Example
 
-A small "Online Store" application with three REST APIs. To test each API in isolation, the setup stands up a local, dedicated stub database — a PostgreSQL instance in a throwaway Docker container — in place of a shared database, so every run starts from a known, fully controlled state.
+A small "Online Store" application with three REST APIs. To test each API in isolation, the setup stands up a local, dedicated stub database — a PostgreSQL instance in a throwaway Docker container — in place of a shared database such as one in a SIT environment, so every run starts from a known, fully controlled state.
 
 | API | Endpoint | Table | Operation |
 |---|---|---|---|
@@ -40,24 +38,24 @@ A small "Online Store" application with three REST APIs. To test each API in iso
 │   └── [Test Case] Create Orders Table
 │
 ├── [Folder] REST API Tests
-│   ├── [Folder Setup]
+│   ├── [Setup Steps]
 │   │     [Docker Step] Start PostgreSQL container
 │   │     [Database Step] Create "online_store" schema
 │   │
 │   ├── [Folder] User Preferences API
-│   │   ├── [Folder Setup]
+│   │   ├── [Setup Steps]
 │   │   │     [Database Step] Create "user_preferences" table
 │   │   ├── [Test Case] Create preferences for new user (insert path)
 │   │   ├── [Test Case] Update preferences for existing user (update path)
 │   │   └── [Test Case] Invalid theme value returns 400
 │   │
 │   ├── [Folder] Create Order API
-│   │   ├── [Folder Setup Reference] → Common Test Setups / [Test Case] Create Orders Table
+│   │   ├── [Setup Reference] → [Folder] Common Test Setups / [Test Case] Create Orders Table
 │   │   ├── [Test Case] Create order successfully
 │   │   └── [Test Case] Invalid amount returns 400
 │   │
 │   └── [Folder] Update Order Status API
-│       ├── [Folder Setup Reference] → Common Test Setups / [Test Case] Create Orders Table
+│       ├── [Setup Reference] → [Folder] Common Test Setups / [Test Case] Create Orders Table
 │       ├── [Test Case] Update status to PAID
 │       ├── [Test Case] Invalid status transition returns 409
 │       └── [Test Case] Update non-existent order returns 404
