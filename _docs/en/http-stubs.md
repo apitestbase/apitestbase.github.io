@@ -53,7 +53,7 @@ When a test case runs, the `Auto` mock server is cleared and all HTTP stubs defi
 The `Auto` mock server's HTTP port is available as the implicit property `${auto.mock.server.http.port}`. See [Properties](/docs/en/properties#automockserverhttpport).
 
 ### Mock Server Ports
-With a newly created `<ATB_DATA_DIR>`, mock server ports are allocated from `8096`. For the first workspace (`My Workspace`), the `Auto` mock server uses HTTP port `8096` and HTTPS port `8097`, and the `Manual` mock server uses HTTP port `8098` and HTTPS port `8099`. Each subsequently created workspace takes the next four ports: the second workspace uses `8100` to `8103`, and so on. Ports can be changed under each mock server's `Settings` tab.
+For the first workspace (`My Workspace`), by default the `Auto` mock server uses HTTP port `8096` and HTTPS port `8097`, and the `Manual` mock server uses HTTP port `8098` and HTTPS port `8099`. For other workspaces, check the port numbers under the mock server's `Settings` tab, where the ports can also be changed.
 
 More details follow.
 
