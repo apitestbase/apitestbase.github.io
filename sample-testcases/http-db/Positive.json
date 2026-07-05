@@ -31,6 +31,10 @@
       "apiRequest": {
         "@type": "DbRequest",
         "sqlScript": "select 1;"
+      },
+      "runPattern": {
+        "type": "RepeatUntilPass",
+        "timeout": "20000"
       }
     }, {
       "name": "Setup - Create stub database",
