@@ -49,7 +49,7 @@ Step 3 is to ensure that Flow1 finishes all the work processing the input messag
 
 Step 3 is backed by the ACE test step's `Wait For Processing Completion` action, which monitors the message flow's activity log to **timely detect the signal of message processing completion**.
 
-Steps 4 and 5 are where Flow1's output, i.e. the message Flow1 actually put onto a real MQ queue, is verified. Step 4 asserts that exactly one message is in the stub output queue. Step 5 dequeues the message and asserts the message body with an [XMLEqual assertion](/docs/en/assertions#xmlequal-assertion).
+Steps 4 and 5 are where the **side effect** of Flow1, i.e. the message actually put onto a real MQ queue, is verified. Step 4 asserts that exactly one message is in the stub output queue. Step 5 dequeues the message and asserts the message body with an [XMLEqual assertion](/docs/en/assertions#xmlequal-assertion).
 
 The resulting test case looks like below
 
