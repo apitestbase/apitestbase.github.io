@@ -44,7 +44,7 @@ For the Fraud Check API stub, if the request body is a JSON string that is equal
 
 Run the test case by clicking the `Run` button, and check the test report.
 
-During the run, two test steps are dynamically added to the test case: one at the beginning, which loads the stubs into the `Auto` mock server, and one at the end, which checks the stub requests, asserting that all stubs have been hit and that every request received by the mock server has matched a stub. This is where the side effect of the Open Account API, i.e. correctly invoking its two dependencies, is verified. Refer to [Use HTTP Stubs in Automated API Testing](/docs/en/http-stubs#use-http-stubs-in-automated-api-testing) for more details.
+During the run, two test steps are dynamically added to the test case, one at the beginning to load the stubs and one at the end to check the stub requests, as described in [Use HTTP Stubs in Automated API Testing](/docs/en/http-stubs#use-http-stubs-in-automated-api-testing). The stub request checks are where the side effect of the Open Account API, i.e. correctly invoking its two dependencies, is verified.
 
 ### Negative Test
 You can also create negative test case(s) with corresponding HTTP stub(s), to test that the Open Account API fails under some circumstances. For example: when the Fraud Check API (stub) returns status code 500, the Open Account API also returns 500. The test step looks like below:
