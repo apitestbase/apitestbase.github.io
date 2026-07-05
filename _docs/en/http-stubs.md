@@ -25,12 +25,12 @@ Click `+ Stub` button. On the stub edit view, enter URL `/some/thing` and respon
 
 ![Quick Play Stub Details](../../screenshots/http-stubs/quick-play-stub-details.png)
 
-The meaning of the stub is that when an HTTP GET request is sent to the `Manual` mock server with URL `http://<ApiTestBaseHost>:<MockServerHttpPort>/some/thing` (like http://localhost:8094/some/thing), the mock server will return an HTTP response with status code `200` and response body `Hello!`.
+The meaning of the stub is that when an HTTP GET request is sent to the `Manual` mock server with URL `http://<ApiTestBaseHost>:<MockServerHttpPort>/some/thing` (like http://localhost:8098/some/thing), the mock server will return an HTTP response with status code `200` and response body `Hello!`.
 
-The default port number of the `Manual` mock server is `8094`, and it can be changed under the `Settings` tab of the mock server. Inside ATB you can also reference this port as the implicit property `${manual.mock.server.http.port}` instead of hardcoding it. See [Properties](/docs/en/properties#manualmockserverhttpport).
+The HTTP port number of the `Manual` mock server in the first workspace is `8098` by default (see [Mock Server Ports](#mock-server-ports)), and it can be changed under the `Settings` tab of the mock server. Inside ATB you can also reference this port as the implicit property `${manual.mock.server.http.port}` instead of hardcoding it. See [Properties](/docs/en/properties#manualmockserverhttpport).
 
 ### Test the Stub
-Open your browser, and go to `http://localhost:8094/some/thing`, and you'll see response body `Hello!` on the page.
+Open your browser, and go to `http://localhost:8098/some/thing`, and you'll see response body `Hello!` on the page.
 
 ![Quick Play Stub Invocation](../../screenshots/http-stubs/quick-play-stub-invocation.png)
 
@@ -40,7 +40,7 @@ To know what stubs have been loaded into the mock server, or check stub request 
 ![Mock Server Status](../../screenshots/http-stubs/mock-server-status.png)
 
 ## Mock Servers
-There are two mock servers in API Test Base: `Manual`, `Auto`.
+Each workspace has two mock servers of its own: `Manual`, `Auto`.
 
 ### The Manual Mock Server
 The `Manual` mock server is used for defining and hosting ad hoc HTTP stubs. You can define HTTP stubs on the `Manual` mock server, and then immediately use/invoke it without any dependency.
@@ -52,16 +52,19 @@ When a test case runs, the `Auto` mock server is cleared and all HTTP stubs defi
 
 The `Auto` mock server's HTTP port is available as the implicit property `${auto.mock.server.http.port}`. See [Properties](/docs/en/properties#automockserverhttpport).
 
+### Mock Server Ports
+With a newly created `<ATB_DATA_DIR>`, mock server ports are allocated from `8096`. For the first workspace (`My Workspace`), the `Auto` mock server uses HTTP port `8096` and HTTPS port `8097`, and the `Manual` mock server uses HTTP port `8098` and HTTPS port `8099`. Each subsequently created workspace takes the next four ports: the second workspace uses `8100` to `8103`, and so on. Ports can be changed under each mock server's `Settings` tab.
+
 More details follow.
 
 ## Use HTTP Stubs in Automated API Testing
-It is easy. Create stubs in your test case under its `HTTP Stubs` tab. Every time you run the test case, below things happen automatically
-- On test case run start, the `Auto` mock server is reset and all the stubs defined on the test case are automatically loaded into the mock server, ready to be invoked (by your API under test).
-    - Mock server reset means all stubs, stub request logs, scenarios, etc. are cleared from the mock server.
-- On test case run end, stub requests received by the mock server are checked by asserting
-    - All stubs from the test case have been hit.
-    - If the `Check Hit Order` option is selected under the HTTP Stubs tab on the test case edit view, the stubs from the test case have been hit in ascending order by stub number.
-    - All stub requests received by the `Auto` mock server have been matched (i.e. each request has hit a stub from the test case).
+It is easy. Create stubs in your test case under its `HTTP Stubs` tab. Every time you run the test case, two test steps are dynamically added to the test case for the run
+- One step, added at the beginning of the test case, resets the `Auto` mock server and loads all the stubs defined on the test case into the mock server, ready to be invoked (by your API under test).
+  - Mock server reset means all stubs, stub request logs, scenarios, etc. are cleared from the mock server.
+- The other step, added at the end of the test case, checks the stub requests received by the mock server, asserting
+  - All stubs from the test case have been hit.
+  - If the `Check Hit Order` option is selected under the HTTP Stubs tab on the test case edit view, the stubs from the test case have been hit in ascending order by stub number.
+  - All stub requests received by the `Auto` mock server have been matched (i.e. each request has hit a stub from the test case).
 
 For a complete worked example, see [HTTP-HTTP Integration Unit Testing](/docs/en/http-http-integration-unit-testing).
 
@@ -75,5 +78,5 @@ For a complete worked example, see [HTTP-HTTP Integration Unit Testing](/docs/en
   This is useful when you want to ensure the stubs are hit in specified order.
 - **HTTPS stubs**  
   This is useful when your API under test can only call HTTPS dependencies.  
-  The same stub can be invoked via both HTTP and HTTPS. To invoke a stub via HTTPS, simply use a different port number. `https://<ApiTestBaseHost>:<MockServerHttpsPort>/some/thing`, like `https://localhost:8095/some/thing`.  
+  The same stub can be invoked via both HTTP and HTTPS. To invoke a stub via HTTPS, simply use a different port number. `https://<ApiTestBaseHost>:<MockServerHttpsPort>/some/thing`, like `https://localhost:8099/some/thing`.  
   The HTTPS port number can be changed under the mock server's `Settings` tab.

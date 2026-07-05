@@ -9,21 +9,26 @@ Suppose you have an Open (Bank) Account API that exposes an HTTP endpoint. When 
 ![Open Account API](../../screenshots/http-http/open-account-api.png)
 
 ## Test Isolation
-To integration unit test the Open Account API, design the API to point to different dependencies in different environments. This is normally achieved by setting different dependency endpoint addresses in different property files. Each property file contains all properties for the API for a specific environment like Dev/Test/QA/Prod.
+To integration unit test the Open Account API, we use HTTP stubs, instead of any fully implemented and shared Fraud Check and Account APIs, as the dependencies. This has some benefits
+
+* The test includes testing the side effect of the Open Account API. That is, the API actually invokes its two dependencies, and the test verifies those invocations, including the request bodies the API sends out.
+* The test is fully controlled by you on your local machine, without impacting any other developer.
+
+![Open Account API Test Isolation](../../screenshots/http-http/open-account-api-test-isolation.png)
+
+To repoint the API to the stubs, design the API to point to different dependencies in different environments. This is normally achieved by setting different dependency endpoint addresses in different property files. Each property file contains all properties for the API for a specific environment like Dev/Test/QA/Prod.
 
 When deploying and running the API, dynamically load the property file for that specific environment.
 
 Here is a sample property file `open-account-api-dev.properties` for a developer's local machine.
 ~~~
-fraud.check.api.url=http://localhost:8090/fraudcheck
-account.api.url=http://localhost:8090/account
-~~~ 
+fraud.check.api.url=http://localhost:8096/fraudcheck
+account.api.url=http://localhost:8096/account
+~~~
 
-Here the urls are the HTTP stubs' addresses. We use HTTP stubs, instead of any fully implemented and shared Fraud Check and Account APIs, as the dependencies during integration unit testing, like shown below.
+Here the urls are the HTTP stubs' addresses. The stubs will be hosted on ATB's `Auto` mock server, whose HTTP port for the first workspace is `8096` by default. Refer to [HTTP Stubs](/docs/en/http-stubs) for more details about mock servers and their ports.
 
-![Open Account API Test Isolation](../../screenshots/http-http/open-account-api-test-isolation.png)
-
-## Test Cases Creation
+## Test Case Creation
 ### Positive Test
 Create a test case `Positive` under a folder for the Open Account API. Create an HTTP test step `Invoke the API and Assert Response` in the test case. This test step invokes the Open Account API and asserts that the API returns status code 200.
 
@@ -35,16 +40,18 @@ Under the `HTTP Stubs` tab, create the two HTTP stubs so that a 'successful' ope
 
 ![Positive - Account API Stub](../../screenshots/http-http/positive-account-api-stub.png)
 
-For the Fraud Check API stub, if the request body is a JSON string that is equal to the specified JSON string, the stub will return HTTP 200 with the specified body. The Account API stub works similarly.
+For the Fraud Check API stub, if the request body is a JSON string that is equal to the specified JSON string, the stub will return HTTP 200 with the specified body. The Account API stub works similarly. This request matching also serves as side effect verification: it checks that the Open Account API sends the correct request body to its dependency.
 
 Run the test case by clicking the `Run` button, and check the test report.
 
+During the run, two test steps are dynamically added to the test case: one at the beginning, which loads the stubs into the `Auto` mock server, and one at the end, which checks the stub requests, asserting that all stubs have been hit and that every request received by the mock server has matched a stub. This is where the side effect of the Open Account API, i.e. correctly invoking its two dependencies, is verified. Refer to [Use HTTP Stubs in Automated API Testing](/docs/en/http-stubs#use-http-stubs-in-automated-api-testing) for more details.
+
 ### Negative Test
-You can also create negative test case(s) with corresponding http stub(s), to test that the Open Account API fails under some circumstances. For example: when the Fraud Check API (stub) returns status code 500, the Open Account API also returns 500. The test step looks like below:
+You can also create negative test case(s) with corresponding HTTP stub(s), to test that the Open Account API fails under some circumstances. For example: when the Fraud Check API (stub) returns status code 500, the Open Account API also returns 500. The test step looks like below:
 
 ![Negative - Test Step](../../screenshots/http-http/negative-test-step.png)
 
-In this example, only one HTTP stub is needed, i.e. the Fraud Check API stub, because when the Fraud Check API returns 500, the Open Account API will stop processing further, and will return 500 to client immediately. The Account API won't be called at all.
+In this example, only one HTTP stub is needed, i.e. the Fraud Check API stub, because when the Fraud Check API returns 500, the Open Account API will stop processing further, and will return 500 to the client immediately. The Account API won't be called at all.
 
 ![Negative - Fraud Check API Stub](../../screenshots/http-http/negative-fraud-check-api-stub.png)
 
