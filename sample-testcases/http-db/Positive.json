@@ -111,7 +111,7 @@
         "name": "JsonEqual",
         "type": "JsonEqual",
         "otherProperties": {
-          "expectedJSON": "[{\"ID\":1,\"TITLE\":\"article1\",\"CONTENT\":\"content1\"},{\"ID\":2,\"TITLE\":\"article2\",\"CONTENT\":\"Once upon a time ...\"}]"
+          "expectedJSON": "[\n    {\n        \"ID\": 1,\n        \"TITLE\": \"article1\",\n        \"CONTENT\": \"content1\"\n    },\n    {\n        \"ID\": 2,\n        \"TITLE\": \"article2\",\n        \"CONTENT\": \"Once upon a time ...\"\n    }\n]"
         }
       } ]
     } ]
