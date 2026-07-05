@@ -53,7 +53,7 @@ When a test case runs, the `Auto` mock server is cleared and all HTTP stubs defi
 The `Auto` mock server's HTTP port is available as the implicit property `${auto.mock.server.http.port}`. See [Properties](/docs/en/properties#automockserverhttpport).
 
 ### Mock Server Ports
-For the first workspace (`My Workspace`), by default the `Auto` mock server uses HTTP port `8096` and HTTPS port `8097`, and the `Manual` mock server uses HTTP port `8098` and HTTPS port `8099`. For other workspaces, check the port numbers under the mock server's `Settings` tab, where the ports can also be changed.
+For the first workspace (`My Workspace`), by default the `Auto` mock server uses HTTP port `8096` and the `Manual` mock server uses HTTP port `8098`. For other workspaces, check the port numbers under the mock server's `Settings` tab, where the ports can also be changed.
 
 More details follow.
 
@@ -79,4 +79,4 @@ For a complete worked example, see [HTTP-HTTP Integration Unit Testing](/docs/en
 - **HTTPS stubs**  
   This is useful when your API under test can only call HTTPS dependencies.  
   The same stub can be invoked via both HTTP and HTTPS. To invoke a stub via HTTPS, simply use a different port number. `https://<ApiTestBaseHost>:<MockServerHttpsPort>/some/thing`, like `https://localhost:8099/some/thing`.  
-  The HTTPS port number can be changed under the mock server's `Settings` tab.
+  The HTTPS port number can be found and changed under the mock server's `Settings` tab.
