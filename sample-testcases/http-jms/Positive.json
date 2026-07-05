@@ -17,7 +17,6 @@
     "teststeps": [ {
       "name": "Setup - Start solace-auto",
       "type": "Docker",
-      "description": "zzz",
       "actionProperties": {
         "@type": "DockerRun",
         "imageName": "solace/solace-pubsub-standard",
@@ -153,12 +152,6 @@
         }
       } ]
     }, {
-      "name": "Wait for 0.5 seconds",
-      "type": "Wait",
-      "otherProperties": {
-        "milliseconds": "500"
-      }
-    }, {
       "name": "Check stub output queue depth equals 1",
       "type": "JMS",
       "endpoint": {
@@ -182,7 +175,12 @@
         "otherProperties": {
           "number": "1"
         }
-      } ]
+      } ],
+      "runPattern": {
+        "type": "RepeatUntilPass",
+        "waitBetweenRepeatRuns": "300",
+        "timeout": "500"
+      }
     }, {
       "name": "Browse the stub output queue and assert message body",
       "type": "JMS",
