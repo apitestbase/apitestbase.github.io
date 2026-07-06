@@ -6,11 +6,8 @@ key: docs-integration-unit-testing-automation-in-cicd-pipeline
 
 This page shows how to automate
 [**Integration Unit Testing**](/docs/en/what-is-integration-unit-testing) (IUT)
-of an API in a CI/CD pipeline. Integration unit testing exercises an API as a
-black box, in isolation, and verifies both **the API's contract** (its responses)
-and **the API's side effects** (database records written, messages sent to a
-queue, files written, downstream APIs called). The API runs against stub
-dependencies so every run starts from a known, fully controlled state.
+of an API in a CI/CD pipeline &mdash; testing the API as a black box against stub
+dependencies, verifying both **its contract** (responses) and **its side effects**.
 
 Integration unit tests don't require a pipeline. During API development they're
 run by hand &mdash; for instance a single test case, to confirm a refactor didn't break
@@ -25,6 +22,14 @@ script deploys and starts the API under test, starts ATB headless, and triggers
 an IUT run over ATB's REST API, failing the pipeline when the run fails. This page
 uses the [no-JRE build](/docs/en/quick-start) and finishes with a single,
 portable shell script you can adapt to any CI tool.
+
+The [Docker build](/docs/en/quick-start) works in a pipeline the same way: run
+the container with `<ATB_DATA_DIR>` mapped to a host folder, clone the workspace
+into the mapped `fileplace`, and make the same REST calls against the published
+port. Endpoints in the ATB environment then reach the API under test and the
+stub dependencies on the runner via `host.docker.internal` instead of
+`localhost` (unless the container uses host networking). The rest of this page
+sticks to the no-JRE build.
 
 ## What the pipeline does
 
@@ -59,10 +64,13 @@ status to poll.
 > stub-dependency setups and the test cases. This works even though the stubs
 > don't exist yet when the API starts: most APIs log a connection error and then
 > reconnect automatically once the stubs are up, so the test cases that follow are
-> unaffected. If your API can't reconnect on its own, add a step that restarts the
-> API instance to the setup of the folder holding its test cases, so it connects
-> to the freshly-created stubs before any test case runs &mdash; still one run, one
-> report.
+> unaffected. If your API can't reconnect on its own and its runtime redeploys the
+> API on file change &mdash; the Mule runtime, for example, redeploys a Mule app when a
+> file in its deployed artifact is touched &mdash; add a File test step performing that
+> touch to the setup of
+> the folder holding its test cases, so the API reconnects to the freshly-created
+> stubs before any test case runs; still one run, one report. For runtimes without
+> file-triggered redeploy, the API itself needs to reconnect automatically.
 
 ## Prerequisites
 
@@ -80,8 +88,8 @@ status to poll.
 
 ## Install ATB on the runner
 
-Download `apitestbase-<version>-allos-nojre.zip` from the
-[release page](https://github.com/apitestbase/apitestbase-release/releases) and
+Download `apitestbase-{{ site.atb_release_version }}-allos-nojre.zip` from the
+[release page](https://github.com/apitestbase/apitestbase-release/releases/tag/{{ site.atb_release_version }}){:target="_blank"} and
 extract it into the directory you'll use as ATB's data directory, `ATB_DATA_DIR`
 (see [Administration](/docs/en/administration)). The archive provides `start.sh`
 (Linux/macOS) and `start.bat` (Windows) for launching ATB. Test workspaces live
@@ -129,6 +137,7 @@ nohup java -jar api-under-test/target/*.jar >/dev/null 2>&1 & echo $! > api.pid
 for i in $(seq 1 30); do
     curl -sf -o /dev/null "http://localhost:8081/actuator/health" && break
     sleep 2
+    [ "$i" -eq 30 ] && { echo "API did not start in time."; exit 1; }
 done
 ```
 
@@ -206,8 +215,8 @@ echo "Test cases: $total, Failures: $failures, Errors: $errors"
 The run call returns a JSON response carrying the run id in its `id` field. Use
 it to download the report as a zip, then unzip it and publish the folder as a
 pipeline artifact. A folder run is downloaded from
-`/folderruns/htmlreport/download`; a workspace run from
-`/workspaceruns/htmlreport/download` (with `workspaceRunId`):
+`/api/folderruns/htmlreport/download`; a workspace run from
+`/api/workspaceruns/htmlreport/download` (with `workspaceRunId`):
 
 ```bash
 folderRunId=$(echo "$response" | jq -r '.id')
@@ -225,11 +234,10 @@ for each step, any error, the duration, and a Passed/Failed result.
 
 ## Secrets
 
-A secret defined on an ATB environment keeps its value out of the workspace repo:
-the environment YAML stores only a reference, and the encrypted value lives in a
-local `secrets.properties` file that is never committed. See
+A secret defined on an ATB environment keeps its value out of the workspace repo
+&mdash; the environment YAML holds only a reference, never the value (see
 [Environments Management](/docs/en/environments-management) for how secrets are
-defined and stored.
+defined and stored).
 
 Developers keep their own private environment, typically `Local`, and add
 `Local.yaml` to `.gitignore` so it never reaches the repo. The shared `CICD`
