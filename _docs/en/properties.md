@@ -51,13 +51,13 @@ The timestamp when the test case run starts. Format is yyyy-mm-dd hh:mm:ss.fff, 
 The timestamp when the test step run starts. Format is same as `${test.case.start.time}`.
 
 ### test.case.individual.start.time
-The timestamp when the test case individual run (like in data driven test case run) starts. Format is same as `${test.case.start.time}`.
+The timestamp when the test case individual run (like in data-driven test case run) starts. Format is same as `${test.case.start.time}`.
 
 ### test.step.repeat.run.index
 Index of repeat run when a test step is defined as a repeated test step and it is run in a test case. Starting from 1.
 
 ## Data Table
-Properties can also come from a data table defined on a test case, where each row supplies a set of properties scoped to one individual run of the test case. Refer to [Data Driven Testing](/docs/en/data-driven-testing).
+Properties can also come from a data table defined on a test case, where each row supplies a set of properties scoped to one individual run of the test case. Refer to [Data-Driven Testing](/docs/en/data-driven-testing).
 
 ## Extracted Properties
 Extract properties from API response in one test step, and use them in later test steps during test case run. This enables passing dynamic data between test steps.

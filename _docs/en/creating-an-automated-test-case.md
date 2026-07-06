@@ -114,4 +114,4 @@ The test case created above is available for download at <a href="../../sample-t
 After download, right click anywhere in the left side pane on ATB UI, and select `Import Test Case` to import it.
 
 ## Next Steps
-You've built and run your first automated test case. Next, drive the same test with multiple sets of data in a single test case — see [Data Driven Testing](/docs/en/data-driven-testing).
+You've built and run your first automated test case. Next, drive the same test with multiple sets of data in a single test case — see [Data-Driven Testing](/docs/en/data-driven-testing).

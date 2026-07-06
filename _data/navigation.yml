@@ -65,9 +65,9 @@ docs-en:
         url: /docs/en/integration-unit-testing-automation-in-cicd-pipeline
   - title: Other Testing Practices
     children:
-      - title: Data Driven Testing
+      - title: Data-Driven Testing
         url: /docs/en/data-driven-testing
-      - title: Real Test Automation is Data Driven
+      - title: Real Test Automation is Data-Driven
         url: /docs/en/real-test-automation-is-data-driven
       - title: Avoid Test Duplication
         url: /docs/en/avoid-test-duplication
