@@ -5,4 +5,6 @@ permalink: /feedback
 key: feedback
 pageview: true
 ---
-#### Send to: apitestbase at gmail.com.
+Every email is read — questions and bug reports are equally welcome.
+
+Email: apitestbase at gmail.com
