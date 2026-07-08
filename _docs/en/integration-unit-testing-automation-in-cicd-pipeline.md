@@ -66,7 +66,7 @@ status to poll.
 > reconnect automatically once the stubs are up, so the test cases that follow are
 > unaffected. If your API can't reconnect on its own and its runtime redeploys the
 > API on file change &mdash; the Mule runtime, for example, redeploys a Mule app when a
-> file in its deployed artifact is touched &mdash; add a File test step performing that
+> file in its deployed artifact is touched &mdash; add a [File test step](/docs/en/file-request) performing that
 > touch to the setup of
 > the folder holding its test cases, so the API reconnects to the freshly-created
 > stubs before any test case runs; still one run, one report. For runtimes without
