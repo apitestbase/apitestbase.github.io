@@ -49,11 +49,11 @@ Create a test case `Positive` under a folder for the Data Ingestion API, with be
 7. (JMS step) Browse the stub output queue and assert message body
 ```
 
-Step 2 calls Solace's health-check endpoint, with the test step's run pattern set to `Repeat Until Pass` and a timeout, so the step keeps retrying until Solace is ready.
+Step 2 calls Solace's health-check endpoint, with the test step's [run pattern](/docs/en/test-step-run-patterns) set to `Repeat until pass` and a timeout, so the step keeps retrying until Solace is ready.
 
 Steps 3 and 4 delete and recreate the stub queue, so that every run starts from a known state.
 
-Step 5 invokes the Data Ingestion API to ingest data, and asserts that the API returns status code 200. Steps 6 and 7 are where the **side effect** of the Data Ingestion API, i.e. the actual message delivery to the Solace queue, is verified. Step 6 asserts that exactly one message is in the queue. Its run pattern is set to `Repeat Until Pass` with a timeout, to tolerate an asynchronous style of the API's implementation, i.e. the API may return before the JMS message delivery is completed. Step 7 browses the queue, which reads the message without consuming it, and asserts the message body with a [JSONEqual assertion](/docs/en/assertions#jsonequal-assertion), verifying that the data is delivered unchanged.
+Step 5 invokes the Data Ingestion API to ingest data, and asserts that the API returns status code 200. Steps 6 and 7 are where the **side effect** of the Data Ingestion API, i.e. the actual message delivery to the Solace queue, is verified. Step 6 asserts that exactly one message is in the queue. Its run pattern is set to `Repeat until pass` with a timeout, to tolerate an asynchronous style of the API's implementation, i.e. the API may return before the JMS message delivery is completed. Step 7 browses the queue, which reads the message without consuming it, and asserts the message body with a [JSONEqual assertion](/docs/en/assertions#jsonequal-assertion), verifying that the data is delivered unchanged.
 
 Not part of the test case, but as a once-off task, make sure the Solace jars are copied to ATB lib folder, as described [here](/docs/en/interact-with-other-systems#solace).
 

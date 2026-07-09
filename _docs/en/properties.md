@@ -54,7 +54,7 @@ The timestamp when the test step run starts. Format is same as `${test.case.star
 The timestamp when the test case individual run (like in data-driven test case run) starts. Format is same as `${test.case.start.time}`.
 
 ### test.step.repeat.run.index
-Index of repeat run when a test step is defined as a repeated test step and it is run in a test case. Starting from 1.
+Index of repeat run when a test step with a repeat [run pattern](/docs/en/test-step-run-patterns) is run in a test case. Starting from 1.
 
 ## Data Table
 Properties can also come from a data table defined on a test case, where each row supplies a set of properties scoped to one individual run of the test case. Refer to [Data-Driven Testing](/docs/en/data-driven-testing).

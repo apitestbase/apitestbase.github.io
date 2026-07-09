@@ -95,7 +95,7 @@ Create a test case `Positive` under a folder for the Article API, with below tes
 7. (DB step) Check database data
 ```
 
-Step 2 runs a trivial query (`select 1;`) with the test step's run pattern set to `Repeat Until Pass` and a timeout, so the step keeps retrying until SQL Server is ready to accept connections.
+Step 2 runs a trivial query (`select 1;`) with the test step's [run pattern](/docs/en/test-step-run-patterns) set to `Repeat until pass` and a timeout, so the step keeps retrying until SQL Server is ready to accept connections.
 
 Step 6 invokes the Article API to update article 2, and asserts that the API returns status code 200. Step 7 is where the **side effect** of the Article API, i.e. the actual database data change, is verified: it selects all rows from the stub table, and asserts the query result with a [JSONEqual assertion](/docs/en/assertions#jsonequal-assertion). The expected JSON covers both rows, verifying that article 2 is updated and article 1 is left untouched.
 

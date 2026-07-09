@@ -39,6 +39,8 @@ docs-en:
         url: /docs/en/ftp-request
       - title: SFTP Request
         url: /docs/en/sftp-request
+      - title: Test Step Run Patterns
+        url: /docs/en/test-step-run-patterns
       - title: Folder Run Patterns
         url: /docs/en/folder-run-patterns
       - title: Configure API Test Base to be an SSL Client
