@@ -47,7 +47,7 @@ No account, no cloud. You download it and run it on your own machine or in your 
 
 ## Verify the side effects, not just the response
 
-Tools like **Postman** make it easy to verify an API's **response** — and that's where most testing stops. But real APIs do more: they write to databases, publish messages to queues, and call downstream services. If your test only checks the response, you may miss what the API actually changed.
+Tools like **Postman** and **Bruno** make it easy to verify an API's **response** — and that's where most testing stops. But real APIs do more: they write to databases, publish messages to queues, and call downstream services. If your test only checks the response, you may miss what the API actually changed.
 
 For example, a single `POST /orders` call can be verified end to end:
 
@@ -56,7 +56,7 @@ For example, a single `POST /orders` call can be verified end to end:
     ✓ Message sent to queue
     ✓ Downstream API called successfully
 
-API Test Base verifies both the response **and** these side effects in one automated test case.
+API Test Base verifies both the response **and** these side effects in one automated test case. See [how API Test Base compares to Postman and Bruno](/comparison).
 
 ------------------------------------------------------------------------
 

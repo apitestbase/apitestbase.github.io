@@ -1,6 +1,8 @@
 header:
   - title: Docs
     url: /docs/en/quick-start
+  - title: Why API Test Base
+    url: /comparison
   - title: Feedback
     url: /feedback
 
