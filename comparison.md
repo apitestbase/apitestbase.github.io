@@ -53,11 +53,11 @@ Integration tests usually need data preparation: clear a table, insert a known r
 
 Here Bruno deserves credit: it made offline, no-account API tooling mainstream again. API Test Base takes the same stance — it is a free tool that you download and run on your own machine or in your [CI/CD pipeline](/docs/en/integration-unit-testing-automation-in-cicd-pipeline), with no account to create and no cloud the tool depends on. For teams working in restricted enterprise networks, this often matters as much as any feature. The difference between API Test Base and Bruno is not here — it is in everything above: what the tests can trigger, and what they can verify.
 
-## What about record-and-replay tools?
+## What about traffic replay tools?
 
-Another family of API testing tools works by recording network traffic and replaying or comparing it later. These tools verify the *traffic*: that the API produced the same bytes on the wire as before.
+Another family of API testing tools — such as GoReplay and Keploy — works by capturing real traffic and replaying it later: the recorded requests are sent again, the API's interactions with its dependencies are mocked from the recording, and the responses are compared against what was recorded. These tools answer a regression question: *does the API still behave like it did when the traffic was recorded?*
 
-API Test Base verifies the *world*: that after the API ran, the database really contains the new record and the output queue really holds the message. The difference matters when the implementation changes — traffic-based tests break when wire details shift even though behavior is intact, while outcome-based tests stay stable as long as the API still does its job. This outcome-focused approach is the foundation of [Integration Unit Testing](/docs/en/what-is-integration-unit-testing), the method API Test Base is built around.
+API Test Base answers a different question: *does the API do what it is supposed to do?* Its tests are written from the API's specification and verify real outcomes in real systems — after the API runs, the database really contains the new record and the output queue really holds the message. This also means the tests exist before there is any traffic to record, so a brand-new API can be tested from day one. This outcome-focused approach is the foundation of [Integration Unit Testing](/docs/en/what-is-integration-unit-testing), the method API Test Base is built around.
 
 ## Where API Test Base fits
 
