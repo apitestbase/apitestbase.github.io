@@ -74,7 +74,7 @@ API Test Base can send the trigger over the right protocol and then verify the o
 
 ## Built on a method: Integration Unit Testing
 
-API Test Base is built around **Integration Unit Testing** — testing an API as a black box, in isolation, by checking both its **contract** (request and response) and its **side effects** (database records, messages, files, downstream calls).
+API Test Base is built around **Integration Unit Testing** — testing an API as a black box, in isolation, by testing both its **contract** (request and response) and its **side effects** (database records, messages, files, downstream calls).
 
 Because the tests know nothing about the API's internal code, they stay stable as the implementation changes. The same API tests you run by hand during development can be [automated in a CI/CD pipeline](/docs/en/integration-unit-testing-automation-in-cicd-pipeline) to run the whole set on every build.
 
