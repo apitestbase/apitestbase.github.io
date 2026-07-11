@@ -10,6 +10,8 @@ An FTP request can be used for ad hoc file upload, replacing a separate FTP clie
 
 The FTP client library is bundled with API Test Base, so no setup is needed.
 
+Both FTP and FTPS (FTP over SSL/TLS) servers are supported — to connect to an FTPS server, tick the `Use SSL` checkbox on the `Endpoint` tab.
+
 Actions available: **Put**.
 
 ## Put Action
