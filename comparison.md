@@ -39,7 +39,7 @@ In API clients, verifying a database change typically means standing up a helper
 
 In integration and ESB landscapes, the "API" is often a message flow or service triggered by something other than an HTTP request:
 
-* a message arriving on a queue — [IBM MQ](/docs/en/mq-request), [JMS](/docs/en/jms-request), [AMQP](/docs/en/amqp-request), or MQTT
+* a message arriving on a queue — [IBM MQ](/docs/en/mq-request), [JMS](/docs/en/jms-request), [AMQP](/docs/en/amqp-request), or [MQTT](/docs/en/mqtt-request)
 * a file dropped on an [FTP](/docs/en/ftp-request) or [SFTP](/docs/en/sftp-request) server
 * a SOAP call
 

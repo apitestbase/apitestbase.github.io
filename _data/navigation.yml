@@ -35,6 +35,8 @@ docs-en:
         url: /docs/en/mq-request
       - title: AMQP Request
         url: /docs/en/amqp-request
+      - title: MQTT Request
+        url: /docs/en/mqtt-request
       - title: File Request
         url: /docs/en/file-request
       - title: FTP Request

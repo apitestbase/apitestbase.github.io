@@ -64,7 +64,7 @@ API Test Base verifies both the response **and** these side effects in one autom
 
 Not every API is an HTTP endpoint. The same business logic may be triggered by:
 
-- a message on a queue — [IBM MQ](/docs/en/mq-request), [JMS](/docs/en/jms-request), [AMQP](/docs/en/amqp-request), or MQTT
+- a message on a queue — [IBM MQ](/docs/en/mq-request), [JMS](/docs/en/jms-request), [AMQP](/docs/en/amqp-request), or [MQTT](/docs/en/mqtt-request)
 - a file dropped on an [FTP](/docs/en/ftp-request) or [SFTP](/docs/en/sftp-request) server
 - a SOAP call
 
