@@ -1,0 +1,110 @@
+{
+  "testcases": [ {
+    "name": "Positive",
+    "udps": [ {
+      "name": "app.name",
+      "value": "App1"
+    }, {
+      "name": "flow.name",
+      "value": "Flow1"
+    }, {
+      "name": "input.queue.name",
+      "value": "${flow.name}.IN"
+    }, {
+      "name": "stub.output.queue",
+      "value": "${flow.name}.STUB.OUT"
+    }, {
+      "name": "input.message",
+      "value": "<XYZ/>"
+    }, {
+      "name": "expected.output.message",
+      "value": ""
+    } ],
+    "teststeps": [ {
+      "name": "Setup - clear stub output queue",
+      "type": "MQ",
+      "endpoint": {
+        "type": "MQ",
+        "otherProperties": {
+          "@type": "MqEndpointProperties"
+        }
+      },
+      "action": "Clear",
+      "otherProperties": {
+        "queueName": "${stub.output.queue}"
+      }
+    }, {
+      "name": "Inject message into input queue",
+      "type": "MQ",
+      "endpoint": {
+        "type": "MQ",
+        "otherProperties": {
+          "@type": "MqEndpointProperties"
+        }
+      },
+      "action": "Enqueue",
+      "apiRequest": {
+        "@type": "MqEnqueueOrPublishFromTextRequest",
+        "body": "${input.message}"
+      },
+      "otherProperties": {
+        "queueName": "${input.queue.name}"
+      }
+    }, {
+      "name": "Wait for message processing completion",
+      "type": "ACE",
+      "endpoint": {
+        "type": "ACE",
+        "otherProperties": {
+          "@type": "AceEndpointProperties"
+        }
+      },
+      "action": "WaitForProcessingCompletion",
+      "otherProperties": {
+        "integrationServerName": "default",
+        "applicationName": "${app.name}",
+        "messageFlowName": "${flow.name}"
+      }
+    }, {
+      "name": "Check stub output queue depth equals 1",
+      "type": "MQ",
+      "endpoint": {
+        "type": "MQ",
+        "otherProperties": {
+          "@type": "MqEndpointProperties"
+        }
+      },
+      "action": "CheckDepth",
+      "otherProperties": {
+        "queueName": "${stub.output.queue}"
+      },
+      "assertions": [ {
+        "name": "MQ queue depth equals",
+        "type": "IntegerEqual",
+        "otherProperties": {
+          "number": "1"
+        }
+      } ]
+    }, {
+      "name": "Dequeue message from stub output queue and assert message body",
+      "type": "MQ",
+      "endpoint": {
+        "type": "MQ",
+        "otherProperties": {
+          "@type": "MqEndpointProperties"
+        }
+      },
+      "action": "Dequeue",
+      "otherProperties": {
+        "queueName": "${stub.output.queue}"
+      },
+      "assertions": [ {
+        "name": "XmlEqual",
+        "type": "XmlEqual",
+        "otherProperties": {
+          "expectedXML": "${expected.output.message}"
+        }
+      } ]
+    } ]
+  } ]
+}

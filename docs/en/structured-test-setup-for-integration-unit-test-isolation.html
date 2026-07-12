@@ -1,0 +1,883 @@
+<!DOCTYPE html><html lang="en">
+  <head><!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-728SGPGWQ6"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-728SGPGWQ6');
+		
+	</script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Structured Test Setup for Integration Unit Test Isolation - API Test Base</title>
+
+<meta name="description" content="One of the core requirements of integration unit testing is to isolate the API under test. This means we need to set up stub dependencies for the API, to be ...">
+<link rel="canonical" href="https://apitestbase.io/docs/en/structured-test-setup-for-integration-unit-test-isolation"><link rel="alternate" type="application/rss+xml" title="API Test Base" href="/feed.xml"><link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+<link rel="manifest" href="/favicons/site.webmanifest">
+<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff"><link rel="stylesheet" href="/assets/css/tabs.css">
+<link rel="stylesheet" href="/assets/css/video-container.css"><link rel="stylesheet" href="/assets/css/main.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.css" ><!-- start custom head snippets -->
+
+<!-- end custom head snippets -->
+<script>(function() {
+  window.isArray = function(val) {
+    return Object.prototype.toString.call(val) === '[object Array]';
+  };
+  window.isString = function(val) {
+    return typeof val === 'string';
+  };
+
+  window.hasEvent = function(event) {
+    return 'on'.concat(event) in window.document;
+  };
+
+  window.isOverallScroller = function(node) {
+    return node === document.documentElement || node === document.body || node === window;
+  };
+
+  window.isFormElement = function(node) {
+    var tagName = node.tagName;
+    return tagName === 'INPUT' || tagName === 'SELECT' || tagName === 'TEXTAREA';
+  };
+
+  window.pageLoad = (function () {
+    var loaded = false, cbs = [];
+    window.addEventListener('load', function () {
+      var i;
+      loaded = true;
+      if (cbs.length > 0) {
+        for (i = 0; i < cbs.length; i++) {
+          cbs[i]();
+        }
+      }
+    });
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  })();
+})();
+(function() {
+  window.throttle = function(func, wait) {
+    var args, result, thisArg, timeoutId, lastCalled = 0;
+
+    function trailingCall() {
+      lastCalled = new Date;
+      timeoutId = null;
+      result = func.apply(thisArg, args);
+    }
+    return function() {
+      var now = new Date,
+        remaining = wait - (now - lastCalled);
+
+      args = arguments;
+      thisArg = this;
+
+      if (remaining <= 0) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+        lastCalled = now;
+        result = func.apply(thisArg, args);
+      } else if (!timeoutId) {
+        timeoutId = setTimeout(trailingCall, remaining);
+      }
+      return result;
+    };
+  };
+})();
+(function() {
+  var Set = (function() {
+    var add = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (data[i] === item) {
+          return;
+        }
+      }
+      this.size ++;
+      data.push(item);
+      return data;
+    };
+
+    var Set = function(data) {
+      this.size = 0;
+      this._data = [];
+      var i;
+      if (data.length > 0) {
+        for (i = 0; i < data.length; i++) {
+          add.call(this, data[i]);
+        }
+      }
+    };
+    Set.prototype.add = add;
+    Set.prototype.get = function(index) { return this._data[index]; };
+    Set.prototype.has = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (this.get(i) === item) {
+          return true;
+        }
+      }
+      return false;
+    };
+    Set.prototype.is = function(map) {
+      if (map._data.length !== this._data.length) { return false; }
+      var i, j, flag, tData = this._data, mData = map._data;
+      for (i = 0; i < tData.length; i++) {
+        for (flag = false, j = 0; j < mData.length; j++) {
+          if (tData[i] === mData[j]) {
+            flag = true;
+            break;
+          }
+        }
+        if (!flag) { return false; }
+      }
+      return true;
+    };
+    Set.prototype.values = function() {
+      return this._data;
+    };
+    return Set;
+  })();
+
+  window.Lazyload = (function(doc) {
+    var queue = {js: [], css: []}, sources = {js: {}, css: {}}, context = this;
+    var createNode = function(name, attrs) {
+      var node = doc.createElement(name), attr;
+      for (attr in attrs) {
+        if (attrs.hasOwnProperty(attr)) {
+          node.setAttribute(attr, attrs[attr]);
+        }
+      }
+      return node;
+    };
+    var end = function(type, url) {
+      var s, q, qi, cbs, i, j, cur, val, flag;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        s[url] = true;
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (cur.urls.has(url)) {
+            qi = cur, val = qi.urls.values();
+            qi && (cbs = qi.callbacks);
+            for (flag = true, j = 0; j < val.length; j++) {
+              cur = val[j];
+              if (!s[cur]) {
+                flag = false;
+              }
+            }
+            if (flag && cbs && cbs.length > 0) {
+              for (j = 0; j < cbs.length; j++) {
+                cbs[j].call(context);
+              }
+              qi.load = true;
+            }
+          }
+        }
+      }
+    };
+    var load = function(type, urls, callback) {
+      var s, q, qi, node, i, cur,
+        _urls = typeof urls === 'string' ? new Set([urls]) : new Set(urls), val, url;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (_urls.is(cur.urls)) {
+            qi = cur;
+            break;
+          }
+        }
+        val = _urls.values();
+        if (qi) {
+          callback && (qi.load || qi.callbacks.push(callback));
+          callback && (qi.load && callback());
+        } else {
+          q.push({
+            urls: _urls,
+            callbacks: callback ? [callback] : [],
+            load: false
+          });
+          for (i = 0; i < val.length; i++) {
+            node = null, url = val[i];
+            if (s[url] === undefined) {
+              (type === 'js' ) && (node = createNode('script', { src: url }));
+              (type === 'css') && (node = createNode('link', { rel: 'stylesheet', href: url }));
+              if (node) {
+                node.onload = (function(type, url) {
+                  return function() {
+                    end(type, url);
+                  };
+                })(type, url);
+                (doc.head || doc.body).appendChild(node);
+                s[url] = false;
+              }
+            }
+          }
+        }
+      }
+    };
+    return {
+      js: function(url, callback) {
+        load('js', url, callback);
+      },
+      css: function(url, callback) {
+        load('css', url, callback);
+      }
+    };
+  })(this.document);
+})();
+</script><script>
+  (function() {
+    var TEXT_VARIABLES = {
+      version: '2.2.6',
+      sources: {
+        font_awesome: 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.css',
+        jquery: 'https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js',
+        leancloud_js_sdk: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js',
+        chart: 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js',
+        gitalk: {
+          js: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.js',
+          css: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.css'
+        },
+        valine: 'https://unpkg.com/valine/dist/Valine.min.js',
+        mathjax: 'https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML',
+        mermaid: 'https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js'
+      },
+      site: {
+        toc: {
+          selectors: 'h1,h2,h3'
+        }
+      },
+      paths: {
+        search_js: '/assets/search.js'
+      }
+    };
+    window.TEXT_VARIABLES = TEXT_VARIABLES;
+  })();
+</script>
+</head>
+  <body>
+    <div class="root" data-is-touch="false">
+      <div class="layout--page layout--page--sidebar clearfix js-page-root">
+  <div class="page__mask d-print-none js-page-mask js-sidebar-hide"></div>
+  <div class="page__viewport">
+    <div class="page__actions d-print-none">
+      <div class="button button--circle button--lg box-shadow-2 sidebar-button js-sidebar-show">
+        <i class="fas fa-bars icon--show"></i>
+      </div>
+    </div>
+
+    <div class="grid page__grid">
+
+      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Start</li><li class="toc-h2"><a href="/docs/en/quick-start">Quick Start</a></li><li class="toc-h2"><a href="/docs/en/creating-an-automated-test-case">Creating an Automated Test Case</a></li><li class="toc-h1">Usages</li><li class="toc-h2"><a href="/docs/en/environments-management">Environments Management</a></li><li class="toc-h2"><a href="/docs/en/endpoints-management">Endpoints Management</a></li><li class="toc-h2"><a href="/docs/en/assertions">Assertions</a></li><li class="toc-h2"><a href="/docs/en/properties">Properties</a></li><li class="toc-h2"><a href="/docs/en/expressions">Expressions</a></li><li class="toc-h2"><a href="/docs/en/http-stubs">HTTP Stubs</a></li><li class="toc-h2"><a href="/docs/en/interact-with-other-systems">Interact with Other Systems</a></li><li class="toc-h2"><a href="/docs/en/jms-request">JMS Request</a></li><li class="toc-h2"><a href="/docs/en/mq-request">MQ Request</a></li><li class="toc-h2"><a href="/docs/en/amqp-request">AMQP Request</a></li><li class="toc-h2"><a href="/docs/en/mqtt-request">MQTT Request</a></li><li class="toc-h2"><a href="/docs/en/file-request">File Request</a></li><li class="toc-h2"><a href="/docs/en/ftp-request">FTP Request</a></li><li class="toc-h2"><a href="/docs/en/sftp-request">SFTP Request</a></li><li class="toc-h2"><a href="/docs/en/test-step-run-patterns">Test Step Run Patterns</a></li><li class="toc-h2"><a href="/docs/en/folder-run-patterns">Folder Run Patterns</a></li><li class="toc-h2"><a href="/docs/en/configure-api-test-base-to-be-an-ssl-client">Configure API Test Base to be an SSL Client</a></li><li class="toc-h2"><a href="/docs/en/administration">Administration</a></li><li class="toc-h2"><a href="/docs/en/team-collaboration">Team Collaboration</a></li><li class="toc-h2"><a href="/docs/en/upgrade-from-old-version">Upgrade from Old Version</a></li><li class="toc-h1">Integration Unit Testing</li><li class="toc-h2"><a href="/docs/en/what-is-integration-unit-testing">What is Integration Unit Testing?</a></li><li class="toc-h2"><a href="/docs/en/http-http-integration-unit-testing">HTTP-HTTP Integration Unit Testing</a></li><li class="toc-h2"><a href="/docs/en/http-database-integration-unit-testing">HTTP-Database Integration Unit Testing</a></li><li class="toc-h2"><a href="/docs/en/http-jms-integration-unit-testing">HTTP-JMS Integration Unit Testing</a></li><li class="toc-h2"><a href="/docs/en/ace-integration-unit-testing">ACE Integration Unit Testing</a></li><li class="toc-h2 active"><a href="/docs/en/structured-test-setup-for-integration-unit-test-isolation">Structured Test Setup for Integration Unit Test Isolation</a></li><li class="toc-h2"><a href="/docs/en/integration-unit-testing-automation-in-cicd-pipeline">Integration Unit Testing Automation in CI/CD Pipeline</a></li><li class="toc-h1">Other Testing Practices</li><li class="toc-h2"><a href="/docs/en/data-driven-testing">Data-Driven Testing</a></li><li class="toc-h2"><a href="/docs/en/real-test-automation-is-data-driven">Real Test Automation is Data-Driven</a></li><li class="toc-h2"><a href="/docs/en/avoid-test-duplication">Avoid Test Duplication</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+
+      <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
+      <div class="header__title">
+        <div class="header__brand"><svg xmlns="http://www.w3.org/2000/svg" viewBox="142 200 420 200" style="width:2.5rem">
+    <text transform="matrix(9.12762 0 0 9.39839 -2313.55 -3286.96)" stroke="#000" font-style="italic" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="sans-serif" font-size="24" id="svg_5" y="391.9064" x="270.44603" stroke-width="0" fill="#0052ff">A</text>
+    <text transform="matrix(10.1452 0 0 9.3745 -2676.92 -3251.82)" stroke="#000" font-weight="bold" font-style="normal" xml:space="preserve" text-anchor="start" font-family="sans-serif" font-size="24" id="svg_8" y="389" x="291" stroke-width="0" fill="#0052ff">T</text>
+    <text transform="matrix(9.21656 0 0 9.54658 -2451.83 -3304.91)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="sans-serif" font-size="24" id="svg_10" y="387.80667" x="310.15586" stroke-width="0" fill="#0052ff">B</text>
+</svg><a title="A simple tool for comprehensive API testing." href="/">API Test Base</a></div></div><nav class="navigation">
+        <ul><li class="navigation__item"><a href="/docs/en/quick-start">Docs</a></li><li class="navigation__item"><a href="/comparison">Why API Test Base</a></li><li class="navigation__item"><a href="/feedback">Feedback</a></li></ul>
+      </nav></div>
+  </header>
+</div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
+
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
+
+              <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
+
+<!-- end custom main top snippet -->
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Structured Test Setup for Integration Unit Test Isolation</h1></header></div><meta itemprop="headline" content="Structured Test Setup for Integration Unit Test Isolation"><div class="article__info clearfix"><ul class="right-col menu"></ul></div><meta itemprop="datePublished" content="2026-07-12T04:06:24+00:00"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p>One of the core requirements of integration unit testing is to <strong>isolate the API under test</strong>. This means we need to <strong>set up stub dependencies for the API</strong>, to be able to control the testing behavior.</p>
+
+<p>We need an approach that enables <strong>automated test setup</strong> during API development and in a CI/CD pipeline. The approach ATB recommends is <strong>Structured Test Setup</strong>, which follows two simple principles:</p>
+<ul>
+  <li>Enable running only necessary setups for a test case or folder.</li>
+  <li>Enable reusing test setup steps.</li>
+</ul>
+
+<h2 id="how-it-works">How It Works</h2>
+
+<p>ATB delivers these two principles through two mechanisms:</p>
+
+<ul>
+  <li><strong>Inheritance and references, to reuse setup steps.</strong> A setup defined on a folder is inherited by the sub-folders beneath it: written once on the parent, it runs ahead of each descendant sub-folder’s own setups and test cases when the parent folder is run, instead of being copied into every sub-folder. When folders in different parts of the tree — with no shared ancestor — need the same setup, a folder can add a <strong>Setup Reference</strong> pointing at a setup test case defined elsewhere, reusing those steps without copying them.</li>
+  <li><strong>Run Patterns, to run only what’s needed.</strong> A folder’s <a href="/docs/en/folder-run-patterns"><strong>Run Pattern</strong></a> decides what a run does: prepare the environment by running setups without any test, or run setups together with the test cases beneath the folder.</li>
+</ul>
+
+<p>Isolation is the goal these serve. Creating stub dependencies — such as a stub database and its tables — is exactly the kind of prerequisite Structured Test Setup is designed to manage: defined once, reused where shared, and run only when needed.</p>
+
+<h2 id="the-example">The Example</h2>
+
+<p>A small “Online Store” application with three REST APIs. To test each API in isolation, the setup stands up a local, dedicated stub database — a PostgreSQL instance in a throwaway Docker container — in place of a shared database such as one in a SIT environment, so every run starts from a known, fully controlled state.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>API</th>
+      <th>Endpoint</th>
+      <th>Table</th>
+      <th>Operation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>User Preferences API</td>
+      <td><code class="language-plaintext highlighter-rouge">PUT /api/users/{userId}/preferences</code></td>
+      <td><code class="language-plaintext highlighter-rouge">user_preferences</code></td>
+      <td>Insert (new user) or update (existing user)</td>
+    </tr>
+    <tr>
+      <td>Create Order API</td>
+      <td><code class="language-plaintext highlighter-rouge">POST /api/orders</code></td>
+      <td><code class="language-plaintext highlighter-rouge">orders</code></td>
+      <td>Insert (new order, status <code class="language-plaintext highlighter-rouge">PENDING</code>)</td>
+    </tr>
+    <tr>
+      <td>Update Order Status API</td>
+      <td><code class="language-plaintext highlighter-rouge">PATCH /api/orders/{orderId}/status</code></td>
+      <td><code class="language-plaintext highlighter-rouge">orders</code></td>
+      <td>Update (e.g. to <code class="language-plaintext highlighter-rouge">PAID</code>, <code class="language-plaintext highlighter-rouge">SHIPPED</code>, <code class="language-plaintext highlighter-rouge">CANCELLED</code>)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">user_preferences</code> is used only by the first API. <code class="language-plaintext highlighter-rouge">orders</code> is shared by the second and third.</p>
+
+<h2 id="folder-and-setup-structure">Folder and Setup Structure</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Workspace] Online Store
+├── [Folder] Common Test Setups
+│   └── [Test Case] Create Orders Table
+│
+├── [Folder] REST API Tests
+│   ├── [Setup Steps]
+│   │     [Docker Step] Start PostgreSQL container
+│   │     [Database Step] Create "online_store" schema
+│   │
+│   ├── [Folder] User Preferences API
+│   │   ├── [Setup Steps]
+│   │   │     [Database Step] Create "user_preferences" table
+│   │   ├── [Test Case] Create preferences for new user (insert path)
+│   │   ├── [Test Case] Update preferences for existing user (update path)
+│   │   └── [Test Case] Invalid theme value returns 400
+│   │
+│   ├── [Folder] Create Order API
+│   │   ├── [Setup Reference] → [Folder] Common Test Setups / [Test Case] Create Orders Table
+│   │   ├── [Test Case] Create order successfully
+│   │   └── [Test Case] Invalid amount returns 400
+│   │
+│   └── [Folder] Update Order Status API
+│       ├── [Setup Reference] → [Folder] Common Test Setups / [Test Case] Create Orders Table
+│       ├── [Test Case] Update status to PAID
+│       ├── [Test Case] Invalid status transition returns 409
+│       └── [Test Case] Update non-existent order returns 404
+│
+└── [Folder] Third-Party Integration Tests
+      (e.g. payment gateway, shipping provider, email/SMS notifications)
+</code></pre></div></div>
+
+<p>That’s the whole picture: one Docker + schema setup at the top of the REST API tests, a table setup local to the one API that owns its table, and a shared table setup referenced by the two APIs that share a table.</p>
+
+<h2 id="why-the-setups-live-where-they-do">Why the Setups Live Where They Do</h2>
+
+<p>The tree shows <em>what</em> the setups are; the placement decisions are what make it work:</p>
+
+<ul>
+  <li><strong>The stub database is provisioned at the top.</strong> The Docker step (PostgreSQL container) and schema creation sit on <strong>REST API Tests</strong>, so every API beneath it shares one isolated stub database instead of each standing up its own.</li>
+  <li><strong>A table’s setup is owned by whoever uses it.</strong> <code class="language-plaintext highlighter-rouge">user_preferences</code> is created on the <strong>User Preferences API</strong> folder, because that’s the only API that touches it. <code class="language-plaintext highlighter-rouge">orders</code> is used by two APIs, so its setup — <strong>Create Orders Table</strong> — is <em>referenced</em> by both the Create Order and Update Order Status folders rather than duplicated in each.</li>
+  <li><strong>A reference can reach anywhere in the tree.</strong> <strong>Create Orders Table</strong> deliberately lives in <strong>Common Test Setups</strong>, outside REST API Tests, to show a Setup Reference isn’t limited to a folder’s own subtree. The setup itself is written to be repeatable — it drops the <code class="language-plaintext highlighter-rouge">orders</code> table before creating it — so running it more than once does no harm.</li>
+</ul>
+
+<p>The workspace holds only the application’s API tests; the <strong>Third-Party Integration Tests</strong> folder is shown purely to place the REST API tests within the application’s full test suite.</p>
+
+<h2 id="running-the-tests">Running the Tests</h2>
+
+<p>How a run behaves depends on the folder’s <a href="/docs/en/folder-run-patterns"><strong>Run Pattern</strong></a> — which setups run, and whether test cases run with them. Two workflows put the patterns to use.</p>
+
+<h3 id="during-api-development">During API development</h3>
+
+<p>While building an API, the developer launches and debugs the implementation in their IDE and uses ATB test cases to verify each change. They run the API folder once with <strong>Setups to Here</strong> to stand up the stub database and create the tables — for Create Order API, that’s the REST API Tests folder setup (Docker + schema) plus the folder’s own “Create Orders Table” reference. It runs no test cases.</p>
+
+<p>From there they iterate quickly. Running a single test case re-runs no setup at all. Running the API folder with <strong>Default</strong> runs the folder’s own setups and all of its test cases, but not the ancestor setups (the Docker container and schema) — so the expensive container start-up isn’t repeated between iterations. When a setup itself changes, the developer re-runs <strong>Setups to Here</strong> to apply it before continuing.</p>
+
+<h3 id="in-cicd">In CI/CD</h3>
+
+<p>A pipeline runs a folder with the <strong>All</strong> pattern, so the run is self-contained: the ancestor setups run first, then the folder’s own setups and every test case beneath it. See <a href="/docs/en/integration-unit-testing-automation-in-cicd-pipeline">Integration Unit Testing Automation in CI/CD Pipeline</a> for how to drive this from a pipeline.</p>
+
+<p>Pointing this at a single API folder (say, Create Order API) runs just that API’s setups and tests — useful when each API has its own Git repository, so a change to one API doesn’t trigger the whole suite. Pointing it at the REST API Tests folder runs everything, for a full pass across all APIs.</p>
+
+<p>One note for the full run: setup deduplication isn’t implemented yet, so “Create Orders Table” runs once for each folder that references it — twice across Create Order API and Update Order Status API. Because the setup drops and recreates the table, the repeat is harmless.</p>
+
+<h2 id="why-this-matters">Why This Matters</h2>
+
+<p>Each setup is defined once, in the place that matches its scope: on a folder when it belongs only to that folder’s subtree, or in a setup test case that other folders reference when it’s shared. Nothing is copied, so every prerequisite has a single source of truth. Run together, these setups stand up a stub database that’s entirely the tests’ own — so the API runs in isolation and its real side effects stay verifiable, which is what ATB exists to do.</p>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2026-07-12T04:06:24+00:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+</footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/docs/en/ace-integration-unit-testing">ACE Integration Unit Testing</a></div><div class="next"><span>NEXT</span><a href="/docs/en/integration-unit-testing-automation-in-cicd-pipeline">Integration Unit Testing Automation in CI/CD Pipeline</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+</script>
+
+<script src="/assets/js/tabs.js"></script></div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
+
+<!-- end custom main bottom snippet -->
+</div>
+            </div></div></div><div class="page__footer d-print-none"><footer class="footer py-4 js-page-footer">
+    <div class="main"><div itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content=""><meta itemprop="url" content="/"><div class="footer__author-links"><div class="author-links">
+        <ul class="menu menu--nowrap menu--inline"></ul>
+    </div>
+    </div>
+    </div><div class="site-info mt-2">
+        <div>© API Test Base 2026,
+            Powered by <a title="Jekyll is a simple, blog-aware, static site generator." href="http://jekyllrb.com/">Jekyll</a> & <a
+                    title="TeXt is a super customizable Jekyll theme." href="https://github.com/kitian616/jekyll-TeXt-theme">TeXt Theme</a>.
+        </div>
+    </div>
+    </div>
+</footer></div></div>
+    </div></div></div><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $body = $('body'), $window = $(window);
+    var $pageRoot = $('.js-page-root'), $pageMain = $('.js-page-main');
+    var activeCount = 0;
+    function modal(options) {
+      var $root = this, visible, onChange, hideWhenWindowScroll = false;
+      var scrollTop;
+      function setOptions(options) {
+        var _options = options || {};
+        visible = _options.initialVisible === undefined ? false : show;
+        onChange = _options.onChange;
+        hideWhenWindowScroll = _options.hideWhenWindowScroll;
+      }
+      function init() {
+        setState(visible);
+      }
+      function setState(isShow) {
+        if (isShow === visible) {
+          return;
+        }
+        visible = isShow;
+        if (visible) {
+          activeCount++;
+          scrollTop = $(window).scrollTop() || $pageMain.scrollTop();
+          $root.addClass('modal--show');
+          $pageMain.scrollTop(scrollTop);
+          activeCount === 1 && ($pageRoot.addClass('show-modal'), $body.addClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.on('scroll', hide);
+          $window.on('keyup', handleKeyup);
+        } else {
+          activeCount > 0 && activeCount--;
+          $root.removeClass('modal--show');
+          $window.scrollTop(scrollTop);
+          activeCount === 0 && ($pageRoot.removeClass('show-modal'), $body.removeClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.off('scroll', hide);
+          $window.off('keyup', handleKeyup);
+        }
+        onChange && onChange(visible);
+      }
+      function show() {
+        setState(true);
+      }
+      function hide() {
+        setState(false);
+      }
+      function handleKeyup(e) {
+        // Char Code: 27  ESC
+        if (e.which ===  27) {
+          hide();
+        }
+      }
+      setOptions(options);
+      init();
+      return {
+        show: show,
+        hide: hide,
+        $el: $root
+      };
+    }
+    $.fn.modal = modal;
+  });
+})();
+</script><div class="modal modal--overflow page__search-modal d-print-none js-page-search-modal"></div></div>
+
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function scrollToAnchor(anchor, duration, callback) {
+      var $root = this;
+      $root.animate({ scrollTop: $(anchor).position().top }, duration, function() {
+        window.history.replaceState(null, '', window.location.href.split('#')[0] + anchor);
+        callback && callback();
+      });
+    }
+    $.fn.scrollToAnchor = scrollToAnchor;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function affix(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroll,
+        offsetBottom = 0, scrollTarget = window, scroll = window.document, disabled = false, isOverallScroller = true,
+        rootTop, rootLeft, rootHeight, scrollBottom, rootBottomTop,
+        hasInit = false, curState;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.offsetBottom && (offsetBottom = _options.offsetBottom);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroll && (scroll = _options.scroll);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $scrollTarget = $(scrollTarget);
+        isOverallScroller = window.isOverallScroller($scrollTarget[0]);
+        $scroll = $(scroll);
+      }
+      function preCalc() {
+        top();
+        rootHeight = $root.outerHeight();
+        rootTop = $root.offset().top + (isOverallScroller ? 0 :  $scrollTarget.scrollTop());
+        rootLeft = $root.offset().left;
+      }
+      function calc(needPreCalc) {
+        needPreCalc && preCalc();
+        scrollBottom = $scroll.outerHeight() - offsetBottom - rootHeight;
+        rootBottomTop = scrollBottom - rootTop;
+      }
+      function top() {
+        if (curState !== 'top') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: 0
+          });
+          curState = 'top';
+        }
+      }
+      function fixed() {
+        if (curState !== 'fixed') {
+          $root.addClass('fixed').css({
+            left: rootLeft + 'px',
+            top: 0
+          });
+          curState = 'fixed';
+        }
+      }
+      function bottom() {
+        if (curState !== 'bottom') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: rootBottomTop + 'px'
+          });
+          curState = 'bottom';
+        }
+      }
+      function setState() {
+        var scrollTop = $scrollTarget.scrollTop();
+        if (scrollTop >= rootTop && scrollTop <= scrollBottom) {
+          fixed();
+        } else if (scrollTop < rootTop) {
+          top();
+        } else {
+          bottom();
+        }
+      }
+      function init() {
+        if(!hasInit) {
+          var interval, timeout;
+          calc(true); setState();
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState();
+          });
+          $window.on('resize', function() {
+            disabled || (calc(true), setState());
+          });
+          hasInit = true;
+        }
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions,
+        refresh: function() {
+          calc(true, { animation: false }); setState();
+        }
+      };
+    }
+    $.fn.affix = affix;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function toc(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroller, $tocUl = $('<ul class="toc toc--ellipsis"></ul>'), $tocLi, $headings, $activeLast, $activeCur,
+        selectors = 'h1,h2,h3', container = 'body', scrollTarget = window, scroller = 'html, body', disabled = false,
+        headingsPos, scrolling = false, hasRendered = false, hasInit = false;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.selectors && (selectors = _options.selectors);
+        _options.container && (container = _options.container);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroller && (scroller = _options.scroller);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $headings = $(container).find(selectors).filter('[id]');
+        $scrollTarget = $(scrollTarget);
+        $scroller = $(scroller);
+      }
+      function calc() {
+        headingsPos = [];
+        $headings.each(function() {
+          headingsPos.push(Math.floor($(this).position().top));
+        });
+      }
+      function setState(element, disabled) {
+        var scrollTop = $scrollTarget.scrollTop(), i;
+        if (disabled || !headingsPos || headingsPos.length < 1) { return; }
+        if (element) {
+          $activeCur = element;
+        } else {
+          for (i = 0; i < headingsPos.length; i++) {
+            if (scrollTop >= headingsPos[i]) {
+              $activeCur = $tocLi.eq(i);
+            } else {
+              $activeCur || ($activeCur = $tocLi.eq(i));
+              break;
+            }
+          }
+        }
+        $activeLast && $activeLast.removeClass('active');
+        ($activeLast = $activeCur).addClass('active');
+      }
+      function render() {
+        if(!hasRendered) {
+          $root.append($tocUl);
+          $headings.each(function() {
+            var $this = $(this);
+            $tocUl.append($('<li></li>').addClass('toc-' + $this.prop('tagName').toLowerCase())
+              .append($('<a></a>').text($this.text()).attr('href', '#' + $this.prop('id'))));
+          });
+          $tocLi = $tocUl.children('li');
+          $tocUl.on('click', 'a', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            scrolling = true;
+            setState($this.parent());
+            $scroller.scrollToAnchor($this.attr('href'), 400, function() {
+              scrolling = false;
+            });
+          });
+        }
+        hasRendered = true;
+      }
+      function init() {
+        var interval, timeout;
+        if(!hasInit) {
+          render(); calc(); setState(null, scrolling);
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState(null, scrolling);
+          });
+          $window.on('resize', window.throttle(function() {
+            if (!disabled) {
+              render(); calc(); setState(null, scrolling);
+            }
+          }, 100));
+        }
+        hasInit = true;
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions
+      };
+    }
+    $.fn.toc = toc;
+  });
+})();
+/*(function () {
+
+})();*/
+</script><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $pageMask = $('.js-page-mask');
+    var $pageRoot = $('.js-page-root');
+    var $sidebarShow = $('.js-sidebar-show');
+    var $sidebarHide = $('.js-sidebar-hide');
+
+    function freeze(e) {
+      if (e.target === $pageMask[0]) {
+        e.preventDefault();
+      }
+    }
+    function stopBodyScrolling(bool) {
+      if (bool === true) {
+        window.addEventListener('touchmove', freeze, { passive: false });
+      } else {
+        window.removeEventListener('touchmove', freeze, { passive: false });
+      }
+    }
+
+    $sidebarShow.on('click', function() {
+      stopBodyScrolling(true); $pageRoot.addClass('show-sidebar');
+    });
+    $sidebarHide.on('click', function() {
+      stopBodyScrolling(false); $pageRoot.removeClass('show-sidebar');
+    });
+  });
+})();
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
+</script>
+    </div>
+    <script>(function () {
+  var $root = document.getElementsByClassName('root')[0];
+  if (window.hasEvent('touchstart')) {
+    $root.dataset.isTouch = true;
+    document.addEventListener('touchstart', function(){}, false);
+  }
+})();
+</script>
+  </body>
+</html>
+

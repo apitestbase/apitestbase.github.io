@@ -1,0 +1,217 @@
+{
+  "testcases": [ {
+    "name": "Positive",
+    "udps": [ {
+      "name": "output.queue.name",
+      "value": "q/data/ingestion/api/stub/out"
+    }, {
+      "name": "output.queue.name.url.encoded",
+      "value": "q%2Fdata%2Fingestion%2Fapi%2Fstub%2Fout"
+    }, {
+      "name": "input.message",
+      "value": "{\n  \"data\": \"...\"\n}"
+    }, {
+      "name": "expected.output.message",
+      "value": "${input.message}"
+    } ],
+    "teststeps": [ {
+      "name": "Setup - Start solace-auto",
+      "type": "Docker",
+      "actionProperties": {
+        "@type": "DockerRun",
+        "imageName": "solace/solace-pubsub-standard",
+        "containerName": "solace-auto",
+        "portMappings": [ {
+          "hostPort": "8080",
+          "containerPort": "8080"
+        }, {
+          "hostPort": "55555",
+          "containerPort": "55555"
+        }, {
+          "hostPort": "8008",
+          "containerPort": "8008"
+        }, {
+          "hostPort": "1883",
+          "containerPort": "1883"
+        }, {
+          "hostPort": "8001",
+          "containerPort": "8000"
+        }, {
+          "hostPort": "5672",
+          "containerPort": "5672"
+        }, {
+          "hostPort": "9000",
+          "containerPort": "9000"
+        }, {
+          "hostPort": "2222",
+          "containerPort": "2222"
+        }, {
+          "hostPort": "5550",
+          "containerPort": "5550"
+        } ],
+        "shmSize": "2000000000",
+        "envVars": [ {
+          "name": "username_admin_globalaccesslevel",
+          "value": "admin"
+        }, {
+          "name": "username_admin_password",
+          "value": "admin"
+        } ]
+      }
+    }, {
+      "name": "Setup - Ensure Solace is ready",
+      "type": "HTTP",
+      "endpoint": {
+        "type": "HTTP",
+        "url": "http://localhost:5550/health-check/guaranteed-active"
+      },
+      "apiRequest": {
+        "@type": "HttpRequest",
+        "method": "GET"
+      },
+      "assertions": [ {
+        "name": "StatusCodeEqual 1",
+        "type": "StatusCodeEqual",
+        "otherProperties": {
+          "statusCode": "200"
+        }
+      } ],
+      "runPattern": {
+        "type": "RepeatUntilPass",
+        "waitBetweenRepeatRuns": "2000",
+        "timeout": "30000"
+      }
+    }, {
+      "name": "Setup - Delete stub output queue",
+      "type": "HTTP",
+      "description": "Response status code could be 200 or 400 (queue not found).",
+      "endpoint": {
+        "type": "HTTP",
+        "url": "${solace.semp.url}/queues/${output.queue.name.url.encoded}",
+        "username": "admin",
+        "password": "${solace.password}",
+        "otherProperties": {
+          "@type": "HttpEndpointProperties",
+          "authInfo": {
+            "@type": "Basic"
+          }
+        }
+      },
+      "apiRequest": {
+        "@type": "HttpRequest",
+        "method": "DELETE"
+      }
+    }, {
+      "name": "Setup - Create stub output queue",
+      "type": "HTTP",
+      "endpoint": {
+        "type": "HTTP",
+        "url": "${solace.semp.url}/queues",
+        "username": "admin",
+        "password": "${solace.password}",
+        "otherProperties": {
+          "@type": "HttpEndpointProperties",
+          "authInfo": {
+            "@type": "Basic"
+          }
+        }
+      },
+      "apiRequest": {
+        "@type": "HttpRequest",
+        "method": "POST",
+        "headers": [ {
+          "name": "Content-Type",
+          "value": "application/json"
+        } ],
+        "body": "{\n    \"queueName\": \"${output.queue.name}\",\n    \"permission\": \"consume\",\n    \"ingressEnabled\": true,\n    \"egressEnabled\": true\n}\n"
+      },
+      "assertions": [ {
+        "name": "StatusCodeEqual 1",
+        "type": "StatusCodeEqual",
+        "otherProperties": {
+          "statusCode": "200"
+        }
+      } ]
+    }, {
+      "name": "Invoke the API to ingest data",
+      "type": "HTTP",
+      "endpoint": {
+        "type": "HTTP",
+        "url": "http://localhost:port/path/to/your/local/data/ingestion/api"
+      },
+      "apiRequest": {
+        "@type": "HttpRequest",
+        "method": "POST",
+        "body": "${input.message}"
+      },
+      "assertions": [ {
+        "name": "StatusCodeEqual",
+        "type": "StatusCodeEqual",
+        "otherProperties": {
+          "statusCode": "200"
+        }
+      } ]
+    }, {
+      "name": "Check stub output queue depth equals 1",
+      "type": "JMS",
+      "endpoint": {
+        "type": "JMS",
+        "provider": "Solace",
+        "host": "localhost",
+        "port": 55555,
+        "username": "admin",
+        "otherProperties": {
+          "@type": "JmsSolaceEndpointProperties",
+          "vpn": "default"
+        }
+      },
+      "action": "CheckDepth",
+      "otherProperties": {
+        "queueName": "${output.queue.name}"
+      },
+      "assertions": [ {
+        "name": "Queue depth equals",
+        "type": "IntegerEqual",
+        "otherProperties": {
+          "number": "1"
+        }
+      } ],
+      "runPattern": {
+        "type": "RepeatUntilPass",
+        "waitBetweenRepeatRuns": "300",
+        "timeout": "500"
+      }
+    }, {
+      "name": "Browse the stub output queue and assert message body",
+      "type": "JMS",
+      "endpoint": {
+        "type": "JMS",
+        "provider": "Solace",
+        "host": "localhost",
+        "port": 55555,
+        "username": "admin",
+        "otherProperties": {
+          "@type": "JmsSolaceEndpointProperties",
+          "vpn": "default"
+        }
+      },
+      "action": "Browse",
+      "actionProperties": {
+        "@type": "JmsBrowse",
+        "browsePattern": {
+          "@type": "ByIndex"
+        }
+      },
+      "otherProperties": {
+        "queueName": "${output.queue.name}"
+      },
+      "assertions": [ {
+        "name": "JsonEqual",
+        "type": "JsonEqual",
+        "otherProperties": {
+          "expectedJSON": "${expected.output.message}"
+        }
+      } ]
+    } ]
+  } ]
+}
