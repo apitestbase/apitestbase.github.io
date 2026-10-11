@@ -36,7 +36,7 @@
           "statusCode": "${expected.api.response.status.code}"
         }
       }, {
-        "name": "JSONEqual",
+        "name": "JsonEqual",
         "type": "JsonEqual",
         "otherProperties": {
           "expectedJSON": "${expected.api.response.json}"
@@ -55,7 +55,7 @@
         "sqlScript": "select id, title, content from article;"
       },
       "assertions": [ {
-        "name": "JSONEqual",
+        "name": "JsonEqual",
         "type": "JsonEqual",
         "otherProperties": {
           "expectedJSON": "${expected.result.database.data}"
